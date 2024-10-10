@@ -1,0 +1,26 @@
+= Verifique se há falha de realocação de agregados
+:allow-uri-read: 
+
+
+
+
+== Verifique se há falha de realocação de agregados
+
+Durante o procedimento, o ARL pode falhar no Estágio 2, Estágio 3 ou Estágio 5.
+
+.Passos
+. Digite o seguinte comando e examine a saída:
++
+`storage aggregate relocation show`
+
++
+O `storage aggregate relocation show` comando mostra quais agregados foram realocados com sucesso e quais não foram, juntamente com as causas da falha.
+
+. Verifique se existem mensagens EMS na consola.
+. Execute uma das seguintes ações:
++
+** Tome a ação corretiva adequada, dependendo da saída do `storage aggregate relocation show` comando e da saída da mensagem EMS.
+** Forçar a realocação do agregado ou agregados usando a `override-vetoes` opção ou `override-destination-checks` a opção do `storage aggregate relocation start` comando.
+
+
+

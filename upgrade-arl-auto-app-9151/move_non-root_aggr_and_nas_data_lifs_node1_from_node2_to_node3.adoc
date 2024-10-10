@@ -1,0 +1,117 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html 
+keywords: moving, non-root, aggregates, nas, lif, node1, node2, node3 
+summary: 'Verifique se as LIFs de dados do nas node1 no node2 foram relocadas de node2 para node3 ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+---
+= Migre agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1 de node2 para node3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de verificar a configuração de rede no node3 e antes de realocar agregados de node2 para node3, você deve verificar se os LIFs de dados nas pertencentes ao node1 que estão atualmente no node2 são relocados de node2 para node3. Você também deve verificar se as SAN LIFs existem no node3.
+
+.Sobre esta tarefa
+Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Você irá verificar se os LIFs estão saudáveis e localizados em portas apropriadas depois de colocar o node3 on-line.
+
+.Passos
+. Os iSCSI LIFs encontram automaticamente as portas iniciais corretas usando a digitalização de acessibilidade. Os LIFs FC e NVMe/FC SAN não são movidos automaticamente. Eles continuam a mostrar a porta de casa em que estavam antes de atualizar.
++
+Verifique os LIFs SAN em node3:
+
++
+.. Modifique quaisquer LIFs SAN iSCSI que relatem um status de operação "inativo" para as novas portas de dados:
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down`
+
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>`
+
++
+`network interface modify -vserver <vserver> -lif <iscsi_san_lif>`
+
+.. Modifique quaisquer LIFs FC e NVMe/FC SAN que estejam em casa da nova controladora e relatando um status operacional "inativo" para as portas FCP na nova controladora:
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif> admin down`
+
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>`
+
++
+`network interface modify -vserver <vserver> -lif <fc_san_lif>`
+
+
+
+. Retomar a operação de realocação:
++
+`system controller replace resume`
+
++
+O sistema executa as seguintes tarefas:
+
++
+** Verificação do quorum do cluster
+** Verificação da ID do sistema
+** Verificação da versão da imagem
+** Verificação da plataforma alvo
+** Verificação de acessibilidade da rede
+
+
++
+A operação é interrompida nesta fase na verificação de acessibilidade da rede.
+
+. Retomar a operação de realocação:
++
+`system controller replace resume`
+
++
+O sistema efetua as seguintes verificações:
+
++
+** Verificação de integridade do cluster
+** Verificação do status de LIF do cluster
+
+
++
+Depois de executar essas verificações, o sistema relocaliza os agregados não-raiz e LIFs de dados nas de propriedade do node1 para a nova controladora, node3. A operação de substituição do controlador é interrompida após a conclusão da realocação de recursos.
+
+. Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
++
+`system controller replace show-details`
+
++
+Se o procedimento de substituição do controlador estiver em pausa, verifique e corrija o erro, se houver, e então o problema `resume` para continuar a operação.
+
+. Se necessário, restaure e reverta quaisquer LIFs deslocados. Liste quaisquer LIFs deslocados:
++
+`cluster controller-replacement network displaced-interface show`
+
++
+Se algum LIFs for deslocado, restaure o nó inicial de volta para node3:
+
++
+`cluster controller-replacement network displaced-interface restore-home-node`
+
+. Retome a operação para solicitar ao sistema que execute as verificações posteriores necessárias:
++
+`system controller replace resume`
+
++
+O sistema efetua as seguintes verificações posteriores:
+
++
+** Verificação do quorum do cluster
+** Verificação de integridade do cluster
+** Verificação de reconstrução de agregados
+** Verificação do status do agregado
+** Verificação do estado do disco
+** Verificação do status de LIF do cluster
+** Verificação do volume
+
+
+

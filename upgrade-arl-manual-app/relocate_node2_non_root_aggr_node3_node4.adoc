@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/relocate_node2_non_root_aggr_node3_node4.html 
+keywords: relocate, non-root, aggregates, node3, node4 
+summary: Relocate os agregados não-raiz do node2 de node3 para node4 durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Relocate node2 agregados não-raiz de node3 para node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de transferir os agregados não-raiz do node2 para o node3, agora você deve realocá-los de node3 para node4.
+
+.Passos
+. [[man_relocate_3_4_Step1]]Digite o seguinte comando em qualquer controlador e examine a saída para identificar quais agregados não-root devem ser transferidos:
++
+`storage aggregate show -owner-name _node3_ -home-id _node2_system_id_`
+
+. Reposicione os agregados executando as seguintes subetapas:
++
+.. Acesse o nível de privilégio avançado digitando o seguinte comando em qualquer nó:
++
+`set -privilege advanced`
+
+.. Introduza o seguinte comando:
++
+`storage aggregate relocation start -node _node3_ -destination _node4_ -aggregate-list _aggr_name1, aggr_name2..._ -ndo-controller-upgrade true`
+
++
+A lista de agregados é a lista de agregados pertencentes ao node4 que você obteve no <<man_relocate_3_4_Step1,Passo 1>>.
+
+.. Quando solicitado, digite `y`.
++
+A realocação ocorre em segundo plano. Pode levar de alguns segundos a alguns minutos para realocar um agregado. O tempo inclui as partes de interrupção do cliente e não-interrupção. O comando não relocaliza nenhum agregado off-line ou restrito.
+
+.. Voltar ao nível de administração:
++
+`set -privilege admin`
+
+
+
+. [[step3]]Verifique o status da realocação:
++
+`storage aggregate relocation show -node _node3_`
+
++
+A saída será exibida `Done` para um agregado depois de ter sido relocado.
+
++
+
+NOTE: Aguarde até que todos os node2 agregados tenham sido transferidos para node4 antes de avançar para a próxima etapa.
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se a relocalização de... | Então... 
+
+
+| Todos os agregados tiveram sucesso | Vá para <<man_relocate_3_4_Step5,Passo 5>>. 
+
+
+| Todos os agregados falharam, ou foram vetados  a| 
+.. Verifique os registos do EMS quanto à ação corretiva.
+.. Execute a ação corretiva.
+.. Acesse o nível de privilégio avançado digitando o seguinte comando em qualquer nó:
++
+`set -privilege advanced`
+
+.. Relocate quaisquer agregados com falha ou vetado:
++
+`storage aggregate relocation start -node _node3_ destination _node4_ -aggregate-list _aggr_name1, aggr_name2..._ ndo-controller-upgrade true`
+
++
+A lista de agregados é a lista de agregados com falha ou vetado.
+
+.. Quando solicitado, digite `y`.
+.. Retorne ao nível de administrador inserindo o seguinte comando:
++
+`set -privilege admin`
+
+
+
+Se necessário, você pode forçar a realocação usando um dos seguintes métodos:
+
+** Anular verificações de veto:
++
+`storage aggregate relocation start -override-vetoes -ndo-controller-upgrade`
+
+** Anular verificações de destino:
++
+`storage aggregate relocation start -override-destination-checks -ndocontroller-upgrade`
+
+
+
+Para obter mais informações sobre os comandos de realocação de agregados de armazenamento, consulte link:other_references.html["Referências"]o link para _Gerenciamento de disco e agregado com a CLI_ e os comandos _ONTAP 9: Referência de página manual_.
+
+|===
+. [[man_relocate_3_4_Step5]]Verifique se todos os node2 agregados não-root estão online e seu estado no node4:
++
+`storage aggregate show -node _node4_ -state offline -root false`
+
++
+Os agregados node2 foram listados na saída do comando em <<man_relocate_3_4_Step1,Passo 1>>.
+
+. Se algum agregado ficou offline ou se tornou estrangeiro, coloque-o online usando o seguinte comando para cada agregado:
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique se todos os volumes em agregados node2 estão online no node4:
++
+`volume show -node _node4_ -state offline`
+
+. Se algum volume estiver offline no node4, coloque-o online:
++
+`volume online -vserver _vserver-name_ -volume _volume_name_`
+
+. Envie uma mensagem de AutoSupport pós-atualização para o NetApp para node4:
++
+`system node autosupport invoke -node _node4_ -type all -message "_node2_ successfully upgraded from _platform_old_ to _platform_new_"`
+
+

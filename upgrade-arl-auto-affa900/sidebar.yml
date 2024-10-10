@@ -1,0 +1,129 @@
+---
+section: upgrade-arl-auto-affa900
+title: Use os comandos "System controller replace" para atualizar os modelos de controladora
+  no mesmo chassi
+entries:
+- title: Visão geral
+  url: "/upgrade-arl-auto-affa900/index.html"
+- title: Decida se deve usar o conteúdo agregado de realocação
+  url: "/upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html"
+- title: Ferramentas e documentação necessárias
+  url: "/upgrade-arl-auto-affa900/required_tools_and_documentation.html"
+- title: Diretrizes para atualização de controladores
+  url: "/upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html"
+- title: Visão geral da atualização ARL
+  url: "/upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html"
+- title: Fase 1. Prepare-se para a atualização
+  pdf-filename: Fase 1. Preparar a atualização (atualizar para AFF A900 ou FAS9500)
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_1_index.html"
+  - title: Verifique o hardware de atualização
+    url: "/upgrade-arl-auto-affa900/verify_upgrade_hardware.html"
+  - title: Prepare os nós para atualização
+    url: "/upgrade-arl-auto-affa900/prepare_nodes_for_upgrade.html"
+  - title: Gerencie a criptografia de armazenamento usando o Gerenciador de chaves
+      integrado
+    url: "/upgrade-arl-auto-affa900/manage_storage_encryption_using_okm.html"
+- title: Fase 2. Transferir recursos e aposentar-se node1
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_2_index.html"
+  - title: Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1
+      para o node2
+    url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html"
+  - title: Realocar agregados com falha ou vetado
+    url: "/upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html"
+  - title: Aposentar-se node1
+    url: "/upgrade-arl-auto-affa900/retire_node1.html"
+  - title: Substitua os node1 módulos do sistema
+    entries:
+    - title: Substitua o AFF A800
+      url: "/upgrade-arl-auto-affa900/replace-node1-affa800.html"
+    - title: Substitua AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+      url: "/upgrade-arl-auto-affa900/replace-node1-affa220-affa200-affc190-fas2620-fas2720.html"
+    - title: Substitua o AFF A700 ou o FAS9000
+      url: "/upgrade-arl-auto-affa900/replace-node1-aff700-fas900.html"
+  - title: Netboot node1
+    url: "/upgrade-arl-auto-affa900/netboot_node1.html"
+- title: Fase 3. Arranque node1 com os módulos do sistema de substituição
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_3_index.html"
+  - title: Cabo node1 para storage compartilhado de cluster-HA (somente atualização
+      AFF A800)
+    url: "/upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html"
+  - title: Arranque node1 com os módulos do sistema de substituição
+    url: "/upgrade-arl-auto-affa900/boot_node1_with_a900_controller_and_nvs.html"
+  - title: Verifique a instalação do node1
+    url: "/upgrade-arl-auto-affa900/verify_node1_installation.html"
+  - title: Restaure a configuração do gerenciador de chaves no node1 atualizado
+    url: "/upgrade-arl-auto-affa900/restore_key_manager_config_upgraded_node1.html"
+  - title: Mova agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1
+      de node2 para o node1 atualizado
+    url: "/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html"
+- title: Fase 4. Transferir recursos e aposentar-se node2
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_4_index.html"
+  - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node1
+    url: "/upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html"
+  - title: Aposentar-se node2
+    url: "/upgrade-arl-auto-affa900/retire_node2.html"
+- title: Fase 5. Instale os módulos do sistema de substituição no node2
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_5_index.html"
+  - title: Instale os módulos do sistema de substituição no node2
+    entries:
+    - title: Instale o AFF A90 ou o AFF A70
+      url: "/upgrade-arl-auto-affa900/install-affa90-affa70-on-node2.html"
+    - title: Instale o ASA A150, o AFF A150 ou o FAS2820
+      url: "/upgrade-arl-auto-affa900/install-asaa150-affa150-fas2820-on-node2.html"
+    - title: Instale o ASA A900, o AFF A900 ou o FAS9500
+      url: "/upgrade-arl-auto-affa900/install-asaa900-affa900-fas9500-on-node2.html"
+  - title: Netboot node2
+    url: "/upgrade-arl-auto-affa900/netboot_node2.html"
+- title: Fase 6. Arranque node2 com os módulos do sistema de substituição
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_6_index.html"
+  - title: Arranque node2 com os módulos do sistema de substituição
+    url: "/upgrade-arl-auto-affa900/boot_node2_with_a900_controller_and_nvs.html"
+  - title: Verifique a instalação do node2
+    url: "/upgrade-arl-auto-affa900/verify_node2_installation.html"
+  - title: Restaure a configuração do gerenciador de chaves no node2
+    url: "/upgrade-arl-auto-affa900/restore_key_manager_config_node2.html"
+  - title: Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2
+    url: "/upgrade-arl-auto-affa900/move_non_root_aggr_and_nas_data_lifs_back_to_node2.html"
+- title: Fase 7. Conclua a atualização
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/stage_7_index.html"
+  - title: Gerenciar a autenticação usando servidores KMIP
+    url: "/upgrade-arl-auto-affa900/manage-authentication-using-kmip-servers.html"
+  - title: Confirme se os novos controladores estão configurados corretamente
+    url: "/upgrade-arl-auto-affa900/ensure_new_controllers_are_set_up_correctly.html"
+  - title: Configure a criptografia de armazenamento no novo módulo do controlador
+    url: "/upgrade-arl-auto-affa900/set_up_storage_encryption_new_module.html"
+  - title: Configure o volume NetApp ou a encriptação agregada no novo módulo do controlador
+    url: "/upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html"
+  - title: Desativar o sistema antigo
+    url: "/upgrade-arl-auto-affa900/decommission_old_system.html"
+  - title: Retomar as operações do SnapMirror
+    url: "/upgrade-arl-auto-affa900/resume_snapmirror_operations.html"
+- title: Solucionar problemas
+  pdf-filename: Solucionar problemas (atualizar para AFF A900 ou FAS9500)
+  entries:
+  - title: Visão geral
+    url: "/upgrade-arl-auto-affa900/troubleshoot_index.html"
+  - title: Falhas de realocação de agregados
+    url: "/upgrade-arl-auto-affa900/aggregate_relocation_failures.html"
+  - title: Reinicializa, pânicos ou ciclos de energia
+    url: "/upgrade-arl-auto-affa900/reboots_panics_or_power_cycles.html"
+  - title: Problemas que podem surgir em várias etapas do procedimento
+    url: "/upgrade-arl-auto-affa900/issues_in_multiple_stages_of_procedure.html"
+  - title: Falha de migração de LIF
+    url: "/upgrade-arl-auto-affa900/lif_migration_failure.html"
+- title: Referências
+  url: "/upgrade-arl-auto-affa900/other_references.html"

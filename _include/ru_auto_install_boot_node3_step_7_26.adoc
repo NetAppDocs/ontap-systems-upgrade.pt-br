@@ -1,0 +1,170 @@
+= 
+:allow-uri-read: 
+
+
+. [[step7]]execute netboot no node3:
++
+[cols="30,70"]
+|===
+| Para... | Então... 
+
+
+| Sistemas da série FAS/AFF8000 | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/netboot/kernel` 
+
+
+| Todos os outros sistemas | `netboot \http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz` 
+|===
++
+O `<path_to_the_web-accessible_directory>` deve levar ao local onde você baixou o `<ontap_version>_image.tgz` na link:prepare_for_netboot.html["Prepare-se para netboot"]seção .
+
++
+
+NOTE: Não interrompa a inicialização.
+
+. [[step8]]no menu de inicialização, selecione a opção `(7) Install new software first`.
++
+Esta opção de menu transfere e instala a nova imagem ONTAP no dispositivo de arranque.
+
++
+Ignore a seguinte mensagem:
+
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+A observação se aplica a atualizações sem interrupções do ONTAP e não a atualizações de controladores.
+
++
+
+NOTE: Sempre use netboot para atualizar o novo nó para a imagem desejada. Se você usar outro método para instalar a imagem no novo controlador, a imagem incorreta pode ser instalada. Este problema aplica-se a todas as versões do ONTAP. O procedimento netboot combinado com opção `(7) Install new software` limpa a Mídia de inicialização e coloca a mesma versão do ONTAP em ambas as partições de imagem.
+
+. [[step9]]se você for solicitado a continuar o procedimento, digite `y` e, quando solicitado para o pacote, digite o URL:
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
+. [[step10]]conclua as seguintes subetapas para reinicializar o módulo do controlador:
++
+.. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
++
+`Do you want to restore the backup configuration now? {y|n}`
+
+.. Digite `y` para reiniciar quando você vir o seguinte prompt:
++
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}`
+
++
+O módulo do controlador reinicializa, mas pára no menu de inicialização porque o dispositivo de inicialização foi reformatado e os dados de configuração devem ser restaurados.
+
+
+
+. [[step11]]Selecione o modo de manutenção `5` no menu de inicialização e entre `y` quando você for solicitado a continuar com a inicialização.
+. [[step12]]Verifique se o controlador e o chassi estão configurados como ha:
++
+`ha-config show`
+
++
+O exemplo a seguir mostra a saída do `ha-config show` comando:
+
++
+....
+Chassis HA configuration: ha
+Controller HA configuration: ha
+....
++
+
+NOTE: Registros do sistema em uma PROM, quer estejam em um par de HA ou em uma configuração independente. O estado deve ser o mesmo em todos os componentes do sistema autônomo ou do par de HA.
+
+. [[step13]]se o controlador e o chassi não estiverem configurados como ha, use os seguintes comandos para corrigir a configuração:
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
++
+Se você tiver uma configuração MetroCluster, use os seguintes comandos para modificar o controlador e o chassi:
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`
+
+. [[step14]]Sair do modo de manutenção:
++
+`halt`
+
++
+Interrompa o AUTOBOOT pressionando Ctrl-C no prompt do ambiente de inicialização.
+
+. [[step15]]em node2, verifique a data, hora e fuso horário do sistema:
++
+`date`
+
+. [[step16]]em node3, verifique a data usando o seguinte comando no prompt do ambiente de inicialização:
++
+`show date`
+
+. [[step17]]se necessário, defina a data em node3:
++
+`set date _mm/dd/yyyy_`
+
+. [[step18]]no node3, verifique a hora usando o seguinte comando no prompt do ambiente de inicialização:
++
+`show time`
+
+. [[step19]]se necessário, defina a hora em node3:
++
+`set time _hh:mm:ss_`
+
+. [[step20]]no boot Loader, defina a ID do sistema do parceiro em node3:
++
+`setenv partner-sysid _node2_sysid_`
+
++
+Para node3, `partner-sysid` deve ser o de node2.
+
++
+.. Guarde as definições:
++
+`saveenv`
+
+
+
+. [[auto_install3_step21]]Verifique o `partner-sysid` para node3:
++
+`printenv partner-sysid`
+
+. [[step22]]Faça uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se o seu sistema... | Descrição 
+
+
+| Tem discos e nenhum armazenamento de back-end | Vá para <<auto_install3_step23,Passo 23>> 
+
+
+| É um sistema da série V ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento  a| 
+.. Vá para a seção link:set_fc_or_uta_uta2_config_on_node3.html["Definir a configuração FC ou UTA/UTA2 em node3"] e preencha as subseções nesta seção.
+.. Retorne a esta seção e conclua as etapas restantes, começando com <<auto_install3_step23,Passo 23>>.
+
+
+
+IMPORTANT: É necessário reconfigurar portas integradas FC, portas integradas CNA e placas CNA antes de inicializar o ONTAP no sistema ou série V com o software de virtualização FlexArray.
+
+|===
+. [[auto_install3_step23]]Adicione as portas do iniciador FC do novo nó às zonas do switch.
++
+Se o seu sistema tiver uma SAN de fita, você precisará de zoneamento para os iniciadores. Se necessário, modifique as portas integradas para o iniciador consultando o link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configuração de portas FC no node3"]. Consulte a documentação do storage array e zoneamento para obter mais instruções sobre zoneamento.
+
+. [[step24]]Adicione as portas do iniciador FC ao storage array como novos hosts, mapeando os LUNs do array para os novos hosts.
++
+Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
+
+. [[step25]]modifique os valores WWPN (nome da porta mundial) no host ou grupos de volume associados aos LUNs de array no storage array.
++
+A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
+
+. [[step26]]se sua configuração usa zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
+

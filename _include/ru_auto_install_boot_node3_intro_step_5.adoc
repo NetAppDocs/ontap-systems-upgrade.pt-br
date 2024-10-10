@@ -1,0 +1,75 @@
+= 
+:allow-uri-read: 
+
+
+Você deve instalar o node3 no rack, transferir as conexões do node1 para node3, inicializar node3 e instalar o ONTAP. Em seguida, você deve reatribuir qualquer um dos discos sobressalentes do node1, todos os discos pertencentes ao volume raiz e quaisquer agregados não-raiz que não foram relocados para o node2 anteriormente no processo, conforme descrito nesta seção.
+
+.Sobre esta tarefa
+A operação de relocalização é interrompida no início desta fase. Esse processo é amplamente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Além disso, você deve verificar se os LIFs SAN foram movidos com sucesso para node3.
+
+Você precisa netboot node3 se ele não tiver a mesma versão do ONTAP 9 instalada no node1. Depois de instalar o node3, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"].
+
+.Importante:
+* Se você estiver atualizando um sistema da série V conetado a matrizes de armazenamento ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento, você precisará concluir <<auto_install3_step1,Passo 1>> através <<auto_install3_step21,Passo 21>>do , em seguida, deixe esta seção e siga as instruções nas link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"]seções e link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Verifique e configure as portas UTA/UTA2 no node3"]conforme necessário, inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<auto_install3_step23,Passo 23>>.
+* Se você estiver atualizando um sistema com discos de armazenamento, será necessário concluir toda esta seção e, em seguida, ir para as link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"]seções elink:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Verifique e configure as portas UTA/UTA2 no node3"], digitando comandos no prompt do cluster.
+
+
+.Passos
+. [[auto_install3_step1]]Certifique-se de que você tem espaço em rack para node3.
++
+Se node1 e node2 estivessem em chassi separado, você pode colocar node3 no mesmo local de rack que node1. No entanto, se node1 estava no mesmo chassi com node2, então você precisa colocar node3 em seu próprio espaço de rack, de preferência perto do local de node1.
+
+. [[auto_install3_step2]]instale o node3 no rack, seguindo as _instruções de instalação e configuração_ para o modelo do seu nó.
++
+
+NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale node4 no chassi e node3. Se você não fizer isso, quando você inicializar o node3, o nó se comportará como se estivesse em uma configuração de chassi duplo, e quando você inicializar o node4, a interconexão entre os nós não aparecerá.
+
+. [[auto_install3_step3]]Cabo node3, movendo as conexões de node1 para node3.
++
+Faça o cabeamento das seguintes conexões, usando as _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node3, o documento apropriado do compartimento de disco e _Gerenciamento de alta disponibilidade_.
+
++
+Consulte o link:other_references.html["Referências"]link para os _requisitos de instalação de virtualização FlexArray e Referência_ e _Gerenciamento de alta disponibilidade_.
+
++
+** Console (porta de gerenciamento remoto)
+** Portas de cluster
+** Portas de dados
+** Portas de gerenciamento de clusters e nós
+** Armazenamento
+** Configurações SAN: Portas de switch iSCSI Ethernet e FC
++
+
+NOTE: Talvez você não precise mover a placa de interconexão ou a conexão do cabo de interconexão de cluster de node1 para node3, pois a maioria dos modelos de plataforma tem um modelo de placa de interconexão exclusivo. Para a configuração MetroCluster, você precisa mover as conexões de cabo FC-VI de node1 para node3. Se o novo host não tiver uma placa FC-VI, talvez seja necessário mover a placa FC-VI.
+
+
+
+. [[auto_install3_step4]]Ligue a alimentação para node3 e, em seguida, interrompa o processo de inicialização pressionando Ctrl-C no terminal do console para acessar o prompt do ambiente de inicialização.
++
+Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, o node4 também será reinicializado. No entanto, você pode ignorar a inicialização do node4 até mais tarde.
+
++
+
+NOTE: Ao inicializar o node3, você poderá ver a seguinte mensagem de aviso:
+
++
+....
+WARNING: The battery is unfit to retain data during a power outage. This is likely because the battery is discharged but could be due to other temporary conditions.
+When the battery is ready, the boot process will complete and services will be engaged.
+To override this delay, press 'c' followed by 'Enter'
+....
+. [[auto_install3_step5]]se a mensagem de aviso for exibida no <<auto_install3_step4,Passo 4>>, execute as seguintes ações:
++
+.. Verifique se há mensagens do console que possam indicar um problema que não seja uma bateria NVRAM fraca e, se necessário, tome as medidas corretivas necessárias.
+.. Deixe a bateria carregar e o processo de arranque terminar.
++
+
+WARNING: *Atenção: Não sobreponha o atraso; a falha em permitir que a bateria carregue pode resultar em perda de dados.*
+
++
+
+NOTE: link:prepare_for_netboot.html["Prepare-se para netboot"]Consulte a .
+
+
+
+

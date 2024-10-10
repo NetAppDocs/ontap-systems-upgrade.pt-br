@@ -1,0 +1,44 @@
+= Corrija a propriedade agregada se uma pré-verificação ARL falhar
+:allow-uri-read: 
+
+
+
+
+== Corrija a propriedade agregada se uma pré-verificação ARL falhar
+
+Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
+
+.Passos
+. Devolva os agregados atualmente pertencentes ao nó do parceiro para o nó do proprietário da casa:
++
+`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
+
+. Verifique se nem o node1 nem o node2 ainda possuem agregados para os quais é o proprietário atual (mas não o proprietário da casa):
++
+`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
+
++
+O exemplo a seguir mostra a saída do comando quando um nó é o proprietário atual e proprietário de agregados:
+
++
+[listing]
+----
+cluster::> storage aggregate show -nodes node1 -is-home true -fields owner-name,home-name,state
+aggregate   home-name  owner-name  state
+---------   ---------  ----------  ------
+aggr1       node1      node1       online
+aggr2       node1      node1       online
+aggr3       node1      node1       online
+aggr4       node1      node1       online
+
+4 entries were displayed.
+----
+
+
+
+
+=== Depois de terminar
+
+Tem de reiniciar o processo de substituição do controlador:
+
+`system controller replace start -nodes _node_names_`

@@ -1,0 +1,21 @@
+= Atualize o par de nós
+:allow-uri-read: 
+
+
+Antes de atualizar os nós usando ARL, você deve entender como o procedimento funciona. Neste conteúdo, o procedimento é dividido em várias etapas.
+
+
+
+== Atualize o par de nós
+
+Para atualizar o par de nós, você precisa preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.
+
+
+
+== Visão geral da sequência de atualização ARL
+
+Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, uma controladora de cada vez, aproveitando a configuração do par de HA para realocar a propriedade de agregados que não sejam raiz. Todos os agregados não-raiz devem passar por duas relocalizações para alcançar seu destino final, que é o nó atualizado correto.
+
+Cada agregado tem um proprietário de casa e proprietário atual. O proprietário da casa é o proprietário real do agregado, e o proprietário atual é o proprietário temporário.
+
+A tabela a seguir descreve as tarefas de alto nível executadas durante cada etapa e o estado de propriedade agregada no final da etapa. Etapas detalhadas são fornecidas posteriormente no procedimento:

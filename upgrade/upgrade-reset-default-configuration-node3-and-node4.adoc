@@ -1,0 +1,56 @@
+---
+permalink: upgrade/upgrade-reset-default-configuration-node3-and-node4.html 
+sidebar: sidebar 
+keywords: confirm, configuration, information, boot, media, interfere, controller, upgrade, reset, node3, node4, node, default, setting, reset default configuration on the new nodes 
+summary: Para confirmar que as informações de configuração no suporte de arranque não interferem na atualização do controlador, tem de repor as configurações do node3 e do node4 para as predefinições de configuração. 
+---
+= Redefina a configuração padrão nos novos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para confirmar que as informações de configuração no suporte de arranque não interferem na atualização do controlador, tem de repor as configurações do node3 e do node4 para as predefinições de configuração.
+
+.Sobre esta tarefa
+Você deve executar as seguintes etapas em node3 e node4. Você pode executar as etapas em cada nó em paralelo.
+
+. Inicialize o nó no menu de inicialização:
++
+`boot_ontap menu`
+
+. No prompt do menu de inicialização, digite `wipeconfig` e pressione Enter.
++
+A tela a seguir mostra o prompt do menu de inicialização
+
++
+[listing]
+----
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  wipeconfig
+----
+. Digite `yes` quando você vir um prompt semelhante ao seguinte:
++
+[listing]
+----
+This option deletes critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?: yes
+Rebooting to finish wipeconfig request.
+----
++
+O sistema iniciará o `wipeconfig` procedimento e reiniciará. Quando o procedimento estiver concluído, o sistema regressa ao menu de arranque.
+
+. No menu de inicialização, digite 8 para reinicializar o nó e pressione Ctrl-C durante o AUTOBOOT para parar o nó no prompt Loader.
+

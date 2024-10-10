@@ -1,0 +1,107 @@
+---
+permalink: upgrade/upgrade-attach-shelves-reassign-disks.html 
+sidebar: sidebar 
+keywords: reassign, disk, belong, node1, node2, node3, node4, node, attach, storage, shelves, shelf, reassign, ownership, attach storage shelves reassign disk ownership 
+summary: Você deve reatribuir os discos que pertenciam a node1 e node2 a node3 e node4, respetivamente. 
+---
+= Conecte as gavetas de storage e reatribua a propriedade do disco
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve reatribuir os discos que pertenciam a node1 e node2 a node3 e node4, respetivamente.
+
+.Sobre esta tarefa
+Execute as etapas nesta seção em node3 e node4, completando cada etapa em node3 e depois em node4 antes de passar para a próxima etapa.
+
+.Passos
+. Conete os cabos da prateleira de armazenamento das prateleiras que estavam anteriormente conetadas a node1/node2 a node3/node4.
++
+
+CAUTION: Não é possível conectar novas gavetas ao node3/node4 durante esse procedimento de atualização. Você pode conectar novas gavetas ao sistema sem interrupções após concluir a atualização da controladora.
+
+. Verifique a fonte de alimentação e a conectividade física das gavetas.
+. A partir do prompt do node3 Loader, inicialize para o modo de manutenção:
++
+`boot_ontap maint`
+
+. Apresentar a ID do sistema de node3:
++
+`disk show -v`
+
++
+[listing]
+----
+*> disk show -v
+Local System ID: 101268854
+...
+----
++
+Registe a ID do sistema de node3 para utilização no passo 4 abaixo.
+
+. Reatribua os discos sobressalentes do node1, os discos pertencentes ao agregado raiz e quaisquer agregados de dados:
++
+`disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysID_`
+
++
+--
+** O parâmetro `_node1_sysid_` é o valor que você registrou em _fechando os nós originais_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Passo 5"].
+** Especifique o parâmetro `_-p partner_sysID_` somente quando os discos compartilhados estiverem presentes.
+
+
+[NOTE]
+====
+Ao reatribuir discos sobressalentes do node2, discos pertencentes ao agregado raiz e quaisquer agregados de dados, o comando é:
+
+`disk reassign -s node2_sysid -d node4_sysid -p node3_sysID`
+
+====
+--
++
+O sistema exibe uma mensagem semelhante à seguinte:
+
++
+[listing]
+----
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)?n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)?y
+----
+. Entre `y` para continuar.
++
+O sistema exibe uma mensagem semelhante à seguinte:
+
++
+[listing]
+----
+The system displays the following message:
+Disk ownership will be updated on all disks previously belonging to Filer with sysid
+<sysid>.
+Do you want to continue (y/n)? y
+----
+. Entre `y` para continuar.
+. Confirme se o agregado raiz do node1 está definido como `root` no campo de opções e se outros agregados estão online:
++
+`aggr status`
+
++
+Você deve ver saída semelhante ao seguinte:
+
++
+[listing]
+----
+*> aggr status
+           Aggr State           Status                Options
+          aggr0 online          raid_dp, aggr         root
+                                64-bit
+----
+. Sair do modo de manutenção:
++
+`halt`
+
+

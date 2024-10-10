@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
+summary: Decida se deve usar o procedimento ARL que atualiza os modelos de controlador no mesmo chassi. 
+---
+= Decida se deve usar o procedimento de realocação agregada
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este conteúdo descreve como atualizar controladores de storage em um par de HA e, ao mesmo tempo, manter todos os dados e discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+
+Pode utilizar este procedimento nas seguintes circunstâncias:
+
+* Você está executando uma das seguintes atualizações de controladora:
++
+[cols="50,50"]
+|===
+| Controlador antigo | Controlador de substituição 
+
+
+| AFF A800 | AFF A70 e AFF A90 
+
+
+| AFF A220 configurado como um ASA | ASA A150 
+
+
+| AFF A220, AFF A200 ou AFF C190 | AFF A150 
+
+
+| FAS2620 ou FAS2720 | FAS2820 
+
+
+| AFF A700 configurado como um ASA | ASA A900 
+
+
+| AFF A700 | AFF A900 
+
+
+| FAS9000 | FAS9500 
+|===
+* Você verificou com seu representante de vendas da NetApp que recebeu o hardware para a atualização da controladora:
++
+** Dois controladores AFF A90 ou dois AFF A70 e todos os módulos de e/S necessários para a atualização. O comprimento necessário de 100GbE cabos.
+** Controlador ASA A150, AFF A150 ou FAS2820
+** Controladores ASA A900, AFF A900 ou FAS9500 e módulos NVRAM e as peças necessárias para a atualização
+
+
+* Você está executando a versão mínima do ONTAP para sua atualização. Para obter mais informações, link:index.html["Visão geral"]consulte .
+* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
+* Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+
+
+Você não pode usar este procedimento nas seguintes circunstâncias:
+
+* Você está usando o software de virtualização FlexArray nos sistemas AFF A800, AFF A700 ou FAS9000.
+* Você está usando um switch compartilhado para interconexão de cluster e armazenamento conetado à Ethernet.
+
+
+Para atualizar configurações IP do MetroCluster em sistemas AFF A800, AFF A700 ou FAS9000, link:other_references.html["Referências"]consulte para vincular ao conteúdo _Atualização e expansão_ do MetroCluster.
+
+
+NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+
+Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

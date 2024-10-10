@@ -1,0 +1,26 @@
+---
+permalink: upgrade/upgrade_considerations_move_san_lifs.html 
+sidebar: sidebar 
+keywords: cluster, san, environment, lif, original, node, unjoin, original, move san lifs 
+summary: Você só precisa mover SAN LIFs se estiver alterando o conteúdo do cluster. 
+---
+= Considerações para mover SAN LIFs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você só precisa mover os LIFs SAN se estiver alterando o conteúdo do cluster, por exemplo, adicionando nós ao cluster ou excluindo nós do cluster. Ao mover um LIF, não é necessário recalibrar sua malha FC nem criar novas sessões iSCSI entre os hosts conetados do cluster e a nova interface de destino.
+
+Você pode mover um SAN LIF usando o `network interface modify` comando. Para mover um SAN LIF, você deve colocar o LIF off-line, mover o LIF para um nó ou porta inicial diferente e, em seguida, colocá-lo de volta on-line em seu novo local. O Acesso lógico-Unidade assimétrica (ALUA) fornece caminhos redundantes e seleção automática de caminhos como parte de qualquer solução de SAN ONTAP. Portanto, quando o LIF é colocado off-line para o movimento, não há interrupção de e/S. O host simplesmente tenta novamente e depois move I/o para outro LIF.
+
+Durante os movimentos de LIF, você pode executar as seguintes tarefas sem interrupções:
+
+* Substitua um par de HA de um cluster por um par de HA atualizado de uma forma transparente para os hosts que acessam dados LUN
+* Atualize uma placa de interface de destino
+* Migre os recursos de uma máquina virtual de storage (SVM) de um conjunto de nós em um cluster para outro conjunto de nós no mesmo cluster
+* Quando o servidor host está on-line, é possível mover um LUN SAN para um novo par de HA sem interromper o acesso do servidor host aos dados LUN
+
+
+Para obter mais informações, consulte o https://docs.netapp.com/us-en/ontap/san-admin/move-san-lifs-task.html["Movimento de SAN LIF"^] procedimento na documentação _SAN storage Management_.

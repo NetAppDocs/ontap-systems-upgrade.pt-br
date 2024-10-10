@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/aggregate_relocation_failures.html 
+keywords: aggregate, relocation, failures, arl, stage 2, stage 3, stage 5 
+summary: Solucionar falhas de realocação de agregados que podem ocorrer ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Falhas de realocação de agregados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A realocação agregada (ARL) pode falhar em diferentes pontos durante a atualização.
+
+
+
+== Verifique se há falha de realocação de agregados
+
+Durante o procedimento, o ARL pode falhar no Estágio 2, Estágio 3 ou Estágio 5.
+
+.Passos
+. Digite o seguinte comando e examine a saída:
++
+`storage aggregate relocation show`
+
++
+O `storage aggregate relocation show` comando mostra quais agregados foram realocados com sucesso e quais não foram, juntamente com as causas da falha.
+
+. Verifique se existem mensagens EMS na consola.
+. Execute uma das seguintes ações:
++
+** Tome a ação corretiva adequada, dependendo da saída do `storage aggregate relocation show` comando e da saída da mensagem EMS.
+** Forçar a realocação do agregado ou agregados usando a `override-vetoes` opção ou `override-destination-checks` a opção do `storage aggregate relocation start` comando.
+
+
++
+Para obter informações detalhadas sobre as `storage aggregate relocation start` opções , `override-vetoes` e `override-destination-checks` , link:other_references.html["Referências"]consulte para vincular aos comandos _ONTAP 9: Manual Página de Referência_.
+
+
+
+
+
+== Agregados originalmente em node1 são propriedade de node2 após a conclusão da atualização
+
+No final do procedimento de atualização, node1 deve ser o novo nó inicial de agregados que originalmente tinha node1 como nó inicial. Você pode realocá-los após a atualização.
+
+.Sobre esta tarefa
+Os agregados podem não se realocar corretamente, ou seja, eles têm node2 como seu nó inicial em vez de node1, nas seguintes circunstâncias:
+
+* Durante a fase 3, quando os agregados são relocados de node2 para node1.
++
+Alguns dos agregados que estão sendo realocados têm o node1 como seu nó inicial. Por exemplo, esse agregado poderia ser chamado aggr_node_1. Se a realocação de aggr_node_1 falhar durante a Etapa 3 e a realocação não puder ser forçada, o agregado será deixado para trás em node2.
+
+* Após a fase 4, quando o node2 é substituído pelos novos módulos do sistema.
++
+Quando o node2 é substituído, o aggr_node_1 estará online com o node1 como seu nó inicial em vez de node2.
+
+
+
+Você pode corrigir o problema de propriedade incorreta após a fase 6, depois de ativar o failover de armazenamento, executando as seguintes etapas:
+
+.Passos
+. Obtenha uma lista de agregados:
++
+`storage aggregate show -nodes _node2_ -is-home true`
+
++
+Para identificar agregados que não foram corretamente realocados, consulte a lista de agregados com o proprietário da casa de node1 que você obteve na seção link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] e compare-os com a saída do comando acima.
+
+. Compare a saída do passo 1 com a saída que você capturou para node1 na seção link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] e observe quaisquer agregados que não foram relocados corretamente.
+. Relocate os agregados deixados para trás na node2:
++
+`storage aggregate relocation start -node _node2_ -aggr _aggr_node_1_ -destination _node1_`
+
++
+Não use o parâmetro -ndo-controller-upgrade durante essa realocação.
+
+. Verifique se o node1 é agora o proprietário dos agregados:
++
+`storage aggregate show -aggregate _aggr1,aggr2,aggr3..._ -fields home-name`
+
++
+`_aggr1,aggr2,aggr3..._` é a lista de agregados que tiveram node1 como o proprietário original da casa.
+
++
+Agregados que não têm node1 como proprietário de casa podem ser relocados para node1 usando o mesmo comando de realocação na Etapa 3.
+
+

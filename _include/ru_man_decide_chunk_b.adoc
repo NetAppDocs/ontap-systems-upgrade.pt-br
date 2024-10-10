@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+
+NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+
+Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

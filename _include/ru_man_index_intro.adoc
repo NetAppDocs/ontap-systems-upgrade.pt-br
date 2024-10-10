@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Este conteúdo descreve como atualizar o hardware da controladora sem interrupção usando a realocação de agregados.
+
+É possível atualizar o hardware da controladora em um par de nós executando ONTAP 9 sem interrupções, migrando agregados que não sejam raiz dos nós originais para os novos nós no mesmo cluster. Os dados hospedados nos nós que estão sendo atualizados estão acessíveis durante a atualização.
+
+Esse procedimento usa um método chamado ARL (Aggregate relocation), que aproveita a configuração de HA para permitir que você mova a propriedade de agregados que não sejam raiz de um nó para outro, se eles compartilharem o storage no mesmo cluster.

@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/prepare_for_netboot.html 
+keywords: preparing, netboot, ndac, ontap 
+summary: 'Prepare-se para netboot node3 e node4 ao atualizar controladores executando o ONTAP 9.8 ou posterior usando `system controller replace` comandos.' 
+---
+= Prepare-se para netboot
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de colocar fisicamente o rack node3 e node4 posteriormente no procedimento, talvez seja necessário iniciá-los na rede. O termo "netboot" significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você coloca uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema pode acessar.
+
+Você também pode usar a opção de inicialização USB para executar um netboot. Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Como usar o comando boot_recovery Loader para instalar o ONTAP para a configuração inicial de um sistema"^].
+
+.Antes de começar
+* Verifique se você pode acessar um servidor HTTP com o sistema.
+* link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e baixe os arquivos de sistema necessários para sua plataforma e a versão correta do ONTAP.
+
+
+.Sobre esta tarefa
+Você deve netboot os novos controladores se eles não tiverem a mesma versão do ONTAP 9 instalada neles que está instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.
+
+.Passos
+. Acesse o site de suporte da NetApp para fazer o download dos arquivos usados para executar o netboot do sistema.
+. Transfira o software ONTAP adequado a partir da secção de transferência de software do site de suporte da NetApp e guarde o `<ontap_version>_image.tgz` ficheiro num diretório acessível pela Web.
+. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
++
+Sua lista de diretórios deve conter o seguinte arquivo:
+`<ontap_version>_image.tgz`
+
++
+
+NOTE: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arquivo.
+
++
+Você usará as informações nos diretórios do link:install_boot_node3.html["Fase 3"].
+
+

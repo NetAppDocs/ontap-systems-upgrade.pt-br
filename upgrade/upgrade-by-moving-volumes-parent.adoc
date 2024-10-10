@@ -1,0 +1,52 @@
+---
+permalink: upgrade/upgrade-by-moving-volumes-parent.html 
+sidebar: sidebar 
+keywords: upgrade by moving volumes 
+summary: Se você estiver atualizando movendo volumes, prepare os nós originais e junte os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster. A atualização ao mover volumes é um procedimento sem interrupções. 
+---
+= Fluxo de trabalho
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Atualizar o hardware da controladora movendo volumes é um procedimento sem interrupções. Antes de iniciar a atualização, reveja os cenários gerais de atualização e considerações de atualização:
+
+* link:upgrade-decide-to-use-this-guide.html["Decida se deseja atualizar movendo volumes ou armazenamento"]
+* link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]
+
+
+Para atualizar movendo volumes, você prepara os nós originais e une os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:upgrade-prepare-when-moving-volumes.html["Prepare-se para a atualização ao mover volumes"]
+[role="quick-margin-para"]
+Você executa algumas etapas de preparação antes de atualizar o hardware do controlador movendo volumes.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:upgrade-install-and-join-new-nodes-move-vols.html["Instale os novos nós e junte-os ao cluster"]
+[role="quick-margin-para"]
+Você instala os novos nós e os une ao cluster para que possa mover volumes dos nós originais.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Mova hosts iSCSI Linux para os novos nós"]
+[role="quick-margin-para"]
+Antes de mover volumes SAN iSCSI para novos nós, você cria novas conexões iSCSI e refaz os caminhos iSCSI para os novos nós.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"]link:upgrade-create-aggregate-move-volumes.html["Crie um agregado e mova volumes para os novos nós"]
+[role="quick-margin-para"]
+Você cria pelo menos um agregado em cada um dos novos nós para armazenar os volumes que deseja mover dos nós originais. Você precisa identificar um agregado para cada volume e mover cada volume individualmente
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:upgrade-move-lifs-to-new-nodes.html["Mova LIFs de dados que não são SAN e LIFs de gerenciamento de cluster para os novos nós"]
+[role="quick-margin-para"]
+Depois de mover os volumes dos nós originais, você migra os LIFs de dados que não são SAN e as LIFs de gerenciamento de cluster dos nós originais para os novos nós.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:upgrade_move_delete_recreate_san_lifs.html["Mover, excluir ou criar SAN LIFS"]
+[role="quick-margin-para"]
+Dependendo do conteúdo do cluster e do ambiente de cluster, você move, exclui ou cria SAN LIFs ou cria novamente SAN LIFs excluídas.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]link:upgrade-unjoin-original-nodes-move-volumes.html["Desassociar os nós originais do cluster"]
+[role="quick-margin-para"]
+Depois que os volumes tiverem sido movidos para os novos nós, você desunirá os nós originais do cluster. Quando você desassocia um nó, a configuração do nó é apagada e todos os discos são inicializados.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Oito"]link:upgrade-complete-move-volumes.html["Conclua a atualização"]
+[role="quick-margin-para"]
+Para concluir o procedimento de atualização movendo volumes, configure o processador de serviço (SP), instale novas licenças e configure o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.

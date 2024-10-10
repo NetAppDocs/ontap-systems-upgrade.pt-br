@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Depois de colocar fisicamente o rack node3 e node4 posteriormente no procedimento, talvez seja necessário iniciá-los na rede. O termo "netboot" significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você coloca uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema pode acessar.
+
+.Antes de começar
+* Verifique se você pode acessar um servidor HTTP com o sistema.
+* link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e baixe os arquivos de sistema necessários para sua plataforma e a versão correta do ONTAP.
+
+
+.Sobre esta tarefa
+Você deve netboot os novos controladores se eles não tiverem a mesma versão do ONTAP 9 instalada neles que está instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.

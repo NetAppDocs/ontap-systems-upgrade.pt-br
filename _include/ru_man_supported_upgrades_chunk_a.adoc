@@ -1,0 +1,15 @@
+= 
+:allow-uri-read: 
+
+
+* Os controladores de substituição devem ter capacidade igual ou superior à dos controladores originais. Capacidade igual ou superior refere-se a atributos, como o tamanho, volume, LUN ou limites de contagem de agregados do NVRAM; também se refere ao volume máximo ou aos tamanhos de agregados dos novos nós.
+* Você pode atualizar o seguinte tipo de sistemas:
++
+** Um sistema FAS para um sistema FAS.
+** Um sistema FAS para um sistema com software de virtualização FlexArray ou um sistema da série V.
+** Um sistema AFF para um sistema AFF.
+** Um sistema com software de virtualização FlexArray ou um sistema da série V para um sistema FAS, desde que o sistema com software de virtualização FlexArray ou sistema da série V não tenha LUNs de matriz.
+** Um sistema V-Series para um sistema com software de virtualização FlexArray ou um sistema V-Series.
+
+
+

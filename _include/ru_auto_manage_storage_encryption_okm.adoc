@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Você pode usar o Onboard Key Manager (OKM) para gerenciar chaves de criptografia. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.
+
+.Passos
+. Grave a frase-passe de todo o cluster.
++
+Esta é a senha que foi inserida quando o OKM foi configurado ou atualizado usando a CLI ou API REST.
+
+. Faça backup das informações do gerenciador de chaves executando o `security key-manager onboard show-backup` comando.
+

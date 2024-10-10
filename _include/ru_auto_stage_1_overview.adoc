@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+Durante a fase 1, você executa pré-verificações e, se necessário, corrige a propriedade agregada. Você também Registra certas informações se estiver gerenciando a criptografia de armazenamento usando o Gerenciador de chaves integrado e você pode optar por silenciar as relações do SnapMirror.
+
+.Passos
+. link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]
+. link:manage_storage_encryption_using_okm.html["Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado"]
+

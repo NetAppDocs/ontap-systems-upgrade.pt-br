@@ -1,0 +1,73 @@
+---
+permalink: choose_controller_upgrade_procedure.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Em geral, a forma como você atualiza o hardware do controlador depende dos modelos de plataforma dos nós originais. Faça a atualização movendo agregados ou volumes de storage (procedimentos sem interrupções) ou movendo o storage (um procedimento de interrupção).' 
+---
+= Escolha o procedimento de atualização do hardware do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Em geral, a forma como você atualiza o hardware do controlador depende dos modelos de plataforma dos nós originais. Atualize agregados ou movendo volumes (procedimentos sem interrupções) ou movendo o storage (um procedimento de interrupção). Se você tiver versões diferentes do ONTAP em execução nos nós originais e novos, talvez seja necessário executar uma atualização de software antes de iniciar a atualização de hardware.
+
+[role="tabbed-block"]
+====
+.Sistemas com unidades internas
+--
+Escolha um procedimento de atualização para um sistema com unidades internas, que estão listadas abaixo:
+
+* FAS2620, FAS2650, FAS2720 e FAS2750
+* AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s e AFF A800
++
+
+NOTE: Você também pode atualizar um AFF A800 para um AFF A70 ou AFF A90 usando a realocação de agregados. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Saiba mais"].
+
+* AFF C190, AFF C250 e AFF C800
+* ASA A150, ASA A250, ASA A800 e ASA AFF A220
+
+
+Se o seu sistema não estiver listado, consulte https://hwu.netapp.com["NetApp Hardware Universe"^] para verificar se tem unidades internas.
+
+image:workflow_internal_drives.png["Fluxo de trabalho de decisão para escolher um procedimento de atualização"]
+
+--
+.Sistemas com apenas unidades externas
+--
+Escolha um procedimento de atualização para um sistema com apenas unidades externas, que estão listadas abaixo:
+
+* FAS8200, FAS8300, FAS8700, FAS9000 e FAS9500
+* AFF A300, AFF A320, AFF A400, AFF A700 e AFF A900
+* AFF C400
+* ASA A400, ASA A900 e ASA AFF A700
+
+
+Se o seu sistema não estiver listado, consulte https://hwu.netapp.com["NetApp Hardware Universe"^] para verificar se ele só tem unidades externas.
+
+image:workflow_external_drives.png["Fluxo de trabalho de decisão para escolher um procedimento de atualização"]
+
+--
+====
+Saiba mais sobre os procedimentos de atualização de hardware do controlador:
+
+* link:upgrade-arl/index.html["Atualize usando realocação agregada"]
++
+A realocação de agregados é um procedimento de substituição. Não é necessário expandir e diminuir o cluster com os novos nós, o que é benéfico para clusters sem switch de dois nós. Mover dados com a realocação de agregados é mais rápido do que copiar dados entre agregados ao mover volumes.
+
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Atualize movendo volumes ou armazenamento"]
+
+
+[NOTE]
+====
+*Note1*: A versão do ONTAP em execução nos nós originais deve ser suportada pelos novos nós. Se necessário, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Atualize a versão do ONTAP"^] nos nós originais até a versão máxima suportada. A diferença de versão entre os nós original e novo não pode ser maior que quatro. Por exemplo, o ONTAP 9.8 e 9.12.1 são suportados; no entanto, o ONTAP 9.8 e o 9.13.1 não são suportados. https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Saiba mais sobre clusters ONTAP de versão mista"^].
+
+*Note2*: Uma atualização sem interrupções requer um novo sistema com seu próprio storage e compartimentos para armazenar os dados do sistema original.
+
+*Note3*: Ao atualizar movendo volumes, você se junta aos novos nós, move os volumes e LIFs para os novos nós e, em seguida, desassocia os nós que você deseja remover do cluster. Se você estiver atualizando um cluster sem switch de dois nós, converta-o em um cluster conetado comutado usando um par de switches de cluster antes de adicionar novos nós.
+
+====
+Se você estiver atualizando uma configuração do MetroCluster, https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualize, atualize ou expanda a configuração do MetroCluster"^] consulte .
+
+Se você estiver substituindo um componente individual, consulte https://docs.netapp.com/us-en/ontap-systems/index.html["Documentação dos sistemas de hardware da ONTAP"^] e localize o folheto de unidade substituível em campo (FRU) para esse componente.

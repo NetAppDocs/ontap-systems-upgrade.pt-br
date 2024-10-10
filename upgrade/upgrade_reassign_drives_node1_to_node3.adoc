@@ -1,0 +1,82 @@
+---
+permalink: upgrade/upgrade_reassign_drives_node1_to_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Conete fisicamente node1 a node3 antes de atribuir unidades de node1 a node3 
+---
+= Reatribuir unidades de node1 a node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de converter o AFF A250 node1 em um compartimento de unidade de NS224 TB e se conectar ao AFF A400 node3, você precisa reatribuir as unidades que anteriormente pertenciam a node1 TB a node3 TB.
+
+.Passos
+. No prompt DO Loader, inicialize o node3 no modo de manutenção:
++
+`boot_ontap maint`
+
+. Mostrar o estado das interfaces 100GbE:
++
+`storage port show`
+
+. Defina as interfaces 100GbE para portas de storage:
++
+`storage port modify -p e0c -m storage`
+
++
+`storage port modify -p e0d -m storage`
+
+. Verifique as alterações de modo nas interfaces 100GbE:
++
+`storage port show`
+
++
+Saída como o exemplo a seguir deve exibir:
+
++
+[listing]
+----
+*> storage port modify -p e0c -m storage
+Nov 10 16:27:23 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0c to storage mode.
+
+Nov 10 16:27:29 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8885.
+
+*> storage port modify -p e0d -m storage
+Nov 10 16:27:34 [localhost:nvmeof.port.modify:notice]: Changing NVMe-oF port e0d to storage mode.
+
+Nov 10 16:27:38 [localhost:nvmeof.subsystem.add:notice]: NVMe-oF subsystem added at address fe80::2a0:98ff:fefa:8886.
+
+*> storage port show
+Port Type Mode    Speed(Gb/s) State    Status  VLAN ID
+---- ---- ------- ----------- -------- ------- -------
+e0c  ENET storage 100 Gb/s    enabled  online  30
+e0d  ENET storage 100 Gb/s    enabled  offline 30
+----
+. Apresentar todas as unidades anexadas:
++
+`disk show -v`
+
+. Registe o valor de ID do sistema local; esta é a ID do sistema de node3. Registre também as IDs do sistema de node1 e node2 da coluna "PROPRIETÁRIO".
+. Reatribuir todas as unidades de node1 TB a node3 TB:
++
+`disk reassign -s _node1_system_ID_ -d _node3_system_ID_ -p _node4_system_ID_`
+
+. Verifique se todas as unidades reatribuídas são visíveis para a nova ID do sistema:
++
+`disk show -s _node3_system_ID_`
+
++
+
+NOTE: Se as unidades não forem visíveis, *STOP* e contacte o suporte técnico para obter assistência.
+
+. Sair do modo de manutenção:
++
+`halt`
+
+
+
+.O que se segue?
+link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migrar LIFs e agregados de dados em node4 para node3"]

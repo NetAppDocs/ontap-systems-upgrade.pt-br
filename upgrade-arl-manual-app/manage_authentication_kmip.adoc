@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/manage_authentication_kmip.html 
+keywords: kmip, authentication, keys, fips 
+summary: Use servidores KMIP para gerenciar chaves de autenticação durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Gerenciar a autenticação usando servidores KMIP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Com o ONTAP 9.5 e posterior, você pode usar servidores KMIP (Key Management Interoperability Protocol) para gerenciar chaves de autenticação.
+
+.Passos
+. Adicionar um novo controlador:
++
+`security key-manager setup -node _new_controller_name_`
+
+. Adicione o gerenciador de chaves:
++
+`security key-manager -add _key_management_server_ip_address_`
+
+. Verifique se os servidores de gerenciamento de chaves estão configurados e disponíveis para todos os nós no cluster:
++
+`security key-manager show -status`
+
+. Restaure as chaves de autenticação de todos os servidores de gerenciamento de chaves vinculados para o novo nó:
++
+`security key-manager restore -node _new_controller_name_`
+
+

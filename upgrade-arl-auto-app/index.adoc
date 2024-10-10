@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/index.html 
+keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
+summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.8 ou posterior usando `system controller replace` comandos, relocando a propriedade de agregados que não sejam raiz.' 
+---
+= Visão geral
+:allow-uri-read: 
+
+
+[role="lead"]
+Este procedimento descreve como atualizar o hardware da controladora usando ARL (Aggregate Relocation) para as seguintes configurações do sistema:
+
+[cols="40,20,40"]
+|===
+| Método | Versão de ONTAP | Sistemas suportados 
+
+
+| Usando `system controller replace` comandos | 9,8 ou posterior | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_98_supported_systems["Link para a matriz de sistemas suportados"] 
+|===
+Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, relocando a propriedade de agregados que não sejam raiz. Migre agregados várias vezes de nó para nó para confirmar se pelo menos um nó está fornecendo dados dos agregados durante o procedimento de atualização. Você também migra interfaces lógicas de dados (LIFs) e atribui as portas de rede do novo controlador aos grupos de interface à medida que avança.
+
+.Terminologia utilizada nesta informação
+Nesta informação, os nós originais são chamados "node1" e "node2", e os novos nós são chamados "node3" e "node4". Durante o procedimento descrito, o node1 é substituído pelo node3 e o node2 é substituído pelo node4. Os termos "node1", "node2", "node3" e "node4" são usados apenas para distinguir entre os nós originais e novos. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós originais e novos. No entanto, na realidade, os nomes dos nós não mudam: node3 tem o nome node1 e node4 tem o nome node2 após o hardware do controlador ser atualizado.
+
+Ao longo dessas informações, o termo "sistemas com software de virtualização FlexArray" refere-se a sistemas que pertencem a essas novas plataformas. O termo "sistema V-Series" refere-se aos sistemas de hardware separados que podem ser conetados a matrizes de armazenamento.
+
+.Informações importantes:
+* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e entender as link:guidelines_for_upgrading_controllers_with_arl.html["Diretrizes para atualização de controladores com ARL"]seções e link:overview_of_the_arl_upgrade.html["Visão geral da atualização ARL"]antes de iniciar a atualização.
+* Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o Data ONTAP no modo 7.
+* Você pode usar o ARL para realizar uma atualização simplificada de controladora sem interrupções para uma nova controladora executando uma versão do ONTAP posterior à versão em execução no cluster que está atualizando. As combinações de versões do ONTAP para controladores antigos e novos são determinadas pelo modelo de cadência NDU de lançamento do software ONTAP. Por exemplo, se você tiver um controlador executando o ONTAP 9.8 e essa for a última versão suportada para esse controlador, você pode atualizar para um novo controlador executando uma versão do ONTAP posterior ao ONTAP 9.8.
++
+Este procedimento de atualização aplica-se principalmente a cenários de atualização em que o modelo de controlador que está a substituir não suporta versões ONTAP posteriores e a nova controladora não suporta versões ONTAP anteriores.
+
+* Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de alta disponibilidade (HA) no cluster.
+* Este procedimento aplica-se a sistemas FAS, sistemas da série V, sistemas AFF e sistemas com software de virtualização FlexArray. Os sistemas FAS lançados após o ONTAP 9.5 podem ser anexados a storage arrays se a licença necessária for instalada. Para obter mais informações sobre a matriz de armazenamento e os modelos da série V, consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ e aceda à Matriz de suporte da série V.
+* Este procedimento aplica-se a sistemas que executam a configuração NetApp MetroCluster de 4 nós ou superior. Como os locais de configuração do MetroCluster podem estar em dois locais fisicamente diferentes, a atualização automatizada da controladora deve ser realizada individualmente em cada local do MetroCluster para um par de HA.
+* Para sistemas que não são MetroCluster, como clusters de HA, a atualização ARL é o único procedimento com suporte.
+* Se você estiver atualizando de um sistema AFF A320, poderá usar as movimentações de volume para atualizar o hardware do controlador ou entrar em Contato com o suporte técnico. Consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+

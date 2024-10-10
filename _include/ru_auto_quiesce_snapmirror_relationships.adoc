@@ -1,0 +1,30 @@
+= Quiesce as relações SnapMirror (opcional)
+:allow-uri-read: 
+
+
+
+
+== Quiesce as relações SnapMirror (opcional)
+
+Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.
+
+.Passos
+. Verifique o status da relação do SnapMirror no cluster de destino:
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Se o status for "transferência", você deve cancelar essas transferências:
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+A interrupção falha se a relação SnapMirror não estiver no estado "transferindo".
+
+. Quiesce todas as relações entre o cluster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

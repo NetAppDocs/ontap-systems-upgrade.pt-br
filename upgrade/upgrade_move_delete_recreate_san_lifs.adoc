@@ -1,0 +1,19 @@
+---
+permalink: upgrade/upgrade_move_delete_recreate_san_lifs.html 
+sidebar: sidebar 
+keywords: cluster, san, environment, delete, lif, re-create, move san lifs, create 
+summary: Dependendo do conteúdo do cluster e do ambiente de cluster, você precisa mover, excluir ou criar SAN LIFs ou recriar SAN LIFs excluídos. 
+---
+= Visão geral
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dependendo do conteúdo do cluster e do ambiente de cluster, você deve mover, excluir ou criar SAN LIFs ou recriar SAN LIFs excluídos.
+
+* link:upgrade_considerations_move_san_lifs.html["Considerações para mover SAN LIFS"]
+* link:upgrade-delete-san-lifs.html["Excluir SAN LIFs não é mais necessário dos nós originais"]
+* link:upgrade_create_recreate_san_lifs.html["Crie novos LIFs SAN ou crie novamente LIFs SAN excluídos"]
+

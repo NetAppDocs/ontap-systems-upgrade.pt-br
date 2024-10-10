@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/relocate_failed_or_vetoed_aggr.html 
+keywords: relocate, failed, vetoed, aggregates, relocation, operation 
+summary: Realocar agregados com falha ou vetado ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Realocar agregados com falha ou vetado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se algum agregado não for reposicionado ou for vetado, você deve realocar manualmente os agregados ou, se necessário, substituir os vetos ou as verificações de destino.
+
+.Sobre esta tarefa
+A operação de realocação terá sido interrompida devido ao erro.
+
+.Passos
+. Verifique os logs do sistema de gerenciamento de eventos (EMS) para determinar por que o agregado não conseguiu se realocar ou foi vetado.
+. Relocate quaisquer agregados com falha ou vetado:
++
+`storage aggregate relocation start -node _node1_ -destination _node2_ -aggregate-list _aggr_name_ -ndo-controller-upgrade true`
+
+. Quando solicitado, digite `y`.
+. Você pode forçar a realocação usando um dos seguintes métodos:
++
+[cols="35,65"]
+|===
+| Opção | Descrição 
+
+
+| Anular verificações de veto | Use o seguinte comando:
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true` 
+
+
+| Anular verificações de destino | Use o seguinte comando:
+`storage aggregate relocation start -node node1 -destination node2 -aggregate-list _aggr_list_ -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
+|===
+

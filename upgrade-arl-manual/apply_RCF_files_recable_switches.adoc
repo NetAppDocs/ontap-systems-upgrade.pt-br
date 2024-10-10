@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/apply_RCF_files_recable_switches.html 
+keywords: rcf files, reference configuration, switches, nodes, recable, fc 
+summary: Instale os arquivos RCF para reconfigurar os switches Cisco e Brocade durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior. 
+---
+= Aplique arquivos RCF e reconetável os switches
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve aplicar os arquivos de configuração de referência (RCFs) apropriados para reconfigurar seus switches para acomodar os novos nós. Depois de aplicar os RCFs, você pode reajustar os switches.
+
+.Antes de começar
+O uso da porta do switch FC deve corresponder ao uso descrito no conteúdo _Instalação e Configuração do MetroCluster anexado à estrutura_ para que os RCFs possam ser usados. Vá para link:other_references.html["Referências"]o link para o conteúdo _Fabric-Attached MetroCluster Installation and Configuration_.
+
+.Passos
+. Vá para a https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Downloads do MetroCluster RCF"^] página e selecione os RCFs para a configuração do switch.
++
+Você deve usar os RCFs que correspondem aos modelos de switch.
+
+. Instale os RCFs do switch FC selecionando o procedimento que corresponde aos modelos de switch e seguindo as instruções de instalação:
++
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_install_the_brocade_fc_switch_rcf_file.html["Instale um switch Brocade FC RCF"^]
+** https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html["Instale um switch Cisco FC RCF"^]
+
+
+. Verifique se a configuração do switch está salva.
+. Faça o cabeamento das duas pontes FC para SAS aos switches FC, usando o layout de cabeamento criado no link:determine_new_cabling_layout.html["Determine o novo layout de cabeamento"].
+. Verifique se as portas estão online:
++
+** Para switches Brocade, use o `switchshow` comando.
+** Para switches Cisco, use o comando show `interface brief`.
+
+
+. Faça o cabeamento das portas FC-VI dos controladores para os switches.
+. Nos nós existentes, verifique se as portas FC-VI estão online:
++
+`metrocluster interconnect adapter show`
+
++
+`metrocluster interconnect mirror show`
+
+

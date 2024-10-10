@@ -1,0 +1,80 @@
+= Configurar portas FC no node3
+:allow-uri-read: 
+
+
+
+
+== Configurar portas FC no node3
+
+Se o node3 tiver portas FC, integradas ou em um adaptador FC, você precisará definir configurações de porta no nó antes de colocá-lo em serviço, pois as portas não estão pré-configuradas. Se as portas não estiverem configuradas, poderá ocorrer uma interrupção no serviço.
+
+.Antes de começar
+Você deve ter os valores das configurações de porta FC de node1 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
+
+.Sobre esta tarefa
+Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node3>>.
+
+
+IMPORTANT: Se o sistema tiver discos de armazenamento, introduza os comandos nesta secção no prompt do cluster. Se você tiver um 'sistema Série V' ou tiver software de virtualização FlexArray e estiver conetado a matrizes de armazenamento, digite os comandos nesta seção no modo de manutenção.
+
+. [[step1]]Compare as configurações FC no node3 com as configurações que você capturou anteriormente de node1.
+. [[step2]]Faça uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+No modo de manutenção (opção 5 no menu de inicialização), modifique as portas FC no node3 conforme necessário:
+
+** Para programar portas de destino:
+
+
+`ucadmin modify -m fc -t target _adapter_`
+
+** Para programar portas do iniciador:
+
+
+`ucadmin modify -m fc -t initiator _adapter_`
+
+`-t` É o tipo FC4: Alvo ou iniciador.
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+No modo de manutenção (opção 5 no menu de inicialização), modifique as portas FC no node3 conforme necessário:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` É o tipo FC4, alvo ou iniciador.
+
+
+NOTE: As portas FC devem ser programadas como iniciadores.
+
+|===
+. [[step3]]Faça uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Verifique as novas configurações usando o seguinte comando e examinando a saída: 
+`ucadmin show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Verifique as novas configurações usando o seguinte comando e examinando a saída: 
+`ucadmin show` 
+|===
+. [[step4]]Sair do modo de manutenção:
++
+`halt`
+
+. Inicie o sistema a partir do prompt Loader:
++
+`boot_ontap menu`
+
+. [[step6]]depois de inserir o comando, aguarde até que o sistema pare no prompt do ambiente de inicialização.
+. Selecione a opção `5` no menu de arranque para o modo de manutenção.
+

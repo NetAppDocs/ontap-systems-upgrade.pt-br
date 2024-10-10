@@ -1,0 +1,240 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/map_ports_node2_node4.html 
+keywords: map, node2, ports, cluster, broadcast domains, physical ports 
+summary: 'Verifique se as portas físicas no node2 são mapeadas corretamente para o node4 ao atualizar controladores executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
+---
+= Portas de mapa de node2 a node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve verificar se as portas físicas no node2 são mapeadas corretamente para as portas físicas no node4, o que permitirá que o node4 se comunique com outros nós no cluster e com a rede após a atualização.
+
+.Sobre esta tarefa
+Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
+
+A configuração de software do node4 deve corresponder à conetividade física do node4 e a conetividade IP deve ser restaurada antes de continuar com a atualização.
+
+As configurações de porta podem variar, dependendo do modelo dos nós. Você deve tornar a porta e a configuração de LIF do nó original compatíveis com a configuração do novo nó. Isso ocorre porque o novo nó replays a mesma configuração quando ele é inicializado, ou seja, quando você inicializar o node4, o Data ONTAP tentará hospedar LIFs nas mesmas portas que foram usadas no node2.
+
+Portanto, se as portas físicas no node2 não forem mapeadas diretamente para as portas físicas no node4, as alterações de configuração de software serão necessárias para restaurar a conetividade de cluster, gerenciamento e rede após a inicialização. Além disso, se as portas de cluster no node2 não forem mapeadas diretamente para as portas de cluster no node4, o node4 pode não reingressar automaticamente no quórum quando for reinicializado até que uma alteração de configuração de software seja feita para hospedar as LIFs de cluster nas portas físicas corretas.
+
+.Passos
+. Registre todas as informações de cabeamento node2 para node2, as portas, domínios de broadcast e IPspaces na tabela:
++
+[cols="7*"]
+|===
+| LIF | Portas de Node2 GbE | Node2 IPspaces | Node2 domínios de broadcast | Portas de Node4 GbE | Node4 IPspaces | Node4 domínios de broadcast 
+
+
+| Cluster 1 |  |  |  |  |  |  
+
+
+| Cluster 2 |  |  |  |  |  |  
+
+
+| Cluster 3 |  |  |  |  |  |  
+
+
+| Cluster 4 |  |  |  |  |  |  
+
+
+| Gerenciamento de nós |  |  |  |  |  |  
+
+
+| Gerenciamento de clusters |  |  |  |  |  |  
+
+
+| Dados 1 |  |  |  |  |  |  
+
+
+| Dados 2 |  |  |  |  |  |  
+
+
+| Dados 3 |  |  |  |  |  |  
+
+
+| Dados 4 |  |  |  |  |  |  
+
+
+| SAN |  |  |  |  |  |  
+
+
+| Porta entre clusters |  |  |  |  |  |  
+|===
+. Registre todas as informações de cabeamento para node4, as portas, domínios de broadcast e IPspaces na tabela.
+. Siga estas etapas para verificar se a configuração é um cluster sem switch de dois nós:
++
+.. Defina o nível de privilégio como avançado:
++
+`cluster::> set -privilege advanced`
+
+.. Verifique se a configuração é um cluster sem switch de dois nós:
++
+`cluster::> network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+O valor deste comando deve corresponder ao estado físico do sistema.
+
+.. Voltar ao nível de privilégios de administração:
++
+[listing]
+----
+cluster::*> set -privilege admin
+cluster::>
+----
+
+
+. Siga estes passos para colocar o node4 no quórum:
++
+.. Inicialização node4. link:install_boot_node4.html["Instale e inicialize node4"]Consulte para inicializar o nó se você ainda não tiver feito isso.
+.. Verifique se as novas portas de cluster estão no domínio de broadcast de cluster:
++
+`network port show -node _node_ -port _port_ -fields broadcast-domain`
+
++
+O exemplo a seguir mostra que a porta "e0a" está no domínio Cluster em node4:
+
++
+[listing]
+----
+cluster::> network port show -node node4 -port e0a -fields broadcast-domain
+node       port broadcast-domain
+---------- ---- ---------------
+node4      e0a  Cluster
+----
+.. Se as portas do cluster não estiverem no domínio de broadcast do cluster, adicione-as com o seguinte comando:
++
+`broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports _node:port_`
+
+.. Adicione as portas corretas ao domínio de broadcast de cluster:
++
+`network port modify -node -port -ipspace Cluster -mtu 9000`
+
++
+Este exemplo adiciona a porta de cluster "e1b" em node4:
+
++
+`network port modify -node node4 -port e1b -ipspace Cluster -mtu 9000`
+
+.. Migre as LIFs de cluster para as novas portas, uma vez para cada LIF:
++
+`network interface migrate -vserver Cluster -lif _lif_name_ -source-node node4 destination-node node4 -destination-port _port_name_`
+
+.. Modifique a porta inicial dos LIFs do cluster:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+.. Remova as portas antigas do domínio de broadcast de cluster:
++
+`network port broadcast-domain remove-ports`
+
++
+Este comando remove a porta "e0d" em node4:
+
++
+`network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster ‑ports node4:e0d`
+
+.. Verifique se o node4 se juntou novamente ao quórum:
++
+`cluster show -node node4 -fields health`
+
+
+
+. [[auto_map_4_Step5]]Ajuste os domínios de broadcast que hospedam seus LIFs de cluster e LIFs de gerenciamento de nó/clusterManagement. Confirme se cada domínio de broadcast contém as portas corretas. Uma porta não pode ser movida entre domínios de broadcast se estiver hospedando ou estiver hospedando um LIF, então você pode precisar migrar e modificar os LIFs conforme mostrado nas etapas a seguir:
++
+.. Apresentar a porta inicial de um LIF:
++
+`network interface show -fields home-node,home-port`
+
+.. Exiba o domínio de broadcast que contém esta porta:
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Adicionar ou remover portas de domínios de broadcast:
++
+`network port broadcast-domain add-ports`
+`network port broadcast-domain remove-ports`
+
+.. Modifique a porta inicial de um LIF:
++
+`network interface modify -vserver _vserver_ -lif _lif_name_ –home-port _port_name_`
+
+
+
+. Ajuste os domínios de broadcast entre clusters e migre os LIFs entre clusters, se necessário, usando os mesmos comandos mostrados no <<auto_map_4_Step5,Passo 5>>.
+. Ajuste quaisquer outros domínios de broadcast e migre os LIFs de dados, se necessário, usando os mesmos comandos mostrados no <<auto_map_4_Step5,Passo 5>>.
+. Se houver portas no node2 que não existam mais no node4, siga estas etapas para excluí-las:
++
+.. Acesse o nível de privilégio avançado em ambos os nós:
++
+`set -privilege advanced`
+
+.. Para excluir as portas:
++
+`network port delete -node _node_name_ -port _port_name_`
+
+.. Voltar ao nível de administração:
++
+`set -privilege admin`
+
+
+
+. Ajuste todos os grupos de failover de LIF:
++
+`network interface modify -failover-group _failover_group_ -failover-policy _failover_policy_`
+
++
+O comando a seguir define a política de failover para `broadcast-domain-wide` e usa as portas no grupo de failover como destinos de failover `fg1` para LIF `data1` em `node4`:
+
++
+`network interface modify -vserver node4 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
+
++
+link:other_references.html["Referências"]Consulte o link para _Gerenciamento de rede_ ou os comandos _ONTAP 9: Referência de página manual_ e consulte _Configuração de configurações de failover em um LIF_ para obter mais informações.
+
+. Verifique as alterações em node4:
++
+`network port show -node node4`
+
+. Cada LIF de cluster deve estar escutando na porta 7700. Verifique se as LIFs do cluster estão escutando na porta 7700:
++
+`::> network connections listening show -vserver Cluster`
+
++
+A escuta da porta 7700 nas portas do cluster é o resultado esperado, como mostrado no exemplo a seguir para um cluster de dois nós:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+. Para cada LIF de cluster que não está escutando na porta 7700, defina o status administrativo do LIF para `down` e depois `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita a etapa 11 para verificar se o LIF do cluster está escutando na porta 7700.
+
+

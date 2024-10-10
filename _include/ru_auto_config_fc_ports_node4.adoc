@@ -1,0 +1,82 @@
+= Configurar portas FC no node4
+:allow-uri-read: 
+
+
+
+
+== Configurar portas FC no node4
+
+Se o node4 tiver portas FC, integradas ou em um adaptador FC, você precisará definir configurações de porta no nó antes de colocá-lo em serviço, pois as portas não estão pré-configuradas. Se as portas não estiverem configuradas, poderá ocorrer uma interrupção no serviço.
+
+.Antes de começar
+Você deve ter os valores das configurações de porta FC de node2 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
+
+.Sobre esta tarefa
+Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node4>>.
+
+
+IMPORTANT: Se o sistema tiver discos de armazenamento, você deverá inserir os comandos nesta seção no prompt do cluster. Se tiver um sistema da série V ou um sistema com software de virtualização FlexArray ligado a matrizes de armazenamento, introduza os comandos nesta secção no modo de manutenção.
+
+.Passos
+. Execute uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | `system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | `ucadmin show` 
+|===
++
+O sistema exibe informações sobre todos os adaptadores de rede FC e convergentes no sistema.
+
+. Compare as configurações FC em node4 com as configurações que você capturou anteriormente de node1.
+. Execute uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+Modifique as portas FC no node4 conforme necessário:
+
+** Para programar portas de destino:
++
+`ucadmin modify -m fc -t target _adapter_`
+
+** Para programar portas do iniciador:
++
+`ucadmin modify -m fc -t initiator _adapter_`
+
+
+
+`-t` É o tipo FC4: Alvo ou iniciador.
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+Modifique as portas FC no node4 conforme necessário:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` É o tipo FC4, alvo ou iniciador.
+
+
+NOTE: As portas FC devem ser programadas como iniciadores.
+
+|===
+. Sair do modo de manutenção:
++
+`halt`
+
+. Inicie o sistema a partir do prompt Loader:
++
+`boot_ontap menu`
+
+. Depois de inserir o comando, aguarde até que o sistema pare no prompt do ambiente de inicialização.
+. Selecione a opção `5` no menu de arranque para o modo de manutenção.
+

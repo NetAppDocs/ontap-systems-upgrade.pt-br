@@ -1,0 +1,54 @@
+---
+permalink: upgrade/upgrade-decide-to-use-this-guide.html 
+sidebar: sidebar 
+keywords:  
+summary: Este conteúdo descreve como atualizar o hardware da controladora de um sistema AFF ou de um sistema FAS em um cluster, movendo storage ou volumes. 
+---
+= Decida se deseja atualizar movendo volumes ou armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Este conteúdo descreve como atualizar o hardware da controladora de um sistema AFF, FAS ou ASA em um cluster, movendo storage ou volumes.
+
+Use este procedimento se quiser atualizar o hardware do controlador nas seguintes situações:
+
+[NOTE]
+====
+* Ao atualizar para um sistema introduzido no ONTAP 9.15,1, o ONTAP converte a eficiência de storage de volumes existentes e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema.
++
+** Para um sistema AFF A70, AFF A90 ou AFF A1K, o ONTAP converte a eficiência de storage de todos os volumes thin Provisioning existentes, inclusive aqueles que não usam a eficiência de storage.
+** Para um sistema FAS70 e FAS90, o ONTAP converte apenas a eficiência de storage de volumes thin Provisioning existentes que já tinham a eficiência de storage habilitada antes da atualização.
++
+link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Saiba mais sobre a eficiência de storage"^].
+
+
+
+* Os procedimentos de atualização de hardware foram simplificados no ONTAP 9.8 com a introdução do recurso de colocação automática de portas.
+
+
+====
+* Seus nós originais e novos são compatíveis e compatíveis.
+* Os nós originais e novos estão executando o ONTAP 9.0 ou posterior. A NetApp recomenda, quando possível, que você tenha a mesma versão do ONTAP em execução nos nós originais e novos.
++
+Se a atualização da controladora incluir versões mistas do ONTAP, consulte https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Clusters ONTAP de versão mista"^] para obter mais informações.
+
+* Você está reutilizando os endereços IP, máscaras de rede e gateways dos nós originais nos novos nós.
+* Você planeja atualizar o hardware do controlador movendo armazenamento ou movendo volumes.
+* Você está preparado para executar um procedimento de interrupção se estiver atualizando movendo o storage.
++
+A atualização com a movimentação de volumes não causa interrupções.
+
+* Você planeja converter um nó de um modelo compatível em um compartimento de disco e anexá-lo aos novos nós.
+
+
+Se você estiver atualizando uma configuração do MetroCluster, https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualize, atualize ou expanda a configuração do MetroCluster"^] consulte .
+
+.Informações relacionadas
+* link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]
+* link:../choose_controller_upgrade_procedure.html["Escolha métodos para atualizar o hardware do controlador"]
+* https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Onde encontrar procedimentos para tarefas de manutenção do MetroCluster"^]
+* https://hwu.netapp.com["NetApp Hardware Universe"^]
+

@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/join_quorum_node_has_different_ports_stage5.html 
+keywords: quorum, cluster, network ports, node, broadcast domain 
+summary: 'Durante a etapa 5, confirme se o novo nó se junta ao quórum ao atualizar as controladoras executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
+---
+= Junte-se ao quórum quando um nó tiver um conjunto diferente de portas de rede
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O nó com o novo controlador inicializa e tenta ingressar no cluster automaticamente no início; no entanto, se o novo nó tiver um conjunto diferente de portas de rede, você deve executar as etapas a seguir para confirmar se o nó se une com êxito ao quorum.
+
+.Sobre esta tarefa
+Você pode usar essas instruções para qualquer nó relevante. Node3 é usado ao longo da seguinte amostra.
+
+.Passos
+. Verifique se as novas portas de cluster estão no domínio de broadcast de cluster inserindo o seguinte comando e verificando a saída:
++
+`network port show -node node -port port -fields broadcast-domain`
+
++
+O exemplo a seguir mostra que a porta "e1a" está no domínio Cluster em node3:
+
++
+[listing]
+----
+cluster::> network port show -node node3 -port e1a -fields broadcast-domain
+node    port  broadcast-domain
+------  ----  ---------------
+node3   e1a   Cluster
+----
+. Adicione as portas corretas ao domínio de broadcast de cluster digitando o seguinte comando e verificando a saída:
++
+`network port modify -node -port -ipspace Cluster -mtu 9000`
+
++
+Este exemplo adiciona a porta de cluster "e1b" em node3:
+
++
+[listing]
+----
+network port modify -node node3 -port e1b -ipspace Cluster -mtu 9000
+----
+. Migre os LIFs de cluster para as novas portas, uma vez para cada LIF, usando o seguinte comando:
++
+`network interface migrate -vserver Cluster -lif _lif_name_ -source-node node3 destination-node node3 -destination-port _port_name_`
+
+. Modifique a porta inicial dos LIFs do cluster da seguinte forma:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+. Se as portas do cluster não estiverem no domínio de broadcast do cluster, adicione-as com o seguinte comando:
++
+`network port broadcast-domain add-ports -ipspace Cluster -broadcastdomain Cluster ports node:port`
+
+. Remova as portas antigas do domínio de broadcast de cluster. Você pode usar para qualquer nó relevante. O seguinte comando remove a porta "e0d" no node3:
++
+`network port broadcast-domain remove-ports network port broadcast-domain remove-ports ipspace Cluster -broadcast-domain Cluster ‑ports node3:e0d`
+
+. Verifique se o nó se juntou novamente ao quórum da seguinte forma:
++
+`cluster show -node node3 -fields health`
+
+. Ajuste os domínios de broadcast que hospedam os LIFs de cluster e LIFs de gerenciamento de nós/cluster. Confirme se cada domínio de broadcast contém as portas corretas. Uma porta não pode ser movida entre domínios de broadcast se estiver hospedando ou estiver hospedando um LIF, então você pode precisar migrar e modificar os LIFs da seguinte forma:
++
+.. Apresentar a porta inicial de um LIF:
++
+`network interface show -fields home-node,home-port`
+
+.. Exiba o domínio de broadcast que contém esta porta:
++
+`network port broadcast-domain show -ports _node_name:port_name_`
+
+.. Adicionar ou remover portas de domínios de broadcast:
++
+`network port broadcast-domain add-ports network port broadcast-domain remove-port`
+
+.. Modificar uma porta inicial de um LIF:
++
+`network interface modify -vserver _vserver-name_ -lif _lif_name_ –home-port _port_name_`
+
++
+Ajuste os domínios de broadcast entre clusters e migre os LIFs entre clusters, se necessário. Os LIFs de dados permanecem inalterados.
+
+
+
+

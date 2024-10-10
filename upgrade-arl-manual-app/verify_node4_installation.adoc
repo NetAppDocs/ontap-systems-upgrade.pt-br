@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/verify_node4_installation.html 
+keywords: verify, install, node4, cluster, communicate 
+summary: Verifique a instalação e a comunicação do node4 com o node3 durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Verifique a instalação do node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de instalar e inicializar o node4, você deve verificar se ele está instalado corretamente, se ele faz parte do cluster e se ele pode se comunicar com o node3.
+
+.Passos
+. No prompt do sistema, faça login no node4.
+. Verifique se o node4 faz parte do mesmo cluster que o node3 e o Healthy inserindo o seguinte comando:
++
+`cluster show`
+
+. Verifique se o node4 pode se comunicar com o node3 e se todos os LIFs estão ativos digitando o seguinte comando:
++
+`network interface show -curr-node _node4_`
+
+. Execute uma das seguintes ações:
++
+|===
+| Se node4 é... | Então... 
+
+
+| Em um chassi separado do node3  a| 
+Conecte a interconexão de HA entre os nós executando as seguintes etapas:
+
+.. Conete a porta de interconexão superior de node3 à porta de interconexão superior de node4.
+.. Conete a porta de interconexão inferior de node3 à porta de interconexão inferior de node4.
+.. Vá para <<step5,Passo 5>>.
+
+
+
+
+| No mesmo chassi que node3 | Vá para <<step5,Passo 5>>. Não é necessário conetar manualmente a interconexão HA entre os nós; nas configurações do mesmo chassi, a interconexão HA é conetada automaticamente pelo backplane. 
+|===
+. [[step5]]Faça uma das seguintes ações:
++
+|===
+| Se o cluster for... | Então... 
+
+
+| Em um ambiente SAN | Conclua o passo 6 e vá para a secção link:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Mova LIFs de dados nas de propriedade do node2 de node3 para node4 e verifique os LIFs SAN no node4"]. 
+
+
+| Não em um ambiente SAN | Pule a Etapa 6 vá para a seçãolink:move_nas_lifs_node2_from_node3_node4_verify_san_lifs_node4.html["Mova LIFs de dados nas de propriedade do node2 de node3 para node4 e verifique os LIFs SAN no node4"]. 
+|===
+. Verifique se o node3 e o node4 estão no quórum digitando o seguinte comando em um dos nós:
++
+`event log show -messagename scsiblade.*`
+
++
+O exemplo a seguir mostra a saída quando os nós no cluster estão no quórum:
+
++
+[listing]
+----
+cluster::> event log show -messagename scsiblade.*
+Time                Node   Severity      Event
+------------------- ------ ------------- --------------------------
+8/13/2012 14:03:51  node1  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:51  node2  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:48  node3  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+8/13/2012 14:03:43  node4  INFORMATIONAL scsiblade.in.quorum: The scsi-blade ...
+----
+

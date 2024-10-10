@@ -1,0 +1,28 @@
+---
+permalink: upgrade/upgrade-install-new-nodes.html 
+sidebar: sidebar 
+keywords: upgrade, moving, move, storage, install, node3, node4, attach, power, console, network, connection, install the new nodes 
+summary: Ao atualizar movendo o armazenamento, você começa instalando o node3 e o node4 e anexando conexões de energia, console e rede aos novos nós. 
+---
+= Instale os novos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao atualizar movendo o armazenamento, você começa instalando o node3 e o node4 e anexando conexões de energia, console e rede aos novos nós.
+
+.Passos
+. Se necessário, instale quaisquer adaptadores nos modelos node3 e node4, seguindo as instruções do procedimento de instalação apropriado do adaptador.
+. Instale os novos nós, seguindo as _instruções de instalação e configuração_ da plataforma.
++
+Não conecte compartimentos de disco dos nós originais aos novos nós neste ponto.
+
+. Conete as conexões de energia e console ao par de HA node3/node4, seguindo as _instruções de instalação e configuração_ da plataforma.
+. Ligue os cabos de rede.
+. Transfira todos os cabos restantes, exceto os cabos da gaveta de armazenamento, do par de HA node1/node2 para as portas correspondentes no node3/node4, respetivamente.
++
+Isso inclui cabos Fibre Channel e Ethernet que não são usados para anexar gavetas de storage.
+
+

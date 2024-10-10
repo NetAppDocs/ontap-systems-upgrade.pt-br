@@ -1,0 +1,148 @@
+= 
+:allow-uri-read: 
+
+
+Você deve instalar node4 no rack, transferir node2 conexões para node4 e inicializar node4. Você também precisa reatribuir quaisquer peças sobressalentes node2, todos os discos pertencentes à raiz e quaisquer agregados que não sejam raiz que não tenham sido relocados para o node3 anteriormente.
+
+.Sobre esta tarefa
+Você deve netboot node4 se ele não tiver a mesma versão do ONTAP 9 instalada no node2. Depois de instalar o node4, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"]
+
+No entanto, você não é obrigado a netboot node4 se ele tiver a mesma ou posterior versão do ONTAP 9 instalada no node2.
+
+*Informação importante:*
+
+* Se você estiver atualizando um sistema da série V ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento, você precisará concluir <<man_install4_Step1,Passo 1>> o <<man_install4_Step7,Passo 7>>, deixe esta seção em <<man_install4_Step8,Passo 8>> e siga as instruções link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"]conforme necessário, inserindo os comandos no modo de manutenção. Em seguida, deve voltar a esta secção e retomar o procedimento em <<man_install4_Step9,Passo 9>>.
+* No entanto, se você estiver atualizando um sistema com discos de armazenamento, deve concluir toda esta seção e, em seguida, prosseguir para a seção link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"], inserindo comandos no prompt do cluster.
+
+
+.Passos
+. [[man_install4_Step1]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se node4 será em ... | Então... 
+
+
+| Um chassi separado do node3 | Vá para <<man_install4_Step2,Passo 2>>. 
+
+
+| O mesmo chassi com node3 | Ignore as etapas 2 e 3 e vá para <<man_install4_Step4,Passo 4>>. 
+|===
+. [[man_install4_Step2]] Certifique-se de que o node4 tem espaço suficiente em rack.
++
+Se o node4 estiver em um chassi separado do node3, você pode colocar o node4 no mesmo local que o node2. Se o node3 e o node4 estiverem no mesmo chassi, o node4 já estará no local apropriado do rack.
+
+. Instale o node4 no rack, seguindo as instruções em _instruções de instalação e configuração_ para o modelo do nó.
+. [[man_install4_Step4]]Cabo node4, movendo as conexões de node2 para node4.
++
+As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para link:other_references.html["Referências"]o link para eles.
+
++
+** _Instruções de Instalação e Configuração_ ou _requisitos de Instalação de virtualização FlexArray e Referência_ para a plataforma node4
+** O procedimento apropriado do compartimento de disco
+** A documentação _High Availability Management_
++
+Faça o cabo das seguintes ligações:
+
+** Console (porta de gerenciamento remoto)
+** Portas de cluster
+** Portas de dados
+** Portas de gerenciamento de clusters e nós
+** Armazenamento
+** Configurações SAN: Portas de switch iSCSI Ethernet e FC
+
+
++
+
+NOTE: Não é necessário mover a placa de interconexão/placa FC_VI ou a conexão de cabo de interconexão/FC_VI de node2 GbE para node4 GbE, pois a maioria dos modelos de plataforma tem modelos de placa de interconexão exclusivos.
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se node4 estiver em... | Então... 
+
+
+| O mesmo chassi que node3 | Vá para <<man_install4_Step8,Passo 8>>. 
+
+
+| Um chassi separado do node3 | Vá para <<man_install4_Step6,Passo 6>>. 
+|===
+. [[man_install4_Step6]]Ligue a alimentação para node4 e, em seguida, interrompa a inicialização pressionando Ctrl-C para acessar o prompt do ambiente de inicialização.
++
+
+NOTE: Ao inicializar o node4, você poderá ver a seguinte mensagem:
+
++
+[listing]
+----
+WARNING: The battery is unfit to retain data during a power
+         outage. This is likely because the battery is
+         discharged but could be due to other temporary
+         conditions.
+         When the battery is ready, the boot process will
+         complete and services will be engaged.
+         To override this delay, press 'c' followed by 'Enter'
+----
+. [[man_install4_Step7]]se você vir a mensagem de aviso no passo 6, execute as seguintes ações:
++
+.. Verifique se há mensagens do console que possam indicar um problema que não seja uma bateria NVRAM fraca e, se necessário, tome qualquer ação corretiva necessária.
+.. Deixe a bateria carregar e o processo de arranque terminar.
++
+
+WARNING: *Aviso: Não sobreponha o atraso. A falha em permitir que a bateria carregue pode resultar em perda de dados.*
+
+
+
+. [[man_install4_Step8]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o seu sistema... | Então... 
+
+
+| Tem discos e nenhum armazenamento de back-end | Pule a Etapa 9 até a Etapa 14 e vá para <<man_install4_Step15,Passo 15>>. 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+.. Vá para a seção _defina a configuração FC ou UTA/UTA2 em node4_ e complete as seções link:set_fc_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurar portas FC no node4"] e link:set_fc_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Verifique e configure as portas UTA/UTA2 no node4"], conforme apropriado para o seu sistema.
+.. Retorne a esta seção e conclua as etapas restantes, começando com <<man_install4_Step9,Passo 9>>.
+
+
+
+IMPORTANT: Você precisa reconfigurar as portas integradas FC, as portas integradas UTA/UTA2 e as placas UTA/UTA2 antes de inicializar o ONTAP no sistema V-Series.
+
+|===
+. [[man_install4_Step9]]Adicione as portas do iniciador FC do novo nó às zonas do switch.
++
+Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
+
+. Adicione as portas do iniciador de FC ao storage array como novos hosts, mapeando as LUNs do array para os novos hosts.
++
+Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
+
+. Modifique os valores WWPN (World Wide Port Name) no host ou nos grupos de volume associados aos LUNs da matriz de armazenamento.
++
+A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
+
+. Se sua configuração usar zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
+. Verifique se os LUNs do array estão agora visíveis para node4 inserindo o seguinte comando e examinando sua saída:
++
+`sysconfig -v`
+
++
+O sistema exibe todas as LUNs do array visíveis para cada uma das portas do iniciador de FC. Se os LUNs da matriz não estiverem visíveis, você não poderá reatribuir discos do node2 para o node4 posteriormente nesta seção.
+
+. Pressione Ctrl-C para exibir o menu de inicialização e selecione modo de manutenção.
+. [[man_install4_Step15]]no prompt do modo de manutenção, digite o seguinte comando:
++
+`halt`
+
++
+O sistema pára no prompt do ambiente de inicialização.
+
+. Configurar o node4 para ONTAP:
++
+`set-defaults`
+
+

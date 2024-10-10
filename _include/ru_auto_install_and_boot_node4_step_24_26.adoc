@@ -1,0 +1,14 @@
+= 
+:allow-uri-read: 
+
+
+. Adicione as portas do iniciador de FC ao storage array como novos hosts, mapeando as LUNs do array para os novos hosts.
++
+Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
+
+. Modifique os valores WWPN (nome da porta mundial) no host ou nos grupos de volume associados aos LUNs da matriz de armazenamento.
++
+A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
+
+. Se sua configuração usar zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
+

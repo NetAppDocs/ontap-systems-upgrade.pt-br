@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/verify_health_mcc_config.html 
+keywords: health, mcc, metrocluster, configuration, configure 
+summary: Verifique a integridade da configuração do MetroCluster e corrija a operação durante uma atualização manual do ARL em controladores executando o ONTAP 9.7 ou anterior. 
+---
+= Verifique a integridade da configuração do MetroCluster
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve verificar a integridade da configuração do MetroCluster para verificar o funcionamento correto.
+
+.Passos
+. Verifique se os componentes do MetroCluster estão em bom estado:
++
+`metrocluster check run`
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2017 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+. Verifique se não há alertas de saúde:
++
+`system health alert show`
+
+

@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
+summary: 'Decida se deve usar o ARL para atualizar controladores que executam o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+---
+= Decida se deve usar o procedimento de realocação agregada
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este procedimento descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém os dados e os discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+
+Pode utilizar este procedimento nas seguintes circunstâncias:
+
+* Você está executando o ONTAP 9.15,1 ou posterior.
+* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando o procedimento de movimentação de volume.
+* Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+
+
+
+NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+
+Você não pode usar este procedimento nas seguintes circunstâncias:
+
+* Você está atualizando um AFF A800 para um AFF A70 ou AFF A90. Para executar esta atualização do AFF A800, link:other_references.html["Referências"]consulte para vincular a _use os comandos "System controller replace" para atualizar modelos de controladora no mesmo chassi_.
+* Você está atualizando um sistema V-Series ou um sistema de storage de virtualização FlexArray usando um array externo para armazenamento de back-end. Contacte o suporte técnico para obter opções para atualizar um sistema da série V ou FlexArray.
+* Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
+
+
+[[sys_Commands_9151_supported_Systems]]a tabela a seguir mostra a matriz de modelo suportada para a atualização do controlador.
+
+|===
+| Controlador existente | Controlador de substituição | Suportado a partir do ONTAP... 
+
+
+| FAS8200, FAS8300, FAS8700, FAS9000 | FAS70, FAS90 | 9.15.1P3 
+
+
+| FAS9500 | FAS90 | 9.15.1P3 
+
+
+| AFF A300, AFF A400, AFF A700 | AFF A70, AFF A90, AFF A1K | 9.15.1 
+
+
+| AFF A900 | AFF A90, AFF A1K | 9.15.1 
+|===
+[NOTE]
+====
+O AFF A70 e o AFF A90 são sistemas integrados com dois discos integrados e duas controladoras em um único chassi.
+
+* Se você estiver atualizando para um AFF A70 ou AFF A90 com unidades internas, remova a propriedade dessas unidades antes de fazer o upgrade. Após a conclusão da atualização, você pode atribuir as unidades internas aos nós AFF A70 ou AFF A90 e usá-las para criar agregados de dados. Não é obrigatório migrar agregados de raiz ou dados para unidades internas.
+* Se você estiver atualizando para um AFF A70 ou AFF A90 sem unidades internas, não será necessário atribuir unidades internas depois de concluir a atualização.
+
+
+Se a combinação do modelo de atualização da controladora não estiver na tabela acima, entre em Contato com o suporte técnico.
+
+====
+Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html 
+keywords: relocate, non-root, aggregates, nas, lif, node2, node1, NVRAM, controller, module, modules 
+summary: Relocate os agregados não-raiz do node2 para node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Realocar agregados não-raiz e LIFs de dados nas de node2 para node1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de poder substituir o node2 pelo módulo de sistema de substituição, primeiro deve mudar os agregados não-raiz que são propriedade do node2 para o node1.
+
+.Antes de começar
+Após a conclusão das pós-verificações da fase anterior, a versão de recursos para node2 é iniciada automaticamente. Os agregados não-raiz e LIFs de dados não-SAN são migrados do node2 para o novo node1.
+
+.Sobre esta tarefa
+Depois que os agregados e LIFs são migrados, a operação é pausada para fins de verificação. Nessa etapa, você deve verificar se todos os agregados não-raiz e LIFs de dados não-SAN são migrados para o novo node1.
+
+O proprietário da casa para os agregados e LIFs não são modificados; apenas o proprietário atual é modificado.
+
+.Passos
+. Verifique se todos os agregados não-raiz estão online e seu estado em node1:
++
+`storage aggregate show -node node1 -state online -root false`
+
++
+O exemplo a seguir mostra que os agregados não-root no node1 estão online:
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node1 state online -root false
+
+Aggregate     Size        Available   Used%   State	  #Vols	 Nodes	 RAID	  Status
+----------    ---------   ---------   ------  -----   -----  ------  -------  ------
+aggr_1	      744.9GB     744.8GB	  0%	  online	  5	 node1   raid_dp  normal
+aggr_2	      825.0GB	  825.0GB	  0%	  online	  1	 node1   raid_dp  normal
+2 entries were displayed.
+----
++
+Se os agregados ficarem offline ou se tornarem estrangeiros no node1, coloque-os online usando o seguinte comando no novo node1, uma vez para cada agregado:
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique se todos os volumes estão online no node1 usando o seguinte comando no node1 e examinando sua saída:
++
+`volume show -node node1 -state offline`
+
++
+Se algum volume estiver offline no node1, coloque-o online usando o seguinte comando no node1, uma vez para cada volume:
+
++
+`volume online -vserver _vserver-name_ -volume _volume-name_`
+
++
+O `_vserver-name_` a usar com este comando é encontrado na saída do comando anterior `volume show`.
+
+. Verifique se os LIFs foram movidos para as portas corretas e têm um status de `up`. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ - status-admin up`
+
+. Verifique se não há LIFs de dados restantes no node2 usando o seguinte comando e examinando a saída:
++
+`network interface show -curr-node _node2_ -role data`
+
+

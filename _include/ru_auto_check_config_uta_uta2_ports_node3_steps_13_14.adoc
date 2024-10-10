@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+. [[auto_check3_step13]]Sair do modo de manutenção:
++
+`halt`
+
+. [[step14]]Inicialize o nó no menu de inicialização executando `boot_ontap menu`. Se você estiver atualizando para um A800, vá para <<auto_check3_step23,Passo 23>>.
+

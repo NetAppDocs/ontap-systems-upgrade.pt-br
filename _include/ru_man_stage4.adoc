@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+Durante a fase 4, você grava informações node2 para uso posterior no procedimento e depois aposenta node2.
+
+.Passos
+. link:record_node2_information.html["Registe node2 informações"]
+. link:retire_node2.html["Aposentar-se node2"]
+

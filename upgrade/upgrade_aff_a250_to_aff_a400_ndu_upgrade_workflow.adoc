@@ -1,0 +1,45 @@
+---
+permalink: upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, AFF, FAS, systems, entry, level 
+summary: Execute um NDU para sistemas NetApp AFF e FAS de nível básico sem ter que comprar switches de armazenamento e cluster adicionais. 
+---
+= Fluxo de trabalho
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode fazer uma atualização sem interrupções de um sistema NetApp AFF A250 para um sistema NetApp AFF A400 convertendo cada nó AFF A250 em um compartimento de unidades de NS224 TB e, em seguida, conetando-se aos nós de substituição do AFF A400.
+
+.Sobre esta tarefa
+Nesse procedimento, as controladoras de par de alta disponibilidade (HA) da AFF A250 são chamadas de node1 e node2 e as controladoras de par de HA da AFF A400 de substituição são chamadas de node3 e node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:upgrade_migrate_lifs_aggregates_node2_to_node1.html["Migrar LIFs e agregados de dados em node2 para node1"]
+[role="quick-margin-para"]
+Antes de converter o AFF A250 node2 para um compartimento de unidade, você migra as interfaces lógicas (LIFs) e os agregados de dados no node2 para node1.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:upgrade_convert_node2_drive_shelf_connect_node4.html["Converter node2 em um compartimento de unidades e conectá-lo ao node4"]
+[role="quick-margin-para"]
+Você converte o AFF A250 node2 em um compartimento de unidade de NS224 TB e, em seguida, se conecta ao AFF A400 node4 antes de reatribuir unidades de node2 TB a node4 TB.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:upgrade_reassign_drives_node2_to_node4.html["Reatribuir unidades de node2 a node4"]
+[role="quick-margin-para"]
+Depois de converter o AFF A250 node2 em um compartimento de unidade de NS224 TB e se conectar ao AFF A400 node4, você reatribui as unidades que anteriormente pertenciam a node2 TB a node4 TB
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"]link:upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html["Migrar agregados de dados, epsilon e LIFs em node1 para node4"]
+[role="quick-margin-para"]
+Antes de converter o AFF A250 node1 para um compartimento de unidade, você migra agregados, epsilon e LIFs de dados no node1 para o AFF A400 node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:upgrade_convert_node1_drive_shelf_connect_node3.html["Converter node1 em um compartimento de unidades e conectá-lo ao node3"]
+[role="quick-margin-para"]
+Converta o AFF A250 node1 em um compartimento de unidade de NS224 TB e, em seguida, conete-se ao AFF A400 node3 antes de reatribuir unidades de node1 TB a node3 TB.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:upgrade_reassign_drives_node1_to_node3.html["Reatribuir unidades de node1 a node3"]
+[role="quick-margin-para"]
+Depois de converter o AFF A250 node1 em um compartimento de unidade de NS224 TB e se conectar ao AFF A400 node3, você reatribui as unidades que anteriormente pertenciam a node1 TB a node3 TB.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]link:upgrade_migrate_lIFs_aggregates_node4_node3.html["Migrar LIFs e agregados de dados em node4 para node3"]
+[role="quick-margin-para"]
+Para concluir a atualização, você conecta o node3 ao node4 e migra as LIFs de dados e agregados de dados no node4 para o node3.

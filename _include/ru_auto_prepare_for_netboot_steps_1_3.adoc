@@ -1,0 +1,38 @@
+= 
+:allow-uri-read: 
+
+
+.Passos
+. Acesse o site de suporte da NetApp para fazer o download dos arquivos usados para executar o netboot do sistema.
+. Transfira o software ONTAP adequado a partir da secção de transferência de software do site de suporte da NetApp e guarde o `<ontap_version>_image.tgz` ficheiro num diretório acessível pela Web.
+. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
++
+[cols="30,70"]
+|===
+| Para... | Então... 
+
+
+| Sistemas da série FAS/AFF8000  a| 
+Extraia o conteúdo do `<ontap_version>_image.tgz` arquivo para o diretório de destino:
+`tar -zxvf <ontap_version>_image.tgz`
+
+
+NOTE: Se você estiver extraindo o conteúdo no Windows, use 7-Zip ou WinRAR para extrair a imagem netboot.
+
+Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:
+`netboot/kernel`
+
+
+
+| Todos os outros sistemas  a| 
+Sua lista de diretórios deve conter o seguinte arquivo:
+`<ontap_version>_image.tgz`
+
+
+NOTE: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arquivo.
+
+|===
++
+Você usará as informações nos diretórios do link:install_boot_node3.html["Fase 3"].
+
+

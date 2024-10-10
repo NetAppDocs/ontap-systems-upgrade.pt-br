@@ -1,0 +1,151 @@
+= Configurar portas FC no node3
+:allow-uri-read: 
+
+
+
+
+== Configurar portas FC no node3
+
+Se o node3 tiver portas FC, integradas ou em um adaptador FC, você precisará definir configurações de porta no nó antes de colocá-lo em serviço, pois as portas não estão pré-configuradas. Se as portas não estiverem configuradas, poderá ocorrer uma interrupção no serviço.
+
+.Antes de começar
+Você deve ter os valores das configurações de porta FC de node1 que você salvou link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]no .
+
+.Sobre esta tarefa
+Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node3>>.
+
+
+IMPORTANT: Se o sistema tiver discos de armazenamento, introduza os comandos nesta secção no prompt do cluster. Se você tiver um sistema da série V ou tiver um software de virtualização FlexArray e estiver conetado a matrizes de armazenamento, digite os comandos nesta seção no modo de manutenção.
+
+.Passos
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Vá para <<man_config_3_step5,Passo 5>> 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Vá para <<man_config_3_step2,Passo 2>> 
+|===
+. [[man_config_3_step2]]Boot node3 e modo de manutenção de acesso:
++
+`boot_ontap maint`
+
+. [[step3]]Faça uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Introduza o seguinte comando: 
+`system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento. | Introduza o seguinte comando 
+`ucadmin show` 
+|===
++
+O sistema exibe informações sobre todos os adaptadores de rede FC e convergentes no sistema.
+
+. [[step4]]Compare as configurações FC de node3 com as configurações que você capturou anteriormente de node1.
+. [[man_config_3_step5]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se as configurações de FC padrão nos novos nós forem... | Então... 
+
+
+| O mesmo que aqueles que você capturou no node1 | Vá para <<man_config_3_step11,Passo 11>>. 
+
+
+| Diferente dos que você capturou no node1 | Vá para <<man_config_3_step6,Passo 6>>. 
+|===
+. [[man_config_3_step6]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+Modifique as portas FC no node3 conforme necessário inserindo um dos seguintes comandos:
+
+** Para programar portas de destino:
+`system node hardware unified-connect modify -type | -t target -adapter _port_name_`
+** Para programar portas do iniciador:
+`system node hardware unified-connect modify -type | -t initiator -adapter _port_name_`
+
+
+`-t` É o tipo FC4: Alvo ou iniciador.
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+Modifique as portas FC no node3 conforme necessário inserindo o seguinte comando:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` É o tipo FC4, alvo ou iniciador.
+
+
+NOTE: As portas FC devem ser programadas como iniciadores.
+
+|===
+. [[step7]]Faça uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Verifique as novas configurações inserindo o seguinte comando e examinando a saída: 
+`system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Verifique as novas configurações inserindo o seguinte comando e examinando a saída: 
+`ucadmin show` 
+|===
+. [[step8]]saia do modo de manutenção inserindo o seguinte comando:
++
+`halt`
+
+. [[step9]]depois de inserir o comando, aguarde até que o sistema pare no prompt do ambiente de inicialização.
+. [[step10]]Faça uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| É um sistema V-Series ou tem software de virtualização FlexArray executando o Clustered Data ONTAP 8.3 | Inicialize o node3 e acesse a manutenção no prompt do ambiente de inicialização: 
+`boot_ontap maint` 
+
+
+| Não é um sistema da série V ou não tem software de virtualização FlexArray | Inicialize node3 no prompt do ambiente de inicialização: 
+`boot_ontap` 
+|===
+. [[man_config_3_step11]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+** Se o node3 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, vá para <<Verifique e configure as portas UTA/UTA2 no node3>>.
+** Se o node3 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, pule <<Verifique e configure as portas UTA/UTA2 no node3>> e vá para link:map_ports_node1_node3.html["Portas de mapa de node1 a node3"].
+
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+** Se o node3 tiver uma placa ou portas integradas, vá para <<Verifique e configure as portas UTA/UTA2 no node3>>.
+** Se o node3 não tiver uma placa ou portas integradas, pule <<Verifique e configure as portas UTA/UTA2 no node3>>e retorne a _Install and boot node3_ e continue em link:install_boot_node3.html#man_install3_step7["Passo 7"].
+
+
+|===
+

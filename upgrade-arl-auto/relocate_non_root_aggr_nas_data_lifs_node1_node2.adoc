@@ -1,0 +1,128 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/relocate_non_root_aggr_nas_data_lifs_node1_node2.html 
+keywords: relocate, non-root, nonroot, aggregates, NAS, data, lifs, node1, node2 
+summary: 'Mova agregados não-raiz e LIFs de dados nas do node1 para o node2 e mova os recursos do node1 para o node3 ao atualizar controladores que executam o ONTAP 9.5 para o 9,7 usando comandos "stystem controller replace".' 
+---
+= Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de poder substituir o node1 por node3, é necessário mover os agregados que não são raiz e os LIFs de dados nas de node1 para node2 antes de migrar os recursos do node1 para node3.
+
+.Antes de começar
+A operação já deve ser pausada quando você iniciar a tarefa; você deve retomar manualmente a operação.
+
+.Sobre esta tarefa
+Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Você deve verificar se os LIFs estão saudáveis e localizados nas portas apropriadas depois de colocar o node3 on-line.
+
+
+NOTE: O proprietário da casa para os agregados e LIFs não é modificado; apenas o proprietário atual é modificado.
+
+.Passos
+. Retomar as operações de transferência agregada e migração de LIF de dados nas:
++
+`system controller replace resume`
+
++
+Todos os agregados não-raiz e LIFs de dados nas são migrados de node1 para node2.
+
++
+A operação é interrompida para permitir que você verifique se todos os node1 agregados não-raiz e LIFs de dados não-SAN foram migrados para o node2.
+
+. Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
++
+`system controller replace show-details`
+
+. Com a operação ainda em pausa, verifique se todos os agregados não-raiz estão online para o seu estado em node2:
++
+`storage aggregate show -node _node2_ -state online -root false`
+
++
+O exemplo a seguir mostra que os agregados não-root no node2 estão online:
+
++
+[listing]
+----
+cluster::> storage aggregate show -node node2 state online -root false
+
+Aggregate  Size     Available  Used%  State  #Vols  Nodes  RAID Status
+---------  -------  ---------  -----  ------ -----  ------ --------------
+aggr_1     744.9GB  744.8GB    0%     online     5  node2  raid_dp,normal
+aggr_2     825.0GB  825.0GB    0%     online     1  node2  raid_dp,normal
+2 entries were displayed.
+----
++
+Se os agregados ficaram offline ou se tornaram estrangeiros no node2, coloque-os online usando o seguinte comando no node2, uma vez para cada agregado:
+
++
+`storage aggregate online -aggregate _aggr_name_`
+
+. Verifique se todos os volumes estão online no node2 usando o seguinte comando no node2 e examinando sua saída:
++
+`volume show -node _node2_ -state offline`
+
++
+Se algum volume estiver offline no node2, coloque-o online usando o seguinte comando no node2, uma vez para cada volume:
+
++
+`volume online -vserver _vserver_name_ -volume _volume_name_`
+
++
+O `_vserver_name_` a usar com este comando é encontrado na saída do comando anterior `volume show`.
+
+
+
+. [[step5]]se as portas que atualmente hospedam LIFs de dados não existirão no novo hardware, remova-as do domínio de broadcast:
++
+`network port broadcast-domain remove-ports`
+
+. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs como "up", digitando o seguinte comando, uma vez para cada LIF:
++
+`network interface modify -vserver _Vserver_name -lif _LIF_name_`  `-home-node _nodename_ -status-admin up`
+
+. Se você tiver grupos de interface ou VLANs configurados, execute as seguintes etapas:
++
+.. Se você ainda não os salvou, grave as informações de VLAN e ifgrp para que você possa recriar as VLANs e ifgrps no node3 depois que o node3 for inicializado.
+.. Remova as VLANs dos grupos de interface digitando o seguinte comando:
++
+`network port vlan delete -node _nodename_ -port _ifgrp_ -vlan-id _VLAN_ID_`
+
++
+
+NOTE: Siga a ação corretiva para resolver quaisquer erros sugeridos pelo comando vlan delete.
+
+.. Digite o seguinte comando e examine sua saída para ver se há algum grupo de interface configurado no nó:
++
+`network port ifgrp show -node _nodename_ -ifgrp _ifgrp_name_ -instance`
+
++
+O sistema exibe informações do grupo de interfaces para o nó, conforme mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster::> network port ifgrp show -node node1 -ifgrp a0a -instance
+                 Node: node1
+ Interface Group Name: a0a
+Distribution Function: ip
+        Create Policy: multimode_lacp
+          MAC Address: 02:a0:98:17:dc:d4
+   Port Participation: partial
+        Network Ports: e2c, e2d
+             Up Ports: e2c
+           Down Ports: e2d
+----
+.. Se algum grupo de interface estiver configurado no nó, Registre os nomes desses grupos e as portas atribuídas a eles e, em seguida, exclua as portas digitando o seguinte comando, uma vez para cada porta:
++
+`network port ifgrp remove-port -node _nodename_ -ifgrp _ifgrp_name_ -port _netport_`
+
+
+
+

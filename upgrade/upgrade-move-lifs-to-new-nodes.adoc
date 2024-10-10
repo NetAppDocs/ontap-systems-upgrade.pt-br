@@ -1,0 +1,94 @@
+---
+permalink: upgrade/upgrade-move-lifs-to-new-nodes.html 
+sidebar: sidebar 
+keywords: move, volume, original, node, migrate, non-san, lif, cluster-management, move non-san data lifs and cluster management lifs to the new nodeas 
+summary: Depois de mover os volumes dos nós originais, você precisa migrar os LIFs de dados que não são SAN e LIFs de gerenciamento de cluster dos nós originais para os novos nós. 
+---
+= Mova LIFs de dados que não são SAN e LIFs de gerenciamento de cluster para os novos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de mover os volumes dos nós originais, é necessário migrar os LIFs de dados que não são SAN e as LIFs de gerenciamento de cluster dos nós originais para os novos nós.
+
+.Sobre esta tarefa
+Você não pode migrar um LIF usado para operações de descarga de cópia com o VMware vStorage APIs for Array Integration (VAAI).
+
+.Passos
+. Faça login com o LIF de gerenciamento de cluster e liste todos os LIFs nos nós originais (lista separada por vírgulas):
++
+[source, cli]
+----
+network interface show -curr-node <list_of_original_node_names>
+----
+. Altere as portas iniciais para os LIFs de dados não SAN dos nós originais para os novos nós:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -home-node <new_node_name> -home-port {<netport|ifgrp>}
+----
+. Execute uma das seguintes ações:
++
+[cols="1,2"]
+|===
+| Se você quiser migrar... | Em seguida, digite... 
+
+
+ a| 
+Um LIF específico
+ a| 
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <lif_name> -destination-node <dest_node_name> -destination-port <dest_port_name>
+----
+
+
+ a| 
+Todos os LIFs de dados não SAN e LIFs de gerenciamento de cluster
+ a| 
+[source, cli]
+----
+network interface migrate-all -node <node_name>
+----
+|===
++
+O comando a seguir migra um LIF chamado "datalif1" no SVM "vs0" para a porta "e0d" em "node0b":
+
++
+[source, cli]
+----
+cluster::> network interface migrate -vserver vs0 -lif datalif1 -destination-node node0b -destination-port e0d
+----
++
+O comando a seguir migra todos os LIFs de gerenciamento de cluster e dados do nó atual (local):
+
++
+[source, cli]
+----
+cluster::> network interface migrate-all -node local
+----
+. Verifique se o nó inicial do LIF de gerenciamento de cluster está em um dos nós originais:
++
+[source, cli]
+----
+network interface show -lif cluster_mgmt -fields home-node
+----
+. Se o nó inicial do LIF de gerenciamento de cluster estiver em um dos nós originais, execute as seguintes etapas:
++
+.. Alterne o nó inicial do LIF de gerenciamento de cluster para um dos novos nós:
++
+[source, cli]
+----
+network interface modify -vserver <cluster_name> -lif cluster_mgmt -home-node <new_node_name> -home-port {<netport|ifgrp>}
+----
+.. Migre o LIF de gerenciamento de cluster para um dos novos nós:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif cluster-mgmt -destination-node <new_node_name> -destination-port {<netport|ifgrp>}
+----
+
+
+

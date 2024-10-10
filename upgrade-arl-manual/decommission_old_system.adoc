@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/decommission_old_system.html 
+keywords: decommission, system, metrocluster 
+summary: Deixe a NetApp saber que o sistema antigo não está mais em operação depois de concluir uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior. 
+---
+= Desativar o sistema antigo
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Após a atualização, você pode desativar o sistema antigo por meio do site de suporte da NetApp. Desativação o sistema informa ao NetApp que o sistema não está mais em operação e o remove de bancos de dados de suporte.
+
+.Passos
+. link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e faça login.
+. Selecione *Produtos > Meus Produtos* no menu.
+. Na página *Exibir sistemas instalados*, escolha quais os *critérios de seleção* que você deseja usar para exibir informações sobre seu sistema.
++
+Você pode escolher uma das seguintes opções para localizar seu sistema:
+
++
+** Número de série (localizado na parte posterior da unidade)
+** Números de série para a minha localização
+
+
+. Selecione *Go!*
++
+Uma tabela exibe informações do cluster, incluindo os números de série.
+
+. Localize o cluster na tabela e selecione *Decommission this system* no menu suspenso Product Tool Set (conjunto de ferramentas do produto).
+

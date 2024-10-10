@@ -1,0 +1,126 @@
+---
+permalink: upgrade/upgrade_migrate_aggregates_epsilon_lifs_node1_to_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node1, node4, migrate, aggregates, lifs 
+summary: Migre os agregados de dados, epsilon e LIFs em node1 para node4. 
+---
+= Migrar agregados de dados, epsilon e LIFs em node1 para node4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de converter o AFF A250 node1 para um compartimento de unidade, você migra agregados de dados, epsilon e interfaces lógicas (LIFs) no node1 para o AFF A400 node4.
+
+.Passos
+. No prompt DO Loader para node4, inicialize o nó no menu de inicialização:
++
+`boot_ontap menu`
+
+. Selecione a opção `6 Update flash from backup config` para restaurar o sistema de ficheiros /var para node4.
++
+Isso substitui todas as configurações baseadas em flash pelo último backup nos discos.
+
+. Entre `y` para continuar.
++
+[NOTE]
+====
+O nó reinicia automaticamente para carregar a nova cópia do sistema de ficheiros /var.
+
+O nó relata um aviso de incompatibilidade de ID do sistema. Introduza `y` para substituir a ID do sistema.
+
+====
+. Migrar as LIFs de cluster:
++
+`set -privilege advanced`
+
++
+`network port show`
+
++
+[NOTE]
+====
+Se as portas do cluster do sistema não forem semelhantes ao atualizar um AFF A250 para um AFF A400, talvez seja necessário alterar temporariamente as interfaces no node4 em portas de cluster:
+
+`network port modify -node _node4_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
+====
++
+`network interface migrate -vserver Cluster -lif _cluster_LIF_  -destination-node _node4_ -destination-port _port_name_`
+
+. Aguarde até que o cluster entre no quórum e verifique se os nós do cluster estão em bom estado:
++
+`– cluster show`
+
++
+
+NOTE: O par de HA e o failover de storage permanecem desativados no estado atual.
+
+. Mova os LIFs de cluster para as portas de cluster 25G temporárias no node4:
++
+`network interface modify`
+
+. Se grupos de interface e VLANs de dados estiverem em uso no cluster AFF A250 que você está atualizando, execute esta etapa. Caso contrário, vá para <<migrate_node1_nod4,Passo 8>>.
++
+Os nomes das portas de rede física diferem entre os sistemas AFF A250 e AFF A400. Como resultado, pode haver grupos de interface configurados incorretamente e VLANs deslocadas no node4. Verifique e, se necessário, corrija quaisquer grupos de interface configurados incorretamente e VLANs deslocadas.
+
+
+
+[[migrate_node1_nod4]]
+. Migre os agregados de dados em node1 para node4:
++
+`storage aggregate relocation start -aggregate-list _aggregate_list_name_ -node _node1_ -destination _node4_ -ndo-controller-upgrade true -override-destination-checks true`
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+. Migre o epsilon removendo if de node1 e, em vez disso, movendo-o para node4.
++
+.. Remova o epsilon do node1:
++
+`cluster modify -epsilon false -node _node1_`
+
+.. Mova o epsilon para node4:
++
+`cluster modify -epsilon true -node _node4_`
+
+
+
+. Apresentar o estado do grupo de instrumentos:
++
+`cluster show`
+
+. Apresentar todas as LIFs da rede de dados:
++
+`network interface show -role data`
+
+. Migrar todas as LIFs de dados para o node4:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node4_ -destination-port _port_name_`
+
+. Apresentar o estado de todas as LIFs de dados no cluster:
++
+`network interface show -role data`
+
+. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
+
+. Migração do LIF de gerenciamento de cluster:
++
+`network interface migrate -vserver _vserver_name_ -lif cluster_mgmt -destination-node _node4_ -destination-port _port_name_`
+
+. Exibir o status do LIF de gerenciamento de cluster:
++
+`network interface show cluster_mgmt`
+
+. Paragem node1:
++
+`halt -node _node1_ -inhibit-takeover true -ignore-quorum-warnings true`
+
+
+
+.O que se segue?
+link:upgrade_convert_node1_drive_shelf_connect_node3.html["Converter node1 em um compartimento de unidades e conectá-lo ao node3"]

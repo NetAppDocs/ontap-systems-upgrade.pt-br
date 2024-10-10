@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+.Opções
+* <<Configurar portas FC no node3>>
+* <<Verifique e configure as portas UTA/UTA2 no node3>>
+

@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/retire_node1.html 
+keywords: retiring, node1, node, retire 
+summary: Desative o par de HA com node2 e desligue o node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Aposentar-se node1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para desativar o node1, você retoma a operação automatizada para desativar o par de HA com o node2 e encerrar o node1 corretamente.
+
+.Passos
+. Retomar a operação:
++
+`system controller replace resume`
+
+. Verifique se o node1 foi interrompido:
++
+`system controller replace show-details`
+
++
+Depois de o node1 ter sido completamente interrompido, o node1 deve estar no prompt Loader>. Para ver o prompt Loader>, conete-se ao console serial do node1.
+
+

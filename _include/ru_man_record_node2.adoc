@@ -1,0 +1,131 @@
+= 
+:allow-uri-read: 
+
+
+Antes de desligar e desativar o node2, você deve Registrar informações sobre a rede do cluster, o gerenciamento e as portas FC, bem como a ID do sistema do NVRAM. Você precisará dessas informações mais tarde no procedimento quando mapear node2 a node4 e reatribuir discos.
+
+.Passos
+. Encontre a rede do cluster, as portas de gerenciamento de nós, clusters e clusters no node2:
++
+`network interface show -curr-node _node_name_ -role cluster,intercluster,nodemgmt,cluster-mgmt`
+
++
+O sistema exibe as LIFs para esse nó e outros nós no cluster, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster::> network interface show -curr-node node2 -role
+cluster,intercluster,node-mgmt,cluster-mgmt
+         Logical     Status     Network            Current     Current Is
+Vserver  Interface   Admin/Oper Address/Mask       Node        Port    Home
+-------- ----------  ---------- ------------------ ----------  ------- ----
+node2
+         intercluster up/up     192.168.1.202/24   node2       e0e     true
+         clus1        up/up     169.254.xx.xx/24   node2       e0a     true
+         clus2        up/up     169.254.xx.xx/24   node2       e0b     true
+         mgmt1        up/up     192.168.0.xxx/24   node2       e0c     true
+4 entries were displayed.
+----
++
+
+NOTE: Seu sistema pode não ter LIFs entre clusters. Você terá um LIF de gerenciamento de cluster apenas em um nó de um par de nós. Um LIF de gerenciamento de cluster é exibido no exemplo de saída link:record_node1_information.html#step1["Passo 1"]em _Record node1 port information_.
+
+. Capture as informações na saída a ser usada na link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]seção .
++
+As informações de saída são necessárias para mapear as novas portas do controlador para as portas antigas do controlador.
+
+. Determine as portas físicas no node2:
++
+`network port show -node _node_name_ -type physical` E
+
++
+`_node_name_` é o nó que está sendo migrado.
+
++
+O sistema exibe as portas físicas no node2, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster::> network port show -node node2 -type physical
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- -----------
+node2
+       e0M       Default      IP_address       up       1500  auto/100
+       e0a       Default      -                up       1500  auto/1000
+       e0b       Default      -                up       1500  auto/1000
+       e1a       Cluster      Cluster          up       9000  auto/10000
+       e1b       Cluster      Cluster          up       9000  auto/10000
+5 entries were displayed.
+----
+. Registre as portas e seus domínios de broadcast.
++
+Os domínios de broadcast precisarão ser mapeados para as portas no novo controlador mais tarde no procedimento.
+
+. Determine as portas FC no node2:
++
+`network fcp adapter show`
+
++
+O sistema exibe as portas FC no node2, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster::> network fcp adapter show -node node2
+                     Connection  Host
+Node         Adapter Established Port Address
+------------ ------- ----------- ------------
+node2
+             0a      ptp         11400
+node2
+             0c      ptp         11700
+node2
+             6a      loop        0
+node2
+             6b      loop        0
+4 entries were displayed.
+----
+. Registe as portas.
++
+As informações de saída são necessárias para mapear as novas portas FC no novo controlador posteriormente no procedimento.
+
+. Se você não tiver feito isso antes, verifique se há grupos de interface ou VLANs configurados no node2:
++
+`ifgrp show`
+
++
+`vlan show`
+
++
+Você usará as informações na link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]seção .
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se você... | Então... 
+
+
+| Número de ID do sistema NVRAM registado em link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] | Vá para link:retire_node2.html["Aposentar-se node2"]. 
+
+
+| Não registou o número de ID do sistema NVRAM em link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] | Complete <<man_record_2_step9,Passo 9>> e<<man_record_2_step10,Passo 10>>, em seguida, vá para a próxima seção, link:retire_node2.html["Aposentar-se node2"]. 
+|===
+. [[man_record_2_step9]]Exibir os atributos de node2:
++
+`system node show -instance -node node2`
+
++
+[listing]
+----
+cluster::> system node show -instance -node node2
+                            ...
+                 NVRAM System ID: system_ID
+                           ...
+----
+. [[man_record_2_step10]]grave a ID do sistema NVRAM a ser utilizada na link:install_boot_node4.html["Instale e inicialize node4"]secção .
+

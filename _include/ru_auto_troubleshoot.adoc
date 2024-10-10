@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.
+
+Consultar o quadro que descreve as diferentes fases do procedimento na link:overview_of_the_arl_upgrade.html["Visão geral da atualização ARL"]secção . As informações sobre as falhas que podem ocorrer são listadas pela fase do procedimento.

@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/automate_the_controller_upgrade_process.html 
+keywords: automating, controller, upgrade, process, network, port, ha 
+summary: Use o procedimento ARL parcialmente automatizado para atualizar controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Automatize o processo de atualização do controlador
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante uma atualização da controladora, a controladora é substituída por outra controladora executando uma plataforma mais recente ou mais poderosa. As versões anteriores deste conteúdo continham instruções para um processo de atualização de controlador sem interrupções, que era composto por etapas totalmente manuais. Este conteúdo fornece as etapas para o novo procedimento automatizado que utiliza verificações automáticas de acessibilidade de portas de rede para simplificar ainda mais a experiência de atualização do controlador.
+
+O processo manual foi demorado e complexo, mas neste procedimento simplificado, você pode implementar uma atualização de controladora usando realocação agregada, permitindo atualizações sem interrupções mais eficientes para pares de HA. Há significativamente menos etapas manuais, especialmente em torno da validação, coleta de informações e verificações de POST.

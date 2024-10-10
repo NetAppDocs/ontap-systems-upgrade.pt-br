@@ -1,0 +1,172 @@
+---
+permalink: upgrade/upgrade-prepare-when-moving-storage.html 
+sidebar: sidebar 
+keywords: licenses 
+summary: Antes de atualizar movendo o armazenamento, você deve coletar informações de licença dos nós originais, Planejar a configuração da rede, gravar as IDs do sistema e preparar os arquivos necessários para netboot. 
+---
+= Prepare-se para a atualização ao mover o armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de atualizar movendo o armazenamento, você deve coletar informações de licença dos nós originais, Planejar a configuração da rede, gravar as IDs do sistema e preparar os arquivos necessários para netboot.
+
+.Passos
+. Exibir e Registrar informações de licença dos nós originais, node1 e node2:
++
+`system license show`
+
+. Se você usar a criptografia de storage no par de HA node1/node2 e os novos nós tiverem discos habilitados para criptografia, verifique se os discos dos nós originais estão corretamente codificados:
++
+.. Exibir informações sobre discos com autocriptografia (SEDs)
++
+`storage encryption disk show`
+
+.. Se algum disco estiver associado a uma chave de ID segura (não-MSID) que não seja de fabricação, o rechavear a uma chave MSID
++
+`storage encryption disk modify`
+
+
+
+. [[Prepare_move_store_3]]Registre informações de configuração de portas e LIF no par HA node1/node2:
++
+[cols="1,2"]
+|===
+| Para exibir informações sobre... | Digite... 
+
+
+ a| 
+Compartimentos, número de discos em cada gaveta, detalhes de storage flash, memória, NVRAM e placas de rede
+ a| 
+`system node run -node _node_name_ sysconfig`
+
+
+
+ a| 
+LIFs de gerenciamento de nós e rede de cluster
+ a| 
+`network interface show -role cluster,node-mgmt`
+
+
+
+ a| 
+Portas físicas
+ a| 
+`network port show -node _node_name_ -type physical`
+
+
+
+ a| 
+Grupos de failover
+ a| 
+`network interface failover-groups show -vserver _vserver_name_`
+
+Registre os nomes e as portas dos grupos de failover que não estão em toda a extensão.
+
+
+
+ a| 
+Configuração VLAN
+ a| 
+`network port vlan show -node _node_name_`
+
+Registre cada porta de rede e emparelhamento de ID VLAN.
+
+
+
+ a| 
+Configuração do grupo de interfaces
+ a| 
+`network port ifgrp show -node _node_name_ -instance`
+
+Registre os nomes dos grupos de interface e as portas atribuídas a eles.
+
+
+
+ a| 
+Domínios de broadcast
+ a| 
+`network port broadcast-domain show`
+
+
+
+ a| 
+Informações de IPspace
+ a| 
+`network ipspace show`
+
+|===
+. Obtenha informações sobre as portas de cluster padrão, as portas de dados e as portas de gerenciamento de nós para cada nó novo para o qual você está atualizando: https://hwu.netapp.com["NetApp Hardware Universe"^]
+. [[Assign_lifs]]alguns sistemas, por exemplo, sistemas FAS8300, AFF A400 ou FAS8700, usam as portas "e0a" e "e0b" como portas de interconexão de alta disponibilidade (HA). Se você estiver atualizando de um sistema, como um FAS8200 ou um AFF A300, para um sistema que use as portas "e0a" e "e0b" como portas de interconexão HA, você deverá reatribuir o gerenciamento e as LIFs entre clusters que estão configuradas nessas portas no sistema original para portas alternativas no sistema de substituição.
++
+
+WARNING: Quando as portas "e0a" e "e0b" estão sendo usadas como portas de interconexão HA no sistema de substituição, qualquer gerenciamento ou LIFs entre clusters configurados nessas portas pode levar a uma falha de atualização, impedindo que a configuração HA use as portas "e0a" e "e0b" para inicializar no sistema de substituição.
+
++
+--
+.. Verifique se o seu sistema de substituição utiliza as portas "e0a" e "e0b" como portas HA: https://hwu.netapp.com["NetApp Hardware Universe"^]
+.. Se necessário, identifique o gerenciamento ou LIFs entre clusters configurados nas portas "e0a" e "e0b" no seu sistema original:
++
+`network interface show -home-port _port_name_`
+
+.. Se necessário, reatribua apenas o gerenciamento afetado ou LIFs entre clusters às portas de rede que não estão sendo usadas como portas HA no sistema de substituição:
++
+`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-port _new_port_name_`
+
++
+`network interface revert -vserver _vserver_name_ -lif _LIF_name_`
+
++
+No exemplo a seguir, os LIFs de gerenciamento e clusters nas portas de rede "e0a" e "e0b" são reatribuídos às portas de rede "e1a" e "e1b". Seus nós podem estar usando portas de rede diferentes porque variam de acordo com o sistema.
+
++
+image::../upgrade/media/reassign_lifs.PNG[Reatribuir LIFs às portas de rede no sistema de substituição]
+
+
+
+--
+. [[prepare_move_store_5]]Baixe e prepare os arquivos usados para executar o netboot.
++
+Depois de instalar os novos nós, talvez seja necessário inicializar a rede para confirmar que os novos nós estão executando a mesma versão do ONTAP que os nós originais. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você deve colocar uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema possa acessar.
+
++
+.. Acesse o https://mysupport.netapp.com/site/["Site de suporte da NetApp"^] para baixar os arquivos usados para executar o netboot do sistema.
+.. Transfira o software ONTAP adequado a partir da secção de transferência de software do site de suporte da NetApp e guarde o `<ontap_version>_image.tgz` ficheiro num diretório acessível pela Web.
+.. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
+
+
++
+[cols="1,2"]
+|===
+| Para... | Então... 
+
+
+ a| 
+*Sistemas das séries FAS2200, FAS2500, FAS3200, FAS6200, FAS/AFF8000*
+ a| 
+Extraia o conteúdo do `<ontap_version>_image.tgz` arquivo para o diretório de destino:
+`tar -zxvf <ontap_version>_image.tgz`
+
+*Nota:* se você estiver extraindo o conteúdo no Windows, use 7-Zip ou WinRAR para extrair a imagem netboot.
+
+Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:
+`netboot/kernel`
+
+
+
+ a| 
+*Todos os outros sistemas*
+ a| 
+Sua lista de diretórios deve conter o seguinte arquivo:
+
+`<ontap_version>_image.tgz`
+
+
+NOTE: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arquivo.
+
+|===
+
+
+Você usará as informações no diretório para link:upgrade-set-up-new-nodes.html["configure os novos nós"].

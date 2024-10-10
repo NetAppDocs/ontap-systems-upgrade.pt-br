@@ -1,0 +1,112 @@
+---
+permalink: upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migre as interfaces lógicas (LIFs) e agregados de dados em node2 para node1.' 
+---
+= Migrar LIFs e agregados de dados em node2 para node1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de converter o AFF A250 node2 para um compartimento de unidade, você migra as interfaces lógicas (LIFs) e os agregados de dados no node2 para node1.
+
+.Antes de começar
+Verifique se você atende aos seguintes requisitos:
+
+* Os controladores AFF A250 e AFF A400 estão executando a mesma versão do ONTAP e a mesma versão do patch.
++
+[NOTE]
+====
+** Você deve netboot e instalar a versão do ONTAP em cada AFF A400 que é idêntica à versão em execução no AFF A250.
+** Tanto a imagem de inicialização principal quanto de backup de cada AFF A400 devem ter a mesma versão do ONTAP.
+** Se os clusters do AFF A400 tiverem sido configurados anteriormente, você deverá limpar qualquer configuração residual do cluster executando um `wipeconfig` no menu de inicialização.
+
+
+====
+* Ambos os controladores AFF A400 estão em espera no prompt Loader.
+* Você tem todo o cabeamento apropriado à mão.
+
+
+.Sobre esta tarefa
+As etapas a seguir são executadas no AFF A250 node1.
+
+.Passos
+. Aceder ao nível de privilégio avançado:
++
+`set -privilege advanced`
+
+. Desativar o failover de armazenamento automático giveback:
++
+`storage failover modify -node _node1_ -auto-giveback false`
+
+. Desative a reversão automática das LIFs em ambos os nós do par de HA:
++
+`network interface modify -lif * -auto-revert false`
+
+. Apresentar o estado de todas as LIFs da rede de dados:
++
+`network interface show -role data`
+
+. Exibir o status das LIFs de gerenciamento de cluster:
++
+`network interface show -role cluster_mgmt`
+
+. Migre todas as LIFs de dados das máquinas virtuais de storage hospedadas no node2:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node1_ -destination-port _port_name_`
+
++
+
+NOTE: Este comando migra apenas LIFs não-SAN. Você não pode usá-lo para migrar iSCSI e FCP LIFs.
+
+. Apresentar o estado de todas as LIFs de dados no cluster:
++
+`network interface show -role data`
+
+. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+. Elegibilidade para failover de exibição:
++
+`storage failover show`
+
+. Migre os agregados de dados em node2 para node1:
++
+`storage aggregate relocation start -aggregate _aggregate_name_ -node _node2_ -destination _node1_`
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+. Exibir o status de todos os volumes de dados no cluster:
++
+`volume show`
+
+. Apresentar o `ha` estado e a propriedade do epsilon:
++
+`cluster show`
+
+.  `cluster ha`Desativar :
++
+`cluster ha modify -configured false`
+
+. Apresentar o `ha` estado e a propriedade do epsilon:
++
+`cluster show`
+
+. Paragem node2:
++
+`halt -node _node2_ -inhibit-takeover true -ignore-quorum-warnings true`
+
+
+
+.O que se segue?
+link:upgrade_convert_node2_drive_shelf_connect_node4.html["Converter node2 em um compartimento de unidades e conectá-lo ao node4"]

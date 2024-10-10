@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/verify_node3_installation.html 
+keywords: install, boot, node3, join quorum, restore, key, manager 
+summary: 'Verifique se o node3 se junta ao quórum, recrie as VLANs do node1, grupos de interface e domínios de broadcast e restaure a configuração do gerenciador de chaves ao atualizar os controladores executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
+---
+= Verifique a instalação do node3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de instalar e inicializar o node3, você deve verificar se ele está instalado corretamente. Você deve esperar que node3 se junte ao quórum e, em seguida, retomar a operação de realocação.
+
+.Sobre esta tarefa
+Neste ponto do procedimento, a operação terá pausado como node3 junta quórum.
+
+.Passos
+. Verifique se o quórum de node3 aderiu:
++
+`cluster show -node node3 -fields health`
+
+. Verifique se o node3 faz parte do mesmo cluster que o node2 e se está em bom estado:
++
+`cluster show`
+
+. Verifique o estado da operação e verifique se as informações de configuração do node3 são as mesmas que node1:
++
+`system controller replace show-details`
+
++
+Se a configuração for diferente para o node3, poderá ocorrer uma interrupção do sistema mais tarde no procedimento.
+
+. Verifique se o controlador substituído está configurado corretamente para a configuração do MetroCluster, a configuração do MetroCluster deve estar em estado de integridade e não em modo de comutação. link:verify_health_of_metrocluster_config.html["Verifique a integridade da configuração do MetroCluster"]Consulte a .
+
+
+
+
+== Recriar VLANs, grupos de interface e domínios de broadcast no node3
+
+Depois de confirmar que o node3 está no quórum e pode se comunicar com o node2, você deve recriar as VLANs, grupos de interface e domínios de broadcast do node1 no node3. Você também deve adicionar as portas node3 aos domínios de broadcast recém-criados.
+
+.Sobre esta tarefa
+Para obter mais informações sobre como criar e recriar VLANs, grupos de interfaces e domínios de broadcast, link:other_references.html["Referências"]acesse e vincule a _Network Management_.
+
+.Passos
+. Crie novamente as VLANs no node3 usando as informações node1 registradas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"]seção:
++
+`network port vlan create -node _node_name_ -vlan _vlan-names_`
+
+. Crie novamente os grupos de interface no node3 usando as informações node1 registradas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"] seção:
++
+`network port ifgrp create -node _node_name_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Crie novamente os domínios de broadcast no node3 usando as informações node1 gravadas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"]seção:
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Adicione as portas node3 aos domínios de broadcast recém-criados:
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+
+
+
+
+== Restaure a configuração do gerenciador de chaves no node3
+
+Se você estiver usando a criptografia agregada do NetApp (NAE) ou a criptografia de volume do NetApp (NVE) para criptografar volumes no sistema que você está atualizando, a configuração de criptografia deve ser sincronizada com os novos nós. Se você não restaurar o gerenciador de chaves, quando você realocar os agregados node1 de node2 para node3 usando ARL, os volumes criptografados serão desconetados.
+
+.Passos
+. Para sincronizar a configuração de criptografia para o Gerenciador de chaves integrado, execute o seguinte comando no prompt do cluster:
++
+|===
+| Para esta versão do ONTAP... | Use este comando... 
+
+
+| ONTAP 9 .6 ou 9,7 | `security key-manager onboard sync` 
+
+
+| ONTAP 9,5 | `security key-manager setup -node _node_name_` 
+|===
+. Introduza a frase-passe de todo o cluster para o Gestor de chaves integrado.
+

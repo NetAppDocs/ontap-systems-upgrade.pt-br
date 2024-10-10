@@ -1,0 +1,15 @@
+= Licença
+:allow-uri-read: 
+
+
+
+
+== Licença
+
+Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.
+
+Se você não tiver novas chaves de licença, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o contrato de licença, portanto, você deve instalar a nova chave de licença ou chaves para o novo controlador após a conclusão da atualização.
+
+Consulte o link:other_references.html["Referências"]link para o _Site de suporte NetApp_, onde você pode obter novas chaves de licença de 28 carateres para o ONTAP. As chaves estão disponíveis na seção _meu suporte_ em _licenças de software_. Se o site não tiver as chaves de licença necessárias, entre em Contato com o representante de vendas da NetApp.
+
+Para obter informações detalhadas sobre licenciamento, link:other_references.html["Referências"]consulte o link para a _Referência de Administração do sistema_.

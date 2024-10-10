@@ -1,0 +1,127 @@
+---
+permalink: upgrade/upgrade-shutdown-remove-original-nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: Ao encerrar e remover os nós originais, você deve enviar uma mensagem do AutoSupport sobre a atualização, destruir as caixas de correio, desligar os nós e remover o chassi. 
+---
+= Encerre os nós originais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao encerrar e remover os nós originais, você deve enviar uma mensagem do AutoSupport sobre a atualização, destruir as caixas de correio, desligar os nós e remover o chassi.
+
+.Passos
+. Envie uma mensagem AutoSupport de node1 e node2 para informar o suporte técnico da atualização:
++
+`system node autosupport invoke -node _node_name_ -type all -message "MAINT=2h Upgrading _node_name_ from _platform_original_ to _platform_new_"`
+
+. Desative a alta disponibilidade ou o failover de armazenamento em node1 e node2:
++
+[cols="1,2"]
+|===
+| Se você tem um... | Digite... 
+
+
+ a| 
+Cluster de dois nós
+ a| 
+.. `cluster ha modify -configured false`
+.. `storage failover modify -node _node_name_ -enabled false`
+
+
+
+
+ a| 
+Cluster com mais de dois nós
+ a| 
+`storage failover modify -node _node_name_ -enabled false`
+
+|===
+. Parar o nó:
++
+`system node halt -node _node_name_`
+
++
+Você pode suprimir a verificação de quórum durante o processo de reinicialização usando a `-ignore-quorum-warnings` opção.
+
+. Conete-se ao console serial, se você ainda não estiver conetado. O nó deve estar no prompt Loader. Use o `boot_ontap maint` comando para inicializar no modo de manutenção.
++
+Pode aparecer uma mensagem solicitando que você confirme que o nó do parceiro está inativo ou que o takeover está desativado manualmente no nó do parceiro. Pode introduzir `yes` para continuar.
+
+. [[shutdown_node_step5]]Registre a ID do sistema de cada nó original, que é obtida através das informações de propriedade do disco no modo de manutenção:
++
+`disk show -v`
+
++
+Você precisa dos IDs do sistema quando atribuir discos dos nós originais aos novos nós.
+
++
+[listing]
+----
+*> disk show -v
+Local System ID: 118049495
+DISK    OWNER               POOL    SERIAL NUMBER          HOME
+----    -----               ----    -------------          ----
+0a.33   node1 (118049495)   Pool0   3KS6BN970000973655KL   node1 (118049495)
+0a.32   node1 (118049495)   Pool0   3KS6BCKD000097363ZHK   node1 (118049495)
+0a.36   node1 (118049495)   Pool0   3KS6BL9H000097364W74   node1 (118049495)
+...
+----
+. Se você tiver configuração de porta FC ou CNA, exiba a configuração no modo Manutenção:
++
+`ucadmin show`
+
++
+Você deve gravar a saída do comando para referência posterior.
+
++
+[listing]
+----
+*> ucadmin show
+Current Current Pending   Pending
+Adapter Mode    Type      Mode    Type    Status
+------- ------- --------- ------- ------- ------
+0e      fc      initiator -       -       online
+0f      fc      initiator -       -       online
+0g      cna     target    -       -       online
+0h      cna     target    -       -       online
+...
+----
+. No modo Manutenção, destrua as caixas de correio node1 e node2
++
+`mailbox destroy local`
+
++
+O console exibe uma mensagem semelhante à seguinte:
+
++
+[listing]
+----
+Destroying mailboxes forces a node to create new empty mailboxes, which
+clears any takeover state, removes all knowledge of out-of-date plexes and
+mirrored volumes, and will prevent management services from going online in
+2-node cluster HA configurations.
+Are you sure you want to destroy the local mailboxes?
+----
+. Destrua as caixas de correio entrando `y` quando você vir um prompt semelhante ao seguinte:
++
+[listing]
+----
+.............Mailboxes destroyed
+Takeover On Reboot option will be set to ON after the node boots.
+This option is ON by default except on setups that have iSCSI or FCP license.
+Use "storage failover modify -node <nodename> -onreboot false" to turn it OFF.
+
+*>
+----
+. Sair do modo de manutenção:
++
+`halt`
+
+. Desligue a alimentação para node1 e node2 e, em seguida, desconete-os da fonte de alimentação.
+. Identifique e remova todos os cabos do node1 e do node2.
+. Retire o chassis que contém node1 e node2.
+

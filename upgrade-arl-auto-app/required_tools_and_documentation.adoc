@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/required_tools_and_documentation.html 
+keywords: required, tools, documentation, install, worksheet, ontap 
+summary: 'Você deve ter certas ferramentas e documentação para atualizar controladores executando o ONTAP 9.8 ou posterior usando `system controller replace` comandos.' 
+---
+= Ferramentas e documentação necessárias
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você precisa ter ferramentas específicas para instalar o novo hardware e precisa consultar outros documentos durante o processo de atualização.
+
+Você precisa das seguintes ferramentas para executar a atualização:
+
+* Pulseira de aterramento
+* Chave de fendas Phillips nº 2
+
+
+Aceda à link:other_references.html["Referências"] secção para aceder à lista de documentos de referência e sites de referência necessários para esta atualização

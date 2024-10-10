@@ -1,0 +1,335 @@
+= 
+:allow-uri-read: 
+
+
+. Se a versão do ONTAP instalada no node4 for a mesma ou posterior à versão do ONTAP 9 instalada no node2, digite o seguinte comando:
++
+`boot_ontap menu`
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Não tem a versão ONTAP correta ou atual no node4 | Vá para <<man_install4_Step20,Passo 20>>. 
+
+
+| Tem a versão correta ou atual do ONTAP no node4 | Vá para <<man_install4_Step25,Passo 25>>. 
+|===
+. [[man_install4_Step20]]Configure a conexão netboot escolhendo uma das seguintes ações.
++
+
+NOTE: Você deve usar a porta de gerenciamento e o endereço IP como conexão netboot. Não use um endereço IP de LIF de dados ou uma interrupção de dados pode ocorrer enquanto a atualização está sendo realizada.
+
++
+[cols="35,75"]
+|===
+| Se o DHCP (Dynamic Host Configuration Protocol) for... | Então... 
+
+
+| Em execução  a| 
+Configure a conexão automaticamente inserindo o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -auto`
+
+
+
+| Não está a funcionar  a| 
+Configure manualmente a conexão inserindo o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -addr=_filer_addr_ mask=_netmask_ -gw=_gateway_ dns=_dns_addr_ domain=_dns_domain_`
+
+`_filer_addr_` É o endereço IP do sistema de armazenamento (obrigatório).
+`_netmask_` é a máscara de rede do sistema de armazenamento (obrigatório).
+`_gateway_` é o gateway para o sistema de armazenamento (obrigatório).
+`_dns_addr_` É o endereço IP de um servidor de nomes em sua rede (opcional).
+`_dns_domain_` É o nome de domínio do serviço de nomes de domínio (DNS). Se você usar esse parâmetro opcional, não precisará de um nome de domínio totalmente qualificado no URL do servidor netboot; você precisará apenas do nome de host do servidor.
+
+
+NOTE: Outros parâmetros podem ser necessários para sua interface. Insira `help ifconfig` no prompt do firmware para obter detalhes.
+
+|===
+. Execute netboot no node4:
++
+[cols="30,70"]
+|===
+| Para... | Então... 
+
+
+| Sistemas da série FAS/AFF8000 | `netboot \http://<web_server_ip/path_to_webaccessible_directory>/netboot/kernel` 
+
+
+| Todos os outros sistemas | `netboot \http://<web_server_ip/path_to_webaccessible_directory/ontap_version>_image.tgz` 
+|===
++
+O `<path_to_the_web-accessible_directory>` deve levar ao local onde você baixou o
+`<ontap_version>_image.tgz` in link:prepare_for_netboot.html#man_netboot_Step1["Passo 1"]na seção _prepare-se para netboot_.
+
++
+
+NOTE: Não interrompa a inicialização.
+
+. No menu de inicialização, `option (7) Install new software first` selecione .
++
+Esta opção de menu transfere e instala a nova imagem Data ONTAP no dispositivo de arranque.
+
++
+Ignore a seguinte mensagem:
+
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+A observação se aplica a atualizações sem interrupções do Data ONTAP e não a atualizações de controladores.
+
++
+
+NOTE: Sempre use netboot para atualizar o novo nó para a imagem desejada. Se você usar outro método para instalar a imagem no novo controlador, a imagem incorreta pode ser instalada. Este problema aplica-se a todas as versões do ONTAP. O procedimento netboot combinado com opção `(7) Install new software` limpa a Mídia de inicialização e coloca a mesma versão do ONTAP em ambas as partições de imagem.
+
+. [[man_install4_step23]] se você for solicitado a continuar o procedimento, digite y e, quando solicitado para o pacote, digite o URL:
++
+`\http://<web_server_ip/path_to_web-accessible_directory/ontap_version>_image.tgz`
+
+. Conclua as seguintes subetapas:
++
+.. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n}
+----
+.. Reinicie entrando `y` quando você vir o seguinte prompt:
++
+[listing]
+----
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+----
++
+O módulo do controlador reinicializa, mas pára no menu de inicialização porque o dispositivo de inicialização foi reformatado e os dados de configuração precisam ser restaurados.
+
+
+
+. [[man_install4_Step25]]Selecione o modo de manutenção `5` no menu de inicialização e entre `y` quando você for solicitado a continuar com a inicialização.
+. [[man_install4_Step26]]antes de continuar, vá para para link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"]fazer quaisquer alterações necessárias às portas FC ou UTA/UTA2 no nó. Faça as alterações recomendadas nessas seções, reinicie o nó e entre no modo Manutenção.
+. Digite o seguinte comando e examine a saída para encontrar a ID do sistema de node4:
++
+`disk show -a`
+
++
+O sistema exibe a ID do sistema do nó e informações sobre seus discos, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 536881109
+DISK         OWNER                       POOL   SERIAL NUMBER   HOME
+------------ -------------               -----  -------------   -------------
+0b.02.23     nst-fas2520-2(536880939)    Pool0  KPG2RK6F        nst-fas2520-2(536880939)
+0b.02.13     nst-fas2520-2(536880939)    Pool0  KPG3DE4F        nst-fas2520-2(536880939)
+0b.01.13     nst-fas2520-2(536880939)    Pool0  PPG4KLAA        nst-fas2520-2(536880939)
+......
+0a.00.0                   (536881109)    Pool0  YFKSX6JG                     (536881109)
+......
+----
+. Reatribua as peças sobressalentes do node2, os discos pertencentes à raiz e quaisquer agregados não-raiz que não tenham sido relocados para o node3 anteriormente na link:relocate_non_root_aggr_node2_node3.html["Realocar agregados não-raiz de node2 para node3"]seção :
++
+
+NOTE: Se você tiver discos compartilhados, agregados híbridos ou ambos no sistema, use o comando correto `disk reassign` da tabela a seguir.
+
++
+[cols="35,65"]
+|===
+| Tipo de disco... | Execute o comando... 
+
+
+| Com discos compartilhados | `disk reassign -s` 
+`_node2_sysid_ -d _node4_sysid_ -p _node3_sysid_` 
+
+
+| Sem compartilhado | `disks disk reassign -s` 
+`_node2_sysid_ -d _node4_sysid_` 
+|===
++
+Para o `<node2_sysid>` valor, use as informações capturadas na link:record_node2_information.html#man_record_2_step10["Passo 10"]seção _Record node2 information_. Para `_node4_sysid_`, use as informações capturadas no <<man_install4_step23,Passo 23>>.
+
++
+
+NOTE: A `-p` opção só é necessária no modo de manutenção quando os discos compartilhados estão presentes.
+
++
+O `disk reassign` comando reatribuirá apenas os discos para os quais `_node2_sysid_` é o proprietário atual.
+
++
+O sistema exibe a seguinte mensagem:
+
++
+[listing]
+----
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+----
++
+Introduza `n` quando for solicitado que aborte a reatribuição do disco.
+
++
+Quando você for solicitado a cancelar a reatribuição de disco, você deve responder a uma série de prompts, como mostrado nas seguintes etapas:
+
++
+.. O sistema exibe a seguinte mensagem:
++
+[listing]
+----
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? y
+----
+.. Entre `y` para continuar.
++
+O sistema exibe a seguinte mensagem:
+
++
+[listing]
+----
+Disk ownership will be updated on all disks previously belonging to Filer with sysid <sysid>.
+Do you want to continue (y/n)? y
+----
+.. Introduza `y` para permitir que a propriedade do disco seja atualizada.
+
+
+. Se você estiver atualizando de um sistema com discos externos para um sistema que suporte discos internos e externos (sistemas A800, por exemplo), defina node4 como root para confirmar que ele inicializa a partir do agregado raiz de node2.
++
+
+WARNING: *Aviso: Você deve executar as seguintes subetapas na ordem exata mostrada; a falha em fazê-lo pode causar uma interrupção ou até mesmo perda de dados.*
+
++
+O procedimento a seguir define node4 para inicializar a partir do agregado raiz de node2:
+
++
+.. Verifique as informações de RAID, Plex e checksum para o agregado node2:
++
+`aggr status -r`
+
+.. Verifique o status geral do agregado node2:
++
+`aggr status`
+
+.. Se necessário, coloque o agregado node2 online:
++
+`aggr_online root_aggr_from___node2__`
+
+.. Evite que o node4 inicialize a partir do seu agregado raiz original:
++
+`aggr offline _root_aggr_on_node4_`
+
+.. Defina o agregado de raiz node2 como o novo agregado de raiz para node4:
++
+`aggr options aggr_from___node2__ root`
+
+
+
+. Verifique se o controlador e o chassis estão configurados como `ha` introduzindo o seguinte comando e observando a saída:
++
+`ha-config show`
+
++
+O exemplo a seguir mostra a saída do `ha-config show` comando:
+
++
+[listing]
+----
+*> ha-config show
+   Chassis HA configuration: ha
+   Controller HA configuration: ha
+----
++
+Os sistemas Registram em uma PROM, quer estejam em um par de HA ou em uma configuração autônoma. O estado deve ser o mesmo em todos os componentes do sistema autônomo ou do par de HA.
+
++
+Se o controlador e o chassi não estiverem configurados como `ha`, use os seguintes comandos para corrigir a configuração:
+
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`.
+
++
+Se você tiver uma configuração MetroCluster, use os seguintes comandos para corrigir a configuração:
+
++
+`ha-config modify controller mcc`
+
++
+`ha-config modify chassis mcc`.
+
+. Destrua as caixas de correio em node4:
++
+`mailbox destroy local`
+
+. Sair do modo de manutenção:
++
+`halt`
+
++
+O sistema pára no prompt do ambiente de inicialização.
+
+. No node3, verifique a data, a hora e o fuso horário do sistema:
++
+`date`
+
+. Em node4, verifique a data no prompt do ambiente de inicialização:
++
+`show date`
+
+. Se necessário, defina a data em node4:
++
+`set date _mm/dd/yyyy_`
+
+. No node4, verifique a hora no prompt do ambiente de inicialização:
++
+`show time`
+
+. Se necessário, defina a hora em node4:
++
+`set time _hh:mm:ss_`
+
+. Verifique se o ID do sistema do parceiro está definido corretamente, conforme indicado em <<man_install4_Step26,Passo 26>>opção.
++
+`printenv partner-sysid`
+
+. Se necessário, defina a ID do sistema do parceiro em node4:
++
+`setenv partner-sysid _node3_sysid_`
+
++
+.. Guarde as definições:
++
+`saveenv`
+
+
+
+. Entre no menu de inicialização no prompt do ambiente de inicialização:
++
+`boot_ontap menu`
+
+. No menu de inicialização, selecione a opção *(6) Atualizar flash a partir da configuração de backup* entrando `6` no prompt.
++
+O sistema exibe a seguinte mensagem:
+
++
+[listing]
+----
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?:
+----
+. Digite `y` no prompt.
++
+A inicialização prossegue normalmente e o sistema solicita que você confirme a incompatibilidade da ID do sistema.
+
++
+
+NOTE: O sistema pode reiniciar duas vezes antes de apresentar o aviso de incompatibilidade.
+
+. Confirme a incompatibilidade. O nó pode completar uma rodada de reinicialização antes de inicializar normalmente.
+. Inicie sessão em node4.
+

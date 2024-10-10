@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/manage_authentication_okm.html 
+keywords: manage, authentication, onboard key manager, okm, key, passphrase, fips 
+summary: Use o OKM para gerenciar chaves de autenticação durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior. 
+---
+= Gerencie chaves de autenticação usando o Gerenciador de chaves integrado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você pode usar o OKM (Onboard Key Manager) para gerenciar chaves de autenticação. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.
+
+.Passos
+. Grave a frase-passe de todo o cluster.
++
+Esta é a senha que foi inserida quando o OKM foi configurado ou atualizado usando a CLI ou API REST.
+
+. Faça backup das informações do gerenciador de chaves executando o `security key-manager onboard show-backup` comando.
+

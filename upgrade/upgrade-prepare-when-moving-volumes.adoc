@@ -1,0 +1,51 @@
+---
+permalink: upgrade/upgrade-prepare-when-moving-volumes.html 
+sidebar: sidebar 
+keywords: perform, preparation, upgrading, upgrade, controller, hardware, moving, move, volume, prepare for the upgrade when moving volumes 
+summary: Você precisa executar algumas etapas de preparação antes de atualizar o hardware do controlador movendo volumes. 
+---
+= Prepare-se para a atualização ao mover volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve executar algumas etapas de preparação antes de atualizar o hardware do controlador movendo volumes.
+
+.Passos
+. Exibir os volumes nos nós originais:
++
+`volume show`
+
++
+Você usa o comando output para preparar a lista de volumes para mover para os novos nós.
+
+. Exibir e Registrar informações de licença dos nós originais:
++
+`system license show`
+
+. Se você usar a criptografia de storage nos nós originais e os novos nós tiverem discos habilitados para criptografia, verifique se os discos dos nós originais estão corretamente codificados:
++
+.. Exibir informações sobre os discos com autocriptografia (SEDs):
++
+`storage encryption disk show`
+
+.. Se algum disco estiver associado a uma chave de ID segura (não-MSID) que não seja de fabricação, o rechavear a uma chave MSID:
++
+`storage encryption disk modify`
+
+
+
+. Se o cluster estiver atualmente em uma configuração sem switch de dois nós, migre o cluster para um cluster comutado de dois nós usando o tipo de switch que preferir.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migração para um cluster comutado de dois nós com switches de cluster Cisco"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migração para um cluster comutado de dois nós com switches de cluster NetApp CN1610"^]
+
+. Envie uma mensagem AutoSupport de cada nó original para informar o suporte técnico da atualização:
++
+`system node autosupport invoke -node _node_name_ -type all -message "Upgrading node_name from _platform_original_ to _platform_new_"`
+
+

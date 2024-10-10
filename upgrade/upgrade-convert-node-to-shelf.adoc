@@ -1,0 +1,33 @@
+---
+permalink: upgrade/upgrade-convert-node-to-shelf.html 
+sidebar: sidebar 
+keywords: node, support, model, process, upgrading, upgrade, moving, move, convert, drive, shelf, attach, convert an original node to a drive shelf 
+summary: Se o nó original for um dos modelos com suporte, durante o processo de atualização movendo o storage, você poderá converter o nó em um compartimento de unidades e anexá-lo aos novos nós no mesmo cluster. 
+---
+= Converta um nó original em um compartimento de unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o nó original for um dos modelos com suporte, durante o processo de atualização movendo o storage, você poderá converter o nó em um compartimento de unidades e anexá-lo aos novos nós no mesmo cluster.
+
+.Antes de começar
+Você precisa ter revisado link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"] sobre a conversão de um nó em um compartimento de unidade. Entre em Contato com o suporte técnico se precisar de orientação específica para sua configuração.
+
+.Passos
+. Substitua os módulos do controlador no nó que você está convertendo por módulos IOM apropriados.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+. Defina a ID do compartimento de unidades.
++
+Cada compartimento de unidade, incluindo o chassi, precisa de uma ID exclusiva.
+
+. Redefina outras IDs de gaveta de unidade conforme necessário.
+. Desligue a energia de quaisquer compartimentos de unidades conectados aos novos nós e, em seguida, desative a energia dos novos nós.
+. Cable o compartimento de unidade convertido a uma porta SAS no novo sistema e, se você estiver usando cabeamento ACP fora da banda, à porta ACP no novo nó.
+. Ligue a energia do compartimento de unidades convertido e de quaisquer outros compartimentos de unidades conectados aos novos nós.
+. Ligue a energia para os novos nós e, em seguida, interrompa o processo de inicialização em cada nó pressionando Ctrl-C para acessar o prompt do ambiente de inicialização.
+

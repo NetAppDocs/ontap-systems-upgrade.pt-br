@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Você precisa ter ferramentas específicas para instalar o novo hardware e precisa consultar outros documentos durante o processo de atualização.
+
+Você precisa das seguintes ferramentas para executar a atualização:
+
+* Pulseira de aterramento
+* Chave de fendas Phillips nº 2
+
+
+Aceda à link:other_references.html["Referências"] secção para aceder à lista de documentos de referência e sites de referência necessários para esta atualização

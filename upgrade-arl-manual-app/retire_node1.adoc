@@ -1,0 +1,212 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/retire_node1.html 
+keywords: retire, node1, epsilon, shut down, failover 
+summary: Desative o par de HA com node2 e encerre o node1 corretamente durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Aposentar-se node1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para desativar o node1, você deve desativar o par de HA com o node2, encerrar o node1 corretamente e removê-lo do rack ou chassi.
+
+.Passos
+. Verifique o número de nós no cluster:
++
+`cluster show`
+
++
+O sistema exibe os nós no cluster, como mostrado no exemplo a seguir:
+
++
+[listing]
+----
+cluster::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node1                 true    true
+node2                 true    true
+2 entries were displayed.
+----
+. [[man_retire_1_step2]]Desabilite o failover de armazenamento, conforme aplicável:
++
+[cols="35,65"]
+|===
+| Se o cluster for... | Então... 
+
+
+| Um cluster de dois nós  a| 
+.. Desative a alta disponibilidade do cluster inserindo o seguinte comando em qualquer nó:
+
+
+`cluster ha modify -configured false`
+
+.. Desativar failover de armazenamento:
+
+
+`storage failover modify -node _node1_ -enabled false`
+
+
+
+| Um cluster com mais de dois nós | Desativar failover de armazenamento: 
+`storage failover modify -node _node1_ -enabled false` 
+|===
++
+
+WARNING: Se você não desativar o failover de armazenamento, pode ocorrer uma falha de atualização da controladora que pode interromper o acesso aos dados e levar à perda de dados.
+
+. Verifique se o failover de armazenamento foi desativado:
++
+`storage failover show`
+
++
+O exemplo a seguir mostra a saída do `storage failover show` comando quando o failover de armazenamento foi desativado para um nó:
+
++
+[listing]
+----
+ cluster::> storage failover show
+                               Takeover
+ Node           Partner        Possible State Description
+ -------------- -------------- -------- -------------------------------------
+ node1          node2          false    Connected to node2, Takeover
+                                        is not possible: Storage failover is
+                                        disabled
+
+ node2          node1          false    Node owns partner's aggregates as part
+                                        of the nondisruptive controller upgrade
+                                        procedure. Takeover is not possible:
+                                        Storage failover is disabled
+ 2 entries were displayed.
+----
+. Verifique o status do LIF de dados:
++
+`network interface show -role data -curr-node _node2_ -home-node _node1_`
+
++
+Procure na coluna *Admin/Oper* de Status para ver se algum LIFs está inativo. Se algum LIFs estiver inativo, consulte a link:troubleshoot_index.html["Fuligem de problemas"] seção.
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o cluster for... | Então... 
+
+
+| Um cluster de dois nós | Vá para <<man_retire_1_step6,Passo 6>>. 
+
+
+| Um cluster com mais de dois nós | Vá para <<man_retire_1_step8,Passo 8>>. 
+|===
+. [[man_remove_1_step6]]Acesse o nível de privilégio avançado em qualquer nó:
++
+`set -privilege advanced`
+
+. [[step7]]Verifique se a HA do cluster foi desativada:
++
+`cluster ha show`
+
++
+O sistema exibe a seguinte mensagem:
+
++
+[listing]
+----
+High Availability Configured: false
+----
++
+Se o cluster HA não tiver sido desativado, repita <<man_retire_1_step2,Passo 2>>.
+
+. [[man_Reign_1_step8]]Verifique se o node1 possui atualmente o epsilon:
++
+`cluster show`
+
++
+Como existe a possibilidade de um empate em um cluster que tem um número par de nós, um nó tem um peso de votação fracionário extra chamado epsilon. link:other_references.html["Referências"]Consulte para obter mais informações sobre o link _System Administration Reference_.
+
++
+[NOTE]
+====
+Se você tiver um cluster de quatro nós, o epsilon pode estar em um nó em um par de HA diferente no cluster.
+
+Se você estiver atualizando um par de HA em um cluster com vários pares de HA, precisará mover o epsilon para o nó de um par de HA que não está passando por uma atualização da controladora. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD.
+
+====
++
+O exemplo a seguir mostra que node1 contém epsilon:
+
++
+[listing]
+----
+ cluster::*> cluster show
+
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         true
+ node2                true    true         false
+----
+. Se o node1 tiver o epsilon, marque o epsilon `false` no nó para que ele possa ser transferido para o node2:
++
+`cluster modify -node _node1_ -epsilon false`
+
+. Transfira o epsilon para node2 marcando o epsilon `true` em node2:
++
+`cluster modify -node _node2_ -epsilon true`
+
+. Verifique se ocorreu a alteração para node2:
++
+`cluster show`
+
++
+[listing]
+----
+ cluster::*> cluster show
+ Node                 Health  Eligibility  Epsilon
+ -------------------- ------- ------------ ------------
+ node1                true    true         false
+ node2                true    true         true
+----
++
+O epsilon para node2 agora deve ser verdadeiro e o epsilon para node1 deve ser falso.
+
+. Verifique se a configuração é um cluster sem switch de dois nós:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+ cluster::*> network options switchless-cluster show
+
+ Enable Switchless Cluster: false/true
+----
++
+O valor deste comando deve corresponder ao estado físico do sistema.
+
+. Voltar ao nível de administração:
++
+`set -privilege admin`
+
+. Interrompa o node1 do prompt node1:
++
+`system node halt -node _node1_`
+
++
+
+WARNING: *Atenção*: Se node1 estiver no mesmo chassi que node2, não desligue o chassi usando o interrutor de alimentação ou puxando o cabo de alimentação. Se você fizer isso, o node2, que está fornecendo dados, será desativado.
+
+. Quando o sistema solicitar que você confirme que deseja interromper o sistema, digite `y`.
++
+O nó pára no prompt do ambiente de inicialização.
+
+. Quando o node1 exibir o prompt do ambiente de inicialização, remova-o do chassi ou do rack.
++
+Você pode desativar o node1 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+
+

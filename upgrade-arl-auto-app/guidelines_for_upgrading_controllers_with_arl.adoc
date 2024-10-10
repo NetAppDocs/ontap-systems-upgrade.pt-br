@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: guidelines, upgrading, controllers, ARL 
+summary: 'Entenda se você pode atualizar controladores executando o ONTAP 9.8 ou posterior usando `system controller replace` comandos.' 
+---
+= Diretrizes para atualização de controladores com ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para entender se você pode usar o ARL para atualizar um par de controladores executando o ONTAP 9.8 ou posterior depende da plataforma e da configuração dos controladores original e de substituição.
+
+
+
+== Atualizações suportadas para ARL
+
+Ao atualizar um par de nós usando este procedimento ARL para o ONTAP 9.8 ou posterior, você deve verificar se o ARL pode ser executado nos controladores original e de substituição.
+
+Você deve verificar o tamanho de todos os agregados definidos e o número de discos suportados pelo sistema original. Em seguida, você deve comparar os tamanhos de agregados e o número de discos suportados com o tamanho de agregado e o número de discos suportados pelo novo sistema. Consulte a link:other_references.html["Referências"]ligação para o _Hardware Universe_ onde esta informação está disponível. O tamanho agregado e o número de discos suportados pelo novo sistema devem ser iguais ou superiores ao tamanho agregado e ao número de discos suportados pelo sistema original.
+
+Você deve validar nas regras de mistura de cluster se novos nós podem se tornar parte do cluster com os nós existentes quando o controlador original é substituído. Para obter mais informações sobre as regras de mistura de cluster, consulte o link:other_references.html["Referências"]link para o _Hardware Universe_.
+
+
+NOTE: Se você estiver atualizando um sistema que suporte unidades internas (por exemplo, um FAS2700 ou AFF A250), mas NÃO tiver unidades internas, consulte link:other_references.html["Referências"]e use o procedimento no _realocação agregada para atualizar manualmente o hardware do controlador_ conteúdo correto para sua versão do ONTAP.
+
+Se você tiver um sistema com mais de duas portas de cluster por nó, como um sistema FAS8080 ou AFF8080, antes de iniciar a atualização, deverá migrar e voltar a home as LIFs de cluster para duas portas de cluster por nó. Se você executar a atualização da controladora com mais de duas portas de cluster por nó, LIFs de cluster podem estar ausentes na nova controladora após a atualização.
+
+A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
+
+
+
+== Clusters sem switch de dois nós
+
+Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
+
+
+
+== Atualizações não suportadas para ARL
+
+Você não pode executar as seguintes atualizações:
+
+* Para substituir as controladoras que não são compatíveis com as gavetas de disco conectadas às controladoras originais
++
+link:other_references.html["Referências"]Consulte o link para o _Hardware Universe_ para obter informações de suporte a disco.
+
+* Para controladores de nível de entrada com unidades internas, por exemplo: Um FAS 2500.
++
+Se você quiser atualizar controladores de nível de entrada com unidades internas, link:other_references.html["Referências"]consulte o link para _Atualizar movendo volumes ou armazenamento_ e vá para o procedimento _Atualizar um par de nós executando Data ONTAP em cluster movendo volumes_.
+
+
+
+
+
+== Solução de problemas
+
+Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"]a secção no final do procedimento para obter mais informações e possíveis soluções.
+
+Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

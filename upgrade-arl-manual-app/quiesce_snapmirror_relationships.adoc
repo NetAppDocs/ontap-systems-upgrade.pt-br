@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/quiesce_snapmirror_relationships.html 
+keywords: quiesce, snapmirror, relationship, netboot, destination cluster 
+summary: Antes de inicializar o sistema, quiesce todas as relações do SnapMirror durante uma atualização manual do ARL em controladores executando o ONTAP 9.8 ou posterior. 
+---
+= Quiesce os relacionamentos de SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de inicializar o sistema pela rede, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.
+
+.Passos
+. Verifique o status da relação do SnapMirror no cluster de destino:
++
+`snapmirror show`
+
++
+
+NOTE: Se o status for `Transferring`, você deve cancelar essas transferências:
+`snapmirror abort -destination-vserver _vserver name_`
+
++
+A interrupção falha se a relação SnapMirror não estiver no `Transferring` estado.
+
+. Quiesce todas as relações entre o cluster:
++
+`snapmirror quiesce -destination-vserver *`
+
+

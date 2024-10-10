@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/guidelines_for_upgrading_controllers_with_arl.html 
+keywords: guidelines, upgrade, ontap, controllers, old, system, chassis, disk, disks 
+summary: Entenda se você pode usar o ARL, mantendo o chassi e os discos antigos do sistema, para sua configuração de atualização. 
+---
+= Diretrizes para atualização de controladores
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para entender se você pode usar o ARL (Aggregate Relocation), manter o chassi e os discos antigos do sistema, depende da configuração de atualização do sistema e da versão do ONTAP.
+
+
+
+== Atualizações suportadas para ARL
+
+Atualizações de controladora são suportadas para certas configurações de sistema. Para exibir a lista de sistemas suportados e versões mínimas do ONTAP, link:index.html["Visão geral"]consulte .
+
+Se você recebeu um novo AFF A150, FAS2820, AFF A900 ou FAS9500 como um sistema completo, incluindo um novo chassi, link:other_references.html["Referências"]consulte o link para os comandos _Use "System controller replace" para atualizar o hardware do controlador que executa o conteúdo do ONTAP 9.8 ou posterior_.
+
+A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
+
+
+
+== Clusters sem switch de dois nós
+
+Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
+
+
+
+== Alternar clusters conetados
+
+Se você estiver atualizando nós em um cluster que está conetado a um switch de cluster, verifique se a versão de marca, modelo, firmware, RCF e ONTAP em execução no switch será a mesma que a versão em execução no controlador de substituição após a atualização. Se necessário, você deve executar a atualização do switch antes de atualizar os controladores usando o procedimento ARL descrito nesta documentação.
+
+
+
+== Solucionar problemas
+
+Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"]a secção no final do procedimento para obter mais informações e possíveis soluções.
+
+Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

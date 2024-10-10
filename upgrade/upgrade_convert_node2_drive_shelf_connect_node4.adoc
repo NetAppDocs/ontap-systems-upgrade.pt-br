@@ -1,0 +1,34 @@
+---
+permalink: upgrade/upgrade_convert_node2_drive_shelf_connect_node4.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Converta o nó 2 (AFF A250) em um compartimento de unidade de NS224 TB e, em seguida, conete-se ao node4 (AFF A400).' 
+---
+= Converter node2 em um compartimento de unidades e conectá-lo ao node4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Converta o AFF A250 node2 em um compartimento de unidade de NS224 TB e, em seguida, conete-se ao AFF A400 node4 antes de reatribuir unidades de node2 TB a node4 TB.
+
+.Passos
+. Desligue todos os cabos de rede do node2.
+. Remova o node2 do chassi do AFF A250.
+. Insira o módulo do compartimento NVMe (NSM) no compartimento do node2.
+. Conete o NSM ao node4 por cabeamento da porta node4 100GbE e0c à porta NSM B e0a.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 com uma gaveta de NS224 U.]
+
+. Conete o cabeamento 25GbE de node2 portas e0c e e0d a quaisquer duas portas integradas 25GbE (e0e, e0f, e0g ou e0h) no node4 para criar conexões temporárias de cluster.
++
+
+NOTE: Se o sistema AFF A400 usar portas FC como portas integradas, instale um adaptador Ethernet de 25GB GB em cada nó para conectividade de cluster durante a migração.
+
+. Conecte os cabos de interconexão de 25GbE HA entre os nós AFF A400 usando as portas e0a e e0b. Não ligue as portas de forma cruzada.
+. Conete os cabos de interconexão de cluster 100GbE entre os nós AFF A400 usando as portas E3A e e3b. Não ligue as portas de forma cruzada.
+
+
+.O que se segue?
+link:upgrade_reassign_drives_node2_to_node4.html["Reatribuir unidades de node2 a node4"]

@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/set_up_netapp_volume_encryption_new_module.html 
+keywords: set up, netapp volume encryption, controller, module, nve, node 
+summary: 'Se necessário, configure o novo módulo de controladora para NVE ou NAE ao usar o ARL para atualizar modelos de controladora no mesmo chassi."' 
+---
+= Configure o volume NetApp ou a encriptação agregada no novo módulo do controlador
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se a controladora substituída ou parceiro de alta disponibilidade (HA) da nova controladora usar o NetApp volume Encryption (NVE) ou o NetApp Aggregate Encryption (NAE), você deverá configurar o novo módulo de controladora para NVE ou NAE.
+
+.Sobre esta tarefa
+Este procedimento inclui etapas que são executadas no novo módulo do controlador. Você deve inserir o comando no nó correto.
+
+[role="tabbed-block"]
+====
+.Gerenciador de chaves integrado
+--
+Configure o NVE ou o NAE usando o Gerenciador de chaves integrado.
+
+.Passos
+. Restaure chaves de autenticação de todos os servidores de gerenciamento de chaves vinculados para o novo nó:
++
+`security key-manager onboard sync`
+
+
+
+--
+.Gerenciamento de chaves externas
+--
+Configure o NVE ou o NAE usando o Gerenciamento de chaves externas.
+
+.Passos
+. Verifique se os servidores de gerenciamento de chaves ainda estão disponíveis, seu status e suas informações de chave de autenticação:
++
+`security key-manager key query -node node`
+
+. Adicione os servidores de gerenciamento de chaves listados na etapa anterior à lista de servidores de gerenciamento de chaves no novo controlador:
++
+.. Adicione o servidor de gerenciamento de chaves:
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+.. Repita a etapa anterior para cada servidor de gerenciamento de chaves listado. Você pode vincular até quatro servidores de gerenciamento de chaves.
+.. Verifique se os servidores de gerenciamento de chaves foram adicionados com êxito:
++
+`security key-manager external show`
+
+
+
+. No novo módulo do controlador, execute o assistente de configuração de gerenciamento de chaves para configurar e instalar os servidores de gerenciamento de chaves.
++
+Você deve instalar os mesmos servidores de gerenciamento de chaves que estão instalados no módulo de controlador existente.
+
++
+.. Inicie o assistente de configuração do servidor de gerenciamento de chaves no novo nó:
++
+`security key-manager external enable`
+
+.. Conclua as etapas no assistente para configurar servidores de gerenciamento de chaves.
+
+
+. Restaure chaves de autenticação de todos os servidores de gerenciamento de chaves vinculados para o novo nó:
++
+`security key-manager external restore`
+
++
+Esse comando precisa da senha OKM
+
++
+Para obter mais informações, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/onprem/ontap/dm/Encryption/How_to_restore_external_key_manager_server_configuration_from_the_ONTAP_boot_menu["Como restaurar a configuração do servidor gerenciador de chaves externo a partir do menu de inicialização do ONTAP"^] .
+
+
+
+--
+====
+.Depois de terminar
+Verifique se algum volume foi colocado offline porque as chaves de autenticação não estavam disponíveis ou os servidores EKM não puderam ser alcançados. Traga esses volumes de volta online usando o `volume online` comando.
+
+.Depois de terminar
+Verifique se algum volume foi colocado offline porque as chaves de autenticação não estavam disponíveis ou os servidores de Gerenciamento de chaves externas não puderam ser alcançados. Traga esses volumes de volta online usando o `volume online` comando.

@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+Para desativar o node1, você retoma a operação automatizada para desativar o par de HA com o node2 e encerrar o node1 corretamente. Posteriormente, no procedimento, você remove node1 do rack ou chassi.
+
+.Passos
+. Retomar a operação:
++
+`system controller replace resume`
+
+. Verifique se o node1 foi interrompido:
++
+`system controller replace show-details`
+
+
+
+.Depois de terminar
+Você pode desativar o node1 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .

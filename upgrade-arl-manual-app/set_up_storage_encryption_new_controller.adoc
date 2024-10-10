@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/set_up_storage_encryption_new_controller.html 
+keywords: set up, setup, storage encryption, new, controller, module 
+summary: Se necessário, configure a criptografia de armazenamento, instale certificados SSL e configure servidores de gerenciamento de chaves durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Configure a criptografia de armazenamento no novo módulo do controlador
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se o controlador substituído ou o parceiro de HA do novo controlador utilizar encriptação de armazenamento, tem de configurar o novo módulo de controlador para encriptação de armazenamento, incluindo a instalação de certificados SSL e a configuração de servidores de gestão de chaves.
+
+.Sobre esta tarefa
+Este procedimento inclui etapas que são executadas no novo módulo do controlador. Você deve inserir o comando no nó correto.
+
+.Passos
+. Verifique se os servidores de gerenciamento de chaves ainda estão disponíveis, seu status e suas informações de chave de autenticação:
++
+`security key-manager show -status`
+
++
+`security key-manager query`
+
+. Adicione os servidores de gerenciamento de chaves listados na etapa anterior à lista de servidores de gerenciamento de chaves no novo controlador.
++
+.. Adicione o servidor de gerenciamento de chaves:
++
+`security key-manager -add _key_management_server_ip_address_`
+
+.. Repita a etapa anterior para cada servidor de gerenciamento de chaves listado.
++
+Você pode vincular até quatro servidores de gerenciamento de chaves.
+
+.. Verifique se os servidores de gerenciamento de chaves foram adicionados com êxito:
++
+`security key-manager show`
+
+
+
+. No novo módulo do controlador, execute o assistente de configuração de gerenciamento de chaves para configurar e instalar os servidores de gerenciamento de chaves.
++
+Você deve instalar os mesmos servidores de gerenciamento de chaves que estão instalados no módulo de controlador existente.
+
++
+.. Inicie o assistente de configuração do servidor de gerenciamento de chaves no novo nó:
++
+`security key-manager setup -node _new_controller_name_`
+
+.. Conclua as etapas no assistente para configurar servidores de gerenciamento de chaves.
+
+
+. Restaure chaves de autenticação de todos os servidores de gerenciamento de chaves vinculados para o novo nó:
++
+`security key-manager restore -node _new_controller_name_`
+
+

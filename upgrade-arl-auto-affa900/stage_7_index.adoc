@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_7_index.html 
+keywords: upgrade, authentication, storage, volume, aggregate, encryption, overview, stage 7 
+summary: 'Sequência de processo do estágio 7 para uma atualização ARL usando `system controller replace` comandos para atualizar modelos de controladora no mesmo chassi.' 
+---
+= Visão geral da fase 7
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante a fase 7, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, você configura e configura a criptografia de armazenamento ou a criptografia de volume do NetApp. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
+
+.Passos
+. link:manage-authentication-using-kmip-servers.html["Gerenciar a autenticação usando servidores KMIP"]
+. link:ensure_new_controllers_are_set_up_correctly.html["Confirme se os novos controladores estão configurados corretamente"]
+. link:set_up_storage_encryption_new_module.html["Configure a criptografia de armazenamento no novo módulo do controlador"]
+. link:set_up_netapp_volume_encryption_new_module.html["Configure o volume NetApp ou a encriptação agregada no novo módulo do controlador"]
+. link:decommission_old_system.html["Desativar o sistema antigo"]
+. link:resume_snapmirror_operations.html["Retomar as operações do SnapMirror"]
+
+
+[NOTE]
+====
+Os sistemas AFF A70 e AFF A90 compartilham 100GbE portas de rede para conexões de cluster e HA. Esses sistemas podem oferecer suporte a conexões de cluster 10GbE ou 25GbE a switches de cluster legados. No entanto, a NetApp recomenda a atualização para velocidades de cluster 100GbE quando os switches 10GbE e 25GbE não forem mais necessários. Para obter mais informações, consulte os seguintes artigos da base de dados de Conhecimento:
+
+* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Como configurar portas de cluster 10G ou 25G em uma nova configuração de cluster no AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
+* link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Como converter um cluster existente de 10G ou 25G portas de cluster para 40G ou 100g portas de cluster em um AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
+
+
+Se não for possível vincular portas de cluster e0a ou e0b no nó existente às portas de cluster no novo nó, link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["NetApp Bugs Online ID de erro CONTAP-166978"^]consulte .
+
+====

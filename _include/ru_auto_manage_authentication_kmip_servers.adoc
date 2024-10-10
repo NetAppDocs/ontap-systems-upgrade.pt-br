@@ -1,0 +1,22 @@
+= 
+:allow-uri-read: 
+
+
+.Passos
+. Adicionar um novo controlador:
++
+`security key-manager external enable`
+
+. Adicione o gerenciador de chaves:
++
+`security key-manager external add-servers -key-servers _key_management_server_ip_address_`
+
+. Verifique se os servidores de gerenciamento de chaves estão configurados e disponíveis para todos os nós no cluster:
++
+`security key-manager external show-status`
+
+. Restaure as chaves de autenticação de todos os servidores de gerenciamento de chaves vinculados para o novo nó:
++
+`security key-manager external restore -node _new_controller_name_`
+
+

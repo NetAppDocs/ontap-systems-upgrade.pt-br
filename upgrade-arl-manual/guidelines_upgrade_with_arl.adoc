@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/guidelines_upgrade_with_arl.html 
+keywords: guidelines, upgrade, controllers, arl, aggregate, relocation 
+summary: Entenda se você pode usar o procedimento manual ARL para um par de controladores executando o ONTAP 9.7 ou anterior. 
+---
+= Diretrizes para atualização de controladores com ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para entender se você pode usar o ARL (Aggregate Relocation) para atualizar um par de controladores executando o ONTAP 9.0 para 9,7 depende da plataforma e da configuração das controladoras originais e de substituição.
+
+
+
+== Atualizações suportadas para ARL
+
+Você pode atualizar um par de nós usando ARL nas seguintes circunstâncias:
+
+* Os controladores originais e os controladores de substituição devem estar executando a mesma versão do ONTAP 9.x antes da atualização.
+* Os controladores de substituição devem ter capacidade igual ou superior à dos controladores originais. Capacidade igual ou superior refere-se a atributos, como o tamanho, volume, LUN ou limites de contagem de agregados do NVRAM; também se refere ao volume máximo ou aos tamanhos de agregados dos novos nós.
+* Você pode atualizar o seguinte tipo de sistemas:
++
+** Um sistema FAS para um sistema FAS.
+** Um sistema FAS para um sistema com software de virtualização FlexArray ou um sistema da série V.
+** Um sistema AFF para um sistema AFF.
+** Um sistema com software de virtualização FlexArray ou um sistema da série V para um sistema FAS, desde que o sistema com software de virtualização FlexArray ou sistema da série V não tenha LUNs de matriz.
+** Um sistema V-Series para um sistema com software de virtualização FlexArray ou um sistema V-Series.
+
+
+
+
+
+NOTE: Antes de executar uma atualização do sistema AFF, você deve atualizar o ONTAP para lançar as versões 9.3P12, 9.4P6 ou 9.5P1 ou posterior. Esses níveis de versão são necessários para uma atualização bem-sucedida.
+
+* Para algumas atualizações do controlador ARL, você pode usar portas de cluster temporárias no controlador de substituição para a atualização. Por exemplo, se você atualizar de um AFF A300 para um sistema AFF A400, dependendo da configuração do AFF A400, poderá usar qualquer uma das duas portas mezzanine ou adicionar uma placa de interface de rede 10GbE de quatro portas para fornecer portas temporárias de cluster. Após concluir a atualização da controladora usando portas de cluster temporárias, é possível migrar clusters para portas 100GbE no controlador de substituição sem interrupções.
+* Se você estiver usando o ONTAP 9.6P11, 9.7P8 ou versões posteriores, é recomendável ativar o controle de conetividade, vivacidade e disponibilidade do monitor (CLAM) para retornar o cluster ao quorum quando certas falhas de nó ocorrerem. O `kernel-service` comando requer acesso avançado ao nível de privilégio. Para obter mais informações, consulte: https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Artigo SU436 da NetApp KB: Configuração padrão de aquisição do CLAM alterada"^].
+* A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
+
+
+Você deve verificar se o ARL pode ser executado nos controladores original e de substituição. Você deve verificar o tamanho de todos os agregados definidos e o número de discos suportados pelo sistema original. Em seguida, compare-os com o tamanho agregado e o número de discos suportados pelo novo sistema. Para aceder a estas informações, link:other_references.html["Referências"]consulte para ligar ao _Hardware Universe_. O tamanho agregado e o número de discos suportados pelo novo sistema devem ser iguais ou superiores ao tamanho agregado e ao número de discos suportados pelo sistema original.
+
+Você deve validar nas regras de mistura de cluster se novos nós podem se tornar parte do cluster com os nós existentes quando o controlador original é substituído. Para obter mais informações sobre as regras de mistura de cluster, consulte o link:other_references.html["Referências"]link para o _Hardware Universe_.
+
+
+NOTE: Ambos os sistemas são de alta disponibilidade (HA) ou não HA. Ambos os nós precisam ter a personalidade ativada ou desativada. Você não pode combinar um nó com a personalidade otimizada All Flash ativada com um nó que não tenha a personalidade habilitada no mesmo par de HA. Se as personalidades forem diferentes, entre em Contato com o suporte técnico.
+
+
+NOTE: Se o novo sistema tiver menos slots do que o sistema original, ou se tiver menos ou portas diferentes, talvez seja necessário adicionar um adaptador ao novo sistema. link:other_references.html["Referências"]Consulte o link para o _Hardware Universe_ no site de suporte da NetApp para obter detalhes sobre plataformas específicas.
+
+
+
+== Atualizações não suportadas para ARL
+
+Você não pode executar as seguintes atualizações:
+
+* Para ou de controladores que não podem executar uma versão do ONTAP do ONTAP 9.0 para o ONTAP 9.7.
++
+Para obter informações sobre atualizações do controlador para sistemas que executam o Data ONTAP operando no modo 7, link:other_references.html["Referências"]consulte o link para o site de suporte _NetApp_.
+
+* Para substituir as controladoras que não são compatíveis com as gavetas de disco conectadas às controladoras originais.
++
+Para obter informações de suporte a disco, link:other_references.html["Referências"]consulte a ligação ao _Hardware Universe_.
+
+* Desde controladoras com agregados de raiz ou agregados de dados em unidades internas.
++
+Se você quiser atualizar controladores com agregados de raiz ou agregados de dados em unidades de disco internas, consulte link:other_references.html["Referências"]o link para _Atualizar movendo volumes ou armazenamento_ e vá para o procedimento _Atualizar um par de nós executando Data ONTAP em cluster movendo volumes_.
+
++
+
+NOTE: Se você quiser atualizar o ONTAP em nós em um cluster, link:other_references.html["Referências"]consulte o link para _Atualizar ONTAP_.
+
+
+
+
+
+== Suposições e terminologia
+
+Este documento é escrito com as seguintes premissas:
+
+* O hardware do controlador de substituição é novo e não foi utilizado.
++
+
+WARNING: *Atenção*: Como este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi usado, as etapas necessárias para preparar controladores usados com o `wipeconfig` comando não são incluídas neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o Data ONTAP no modo 7.
+
+* Você lê e entende as diretrizes para atualizar o par de nós.
++
+
+WARNING: *Atenção*: Não tente limpar o conteúdo do NVRAM. Se você precisar limpar o conteúdo do NVRAM, entre em Contato com o suporte técnico da NetApp.
+
+* Você está executando o comando apropriado antes e depois dos `modify` comandos e comparando a saída de ambos os comandos `show` para verificar se o `modify` comando foi bem-sucedido.
+* Se você tiver uma configuração de SAN, terá LIFs locais e parceiros para cada máquina virtual de storage (SVM) no par de HA. Se você não tiver LIFs locais e de parceiros para cada SVM, adicione o LIF de dados SAN nos nós local e remoto para esse SVM antes de iniciar a atualização.
+* Se você tiver conjuntos de portas em uma configuração SAN, deverá ter verificado que cada conjunto de portas vinculadas contém pelo menos um LIF de cada nó no par de HA.
+
+
+Este procedimento usa o termo _prompt do ambiente de inicialização_ para se referir ao prompt em um nó a partir do qual você pode executar certas tarefas, como reinicializar o nó e imprimir ou definir variáveis ambientais. O prompt às vezes é referido informalmente como o prompt _boot Loader_.
+
+O prompt do ambiente de inicialização é mostrado no exemplo a seguir:
+
+[listing]
+----
+LOADER>
+----
+
+
+== Licenciamento no ONTAP 9.7 ou anterior
+
+Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.
+
+Se você não tiver novas chaves de licença, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador e continuarão a funcionar. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o contrato de licença, portanto, você deve instalar a nova chave de licença ou chaves para o novo controlador após a conclusão da atualização.
+
+Todas as chaves de licença têm 28 carateres alfabéticos em letras maiúsculas. Consulte o link:other_references.html["Referências"]link para o _Site de suporte NetApp_, onde você pode obter novas chaves de licença de 28 carateres para o ONTAP 9.7. Ou anteriores. As chaves estão disponíveis na seção _meu suporte_ em _licenças de software_. Se o site não tiver as chaves de licença necessárias, entre em Contato com o representante de vendas da NetApp.
+
+Para obter informações detalhadas sobre o licenciamento, link:other_references.html["Referências"]acesse o link para a _Referência de Administração do sistema_.
+
+
+
+== Criptografia de storage
+
+Os nós originais ou os novos nós podem estar habilitados para criptografia de storage. Nesse caso, você deve seguir etapas adicionais neste procedimento para verificar se a criptografia de armazenamento está configurada corretamente.
+
+Se você quiser usar o Storage Encryption, todas as unidades de disco associadas aos nós devem ter unidades de disco com autocriptografia.
+
+
+
+== Clusters sem switch de dois nós
+
+Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
+
+
+
+== Solução de problemas
+
+Este procedimento inclui sugestões de resolução de problemas.
+
+Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"]a secção no final do procedimento para obter mais informações e possíveis soluções.
+
+Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

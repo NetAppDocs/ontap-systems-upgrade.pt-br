@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual/arl_upgrade_workflow.html 
+keywords: upgrade workflow, procedure steps, stages 
+summary: Entenda como funciona o procedimento manual de atualização ARL para um par de controladores executando o ONTAP 9.7 ou anterior. 
+---
+= Fluxo de trabalho de atualização ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de atualizar os nós usando ARL, você deve entender como o procedimento funciona. Neste documento, o procedimento é dividido em várias etapas.
+
+
+
+== Atualize o par de nós
+
+Para atualizar o par de nós, você deve preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.
+
+
+
+== Visão geral da sequência de atualização ARL
+
+Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, uma controladora de cada vez, aproveitando a configuração do par de HA para realocar a propriedade de agregados que não sejam raiz. Todos os agregados não-raiz devem passar por duas relocalizações para alcançar seu destino final, que é o nó atualizado correto.
+
+Cada agregado tem um proprietário de casa e proprietário atual. O proprietário da casa é o proprietário real do agregado, e o proprietário atual é o proprietário temporário.
+
+A ilustração a seguir mostra as etapas do procedimento. As setas grossos e cinza claro representam a realocação de agregados e o movimento de LIFs, e as setas pretas mais finas representam a remoção dos nós originais. As imagens menores do controlador representam os nós originais, e as imagens maiores do controlador representam os novos nós.
+
+image:arl_upgrade_manual_image1.PNG["Ilustração que mostra as etapas do procedimento ARL"]
+
+A tabela a seguir descreve as tarefas de alto nível executadas durante cada etapa e o estado de propriedade agregada no final da etapa. Etapas detalhadas são fornecidas posteriormente no procedimento:
+
+[cols="35,65"]
+|===
+| Fase | Descrição 
+
+
+| link:stage_1_index.html["Etapa 1: Prepare-se para a atualização"]  a| 
+Durante a fase 1, se necessário, você confirma que as unidades de disco internas não contêm agregados de raiz ou agregados de dados, prepara os nós para a atualização e executa uma série de pré-verificações. Se necessário, você pode usar discos para criptografia de armazenamento e se preparar para netboot dos novos controladores.
+
+Propriedade agregada no final da fase 1:
+
+* node1 é o proprietário da casa e atual proprietário dos agregados node1.
+* Node2 é o proprietário da casa e atual proprietário dos agregados node2.
+
+
+
+
+| link:stage_2_index.html["Fase 2: Aposentar-se node1"]  a| 
+Durante a fase 2, você realocar agregados não-raiz de node1 para node2 e move LIFs de dados não-SAN de propriedade de node1 para node2, incluindo agregados com falha ou vetado. Registe as informações node1 necessárias para utilização posterior no procedimento e, em seguida, retire node1.
+
+Propriedade agregada no final da fase 2:
+
+* node1 é o proprietário da casa de node1 agregados.
+* Node2 é o atual proprietário de node1 agregados.
+* Node2 é o proprietário da casa e atual proprietário de node2 agregados.
+
+
+
+
+| link:stage_3_index.html["Etapa 3: Instalar e inicializar node3"]  a| 
+Durante a fase 3, você instala e inicia o node3, mapeia as portas de gerenciamento de clusters e nós de node1 a node3, verifica a instalação do node3 e move LIFs de dados e SAN LIFs pertencentes ao node1 de node2 a node3. Você também realocar todos os agregados de node2 para node3 e mover os LIFs de dados e SAN LIFs de propriedade de node2 para node3.
+
+Propriedade agregada no final da fase 3:
+
+* Node2 é o proprietário da casa de node2 agregados, mas não o proprietário atual.
+* Node3 é o proprietário da casa e atual proprietário de agregados originalmente pertencentes a node1.
+* Node2 é o proprietário da casa e atual proprietário de agregados pertencentes a node2, mas não o proprietário da casa.
+
+
+
+
+| link:stage_4_index.html["Fase 4: Aposentar-se node2"]  a| 
+Durante a fase 4, registe as informações node2 necessárias para utilização posterior no procedimento e, em seguida, retire node2.
+
+Nenhuma alteração ocorre na propriedade agregada.
+
+
+
+| link:stage_5_index.html["Etapa 5: Instalar e inicializar node4"]  a| 
+Durante a fase 5, você instala e inicia o node4, mapeia as portas de gerenciamento de clusters e nós de node2 a node4, verifica a instalação do node4 e move LIFs de dados e SAN LIFs pertencentes ao node2 de node3 a node4. Você também realocar node2 agregados de node3 para node4 e mover os dados node2 LIFs nas de node3 para node4.
+
+Propriedade agregada no final da fase 5:
+
+* Node3 é o proprietário da casa e atual proprietário dos agregados que originalmente pertenciam a node1.
+* Node4 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node2.
+
+
+
+
+| link:stage_6_index.html["Etapa 6: Concluir a atualização"]  a| 
+Durante a fase 6, você confirma que os novos nós estão configurados corretamente e configuram criptografia de armazenamento ou criptografia de volume NetApp se os novos nós estiverem habilitados para criptografia. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
+
+
+NOTE: As atualizações de recuperação de desastres da máquina virtual de storage (SVM) não serão interrompidas de acordo com as programações atribuídas.
+
+Nenhuma alteração ocorre na propriedade agregada.
+
+|===

@@ -1,0 +1,41 @@
+---
+permalink: upgrade/upgrade-check-lifs-register-serial-number.html 
+sidebar: sidebar 
+keywords: lifs 
+summary: Antes de devolver o nó de substituição ao serviço, você deve verificar se os LIFs estão em suas portas iniciais e Registrar o número de série do nó de substituição se o AutoSupport estiver ativado e redefinir a giveback automática. 
+---
+= Verifique LIFs e Registre o número de série
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de devolver o nó de substituição ao serviço, você deve verificar se os LIFs estão em suas portas iniciais e Registrar o número de série do nó de substituição se o AutoSupport estiver ativado e redefinir a giveback automática.
+
+. Verifique se as interfaces lógicas estão relatando para o servidor doméstico e as portas: `network interface show -is-home false`
++
+Se algum LIFs estiver listado como false, reverta-os para suas portas iniciais: `network interface revert *`
+
+. Registre o número de série do sistema com o suporte da NetApp.
++
+[cols="1,2"]
+|===
+| Se... | Então... 
+
+
+ a| 
+O AutoSupport está ativado
+ a| 
+Envie uma mensagem AutoSupport para registar o número de série.
+
+
+
+ a| 
+O AutoSupport não está ativado
+ a| 
+Ligue para o suporte da NetApp para registar o número de série.
+
+|===
+. Se a giveback automática foi desativada, reative-a: `storage failover modify -node local -auto-giveback true`
+

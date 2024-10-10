@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+keywords: cluster, ha, aff, a800, shared, storage, data, management 
+summary: Conecte o cluster, a HA, o storage e as conexões de dados anteriormente conectadas ao AFF A800 node1 ao AFF A90 ou ao AFF A70 node1 recém-instalado 
+---
+= Cabo node1 para cluster compartilhado de HA e storage (somente atualização AFF A800)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Conecte o cluster, a HA, o storage, os dados e as conexões de gerenciamento anteriormente conectadas ao AFF A800 node1 ao AFF A90 ou ao AFF A70 node1 recém-instalado.
+
+
+
+== Ligue as portas e0M e BMC
+
+O AFF A800 tem uma porta de gerenciamento (e0M) e uma porta BMC. No AFF A90 e no AFF A70, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench". Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no AFF A800 antes de se conetar ao AFF A90 ou ao AFF A70.
+
+[cols="35,65"]
+|===
+| Se o... | Então... 
+
+
+| Os endereços IP e0M e BMC estão na mesma sub-rede IP | Conete a porta e0M ou BMC no AFF A800 à porta "Wrench" no AFF A90 ou no AFF A70. 
+
+
+| Os endereços IP e0M e BMC estão em sub-redes diferentes  a| 
+. Mesclar os endereços IP e0M e BMC em uma sub-rede IP.
+. Conete a porta e0M ou BMC no AFF A800 à porta "Wrench" no AFF A90 ou no AFF A70.
+
+
+|===
+
+
+== Conecte-se a um cluster sem switch de dois nós
+
+A tabela a seguir mostra o uso da porta do switch para configurações de cluster sem switch de dois nós.
+
+|===
+| Porta | Nó AFF A800 | Nó AFF A90 | Nó AFF A70 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | e7a (use e1b se não houver e7a) | e1b 
+
+
+| HA | e0b | Não ligue | Não ligue 
+
+
+| HA | e1b | Não ligue | Não ligue 
+
+
+| Portas de armazenamento SAS (se presentes e usadas) | Qualquer porta disponível | Qualquer porta disponível | Qualquer porta disponível 
+
+
+| Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
+|===
+
+
+== Conete-se a um cluster conetado a switch
+
+Para um cluster conetado a switch, verifique se você atende aos seguintes requisitos:
+
+* As portas de cluster idênticas nos nós AFF A90 ou AFF A70 estão no mesmo switch. Por exemplo, após a conclusão da atualização, e1a em node1 e e1a em node2 devem ser conetados a um switch de cluster. Da mesma forma, a segunda porta de cluster de ambos os nós deve ser conetada ao segundo switch de cluster. A conexão cruzada de portas compartilhadas de cluster-HA, onde e1a de node1 é conetada ao switchA e e1a de node2 é conetada ao switchB, resultará em falhas de comunicação HA.
+* Os nós AFF A90 e AFF A70 usam portas Ethernet de cluster-HA compartilhadas. Certifique-se de que os switches do cluster estejam instalados com um arquivo de configuração de referência (RCF) que suporte portas de cluster-HA compartilhadas.
+

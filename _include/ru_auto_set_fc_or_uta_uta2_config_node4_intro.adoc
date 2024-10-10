@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+Se o node4 tiver portas FC integradas, portas de adaptador unificado de destino integrado (UTA/UTA2) ou uma placa UTA/UTA2, você deverá configurar as configurações antes de concluir o restante do procedimento.
+
+.Sobre esta tarefa
+Talvez seja necessário concluir a <<Configurar portas FC no node4>> seção ou<<Verifique e configure as portas UTA/UTA2 no node4>>, ou ambas as seções.

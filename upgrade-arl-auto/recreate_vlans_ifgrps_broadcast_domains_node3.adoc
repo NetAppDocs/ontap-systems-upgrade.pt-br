@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/recreate_vlans_ifgrps_broadcast_domains_node3.html 
+keywords: node3, interface group, VLANs, broadcast domains, re-create 
+summary: 'Crie novamente as VLANs node1, os grupos de interface e os domínios de broadcast no node3 ao atualizar os controladores que executam o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
+---
+= Recriar VLANs, grupos de interface e domínios de broadcast no node3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de confirmar que o node3 está no quórum e pode se comunicar com o node2, você deve recriar as VLANs, grupos de interface e domínios de broadcast do node1 no node3. Você também deve adicionar as portas node3 aos domínios de broadcast recém-criados.
+
+.Sobre esta tarefa
+Para obter mais informações sobre como criar e recriar VLANs, grupos de interfaces e domínios de broadcast, link:other_references.html["Referências"]acesse e vincule a _Network Management_.
+
+.Passos
+. Crie novamente as VLANs no node3 usando as informações node1 registradas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"]seção:
++
+`network port vlan create -node _node_name_ -vlan _vlan-names_`
+
+. Crie novamente os grupos de interface no node3 usando as informações node1 registradas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"] seção:
++
+`network port ifgrp create -node _node_name_ -ifgrp _port_ifgrp_names_-distr-func`
+
+. Crie novamente os domínios de broadcast no node3 usando as informações node1 gravadas na link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1 para o node2"]seção:
++
+`network port broadcast-domain create -ipspace Default -broadcast-domain _broadcast_domain_names_ -mtu _mtu_size_ -ports _node_name:port_name,node_name:port_name_`
+
+. Adicione as portas node3 aos domínios de broadcast recém-criados:
++
+`network port broadcast-domain add-ports -broadcast-domain _broadcast_domain_names_ -ports _node_name:port_name,node_name:port_name_`
+
+

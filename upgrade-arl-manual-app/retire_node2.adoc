@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/retire_node2.html 
+keywords: retire, node2, cluster, SAN, LIFs 
+summary: Encerre o node2 corretamente e remova-o do rack ou chassi durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.8 ou posterior. 
+---
+= Aposentar-se node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para desativar o node2, você deve desligar o node2 corretamente e removê-lo do rack ou chassi. Se o cluster estiver em um ambiente SAN, você também deverá excluir os LIFs SAN.
+
+.Passos
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o cluster for... | Então... 
+
+
+| Um cluster de dois nós | Vá para <<man_retire_2_Step2,Passo 2>>. 
+
+
+| Um cluster com mais de dois nós | Vá para <<man_retire_2_Step9,Passo 9>>. 
+|===
+. [[man_remove_2_Step2]]Acesse o nível de privilégio avançado inserindo o seguinte comando em qualquer nó:
++
+`set -privilege advanced`
+
+. Verifique se o HA do cluster foi desativado inserindo o seguinte comando e examinando sua saída:
++
+`cluster ha show`
+
++
+O sistema exibe a seguinte mensagem:
+
++
+[listing]
+----
+High Availability Configured: false
+----
+. Verifique se o node2 atualmente mantém o epsilon inserindo o seguinte comando e examinando sua saída:
++
+`cluster show`
+
++
+O exemplo a seguir mostra que node2 contém epsilon:
+
++
+[listing]
+----
+cluster*::> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -----------
+node1                true    true          false
+node2                true    true          true
+
+Warning: Cluster HA has not been configured. Cluster HA must be configured on a two-node cluster to ensure data access availability in the event of storage failover. Use the "cluster ha modify -configured true" command to configure cluster HA.
+
+2 entries were displayed.
+----
++
+
+NOTE: Se você estiver atualizando um par de HA em um cluster com vários pares de HA, precisará mover o epsilon para o nó de um par de HA que não está passando por uma atualização da controladora. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD.
+
+. Se o node2 tiver o epsilon, marque o epsilon como `false` no nó para que ele possa ser transferido para o node3:
++
+`cluster modify -node _node2_ -epsilon false`
+
+. Transfira o epsilon para node3 marcando o epsilon `true` em node3:
++
+`cluster modify -node _node3_ -epsilon true`
+
+. Verifique se a configuração é um cluster sem switch de dois nós:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+O valor deste comando deve corresponder ao estado físico do sistema.
+
+. Verifique se a configuração é um cluster sem switch de dois nós:
++
+`network options switchless-cluster show`
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: false/true
+----
++
+O valor deste comando deve corresponder ao estado físico do sistema.
+
+. [[man_remove_2_Step9]]retorne ao nível de administração:
++
+`set -privilege admin`
+
+. Interrompa o node2 inserindo o seguinte comando em qualquer um dos controladores:
+`system node halt -node _node2_`
+. Depois que o node2 desligar completamente, remova-o do chassi ou do rack. Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+

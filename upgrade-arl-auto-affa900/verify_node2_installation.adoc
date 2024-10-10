@@ -1,0 +1,207 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/verify_node2_installation.html 
+keywords: verifying, verify, node, install, installation, NVRAM, controller, module, modules 
+summary: Verifique a instalação do node2 com módulos de substituição ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Verifique a instalação do node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve verificar a instalação do node2 com os módulos de sistema de substituição. Como não há alteração nas portas físicas, não é necessário mapear as portas físicas do antigo node2 para o node2 de substituição.
+
+.Sobre esta tarefa
+Depois de inicializar o node1 com o módulo de sistema de substituição, você verifica se ele está instalado corretamente. Você deve esperar que o node2 entre no quórum e, em seguida, retomar a operação de substituição do controlador.
+
+Neste ponto do procedimento, a operação pára enquanto node2 se junta ao quórum.
+
+.Passos
+. Verifique se o quórum de node2 aderiu:
++
+`cluster show -node node2 -fields health`
+
++
+A saída `health` do campo deve ser `true`.
+
+. Verifique se o node2 faz parte do mesmo cluster que o node1 e se está em bom estado:
++
+`cluster show`
+
+. Mudar para o modo de privilégio avançado:
++
+`set advanced`
+
+. Verifique o status da operação de substituição do controlador e verifique se ele está em um estado de pausa e no mesmo estado em que estava antes de node2 ser interrompido para executar as tarefas físicas de instalação de novos controladores e movimentação de cabos:
++
+`system controller replace show`
+
++
+`system controller replace show-details`
+
+. Retomar a operação de substituição do controlador:
++
+`system controller replace resume`
+
+. A operação de substituição do controlador pausa para a intervenção com a seguinte mensagem:
++
+[listing]
+----
+Cluster::*> system controller replace show
+Node          Status                       Error-Action
+------------  ------------------------     ------------------------------------
+Node2         Paused-for-intervention      Follow the instructions given in
+                                           Step Details
+Node1         None
+
+Step Details:
+--------------------------------------------
+To complete the Network Reachability task, the ONTAP network configuration must be manually adjusted to match the new physical network configuration of the hardware. This includes:
+
+
+1. Re-create the interface group, if needed, before restoring VLANs. For detailed commands and instructions, refer to the "Re-creating VLANs, ifgrps, and broadcast domains" section of the upgrade controller hardware guide for the ONTAP version running on the new controllers.
+2. Run the command "cluster controller-replacement network displaced-vlans show" to check if any VLAN is displaced.
+3. If any VLAN is displaced, run the command "cluster controller-replacement network displaced-vlans restore" to restore the VLAN on the desired port.
+2 entries were displayed.
+----
++
+
+NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broadcast_ foi renomeada como _Restaurar configuração de rede em node2_.
+
+. Com a substituição do controlador em estado de pausa, avance para <<Restaure a configuração de rede no node2>>.
+
+
+
+
+== Restaure a configuração de rede no node2
+
+Depois de confirmar que o node2 está no quórum e pode se comunicar com o node1, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node1 são vistos no node2. Além disso, verifique se todas as portas de rede node2 estão configuradas em seus domínios de broadcast corretos.
+
+.Sobre esta tarefa
+Para obter mais informações sobre como criar e recriar VLANs, grupos de interface e domínios de broadcast, link:other_references.html["Referências"]consulte para vincular ao conteúdo _Network Management_.
+
+.Passos
+. Liste todas as portas físicas que estão no node2 atualizado:
++
+`network port show -node node2`
+
++
+Todas as portas de rede físicas, portas VLAN e portas de grupo de interfaces no nó são exibidas. A partir desta saída, você pode ver quaisquer portas físicas que foram movidas para o `Cluster` domínio de broadcast pelo ONTAP. Você pode usar essa saída para ajudar a decidir quais portas devem ser usadas como portas membros do grupo de interfaces, portas base VLAN ou portas físicas independentes para hospedar LIFs.
+
+. Liste os domínios de broadcast no cluster:
++
+`network port broadcast-domain show`
+
+. Listar a acessibilidade da porta de rede de todas as portas no node2:
++
+`network port reachability show -node node2`
+
++
+Você deve ver saída semelhante ao exemplo a seguir. Os nomes das portas e das transmissões variam.
+
++
+[listing]
+----
+Cluster::> reachability show -node node1
+  (network port reachability show)
+Node      Port     Expected Reachability                Reachability Status
+--------- -------- ------------------------------------ ---------------------
+Node1
+          a0a      Default:Default                      ok
+          a0a-822  Default:822                          ok
+          a0a-823  Default:823                          ok
+          e0M      Default:Mgmt                         ok
+          e1a      Cluster:Cluster                      ok
+          e1b      -                                    no-reachability
+          e2a      -                                    no-reachability
+          e2b      -                                    no-reachability
+          e3a      -                                    no-reachability
+          e3b      -                                    no-reachability
+          e7a      Cluster:Cluster                      ok
+          e7b      -                                    no-reachability
+          e9a      Default:Default                      ok
+          e9a-822  Default:822                          ok
+          e9a-823  Default:823                          ok
+          e9b      Default:Default                      ok
+          e9b-822  Default:822                          ok
+          e9b-823  Default:823                          ok
+          e9c      Default:Default                      ok
+          e9d      Default:Default                      ok
+20 entries were displayed.
+----
++
+No exemplo anterior, o node2 inicializou e juntou quórum após a substituição do controlador. Ele tem várias portas que não têm acessibilidade e estão pendentes de uma verificação de acessibilidade.
+
+. [[Restore_node2_step4]]repare a acessibilidade para cada uma das portas no node2 com um status de acessibilidade diferente do que `ok` usando o seguinte comando, na seguinte ordem:
++
+`network port reachability repair -node _node_name_  -port _port_name_`
+
++
+--
+.. Portas físicas
+.. Portas VLAN
+
+
+--
++
+Você deve ver a saída como o exemplo a seguir:
+
++
+[listing]
+----
+Cluster ::> reachability repair -node node2 -port e9d
+----
++
+[listing]
+----
+Warning: Repairing port "node2:e9d" may cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+----
++
+Uma mensagem de aviso, como mostrado no exemplo anterior, é esperada para portas com um status de acessibilidade que pode ser diferente do status de acessibilidade do domínio de broadcast onde ele está localizado atualmente. Revise a conetividade da porta e da resposta `y` ou `n` conforme apropriado.
+
++
+Verifique se todas as portas físicas têm sua acessibilidade esperada:
+
++
+`network port reachability show`
+
++
+À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não pertencer a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas.
+
+. Verificar acessibilidade da porta:
++
+`network port reachability show`
+
++
+Quando todas as portas estão corretamente configuradas e adicionadas aos domínios de broadcast corretos, o `network port reachability show` comando deve relatar o status de acessibilidade como `ok` para todas as portas conetadas e o status como `no-reachability` para portas sem conetividade física. Se qualquer porta relatar um status diferente desses dois, execute o reparo de acessibilidade e adicione ou remova portas de seus domínios de broadcast, conforme instruções em <<restore_node2_step4,Passo 4>>.
+
+. Verifique se todas as portas foram colocadas em domínios de broadcast:
++
+`network port show`
+
+. Verifique se todas as portas nos domínios de broadcast têm a unidade de transmissão máxima (MTU) correta configurada:
++
+`network port broadcast-domain show`
+
+. Restaure as portas iniciais do LIF, especificando o SVM e as portas home do LIF, se houver, que precisam ser restauradas usando as seguintes etapas:
++
+.. Liste quaisquer LIFs que estão deslocados:
++
+`displaced-interface show`
+
+.. Restaure os nós iniciais do LIF e as portas iniciais:
++
+`displaced-interface restore-home-node -node _node_name_ -vserver _vserver_name_ -lif-name _LIF_name_`
+
+
+
+. Verifique se todos os LIFs têm uma porta inicial e estão administrativamente ativos:
++
+`network interface show -fields home-port,status-admin`
+
+

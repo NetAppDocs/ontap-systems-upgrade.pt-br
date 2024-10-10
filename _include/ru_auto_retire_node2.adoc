@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+Para desativar o node2, primeiro você desliga o node2 corretamente e o remove do rack ou chassi.
+
+.Passos
+. Retomar a operação:
++
+`system controller replace resume`
+
++
+O nó pára automaticamente.
+
+
+
+.Depois de terminar
+Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .

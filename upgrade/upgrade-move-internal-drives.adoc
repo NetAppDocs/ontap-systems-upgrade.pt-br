@@ -1,0 +1,47 @@
+---
+permalink: upgrade/upgrade-move-internal-drives.html 
+sidebar: sidebar 
+keywords: node, support, model, upgrading, upgrade, moving, move, storage, internal, sata, drive, ssd, drive, shelf, attach, cluster, transfer, sas, drive, move internal drives from an original node 
+summary: Se o nó original for um dos modelos suportados, durante o processo de atualização movendo o armazenamento, você poderá mover as unidades SATA internas, SSDs ou unidades SAS do nó para um compartimento de unidades anexado ao novo nó no mesmo cluster. 
+---
+= Mova unidades internas de um nó original
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o nó original for um dos modelos suportados, durante o processo de atualização movendo o armazenamento, você poderá mover as unidades SATA internas, SSDs ou unidades SAS do nó para um compartimento de unidades anexado ao novo nó no mesmo cluster.
+
+.Antes de começar
+* Você deve ter revisado link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"] sobre a movimentação de unidades internas.
++
+Entre em Contato com o suporte técnico se precisar de orientação específica para sua configuração.
+
+* As operadoras de unidades SATA, SSD ou SAS do nó original devem ser compatíveis com o novo compartimento de unidades.
+* Um compartimento de unidade compatível já deve estar conetado ao novo nó.
+* O compartimento de unidades deve ter compartimentos livres suficientes para acomodar os suportes de unidades SATA, SSD ou SAS do nó original.
+
+
+.Passos
+. Retire cuidadosamente a moldura da parte frontal do sistema.
+. [[move_int_drive_2]]pressione o botão de liberação no lado esquerdo do transportador da unidade.
++
+O manípulo do excêntrico no suporte abre parcialmente e o suporte liberta-se do plano médio.
+
+. Puxe o manípulo do excêntrico para a posição totalmente aberta para retirar o suporte do plano médio e, em seguida, deslize suavemente o suporte para fora da prateleira de acionamento.
++
+
+NOTE: Utilize sempre as duas mãos ao remover, instalar ou transportar uma unidade. No entanto, não coloque as mãos sobre as placas de acionamento expostas na parte inferior do suporte.
+
+. Com a pega do excêntrico na posição aberta, introduza o suporte numa ranhura na nova prateleira da unidade, empurrando firmemente até que o suporte pare.
++
+
+NOTE: Utilize duas mãos ao inserir o suporte.
+
+. [[move_int_drive_5]] feche a alça do came de modo que o transportador esteja totalmente assentado no plano médio e a alça clique no lugar.
++
+Tem de fechar a pega lentamente de forma a que fique corretamente alinhada com a face do transportador.
+
+. Repita <<move_int_drive_2,Passo 2>> até <<move_int_drive_5,Passo 5>> para todas as unidades que você está movendo para o novo sistema.
+

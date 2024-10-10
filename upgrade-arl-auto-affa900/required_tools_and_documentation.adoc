@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/required_tools_and_documentation.html 
+keywords: required, tools, documentation, install, worksheet, ontap 
+summary: Você deve ter certas ferramentas e documentação para usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Ferramentas e documentação necessárias
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve ter uma pulseira de aterramento para executar a atualização e você precisa consultar outros documentos durante o processo de atualização.
+
+Para uma atualização do AFF A800 para um AFF A90 ou AFF A70, verifique se os cabos 100GbE têm, no mínimo, um metro de comprimento.
+
+link:other_references.html["Referências"]Consulte para aceder à lista de documentos de referência e sites de referência necessários para esta atualização.

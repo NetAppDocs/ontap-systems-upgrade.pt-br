@@ -1,0 +1,237 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app-9151/reboots_panics_or_power_cycles.html 
+keywords: reboots, panics, power, cycles, node, crash 
+summary: 'O sistema pode falhar – reiniciar, entrar em pânico ou passar por um ciclo de energia – durante diferentes estágios ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+---
+= Reinicializa, pânicos ou ciclos de energia
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O sistema pode falhar – reiniciar, entrar em pânico ou passar por um ciclo de energia – durante diferentes fases da atualização.
+
+A solução para esses problemas depende de quando eles ocorrem.
+
+
+
+== Reinicializa, entra em pânico ou ciclos de alimentação durante a fase de pré-verificação
+
+
+
+=== node1 ou node2 falha antes da fase de pré-verificação com par de HA ainda ativado
+
+Se o node1 ou o node2 falhar antes da fase de pré-verificação, ainda não foram transferidos agregados e a configuração do par de HA ainda está ativada.
+
+.Sobre esta tarefa
+A aquisição e a giveback podem prosseguir normalmente.
+
+.Passos
+. Verifique se existem mensagens EMS na consola que o sistema possa ter emitido e tome as medidas corretivas recomendadas.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+== Reinicializa, pânicos ou ciclos de energia durante a primeira fase de liberação de recursos
+
+
+
+=== node1 falha durante a primeira fase de liberação de recursos com par de HA ainda ativado
+
+Alguns ou todos os agregados foram relocados de node1 para node2, e o par de HA ainda está habilitado. O Node2 assume o volume raiz do node1 e quaisquer agregados não-raiz que não foram realocados.
+
+.Sobre esta tarefa
+A propriedade de agregados que foram realocados parece a mesma propriedade de agregados não-raiz que foram assumidos porque o proprietário da casa não mudou.
+
+Quando node1 entra no `waiting for giveback` estado, node2 devolve todos os node1 agregados não-raiz.
+
+.Passos
+. Depois que o node1 é inicializado, todos os agregados não-root do node1 foram movidos de volta para node1. É necessário realizar uma realocação agregada manual dos agregados de node1 para node2:
+`storage aggregate relocation start -node node1 -destination node2 -aggregate -list * -ndocontroller-upgrade true`
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== O node1 trava durante a primeira fase de liberação de recursos enquanto o par HA está desativado
+
+O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
+
+.Passos
+. Abra node1.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== O Node2 falha durante a primeira fase de liberação de recursos com par de HA ainda ativado
+
+A node1 mudou parte ou todos os seus agregados para node2. O par de HA está ativado.
+
+.Sobre esta tarefa
+O node1 assume todos os agregados da node2, bem como qualquer um dos seus próprios agregados que tinha transferido para node2. Quando o node2 é inicializado, a realocação agregada é concluída automaticamente.
+
+.Passos
+. Abra node2.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== O Node2 trava durante a primeira fase de liberação de recursos e após o par HA ser desativado
+
+node1 não assume o controle.
+
+.Passos
+. Abra node2.
++
+Uma interrupção de cliente ocorre para todos os agregados enquanto o node2 está sendo inicializado.
+
+. Continue com o resto do procedimento de atualização do par de nós.
+
+
+
+
+== Reinicializa, pânicos ou ciclos de energia durante a primeira fase de verificação
+
+
+
+=== Node2 falha durante a primeira fase de verificação com o par de HA desativado
+
+O Node3 não assume o controlo após uma falha de node2, uma vez que o par HA já está desativado.
+
+.Passos
+. Abra node2.
++
+Uma interrupção de cliente ocorre para todos os agregados enquanto o node2 está sendo inicializado.
+
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== Node3 falha durante a primeira fase de verificação com o par de HA desativado
+
+O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
+
+.Passos
+. Abra node3.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+== Reinicializa, entra em pânico ou ciclos de energia durante a primeira fase de recuperação de recursos
+
+
+
+=== Node2 falha durante a primeira fase de recuperação de recursos durante a realocação agregada
+
+A Node2 realocou alguns ou todos os seus agregados de node1 para node3. O Node3 serve dados de agregados que foram realocados. O par de HA está desativado e, portanto, não há aquisição.
+
+.Sobre esta tarefa
+Há uma interrupção do cliente para agregados que não foram realocados. Ao inicializar até node2, os agregados de node1 são relocados para node3.
+
+.Passos
+. Abra node2.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== Node3 falha durante a primeira fase de recuperação de recursos durante a realocação agregada
+
+Se o node3 falhar enquanto o node2 estiver realocando agregados para node3, a tarefa continuará após o node3 ser inicializado.
+
+.Sobre esta tarefa
+O Node2 continua a servir os agregados restantes, mas os agregados que já foram transferidos para a interrupção do cliente node3 encontram enquanto o node3 está a arrancar.
+
+.Passos
+. Abra node3.
+. Continue com a atualização da controladora.
+
+
+
+
+== Reinicializa, pânicos ou ciclos de energia durante a fase pós-verificação
+
+
+
+=== Node2 ou node3 falha durante a fase pós-verificação
+
+O par de HA está desativado, portanto, não há aquisição. Há uma interrupção de cliente para agregados pertencentes ao nó que reinicializou.
+
+.Passos
+. Abra o nó.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+== Reinicializa, entra em pânico ou ciclos de energia durante a segunda fase de liberação de recursos
+
+
+
+=== Node3 falha durante a segunda fase de liberação de recursos
+
+Se o node3 falhar enquanto o node2 estiver realocando agregados, a tarefa continuará após a inicialização do node3.
+
+.Sobre esta tarefa
+O Node2 continua a servir os agregados restantes, mas os agregados que já foram transferidos para os agregados do node3 e do node3 encontram falhas de cliente enquanto o node3 está inicializando.
+
+.Passos
+. Abra node3.
+. Continue com o procedimento de atualização da controladora.
+
+
+
+
+=== Node2 falha durante a segunda fase de liberação de recursos
+
+Se o node2 falhar durante a realocação agregada, o node2 não será retomado.
+
+.Sobre esta tarefa
+O Node3 continua a servir os agregados que foram realocados, mas os agregados pertencentes ao node2 encontram falhas de cliente.
+
+.Passos
+. Abra node2.
+. Continue com o procedimento de atualização da controladora.
+
+
+
+
+== Reinicializa, pânicos ou ciclos de energia durante a segunda fase de verificação
+
+
+
+=== Node3 falha durante a segunda fase de verificação
+
+Se o node3 falhar durante essa fase, a aquisição não acontece porque o par de HA já está desativado.
+
+.Sobre esta tarefa
+Há uma interrupção de cliente para todos os agregados até que node3 reinicialize.
+
+.Passos
+. Abra node3.
+. Continue com o procedimento de atualização do par de nós.
+
+
+
+
+=== Node4 falha durante a segunda fase de verificação
+
+Se o node4 falhar durante esta fase, a aquisição não acontece. O Node3 fornece dados dos agregados.
+
+.Sobre esta tarefa
+Há uma interrupção para agregados não-raiz que já foram relocados até que node4 reinicializações.
+
+.Passos
+. Abra node4.
+. Continue com o procedimento de atualização do par de nós.
+

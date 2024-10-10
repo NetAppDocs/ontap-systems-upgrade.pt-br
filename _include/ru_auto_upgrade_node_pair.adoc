@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Para atualizar o par de nós, você precisa preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.

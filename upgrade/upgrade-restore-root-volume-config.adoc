@@ -1,0 +1,58 @@
+---
+permalink: upgrade/upgrade-restore-root-volume-config.html 
+sidebar: sidebar 
+keywords: Controller Hardware Upgrade Express Guide 
+summary: Você deve restaurar as informações de configuração do volume raiz para os dispositivos de inicialização. 
+---
+= Restaure a configuração do volume raiz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve restaurar as informações de configuração do volume raiz para os dispositivos de inicialização.
+
+
+NOTE: Se você estiver executando uma atualização do controlador no local para um sistema que usa as portas "e0a" e "e0b" como portas de interconexão de alta disponibilidade (HA), por exemplo, um FAS8300, um AFF A400 ou um FAS8700, verifique se você link:upgrade-prepare-when-moving-storage.html#assign_lifs["Reatribuir quaisquer LIFs de gerenciamento ou clusters"]configurou nas portas "e0a" e "e0b" no sistema original antes de iniciar o procedimento de atualização.
+
+.Sobre esta tarefa
+Você deve executar estas etapas em node3 e node4, completando cada etapa em um nó e, em seguida, o outro antes de passar para a próxima etapa.
+
+.Passos
+. Acesse o menu de inicialização no prompt Loader:
++
+`boot_ontap menu`
+
+. No menu de inicialização, `(6) Update flash from backup config` selecione e entre `y` quando solicitado a continuar. Escolha uma das seguintes opções:
++
+[listing]
+----
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+Selection (1-9)? 6
+This will replace all flash-based configuration with the last backup to disks. Are you sure you want to continue?: y
+----
++
+O processo de atualização do flash é executado por vários minutos e, em seguida, o sistema reinicia.
+
+. Quando for solicitado que confirme a incompatibilidade da ID do sistema, introduza `y`.
++
+[listing]
+----
+WARNING: System id mismatch. This usually occurs when replacing CF or NVRAM cards!
+Override system id? {y|n} [n] y
+----
++
+A sequência de arranque prossegue normalmente.
+
+
+
+Se a atualização da controladora falhar e relatar uma `rlib_port_ipspace_assign` mensagem de erro, você deverá reverter a atualização e excluir as LIFs nas portas de rede do sistema original que estão sendo usadas como portas HA no sistema de substituição. Para obter mais informações, link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/PANIC_%3A_rlib_port_ipspace_assign%3A_port_e0a_could_not_be_moved_to_HA_ipspace["Este artigo da KB"^]consulte .

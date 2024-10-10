@@ -1,0 +1,71 @@
+= 
+:allow-uri-read: 
+
+
+Você deve reunir certas informações para oferecer suporte à atualização dos nós originais. Essas informações incluem IDs de nó, detalhes de porta e LIF, chaves de licenciamento e endereços IP.
+
+Pode utilizar a seguinte folha de cálculo para registar as informações a utilizar posteriormente no procedimento:
+
+|===
+| Informações necessárias | Quando recolhidos | Quando utilizado | Informações coletadas 
+
+
+| Modelo, ID do sistema, número de série dos nós originais | Etapa 1: _Prepare os nós para a atualização_ | Etapa 3: _Instalar e inicializar node3_ Etapa 5: _Instalar e inicializar node4_ Etapa 6: _Decommission o sistema antigo_ |  
+
+
+| Informações de compartimento e disco, detalhes de storage flash, memória, NVRAM e placas de adaptador nos nós originais | Etapa 1: _Preparando os nós para a atualização_ | Ao longo do procedimento |  
+
+
+| Agregados e volumes on-line em nós originais | Etapa 1: _Prepare os nós para a atualização_ | Ao longo do procedimento para verificar se os agregados e volumes permanecem online, exceto durante uma breve realocação |  
+
+
+| Saída de comandos `network port vlan show` e. `network port ifgrp show` | Etapa 1: _Prepare os nós para a atualização_ | Etapa 3: _Portas de mapa de node1 a node3_ Etapa 5: _Portas de mapa de node2 a node4_ |  
+
+
+| (Somente AMBIENTES SAN) configuração padrão de portas FC | Etapa 1: _Prepare os nós para a atualização_ | Ao configurar portas FC nos novos nós |  
+
+
+| (Sistemas ou sistemas da série V apenas com software de virtualização FlexArray) topologia para sistemas da série V ou sistemas com software de virtualização FlexArray | Etapa 1: _Prepare os nós para a atualização_ | Etapa 3: _Instalar e inicializar node3_ Etapa 5: _Instalar e inicializar node4_ |  
+
+
+| Endereço IP do SPS | Etapa 1: _Prepare os nós para a atualização_ | Etapa 6: _Confirme se os novos controladores estão configurados corretamente_ |  
+
+
+| Chaves de licença | Etapa 1: _Prepare os nós para a atualização_ | Etapa 6: _Confirme se os novos controladores estão configurados corretamente_ |  
+
+
+| Endereço IP para o servidor de gerenciamento de chaves externo | Etapa 1: _Discos de rechavear para criptografia de armazenamento_ | Etapa 6: _Configurar a criptografia de storage nos novos nós_ |  
+
+
+| Nome e caminho do diretório acessível pela Web onde você baixa arquivos para netboot dos nós | Etapa 1: _Prepare-se para netboot_ | Etapa 3: _Instalar e inicializar node3_ Etapa 5: _Instalar e inicializar node4_ |  
+
+
+| LIFs de dados não SAN de propriedade da node1 | Etapa 2: _Mover LIFs de dados não SAN de propriedade de node1 a node2_ | Mais tarde na seção |  
+
+
+| Cluster, clusters, gerenciamento de nós, gerenciamento de clusters e portas físicas | Etapa 2: _Record node1 informações_ | Etapa 3: _Instalar e inicializar node3_ Etapa 3: _Portas de mapa de node1 a node3_ |  
+
+
+| Portas em novos nós | Etapa 3: _Mapeie portas de node1 a node3_ | Mais tarde na seção e na seção _mapeie portas de node2 a node4_ |  
+
+
+| Portas e domínios de broadcast disponíveis no node3 | Etapa 3: _Mapeie portas de node1 a node3_ | Mais tarde na seção |  
+
+
+| LIFs de dados não SAN não pertencentes à node2 | _Movendo LIFs de dados não SAN pertencentes ao node1 de node2 para node3 e verificando LIFs SAN no node3_ | Mais tarde na seção |  
+
+
+| LIFs de dados não SAN de propriedade da node2 | Etapa 3: _Mover LIFs de dados não SAN de propriedade de node2 a node3_ | Mais tarde na seção |  
+
+
+| Cluster, clusters, gerenciamento de nós, gerenciamento de clusters e portas físicas | Etapa 4: _Record node2 informações_ | Etapa 5: _Instalar e inicializar node4_ Etapa 5:_ portas de mapa de node2 a node4_ |  
+
+
+| Portas de rede de cluster no node4 | Etapa 5: _Mapeie portas de node2 a node4_ | Mais tarde na seção |  
+
+
+| Portas e domínios de broadcast disponíveis no node4 | Etapa 5: _Mapeie portas de node2 a node4_ | Mais tarde na seção |  
+
+
+| Certificados SSL privados e públicos para o sistema de armazenamento e certificados SSL privados para cada servidor de gerenciamento de chaves | Etapa 6: _Configurar a criptografia de storage nos novos nós_ | Mais tarde na seção |  
+|===

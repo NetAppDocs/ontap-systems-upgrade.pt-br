@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Os nós originais ou os novos nós podem estar habilitados para criptografia de storage. Nesse caso, você deve seguir etapas adicionais neste procedimento para verificar se a criptografia de armazenamento está configurada corretamente.
+
+Se você quiser usar o Storage Encryption, todas as unidades de disco associadas aos nós devem ter unidades de disco com autocriptografia.

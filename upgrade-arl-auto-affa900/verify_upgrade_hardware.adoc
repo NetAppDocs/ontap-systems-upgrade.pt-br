@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/verify_upgrade_hardware.html 
+keywords: nodes, upgrade, verify, hardware 
+summary: Antes de iniciar a atualização, verifique se você tem o hardware correto para atualizar os modelos de controladora no mesmo chassi. 
+---
+= Verifique o hardware de atualização
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Antes de iniciar a atualização, verifique se você tem o hardware correto para a atualização. Dependendo da atualização, para cada par de HA que você está atualizando, é necessário ter dois módulos de controladora ou dois módulos de controladora e dois módulos NVRAM para o sistema de substituição. Se houver peças em falta, entre em Contato com o suporte técnico ou com o representante de vendas da NetApp para obter assistência.
+
+[cols="50,50"]
+|===
+| Se você estiver atualizando ... | O sistema de substituição deve ter ... 
+
+
+| AFF A800 | Dois módulos de controladora, dois NVRAMs e novos módulos de e/S 
+
+
+| AFF A220 configurado como um ASA para ASA A150 | Dois módulos de controlador 
+
+
+| AFF A220, AFF A200 ou AFF C190 para AFF A150 | Dois módulos de controlador 
+
+
+| FAS2620 ou FAS2720 para FAS2820 | Dois módulos de controlador 
+
+
+| AFF A700 configurado como um ASA para ASA A900 | Dois controladores e dois módulos NVRAM 
+
+
+| AFF A700 para AFF A900 | Dois controladores e dois módulos NVRAM 
+
+
+| FAS9000 a FAS9500 | Dois controladores e dois módulos NVRAM 
+|===

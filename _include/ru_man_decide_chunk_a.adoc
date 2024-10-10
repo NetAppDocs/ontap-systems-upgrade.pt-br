@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Este conteúdo descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém todos os dados e discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+
+Use este conteúdo nas seguintes circunstâncias:
+
+* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
+* Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+

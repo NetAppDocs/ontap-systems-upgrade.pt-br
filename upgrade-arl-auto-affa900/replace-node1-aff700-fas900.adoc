@@ -1,0 +1,200 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/replace-node1-aff700-fas900.html 
+keywords: aff, asa, fas, replace, node1, system, modules 
+summary: Substitua os módulos de sistema AFF A700 ou FAS9000 node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Substitua o controlador AFF A700 ou FAS9000 e os módulos NVRAM
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Como o node1 e o node2 estão no mesmo chassi e alimentados pelo mesmo conjunto de fontes de alimentação, NÃO desligue o chassi. Tem de ter cuidado para remover apenas o módulo do controlador node1 e o módulo NVRAM node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
+
+.Antes de começar
+Se você ainda não está aterrado, aterre-se corretamente.
+
+
+
+== Retire o módulo do controlador AFF A700 ou FAS9000
+
+Solte e retire o módulo do controlador AFF A700 ou FAS9000 do node1.
+
+.Passos
+. Retire o cabo da consola, se existir, e o cabo de gestão do módulo controlador node1.
++
+
+WARNING: Quando estiver a trabalhar no node1, apenas remova a consola e os cabos e0M do node1. Não deve remover ou alterar quaisquer outros cabos ou ligações em node1 ou node2 durante este processo.
+
+. Desbloqueie e retire o módulo do controlador A do chassis.
++
+.. Deslize o botão laranja na pega do came para baixo até que este se destranque.
++
+image::../media/drw_9500_remove_PCM.png[Remova o módulo do controlador]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image::../media/black_circle_one.png[Número um]
+| Botão de libertação do manípulo do excêntrico 
+
+
+ a| 
+image::../media/black_circle_two.png[Número dois]
+| Pega do came 
+|===
+.. Rode o manípulo do excêntrico de forma a desengatar completamente o módulo do controlador do chassis e, em seguida, deslize o módulo do controlador para fora do chassis.
++
+Certifique-se de que suporta a parte inferior do módulo do controlador enquanto o desliza para fora do chassis.
+
+
+
+
+
+
+
+== Retire o módulo de ruído, vibração e aspereza (NVRAM) do AFF A700 ou FAS9000
+
+Desbloqueie e remova o módulo AFF A700 ou FAS9000 NVRAM do node1.
+
+
+NOTE: O módulo AFF A700 ou FAS9000 NVRAM está no slot 6 e é o dobro da altura dos outros módulos no sistema.
+
+.Passos
+. Desbloqueie e remova o módulo NVRAM da ranhura 6 de node1.
++
+.. Prima o botão de came com letras e numerados.
++
+O botão do came afasta-se do chassis.
+
+.. Rode o trinco da árvore de cames para baixo até estar na posição horizontal.
++
+O módulo NVRAM desengata-se do chassis e move-se alguns centímetros.
+
+.. Retire o módulo NVRAM do chassis puxando as patilhas de puxar nas laterais da face do módulo.
++
+image::../media/drw_a900_move-remove_NVRAM_module.png[Retire o módulo NVRAM]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image::../media/black_circle_one.png[Número um]
+| Trinco do came de e/S com letras e numerado 
+
+
+ a| 
+image::../media/black_circle_two.png[Número dois]
+| Trinco de e/S completamente desbloqueado 
+|===
+
+
+
+
+
+
+== Instale os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e do controlador
+
+Instale, faça o cabo e conete os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e do controlador no node1.
+
+Você deve observar o seguinte ao executar a instalação:
+
+* Mova todos os módulos de enchimento vazios nos slots 6-1 e 6-2 do módulo NVRAM antigo para o novo módulo NVRAM.
+* Não mova o dispositivo de coredump do módulo AFF A700 NVRAM para o módulo ASA A900 ou AFF A900 NVRAM.
+* Mova módulos de cache all flash instalados no módulo FAS9000 NVRAM para o módulo FAS9500 NVRAM.
+
+
+.Antes de começar
+Se você ainda não está aterrado, aterre-se corretamente.
+
+
+
+=== Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
+
+Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no slot 6 de node1.
+
+.Passos
+. Alinhe o módulo NVRAM com as extremidades da abertura do chassis na ranhura 6.
+. Deslize cuidadosamente o módulo NVRAM para dentro da ranhura até que o trinco do came de e/S com letras e numerado comece a engatar com o pino do came de e/S e, em seguida, empurre o trinco do came de e/S totalmente para cima para bloquear o módulo NVRAM no lugar.
++
+image::../media/drw_a900_move-remove_NVRAM_module.png[Instale o módulo NVRAM]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image::../media/black_circle_one.png[Número um]
+| Trinco do came de e/S com letras e numerado 
+
+
+ a| 
+image::../media/black_circle_two.png[Número dois]
+| Trinco de e/S completamente desbloqueado 
+|===
+
+
+
+
+=== Instale o módulo do controlador ASA A900, AFF A900 ou FAS9500 no node1.
+
+Use o procedimento a seguir para instalar o módulo do controlador ASA A900, AFA A900 ou FAS9500 no node1.
+
+.Passos
+. Alinhe a extremidade do módulo do controlador com a abertura A no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
++
+
+NOTE: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
+
+. Cable as portas de gerenciamento e console para o módulo do controlador node1.
++
+
+NOTE: Como o chassi já está ligado, o node1 inicia a inicialização do BIOS seguida do AUTOBOOT assim que ele estiver totalmente assentado. Para interromper a inicialização do node1, antes de inserir completamente o módulo do controlador no slot, é recomendável conetar o console serial e os cabos de gerenciamento ao módulo do controlador node1.
+
+. Empurre firmemente o módulo do controlador para dentro do chassi até que ele atenda ao plano médio e esteja totalmente assentado.
++
+O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente.
+
++
+
+WARNING: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para dentro do chassis.
+
++
+image::../media/drw_9500_remove_PCM.png[Instale o módulo do controlador]
+
++
+[cols="20,80"]
+|===
+
+
+ a| 
+image::../media/black_circle_one.png[Número um]
+| Trinco de bloqueio do manípulo do excêntrico 
+
+
+ a| 
+image::../media/black_circle_two.png[Número dois]
+| Alavanca do came na posição desbloqueada 
+|===
+. Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
+. Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+. No prompt Loader> de node1, defina as variáveis de ambiente padrão:
++
+`set-defaults`
+
+. Salve as configurações de variáveis de ambiente padrão:
++
+`saveenv`
+
+

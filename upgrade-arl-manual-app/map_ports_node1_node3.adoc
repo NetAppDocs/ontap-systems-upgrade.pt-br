@@ -1,0 +1,247 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/map_ports_node1_node3.html 
+keywords: map, ports, node1, node3, cluster, home port, vlan ports, broadcast domain, connectivity 
+summary: Verifique se as portas físicas no node1 são mapeadas corretamente para o node3 durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior. 
+---
+= Portas de mapa de node1 a node3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você deve garantir que as portas físicas no node1 sejam mapeadas corretamente para as portas físicas no node3, o que permitirá que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
+
+.Antes de começar
+Você já deve ter informações sobre as portas nos novos nós a partir do _Hardware Universe_. (Vá para link:other_references.html["Referências"]o link para o _Hardware Universe_). Use as informações posteriormente nesta seção e no link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"].
+
+A configuração de software do node3 deve corresponder à conetividade física do node3 e a conetividade IP deve ser restaurada antes de continuar com a atualização.
+
+.Sobre esta tarefa
+As configurações de porta podem variar, dependendo do modelo dos nós.
+
+.Passos
+. [[step1]]execute as seguintes etapas para verificar se a configuração é um cluster sem switch de dois nós:
++
+.. Defina o nível de privilégio como avançado:
++
+`set -privilege advanced`
+
+.. Verifique se a configuração é um cluster sem switch de dois nós:
++
+`network options switchless-cluster show`
+
++
+Por exemplo:
+
++
+[listing]
+----
+ cluster::*> network options switchless-cluster show
+ Enable Switchless Cluster: false/true
+----
++
+O valor deste comando deve corresponder ao estado físico do sistema.
+
+.. Voltar ao nível de privilégios de administração:
++
+`set -privilege admin`
+
+
+
+. [[step2]]Faça as seguintes alterações:
++
+.. Modifique as portas que farão parte do domínio de broadcast de cluster:
++
+`network port modify -node _node_name_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
++
+Este exemplo adiciona a porta de cluster e1b em "node1":
+
++
+[listing]
+----
+network port modify -node node1 -port e1b -ipspace Cluster -mtu 9000
+----
+.. Migre as LIFs de cluster para as novas portas, uma vez para cada LIF:
++
+`network interface migrate -vserver _Vserver_name_ -lif _lif_name_ -source-node _node1_ -destination-node _node1_ -destination-port _port_name_`
+
++
+Quando todas as LIFs de cluster são migradas e a comunicação de cluster é estabelecida, o cluster deve entrar em quórum.
+
+.. Modifique a porta inicial dos LIFs de cluster:
++
+`network interface modify -vserver Cluster -lif _lif_name_ –home-port _port_name_`
+
+.. Remova as portas antigas do domínio de broadcast de cluster:
++
+`network port broadcast-domain remove-ports -ipspace Cluster -broadcast-domain Cluster -ports _node1:port_`
+
+.. Apresentar o estado de funcionamento de node1 e node3:
++
+`cluster show -node _node1_ -fields health`
+
+.. Dependendo da versão do ONTAP em execução no par de HA sendo atualizado, execute uma das seguintes ações:
++
+[cols="30,70"]
+|===
+| Se a sua versão do ONTAP for... | Então... 
+
+
+| 9,8 a 9.11.1 | Verifique se as LIFs do cluster estão escutando na porta 7700: 
+`::> network connections listening show -vserver Cluster` 
+
+
+| 9.12.1 ou posterior | Ignore esta etapa e vá para <<man_map_1_step3,Passo 3>>. 
+|===
++
+A escuta da porta 7700 nas portas do cluster é o resultado esperado, como mostrado no exemplo a seguir para um cluster de dois nós:
+
++
+[listing]
+----
+Cluster::> network connections listening show -vserver Cluster
+Vserver Name     Interface Name:Local Port     Protocol/Service
+---------------- ----------------------------  -------------------
+Node: NodeA
+Cluster          NodeA_clus1:7700               TCP/ctlopcp
+Cluster          NodeA_clus2:7700               TCP/ctlopcp
+Node: NodeB
+Cluster          NodeB_clus1:7700               TCP/ctlopcp
+Cluster          NodeB_clus2:7700               TCP/ctlopcp
+4 entries were displayed.
+----
+.. Para cada LIF de cluster que não está escutando na porta 7700, defina o status administrativo do LIF para `down` e depois `up`:
++
+`::> net int modify -vserver Cluster -lif _cluster-lif_ -status-admin down; net int modify -vserver Cluster -lif _cluster-lif_ -status-admin up`
+
++
+Repita a subetapa (f) para verificar se o LIF do cluster está escutando na porta 7700.
+
+
+
+. [[man_map_1_step3]]modifique as associações de domínio de broadcast de portas físicas que hospedam LIFs de dados.
++
+.. Listar o status de acessibilidade de todas as portas:
++
+`network port reachability show`
+
+.. Repare a acessibilidade das portas físicas, seguida de portas VLAN, executando o seguinte comando em cada porta, uma porta de cada vez:
++
+`reachability repair -node _node_name_ -port _port_name_`
+
++
+Espera-se um aviso como o seguinte. Rever e introduzir `y` ou `n`, se for caso disso:
+
++
+[listing]
+----
+WARNING: Repairing port "node_name:port" might cause it to move into a different broadcast domain, which can cause LIFs to be re-homed away from the port. Are you sure you want to continue? {y|n}:
+----
+.. Para ativar o ONTAP para concluir a reparação, aguarde cerca de um minuto após executar o `reachability repair` comando na última porta.
+.. Listar todos os domínios de broadcast no cluster:
++
+`network port broadcast-domain show`
+
+.. À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não corresponder a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas. Conforme necessário, você pode excluir os domínios de broadcast recém-criados se todas as portas membros se tornarem portas membros dos grupos de interface. Excluir domínios de broadcast:
++
+`broadcast-domain delete -broadcast-domain _broadcast_domain_`
+
+.. Revise a configuração do grupo de interfaces e, conforme necessário, adicione ou exclua portas membros.
++
+Adicionar portas membro às portas do grupo de interfaces:
+
++
+`ifgrp add-port -node _node_name_ -ifgrp _ifgrp_port_ -port _port_name_`
+
++
+Remova as portas membros das portas do grupo de interfaces:
+
++
+`ifgrp remove-port -node _node_name_ -ifgrp _ifgrp_port_ -port _port_name_`
+
+.. Exclua e crie novamente portas VLAN conforme necessário. Eliminar portas VLAN:
++
+`vlan delete -node _node_name_ -vlan-name _vlan_port_`
+
++
+Criar portas VLAN:
+
++
+`vlan create -node _node_name_ -vlan-name _vlan_port_`
+
++
+
+NOTE: Dependendo da complexidade da configuração de rede do sistema sendo atualizado, talvez seja necessário repetir as subetapas (a) a (g) até que todas as portas sejam colocadas corretamente onde necessário.
+
+
+
+. [[step4]]se não houver VLANs configuradas no sistema, vá para <<man_map_1_step5,Passo 5>>. Se houver VLANs configuradas, restaure VLANs deslocadas que foram configuradas anteriormente em portas que não existem mais ou foram configuradas em portas que foram movidas para outro domínio de broadcast.
++
+.. Exibir as VLANs deslocadas:
++
+`cluster controller-replacement network displaced-vlans show`
+
+.. Restaure as VLANs deslocadas para a porta de destino desejada:
++
+`displaced-vlans restore -node _node_name_ -port _port_name_ -destination-port _destination_port_`
+
+.. Verifique se todas as VLANs deslocadas foram restauradas:
++
+`cluster controller-replacement network displaced-vlans show`
+
+.. As VLANs são automaticamente colocadas nos domínios de broadcast apropriados cerca de um minuto após serem criadas. Verifique se as VLANs restauradas foram colocadas nos domínios de broadcast apropriados:
++
+`network port reachability show`
+
+
+
+. [[man_map_1_step5]]começando com o ONTAP 9.8, o ONTAP modificará automaticamente as portas iniciais dos LIFs se as portas forem movidas entre domínios de broadcast durante o procedimento de reparo de acessibilidade da porta de rede. Se a porta inicial de um LIF foi movida para outro nó, ou não é atribuída, esse LIF será apresentado como um LIF deslocado. Restaure as portas residenciais dos LIFs deslocados cujas portas residenciais não existem mais ou foram relocadas para outro nó.
++
+.. Exiba os LIFs cujas portas iniciais podem ter sido movidas para outro nó ou não existir mais:
++
+`displaced-interface show`
+
+.. Restaure a porta inicial de cada LIF:
++
+`displaced-interface restore -vserver _Vserver_name_ -lif-name _LIF_name_`
+
+.. Verifique se todas as portas iniciais do LIF foram restauradas:
++
+`displaced-interface show`
+
+
+
++
+Quando todas as portas estão corretamente configuradas e adicionadas aos domínios de broadcast corretos, o `network port reachability show` comando deve relatar o status de acessibilidade como "ok" para todas as portas conetadas e o status como "não-acessibilidade" para portas sem conetividade física. Se alguma porta estiver relatando um status diferente dessas duas, repare a acessibilidade conforme descrito em <<man_map_1_step3,Passo 3>>.
+
+. [[man_map_1_step6]]Verifique se todos os LIFs estão administrativamente em portas pertencentes aos domínios de broadcast corretos.
++
+.. Verifique se existem LIFs que estão administrativamente inativos:
++
+`network interface show -vserver _Vserver_name_ -status-admin down`
+
+.. Verifique se existem LIFs que estão operacionais inoperacionalmente abaixo:
++
+`network interface show -vserver _Vserver_name_ -status-oper down`
+
+.. Modifique quaisquer LIFs que precisam ser modificados para ter uma porta inicial diferente:
++
+`network interface modify -vserver _Vserver_name_ -lif _LIF_name_ -home-port _home_port_`
+
++
+
+NOTE: Para iSCSI LIFs, a modificação da porta inicial requer que o LIF seja administrativamente inativo.
+
+.. Reverter LIFs que não são o lar de suas respetivas portas residenciais:
++
+`network interface revert *`
+
+
+
+

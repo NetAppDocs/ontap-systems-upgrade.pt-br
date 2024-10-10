@@ -1,0 +1,64 @@
+---
+permalink: upgrade/upgrade-delete-san-lifs.html 
+sidebar: sidebar 
+keywords: cluster, san, environment, delete, lid, original, node, unjoin, original, delete san lifs from the original nodes 
+summary: Se o cluster estiver em um ambiente SAN, você deverá excluir quaisquer LIFs SAN dos nós originais antes que você possa desassociar os nós originais do cluster. 
+---
+= Excluir SAN LIFs não é mais necessário dos nós originais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o cluster estiver em um ambiente SAN, você deverá excluir quaisquer LIFs SAN que você não precisar mais dos nós originais antes de poder desassociar os nós originais do cluster.
+
+.Passos
+. Se tiver iniciadores iSCSI, execute as seguintes etapas:
++
+.. Exibir uma lista de iniciadores ativos atualmente conetados a um SVM nos nós originais, uma vez para cada um dos LIFs antigos
+`iscsi connection show -vserver _Vserver_name_ -lif _old_lif_`
++
+O exemplo a seguir mostra a saída do comando com um iniciador ativo conetado ao SVM VS1:
+
++
+[listing]
+----
+cluster::> iscsi connection show -vserver vs1 -lif data2
+          Tpgroup        Conn  Local           Remote          TCP Recv
+Vserver   Name     TSIH  ID    Address         Address         Size
+--------- -------- ----- ----- --------------- --------------- --------
+vs1       data         9     1 10.229.226.166  10.229.136.188    131400
+----
+.. Se algum iniciador ainda estiver conetado a um nó original, faça logout das sessões do computador host.
+
+
+. Exiba a lista de conjuntos de portas para determinar se quaisquer LIFs iSCSI ou FC nos nós originais pertencem a um conjunto de portas:
++
+`lun portset show`
+
++
+O exemplo a seguir mostra a saída `lun portset show` do comando:
+
++
+[listing]
+----
+cluster:> lun portset show
+Virtual
+Server    Portset      Protocol Port Names              Igroups
+--------- ------------ -------- ----------------------- ------------
+js11      ps0          mixed    LIF1,                   igroup1
+                                LIF2
+          ps1          iscsi    LIF3                    igroup2
+          ps2          fcp      LIF4                    -
+3 entries were displayed.
+----
+. Se algum iSCSIs ou FC LIFs em um nó original forem membros de um conjunto de portas, remova-os do conjunto de portas:
++
+`lun portset remove -vserver _vserver_name_ -portset _portset_name_ -port-name _lif_name_`
+
+. Exclua os LIFs nos nós originais:
++
+`network interface delete -vserver _vserver_name_ -lif _lif_name_`
+
+

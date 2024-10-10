@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl/index.html 
+keywords: aggregate, relocation, moving, manual, upgrade, relocate, hardware 
+summary: Use a realocação de agregados para atualizar o hardware do controlador 
+---
+= Escolha o procedimento de atualização ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este conteúdo descreve como atualizar o hardware da controladora sem interrupção usando o ARL (Aggregate Relocation).
+
+Para obter outros métodos de atualização do hardware do controlador, link:../upgrade/upgrade-decide-to-use-this-guide.html["Atualize movendo volumes ou armazenamento"]consulte .
+
+É possível atualizar o hardware da controladora em um par de nós executando ONTAP sem interrupções, migrando agregados que não sejam raiz dos nós originais para os novos nós no mesmo cluster. Os dados hospedados nos nós que estão sendo atualizados estão acessíveis durante a atualização.
+
+O ARL aproveita a configuração de HA para permitir que você mova a propriedade de agregados que não sejam raiz de um nó para outro, caso eles compartilhem storage no mesmo cluster.
+
+Existem dois métodos ARL para atualizar o hardware do seu controlador, usando comandos do sistema ou realizando uma atualização manual. Antes de iniciar, você deve verificar se selecionou o conteúdo correto para a atualização de hardware do controlador.
+
+Se você estiver executando uma atualização usando comandos do sistema, consulte a seguinte tabela:
+
+[cols="30,70"]
+|===
+| Se você estiver executando esta versão do ONTAP... | Para atualizar com comandos do sistema, use... 
+
+
+| 9.15.1 ou posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Use os comandos "System controller replace" para atualizar o hardware do controlador introduzido no ONTAP 9.15,1"] 
+
+
+| 9.10.1 ou posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"] Você pode usar este procedimento para atualizar um controlador AFF configurado como um ASA (All SAN Array) para um controlador ASA para determinados modelos e versões de software ONTAP. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Saiba mais"]. 
+
+
+| 9,8 ou posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Use os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9.8 ou posterior"] 
+
+
+| 9,5 a 9,7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/index.html["Use os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9.5 para o ONTAP 9.7"] 
+|===
+Se estiver a efetuar uma atualização manual, consulte a seguinte tabela:
+
+[cols="30,70"]
+|===
+| Se você estiver executando esta versão do ONTAP... | Para atualizar manualmente, use... 
+
+
+| 9,8 ou posterior | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.8 ou posterior"] 
+
+
+| 9,0 a 9,7 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.7 ou anterior"] 
+|===

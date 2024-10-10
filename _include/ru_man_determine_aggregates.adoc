@@ -1,0 +1,147 @@
+= 
+:allow-uri-read: 
+
+
+Se você estiver atualizando controladores com unidades de disco internas, precisará concluir vários comandos e examinar a saída deles para confirmar que nenhuma das unidades de disco internas contém agregados de raiz ou agregados de dados.
+
+.Sobre esta tarefa
+Se você não estiver atualizando controladores com agregados em unidades de disco internas, ignore esta seção e vá para a link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
+
+.Passos
+. Entre no nodeshell, uma vez para cada um dos nós originais.
++
+`system node run -node _node_name_`
+
+. Apresentar as unidades internas:
++
+`sysconfig -av`
+
++
+O sistema exibe informações detalhadas sobre a configuração do nó, incluindo o armazenamento, como visto na saída parcial mostrada no exemplo a seguir:
+
++
+....
+
+node> sysconfig -av
+slot 0: SAS Host Adapter 0a (PMC-Sierra PM8001 rev. C, SAS, UP)
+                Firmware rev: 01.11.06.00
+                 Base WWN: 5:00a098:0008a3b:b0
+                 Phy State: [0] Enabled, 6.0 Gb/s
+                            [1] Enabled, 6.0 Gb/s
+                            [2] Enabled, 6.0 Gb/s
+                            [3] Enabled, 6.0 Gb/s
+                ID Vendor Model FW Size
+                00.0 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.1 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.2 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.3 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.4 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.5 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.6 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.7 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.8 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.9 : NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.10: NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+                00.11: NETAPP X306_HMARK02TSSM NA04 1695.4GB (3907029168 512B/sect)
+...
+....
+. Examine a saída de armazenamento do `sysconfig -av` comando para identificar as unidades de disco internas e, em seguida, Registre as informações.
++
+As unidades internas têm "00." no início da sua ID. O "00." indica um compartimento de disco interno e o número após o ponto decimal indica a unidade de disco individual.
+
+. [[man_aggr_step4]]Digite o seguinte comando em ambos os controladores:
++
+`aggr status -r`
+
++
+O sistema exibe o status agregado do nó, como mostrado na saída parcial no exemplo a seguir:
+
++
+[listing]
+----
+node> aggr status -r
+Aggregate aggr2 (online, raid_dp, parity uninit'd!) (block checksums)
+Plex /aggr2/plex0 (online, normal, active)
+RAID group /aggr2/plex0/rg0 (normal, block checksums)
+
+RAID Disk Device    HA SHELF BAY CHAN Pool Type RPM  Used (MB/blks)     Phys (MB/blks)
+--------- --------- -- ----- --- ---- ---- ---- ---- ------------------ ------------------
+dparity   0a.00.1   0a   0    1  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+parity    0a.00.3   0a   0    3  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+data      0a.00.9   0a   0    9  SA:B  0   BSAS 7200 1695466/3472315904 1695759/3472914816
+...
+----
++
+
+NOTE: O dispositivo usado para criar o agregado pode não ser um disco físico, mas pode ser uma partição.
+
+. Examine a saída do `aggr status -r` comando para identificar os agregados usando unidades de disco internas e, em seguida, Registre as informações.
++
+No exemplo da etapa anterior, "aggr2" usa unidades internas, como indicado pela ID do compartimento de "0".
+
+. Digite o seguinte comando em ambos os controladores:
++
+`aggr status -y`
+
++
+O sistema exibe informações sobre os volumes no agregado, como mostrado na saída parcial no exemplo a seguir:
+
++
+....
+node> aggr status -v
+...
+ aggr2   online   raid_dp, aggr    nosnap=off, raidtype=raid_dp, raidsize=14,
+                  64-bit           raid_lost_write=on, ignore_inconsistent=off,
+                  rlw_on           snapmirrored=off, resyncsnaptime=60,
+                                   fs_size_fixed=off, lost_write_protect=on,
+                                   ha_policy=cfo, hybrid_enabled=off, percent_snapshot_space=0%,
+                                   free_space_realloc=off, raid_cv=on, thorough_scrub=off
+         Volumes: vol6, vol5, vol14
+...
+ aggr0   online   raid_dp, aggr    root, diskroot, nosnap=off, raidtype=raid_dp,
+                  64-bit           raidsize=14, raid_lost_write=on, ignore_inconsistent=off,
+                  rlw_on           snapmirrored=off,  resyncsnaptime=60, fs_size_fixed=off,
+                                   lost_write_protect=on, ha_policy=cfo, hybrid_enabled=off,
+                                   percent_snapshot_space=0%, free_space_realloc=off, raid_cv=on
+         Volumes: vol0
+....
++
+Com base na saída na <<man_aggr_step4,Passo 4>> e na Etapa 6, o aggr2 usa três unidades internas -"0a.00,1", "0a.00,3" e "0a.00,9" - e os volumes em "aggr2" são "vol6", "vol5" e "vol14". Além disso, na saída do passo 6, a leitura para "aggr0" contém a palavra "root" no início da informação para o agregado. Isso indica que ele contém um volume raiz.
+
+. Examine a saída do `aggr status -v` comando para identificar os volumes pertencentes a quaisquer agregados que estejam em uma unidade interna e se algum desses volumes contém um volume raiz.
+. Saia do nodeshell inserindo o seguinte comando em cada controlador:
++
+`exit`
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se os controladores.... | Então... 
+
+
+| Não contêm agregados em unidades de disco internas | Continue com este procedimento. 
+
+
+| Conter agregados, mas sem volumes nas unidades de disco internas  a| 
+Continue com este procedimento.
+
+
+NOTE: Antes de continuar, você deve colocar os agregados off-line e, em seguida, destruir os agregados nas unidades de disco internas. link:other_references.html["Referências"]Consulte o link para o _Disk e gerenciamento de agregados com o conteúdo CLI_ para obter informações sobre o gerenciamento de agregados.
+
+
+
+| Conter volumes não-raiz nas unidades internas  a| 
+Continue com este procedimento.
+
+
+NOTE: Antes de continuar, você deve mover os volumes para um compartimento de disco externo, colocar os agregados off-line e, em seguida, destruir os agregados nas unidades de disco internas. link:other_references.html["Referências"]Consulte o link para o _Disk e gerenciamento de agregados com o conteúdo CLI_ para obter informações sobre a movimentação de volumes.
+
+
+
+| Conter volumes raiz nas unidades internas | Não prossiga com este procedimento. Você pode atualizar os controladores consultando link:other_references.html["Referências"]o link para o site de suporte _NetApp_ e usando o procedimento _Atualizando o hardware do controlador em um par de nós executando Data ONTAP em cluster movendo volumes_. 
+
+
+| Conter volumes não-raiz nas unidades internas e não é possível mover os volumes para armazenamento externo | Não prossiga com este procedimento. Você pode atualizar os controladores usando o procedimento _Atualizando o hardware do controlador em um par de nós executando o cluster Data ONTAP movendo volumes_. link:other_references.html["Referências"]Consulte o link para o _Site de suporte da NetApp_, onde você pode acessar este procedimento. 
+|===
+

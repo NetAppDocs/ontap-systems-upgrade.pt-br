@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/stage_5_index.html 
+keywords: install, boot, node4, node2, node-management,  stage 5 
+summary: 'Sequência de processo do estágio 5 para uma atualização do ARL usando `system controller replace` comandos em controladores que executam o ONTAP 9.5 a 9,7.' 
+---
+= Visão geral da fase 5
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante a fase 5, você instala e inicia o node4, mapeia as portas de gerenciamento de clusters e nós de node2 a node4 e verifica a instalação do node4. Se necessário, você define a configuração FC ou UTA/UTA2 em node4 e confirma que o node4 aderiu ao quórum. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
+
+.Passos
+. link:install_boot_node4.html["Instale e inicialize node4"]
+. link:set_fc_or_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"]
+. link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]
+. link:join_quorum_node_has_different_ports_stage5.html["Junte-se ao quórum quando um nó tiver um conjunto diferente de portas de rede"]
+. link:verify_node4_installation.html["Verifique a instalação do node4"]
+. link:move_non_root_aggr_and_nas_data_lifs_node2_from_node3_to_node4.html["Migre agregados que não sejam raiz e LIFs de dados nas pertencentes ao node2 de node3 para node4"]
+

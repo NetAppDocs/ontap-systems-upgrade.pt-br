@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html 
+keywords: aggregate relocation, decide to use, upgrade, model, matrix, replacement, controller 
+summary: 'Decida se deseja usar o ARL para atualizar controladores executando o ONTAP 9.5 a 9,7 usando `system controller replace` comandos.' 
+---
+= Decida se deve usar o procedimento de realocação agregada
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este conteúdo descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém todos os dados e discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+
+Use este conteúdo nas seguintes circunstâncias:
+
+* Você está atualizando os controladores NetApp que executam o ONTAP 9.5, 9,6 ou 9,7. Este documento não se aplica a atualizações para o ONTAP 9.8.
+* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
+* Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+* Se você estiver atualizando uma configuração do MetroCluster, ela será uma configuração de FC de 4 nós ou superior e todos os nós executarão o ONTAP 9.6 ou 9,7.
+
+
+
+NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+
+[[sys_Commands_95_97_supported_Systems]] as tabelas a seguir mostram a matriz de modelos suportada para a atualização do controlador.
+
+[cols="50,50"]
+|===
+| Controlador antigo | Controlador de substituição 
+
+
+| FAS8020, FAS8040, FAS8060, FAS8080 | FAS8200, FAS8300, FAS8700, FAS9000 
+
+
+| AFF8020, AFF8040, AFF8060, AFF8080 | AFF A300, AFF A400, AFF A700 1, AFF A800 2 
+
+
+| FAS8200 | FAS8700,FAS9000,FAS8300 4,5 
+
+
+| AFF A300 | AFF A700, AFF A800, AFF A400 4, 2, 3, 1, 5, 
+|===
+
+NOTE: Se a combinação do modelo de atualização da controladora não estiver na tabela acima, entre em Contato com o suporte técnico.
+
+1 a atualização automática ARL para o sistema AFF A700 é suportada a partir do ONTAP 9.7P2.
+
+2 se você estiver atualizando para um AFF A800 ou um sistema compatível com discos internos e externos, siga instruções específicas para o agregado raiz em discos NVMe internos. link:set_fc_or_uta_uta2_config_on_node3.html#step14["Verifique e configure as portas UTA/UTA2 no node3, passo 14"]Consulte e link:set_fc_or_uta_uta2_config_node4.html#step14["Verifique e configure as portas UTA/UTA2 no node4, passo 14"].
+
+3 a atualização automática ARL de um sistema AFF A300 para um sistema AFF A800 é suportada a partir do ONTAP 9.7P5.
+
+4 a atualização automática ARL de um AFF A300 para um AFF A400 e um FAS8200 para um sistema FAS8300 é suportada a partir do ONTAP 9.7P8.
+
+5 se você estiver atualizando de um AFF A300 para um AFF A400 ou um FAS8200 para um sistema FAS8300 em uma configuração de cluster sem switch de dois nós, você deve escolher portas de cluster temporárias para a atualização do controlador. Os sistemas AFF A400 e FAS8300 vêm em duas configurações, como um pacote Ethernet onde as portas da placa mezzanine são do tipo Ethernet e como um pacote FC onde as portas mezzanine são do tipo FC.
+
+* Para um AFF A400 ou um FAS8300 com uma configuração de tipo Ethernet, você pode usar qualquer uma das duas portas mezzanine como portas de cluster temporárias.
+* Para um AFF A400 ou um FAS8300 com uma configuração de tipo FC, você deve adicionar uma placa de interface de rede 10GbE de quatro portas (código de peça X1147A) para fornecer portas de cluster temporárias.
+* Após concluir a atualização da controladora usando portas de cluster temporárias, é possível migrar LIFs de cluster para portas E3A e e3b, 100GbE em um sistema AFF A400 e portas e0c e e0d, 100GbE em um sistema FAS8300 sem interrupções.
+
+
+Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

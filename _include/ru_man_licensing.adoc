@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.
+
+Se você não tiver novas chaves de licença, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador e continuarão a funcionar. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o contrato de licença, portanto, você deve instalar a nova chave de licença ou chaves para o novo controlador após a conclusão da atualização.

@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/stage_1_index.html 
+keywords: upgrade, preparing, preparation, prepare, overview, stage 1 
+summary: 'Sequência de processo da fase 1 para uma atualização ARL utilizando `system controller replace` para atualizar modelos de controlador no mesmo chassis.' 
+---
+= Visão geral da fase 1
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Durante a fase 1, você verifica se tem o hardware correto para a atualização, executa pré-verificações e, se necessário, corrige a propriedade agregada. Você também grava certas informações se estiver gerenciando a criptografia de armazenamento usando o Gerenciador de chaves integrado e você pode optar por silenciar as relações do SnapMirror.
+
+.Passos
+. link:verify_upgrade_hardware.html["Verifique o hardware de atualização"]
+. link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]
+. link:manage_storage_encryption_using_okm.html["Gerenciar criptografia de armazenamento usando o Gerenciador de chaves integrado"]
+

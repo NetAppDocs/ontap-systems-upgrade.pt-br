@@ -1,0 +1,40 @@
+---
+permalink: upgrade/upgrade-install-and-join-new-nodes-move-vols.html 
+sidebar: sidebar 
+keywords: install, node, join, cluster, volume, original, node, install the new nodes and joining them to the cluster 
+summary: É necessário instalar os novos nós e associá-los ao cluster para poder mover volumes dos nós originais. 
+---
+= Instale os novos nós e junte-os ao cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário instalar os novos nós e associá-los ao cluster para poder mover volumes dos nós originais.
+
+.Sobre esta tarefa
+Ao atualizar o hardware do controlador movendo volumes, os nós originais e os novos nós devem estar no mesmo cluster.
+
+.Passo
+. Instale os novos nós e junte-os ao cluster:
++
+[cols="1,2"]
+|===
+| Se o cluster estiver em execução... | Siga as instruções em... 
+
+
+ a| 
+ONTAP 9,0 ou posterior
+ a| 
+https://docs.netapp.com/us-en/ontap-sm-classic/expansion/index.html["Administração de expansão de cluster"^]
+
+
+
+ a| 
+Lançamentos antes do ONTAP 9.0
+ a| 
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30092["Encontre o Guia expresso de expansão de cluster para sua versão do Data ONTAP 8"^]
+
+|===
+

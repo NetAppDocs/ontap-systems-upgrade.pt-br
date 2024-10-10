@@ -1,0 +1,134 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html 
+keywords: moving, non-root, aggregates, nas, lif, node1, node2 
+summary: Verifique se as LIFs de dados nas node1 no node2 foram relocadas de node2 para node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Mova agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1 de node2 para o node1 atualizado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Depois de verificar a configuração de rede no node1 e antes de realocar agregados de node2 para node1, você verifica se os LIFs de dados nas pertencentes ao node1 que estão atualmente no node2 são relocados de node2 para node1. Você também deve verificar se as SAN LIFs existem no node1.
+
+.Sobre esta tarefa
+Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Depois de colocar o node1 on-line, você deve verificar se os LIFs estão saudáveis e localizados nas portas apropriadas.
+
+.Passos
+. Retomar a operação de realocação:
++
+`system controller replace resume`
+
++
+O sistema executa as seguintes tarefas:
+
++
+--
+** Verificação do quorum do cluster
+** Verificação da ID do sistema
+** Verificação da versão da imagem
+** Verificação da plataforma alvo
+** Verificação de acessibilidade da rede
+
+
+--
++
+A operação é interrompida nesta fase na verificação de acessibilidade da rede.
+
+. Execute uma verificação de acessibilidade da rede:
++
+`network port reachability show -node node1`
+
++
+Confirme se todas as portas conetadas, incluindo o grupo de interfaces e as portas VLAN, mostram seu status como `OK`.
+
+. Para uma atualização do AFF A800 para um AFF A70 ou AFF A90, você deve reatribuir os LIFs de SAN do FCP. Para todas as outras atualizações do sistema, vá para <<resume_relocation_step4,Passo 4>>:
++
+.. Reatribua os LIFs de SAN FCP usados para o acesso a dados FCP ou FC-NVMe às portas iniciais corretas:
++
+`network interface show -vserver <vserver_hosting_fcp_lifs>`
+
+.. Para LIFs com o nó atual como o node1 atualizado e a porta atual relata "status oper" como "-" (porque a porta existia no nó AFF A800 mas não existe no nó AFF A90), modifique a porta atual antes que ela possa ser colocada on-line.
++
+Verifique se a conectividade física está estabelecida com a porta de destino FC onde o FC LIF precisa ser movido:
+
++
+... Defina o estado de LIF para "baixo":
++
+`network interface modify -vserver <vserver_name> -lif <lif_name>  -status-admin down`
+
+... Modifique a porta inicial do LIF:
++
+`network interface modify -vserver <vserver_name> -lif <lif_name> - home-node <node1> -home-port <FC_target_port>`
+
+... Defina o estado de LIF para "up" (para cima):
++
+`network interface modify -vserver <vserver> -lif <lif_name>  -status-admin up`
+
+
+
+
+
++
+Repita as subetapas a e b para cada FC SAN LIF que está em casa no node1.
+
+. [[resume_relocation_step4]]Retomar a operação de relocação:
++
+`system controller replace resume`
+
++
+O sistema efetua as seguintes verificações:
+
++
+--
+** Verificação de integridade do cluster
+** Verificação do status de LIF do cluster
+
+
+--
++
+Depois de executar essas verificações, o sistema relocaliza os agregados não-raiz e LIFs de dados nas de propriedade do node1 para o novo node1.
+
++
+A operação de substituição do controlador é interrompida após a conclusão da realocação de recursos.
+
+. Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
++
+`system controller replace show-details`
+
++
+Se o procedimento de substituição do controlador estiver em pausa, verifique e corrija o erro, se houver, e então o problema `resume` para continuar a operação.
+
+. Se necessário, restaure e reverta quaisquer LIFs deslocados. Liste quaisquer LIFs deslocados:
++
+`cluster controller-replacement network displaced-interface show`
+
++
+Se algum LIFs for deslocado, restaure o nó inicial de volta para node1:
+
++
+`cluster controller-replacement network displaced-interface restore-home-node`
+
+. Retome a operação para solicitar ao sistema que execute as verificações posteriores necessárias:
++
+`system controller replace resume`
+
++
+O sistema efetua as seguintes verificações posteriores:
+
++
+** Verificação do quorum do cluster
+** Verificação de integridade do cluster
+** Verificação de reconstrução de agregados
+** Verificação do status do agregado
+** Verificação do estado do disco
+** Verificação do status de LIF do cluster
+** Verificação do volume
+
+
+

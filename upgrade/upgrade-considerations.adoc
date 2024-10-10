@@ -1,0 +1,122 @@
+---
+permalink: upgrade/upgrade-considerations.html 
+sidebar: sidebar 
+keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
+summary: Para Planejar a atualização, você deve se familiarizar com as considerações gerais de atualização. Se necessário, entre em Contato com o suporte técnico para obter recomendações e orientações específicas para a configuração do cluster. 
+---
+= Considerações para atualizar o hardware do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para Planejar a atualização, você deve se familiarizar com as considerações gerais de atualização. Se necessário, entre em Contato com o suporte técnico para obter recomendações e orientações específicas para a configuração do cluster.
+
+
+
+== Requisitos e limitações
+
+Dependendo do seu ambiente, você precisa considerar certos fatores antes de iniciar o upgrade. Comece revisando a tabela abaixo para ver os requisitos e limitações que você precisa considerar.
+
+
+NOTE: Antes de iniciar o procedimento de atualização da controladora, você deve revisar todas as perguntas listadas na tabela abaixo.
+
+[cols="30,70"]
+|===
+| Pergunte a si mesmo... | Se sua resposta for sim, então faça isso.. 
+
+
+| Estou combinando diferentes modelos de plataforma de controlador em um cluster?  a| 
+link:https://hwu.netapp.com["Verifique se você está seguindo regras de mistura de plataforma de armazenamento"^].
+
+As controladoras de um par de HA devem ser dois modelos AFF, FAS ou ASA.
+
+
+
+| Tenho versões diferentes do ONTAP em execução nos nós originais e novos?  a| 
+. https://hwu.netapp.com["Verifique as versões do ONTAP e os níveis de patch suportados pelos nós originais e novos"^].
+. A NetApp recomenda, quando possível, que você tenha a mesma versão do ONTAP em execução nos nós originais e novos. Se isso não for possível, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Atualize a versão do ONTAP"^] nos nós originais até a versão máxima suportada para que a diferença de versão entre nós originais e novos não seja maior que quatro. Por exemplo, o ONTAP 9.8 e 9.12.1 são suportados; no entanto, o ONTAP 9.8 e o 9.13.1 não são suportados.
++
+https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Saiba mais sobre clusters ONTAP de versão mista"^].
+
+
+
+
+
+| Meus sistemas contêm unidades internas e estou movendo volumes?  a| 
+. link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Verifique se os novos nós têm storage suficiente para acomodar o storage associado aos nós originais"^].
+. Quando você faz a atualização movendo volumes, novos nós são Unidos ao cluster antes que os nós originais sejam removidos. Tem de observar o tamanho máximo do cluster.
++
+https://hwu.netapp.com["Verifique se o número total de controladores no cluster durante o procedimento não excede o tamanho máximo de cluster suportado"^].
+
++
+
+NOTE: Se você estiver atualizando um cluster de oito nós que atende protocolos de bloco, como FCP, iSCSI ou FCoE, verifique se os novos nós estão anunciando os LUNs corretamente. Para obter mais informações, https://docs.netapp.com/us-en/ontap/san-management/index.html["Gerenciamento de STORAGE SAN"^]consulte .
+
+. link:upgrade-by-moving-volumes-parent.html["Atualize movendo volumes"] (um procedimento sem interrupções).
+
+
+
+
+| Estou movendo o storage interno ou convertendo o sistema em um compartimento de unidades?  a| 
+. https://hwu.netapp.com/["Verifique se o tamanho atual do agregado raiz e o número de discos no agregado raiz atendem ou excedem as especificações do novo sistema"^].
+. https://hwu.netapp.com/["Verifique se o número de discos de armazenamento suportados pelo novo sistema é igual ou superior aos suportados pelo sistema original"^].
+. link:upgrade-by-moving-storage-parent.html["Atualize movendo o armazenamento"] (um procedimento disruptivo).
+
+
+
+
+| Estou atualizando um par de HA em um cluster com vários pares de HA? | Mova o epsilon para o nó de um par de HA que não está passando por uma atualização da controladora. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD. 
+
+
+| Estou executando o ONTAP 9.6P11, 9.7P8 ou versões posteriores? | A NetApp recomenda que você habilite o recurso de monitoramento de disponibilidade, vivacidade e disponibilidade (CLAM) para retornar o cluster ao quorum quando certas falhas de nó ocorrerem. O `kernel-service` comando requer acesso avançado ao nível de privilégio. Para obter mais informações, consulte o artigo da base de dados de Conhecimento da NetApp https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Configuração padrão DO controle de CLAM alterada"^] . A partir de ONTAP 9.8, o `kcs-enable-takeover` parâmetro é ativado por padrão. 
+|===
+
+NOTE: Você pode atualizar um sistema integrado movendo dados para um novo storage (movendo volumes) ou convertendo o sistema integrado existente em uma gaveta e migrando-o para um novo sistema (movendo armazenamento). Por exemplo, você pode atualizar um FAS2650 para um FAS8300 convertendo o chassi do controlador FAS2650 em um compartimento SAS de DS224C GB e anexando-o ao FAS8300. Em qualquer um dos casos, a migração de dados ou a gaveta convertida permanece no mesmo cluster comutado.
+
+
+
+== Sistemas com armazenamento interno
+
+Os seguintes sistemas têm armazenamento interno:
+
+[cols="4*"]
+|===
+4+| Sistemas com unidades internas 
+
+
+ a| 
+FAS2620, FAS2650, FAS2720 e FAS2750
+ a| 
+AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s e AFF A800
+| AFF C190, AFF C250 e AFF C800 | ASA A150, ASA A250, ASA A800 e ASA AFF A220 
+|===
+* Se o seu sistema não estiver listado acima, consulte https://hwu.netapp.com["NetApp Hardware Universe"^] para verificar se tem unidades internas.
+* Se você tiver um sistema com storage interno, poderá converter o sistema em um compartimento de unidades e anexá-lo a um novo nó no mesmo cluster.
++
+
+NOTE: Não é possível converter sistemas AFF A700s, AFF A800, AFF C800 ou ASA A800 em um compartimento de unidades.
+
+* Se você tiver um sistema com storage interno ou um sistema com volumes ou agregados em unidades SATA ou SSDs internos, poderá fazer o upgrade transferindo o storage interno para um compartimento de unidades anexado ao novo nó no mesmo cluster.
++
+Transferir o armazenamento interno é uma tarefa opcional no fluxo de trabalho para atualização, movendo o armazenamento.
+
+
+
+
+
+== Situações em que você pode precisar de etapas adicionais
+
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Você está atualizando de um AFF A250 para um AFF A400"] (um procedimento sem interrupções).
+* Se o novo sistema tiver menos slots do que o sistema original, ou se tiver menos ou diferentes tipos de portas, talvez seja necessário adicionar um adaptador ao novo sistema. Consulte https://hwu.netapp.com["NetApp Hardware Universe"^] .
+* Se os nós originais ou novos nós usarem o software de virtualização FlexArray, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Quais são as etapas específicas envolvidas nas atualizações e substituições do controlador FlexArray para NetApp"^] .
+* Se o cluster tiver hosts SAN, talvez seja necessário tomar medidas para resolver problemas com alterações no número de série LUN. Consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Como resolver problemas durante a substituição da motherboard do controlador de armazenamento e atualizações de cabeça com iSCSI e FCP"^] .
+* Se o seu sistema usa ACP fora da banda, talvez seja necessário migrar do ACP fora da banda para o ACP na banda. Consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/In-Band_ACP_Setup_and_Support["Configuração e suporte do ACP na banda"^]
+
+
+.Informações relacionadas
+* link:../choose_controller_upgrade_procedure.html["Escolha métodos para atualizar o hardware do controlador"]
+* link:upgrade-by-moving-storage-parent.html["Atualize o hardware do controlador movendo o armazenamento"]
+* link:upgrade-by-moving-volumes-parent.html["Atualize o hardware da controladora movendo volumes"]
+

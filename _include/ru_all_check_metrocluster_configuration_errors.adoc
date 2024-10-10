@@ -1,0 +1,17 @@
+= 
+:allow-uri-read: 
+
+
+Você pode usar a ferramenta Active IQ Config Advisor disponível no site de suporte da NetApp para verificar se há erros de configuração comuns.
+
+Se não tiver uma configuração do MetroCluster, pode ignorar esta secção.
+
+.Sobre esta tarefa
+O Active IQ Config Advisor é uma ferramenta de validação de configuração e verificação de integridade. Você pode implantá-lo em sites seguros e sites não seguros para coleta de dados e análise do sistema.
+
+
+NOTE: O suporte para Config Advisor é limitado e está disponível apenas online.
+
+. Faça o download link:https://mysupport.netapp.com/site/tools["Active IQ Config Advisor"]da ferramenta.
+. Execute o Active IQ Config Advisor, revisando a saída e seguindo suas recomendações para resolver quaisquer problemas.
+

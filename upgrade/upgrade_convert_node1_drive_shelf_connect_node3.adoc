@@ -1,0 +1,32 @@
+---
+permalink: upgrade/upgrade_convert_node1_drive_shelf_connect_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Conete fisicamente node1 a node3 antes de atribuir unidades de node1 a node3 
+---
+= Converter node1 em um compartimento de unidades e conectá-lo ao node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Converta o AFF A250 node1 em um compartimento de unidade de NS224 TB e, em seguida, conete-se ao AFF A400 node3 antes de reatribuir unidades de node1 TB a node3 TB.
+
+.Passos
+. Desconete todos os cabos de rede do node1.
+. Remova o node1 do chassi do AFF A250.
+. Insira o módulo do compartimento NVMe (NSM) no compartimento do node1.
+. Conete o NSM ao node3 pelo cabeamento node3 100GbE porta e0c ao NSM A porta e0a.
++
+image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 com uma gaveta de NS224 U.]
+
+. Mova as conexões temporárias de cluster para node3 movendo o cabeamento 25GbE de node1 portas e0c e e0d para quaisquer duas portas integradas 25GbE (e0e, e0f, e0g ou e0h) no node3.
++
+
+NOTE: Se o sistema AFF A400 usar portas FC como portas integradas, instale um adaptador Ethernet de 25GB GB em cada nó para conectividade de cluster durante a migração.
+
+
+
+.O que se segue?
+link:upgrade_reassign_drives_node1_to_node3.html["Reatribuir unidades de node1 a node3"]

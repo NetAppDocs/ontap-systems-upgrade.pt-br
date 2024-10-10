@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+. Se você quiser configurar um cluster sem switch nos novos nós, link:other_references.html["Referências"]consulte vincular ao site de suporte _NetApp_ e siga as instruções em _transitioning to a two-node cluster sem switch_.
+
+
+.Depois de terminar
+Se a criptografia de armazenamento estiver ativada no node3 e no node4, conclua a link:set_up_storage_encryption_new_module.html["Configure a criptografia de armazenamento no novo módulo do controlador"]seção . Caso contrário, completar a link:decommission_old_system.html["Desativar o sistema antigo"]secção .

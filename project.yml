@@ -1,0 +1,30 @@
+---
+settings:
+  name: Upgrade controllers
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: Documentação de atualização de hardware da ONTAP
+    url: "/index.html"
+  - title: Escolha o procedimento de atualização do hardware do controlador
+    url: "/choose_controller_upgrade_procedure.html"
+  - title: Atualize usando o ARL
+    entries:
+    - section: upgrade-arl
+    - section: upgrade-arl-auto-app-9151
+    - section: upgrade-arl-auto-affa900
+    - section: upgrade-arl-auto-app
+    - section: upgrade-arl-auto
+    - section: upgrade-arl-manual-app
+    - section: upgrade-arl-manual
+  - section: upgrade
+  - title: Avisos legais
+    url: "/legal-notices.html"
+product-family:
+  name: ONTAP hardware systems
+  repo: ontap-systems-family

@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/restore_key_manager_config_upgraded_node1.html 
+keywords: restore key-manager, configuration, node1, nve, arl, volume, encryption 
+summary: Se necessário, restaure a configuração do gerenciador de chaves no node1 atualizado ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Restaure a configuração do gerenciador de chaves no node1 atualizado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se você estiver usando a criptografia agregada do NetApp (NAE) ou a criptografia de volume do NetApp (NVE) para criptografar volumes no sistema que você está atualizando, a configuração de criptografia deve ser sincronizada com os novos nós. Se você não ressincronizar o gerenciador de chaves, quando você realocar os agregados node1 do node2 para o node1 atualizado usando o ARL, falhas podem ocorrer porque o node1 não tem as chaves de criptografia necessárias para colocar os volumes e agregados criptografados on-line.
+
+.Sobre esta tarefa
+Sincronize a configuração de criptografia com os novos nós executando as seguintes etapas:
+
+.Passos
+. Executar o seguinte comando a partir de node1:
++
+`security key-manager onboard sync`
+
+. Verifique se a chave SVM-KEK foi restaurada para "true" no node1 antes de realocar os agregados de dados:
++
+[listing]
+----
+::> security key-manager key query -node node1 -fields restored -key-type SVM-KEK
+----
++
+.Exemplo
+[listing]
+----
+::> security key-manager key query -node node1 -fields restored -key-type SVM-KEK
+
+node     vserver   key-server   key-id                                  restored
+-------- --------- -----------  --------------------------------------- --------
+node1    svm1      ""           00000000000000000200000000000a008a81976 true
+                                2190178f9350e071fbb90f00000000000000000
+----
+

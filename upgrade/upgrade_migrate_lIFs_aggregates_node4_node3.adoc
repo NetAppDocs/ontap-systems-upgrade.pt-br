@@ -1,0 +1,140 @@
+---
+permalink: upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html 
+sidebar: sidebar 
+keywords: ndu, nondisruptive, upgrade, node3, node4, migrate, aggregates, lif 
+summary: Prepare node3, conete o nó node3 a node4 e, em seguida, migre as LIFs de dados e agregados de dados em node4 para node3. 
+---
+= Migrar LIFs e agregados de dados em node4 para node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para concluir a atualização, você coneta node3 a node4 e migra as interfaces lógicas de dados (LIFs) e os agregados de dados em node4 a node3.
+
+.Passos
+. No prompt DO Loader para node3, inicialize o nó no menu de inicialização:
++
+`boot_ontap menu`
+
+. Selecione a opção `6 Update flash from backup config` para restaurar o sistema de ficheiros /var para node3.
++
+Isso substitui todas as configurações baseadas em flash pelo último backup nos discos.
+
+. Entre `y` para continuar.
+. Permita que o nó inicialize normalmente.
++
+[NOTE]
+====
+O nó reinicia automaticamente para carregar a nova cópia do sistema de ficheiros /var.
+
+O nó informa um aviso de que existe uma incompatibilidade de ID do sistema. Introduza `y` para substituir a ID do sistema.
+
+====
+. Ligar node3 a node4:
++
+.. Conecte cabos multipath de alta disponibilidade (MPHA) à gaveta NS224 para garantir redundância. Conete a porta node3 100GbE e0d à porta NSM B e0b e conete a porta node4 100GbE e0d à porta NSM A e0a.
+.. Verifique se as portas de HA e0a e e0b estão conectadas entre os nós.
+.. Verifique se as portas E3A e e3b do cluster estão conetadas entre os nós.
+
+
+. Migrar as LIFs de cluster:
++
+`set -privilege advanced`
+
++
+`network port show`
+
+. Modifique o domínio de broadcast do cluster para incluir as portas de cluster desejadas:
++
+`network port broadcast-domain remove-ports -broadcast-domain _broadcast_domain_name_ -ports _port_names_`
+
++
+`network port broadcast-domain add-ports -broadcast-domain Cluster -ports _port_names_`
+
++
+
+NOTE: A partir do ONTAP 9.8, novos IPspaces e um ou mais domínios de broadcast podem ser designados para portas físicas existentes destinadas à conetividade de cluster.
+
+. Modifique o IPspace do cluster para incluir as portas do cluster desejadas e defina a unidade máxima de transmissão para 9000 se ainda não estiver definida:
++
+`network port modify -node _node_name_ -port _port_name_ -mtu 9000 -ipspace Cluster`
+
+. Apresentar todas as LIFs de rede do cluster:
++
+`network interface show -role cluster`
+
+. Migre todas as LIFs de rede do cluster em ambos os nós para suas portas residenciais:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+
+. Apresentar todas as LIFs de rede do cluster:
++
+`network interface show -role cluster`
+
+. Verifique as portas iniciais para as LIFs de rede do cluster:
++
+`network interface modify -vserver _vserver_name_ -lif _lif_name_ -home-port _port_name_`
+
+. Migrar todas as LIFs de dados para o node3:
++
+`network interface migrate -vserver _vserver_name_ -lif _lif_name_ -destination-node _node_name_ -destination-port _port_name_`
+
+. Apresentar todas as LIFs da rede de dados:
++
+`network interface show -role data`
+
+. Configure o nó inicial e a porta inicial para todas as LIFs de dados. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
++
+`network interface modify -vserver _vserver_name_ -lif lif_name -home-node _node_name_ -home-port _port_name_ -status-admin up`
+
+. Migração do LIF de gerenciamento de cluster:
++
+`network interface migrate -vserver _vserver_name_ -lif cluster_mgmt -destination-node _node3_ -destination-port _port_name_`
+
+. Exibir o status do LIF de gerenciamento de cluster:
++
+`network interface show cluster_mgmt`
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+. Habilite o par de HA, failover de storage e auto-giveback:
++
+`cluster ha modify -configured true`
+
+. Migrar agregados de dados pertencentes ao node4 para o node3:
++
+`storage aggregate relocation start -aggregate _aggregate_name_ -node _node4_ -destination _node3_`
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+. Ative a reversão automática das LIFs de rede nos nós:
++
+`network interface modify -lif * -auto-revert true`
+
+. Habilite a giveback automático de failover de storage:
++
+`storage failover modify -node * -auto-giveback true`
+
+. Apresentar o estado do grupo de instrumentos:
++
+`cluster show`
+
+. Elegibilidade para failover de exibição:
++
+`storage failover show`
+
++
+
+NOTE: Na saída do relatório de cluster, um nó pode possuir incorretamente agregados que pertencem a outro nó. Se isso ocorrer, normalize executando uma takeover e giveback de ambos os lados do cluster.
+
+. Exibir o status de todos os agregados de dados no cluster:
++
+`storage aggregate show`
+
+

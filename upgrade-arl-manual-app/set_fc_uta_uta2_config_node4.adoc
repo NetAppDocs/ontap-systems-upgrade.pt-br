@@ -1,0 +1,400 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-manual-app/set_fc_uta_uta2_config_node4.html 
+keywords: fc configuration, uta configuration, uta2 configuration, configure FC ports, uta/uta2 card, node4, target, adapter, ports 
+summary: Configure node4 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2 durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.8 ou posterior. 
+---
+= Defina a configuração FC ou UTA/UTA2 em node4
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Se o node4 tiver portas FC integradas, portas de adaptador unificado de destino integrado (UTA/UTA2) ou uma placa UTA/UTA2, você deverá configurar as configurações antes de concluir o restante do procedimento.
+
+.Sobre esta tarefa
+Talvez seja necessário concluir <<Configurar portas FC no node4>>, o <<Verifique e configure as portas UTA/UTA2 no node4>>, ou ambas as seções.
+
+Se o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2 e estiver atualizando um sistema com discos de storage, será possível pular para link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]o .
+
+No entanto, se você tiver um sistema da série V ou tiver um software de virtualização FlexArray e estiver conetado a storages de armazenamento, e o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você deverá retornar à seção _Instalar e inicializar node4_ e continuar em link:install_boot_node4.html#man_install4_Step9["Passo 9"]. Certifique-se de que o node4 tem espaço suficiente no rack. Se o node4 estiver em um chassi separado do node2, você pode colocar o node4 no mesmo local que o node3. Se o node2 e o node4 estiverem no mesmo chassi, o node4 já estará no local apropriado do rack.
+
+.Opções
+* <<Configurar portas FC no node4>>
+* <<Verifique e configure as portas UTA/UTA2 no node4>>
+
+
+
+
+== Configurar portas FC no node4
+
+Se o node4 tiver portas FC, integradas ou em um adaptador FC, você precisará definir configurações de porta no nó antes de colocá-lo em serviço, pois as portas não estão pré-configuradas. Se as portas não estiverem configuradas, poderá ocorrer uma interrupção no serviço.
+
+.Antes de começar
+Você deve ter os valores das configurações de porta FC de node2 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
+
+.Sobre esta tarefa
+Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node4>>.
+
+
+IMPORTANT: Se o sistema tiver discos de armazenamento, você deverá inserir os comandos nesta seção no prompt do cluster. Se tiver um sistema da série V ou um sistema com software de virtualização FlexArray ligado a matrizes de armazenamento, introduza os comandos nesta secção no modo de manutenção.
+
+.Passos
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Vá para <<man_config_4_Step5,Passo 5>>. 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Vá para <<man_config_4_Step2,Passo 2>>. 
+|===
+. [[man_config_4_Step2]]aceder ao modo de manutenção:
++
+`boot_ontap maint`
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | `system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | `ucadmin show` 
+|===
++
+O sistema exibe informações sobre todos os adaptadores de rede FC e convergentes no sistema.
+
+. Compare as configurações de FC nos novos nós com as configurações que você capturou anteriormente do nó original.
+. [[man_config_4_Step5]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+Modifique as portas FC no node4 conforme necessário:
+
+** Para programar portas de destino:
+
+
+`system node hardware unified-connect modify -type | -t target -adapter _port_name_`
+
+** Para programar portas do iniciador:
+
+
+`system node unified-connect modify type | -t initiator -adapter _port_name_`
+
+`-type` É o tipo FC4, alvo ou iniciador.
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+Modifique as portas FC no node4 conforme necessário:
+
+`ucadmin modify -m fc -t initiator -f _adapter_port_name_`
+
+`-t` É o tipo FC4, alvo ou iniciador.
+
+
+NOTE: As portas FC precisam ser programadas como iniciadores.
+
+|===
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento | Verifique as novas configurações inserindo o seguinte comando e examinando a saída: 
+`system node unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Verifique as novas configurações inserindo o seguinte comando e examinando a saída: 
+`ucadmin show` 
+|===
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se as configurações de FC padrão nos novos nós forem... | Então... 
+
+
+| O mesmo que aqueles que você capturou nos nós originais | Vá para <<man_config_4_Step11,Passo 11>>. 
+
+
+| Diferente dos que você capturou nos nós originais | Vá para <<man_config_4_Step8,Step8>>. 
+|===
+. [[man_config_4_Step8]]Sair do modo de manutenção:
++
+`halt`
+
+. Depois de inserir o comando, aguarde até que o sistema pare no prompt do ambiente de inicialização.
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray executando o Data ONTAP 8.3,0 ou posterior | Acesse o modo Manutenção inserindo o seguinte comando no prompt do ambiente de inicialização: 
+`boot_ontap maint` 
+
+
+| Não é um sistema da série V e não tem software de virtualização FlexArray | Inicialize node4 inserindo o seguinte comando no prompt do ambiente de inicialização: 
+`boot_ontap` 
+|===
+. [[man_config_4_Step11]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema que você está atualizando... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+** Vá para <<Verifique e configure as portas UTA/UTA2 no node4>> se o node4 tiver uma placa UTA/UTA2A ou portas integradas UTA/UTA2.
+** Ignore a seção e vá para link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"] se node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
+
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
+** Vá para <<Verifique e configure as portas UTA/UTA2 no node4>> se o node4 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
+** Ignore a seção _verificar e configurar portas UTA/UTA2 no node4_ se o node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, retorne à seção _Instalar e inicializar node4_ e continue a seção em link:install_boot_node4.html#man_install4_Step9["Passo 9"].
+
+
+|===
+
+
+
+
+== Verifique e configure as portas UTA/UTA2 no node4
+
+Se o node4 tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2A, você deve verificar a configuração das portas e configurá-las, dependendo de como você deseja usar o sistema atualizado.
+
+.Antes de começar
+Você deve ter os módulos SFP corretos para as portas UTA/UTA2.
+
+.Sobre esta tarefa
+As PORTAS UTA/UTA2 podem ser configuradas no modo FC nativo ou no modo UTA/UTA2A. O modo FC é compatível com iniciador FC e destino FC; o modo UTA/UTA2 permite que o tráfego de NIC e FCoE simultâneos compartilhem a mesma interface SFP 10GbE e suporte a destino FC.
+
+
+NOTE: Os materiais de marketing da NetApp podem usar o termo UTA2 para se referir a adaptadores e portas CNA. No entanto, a CLI usa o termo CNA.
+
+As PORTAS UTA/UTA2 podem estar em um adaptador ou no controlador com as seguintes configurações:
+
+* Os cartões UTA/UTA2 encomendados ao mesmo tempo que o controlador são configurados antes do envio para ter a personalidade que você solicitou.
+* Os cartões UTA/UTA2 encomendados separadamente do controlador são fornecidos com a personalidade de destino padrão do FC.
+* As portas UTA/UTA2 integradas em novas controladoras são configuradas (antes do envio) para ter a personalidade que você solicitou.
+
+
+No entanto, você pode verificar a configuração das portas UTA/UTA2 no node4 e alterá-la, se necessário.
+
+*Atenção*: Se o seu sistema tiver discos de armazenamento, você insere os comandos nesta seção no prompt do cluster, a menos que seja direcionado para entrar no modo de manutenção. Se você tiver um sistema MetroCluster FC, um sistema V-Series ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento, você deve estar no modo de manutenção para configurar portas UTA/UTA2.
+
+.Passos
+. Verifique como as portas estão atualmente configuradas usando um dos seguintes comandos no node4:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento | `system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | `ucadmin show` 
+|===
++
+O sistema exibe a saída semelhante ao seguinte exemplo:
+
++
+....
+*> ucadmin show
+                Current  Current    Pending   Pending   Admin
+Node   Adapter  Mode     Type       Mode      Type      Status
+----   -------  ---      ---------  -------   --------  -------
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+f-a    0e       fc       initiator  -          -        online
+f-a    0f       fc       initiator  -          -        online
+f-a    0g       cna      target     -          -        online
+f-a    0h       cna      target     -          -        online
+*>
+....
+. Se o módulo SFP atual não corresponder ao uso desejado, substitua-o pelo módulo SFP correto.
++
+Entre em Contato com seu representante da NetApp para obter o módulo SFP correto.
+
+. Examine a saída do `system node hardware unified-connect show` comando ou `ucadmin show` e determine se as portas UTA/UTA2 têm a personalidade desejada.
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se as portas CNA... | Então... 
+
+
+| Não tenha a personalidade que você quer | Vá para <<man_check_4_Step5,Passo 5>>. 
+
+
+| Tenha a personalidade que você quer | Pule a Etapa 5 até a Etapa 12 e vá para <<man_check_4_Step13,Passo 13>>. 
+|===
+. [[man_check_4_Step5]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento e está executando o Data ONTAP 8.3 | Inicialize node4 e entre no modo de manutenção: 
+`boot_ontap maint` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Vá para <<man_check_4_Step6,Passo 6>>. Você já deve estar no modo Manutenção. 
+|===
+. [[man_check_4_Step6]]execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se você estiver configurando... | Então... 
+
+
+| Portas em uma placa UTA/UTA2A | Vá para <<man_check_4_Step7,Passo 7>>. 
+
+
+| Portas UTA/UTA2 integradas | Pule a Etapa 7 e vá para <<man_check_4_Step8,Passo 8>>. 
+|===
+. [[man_check_4_Step7]]se o adaptador estiver no modo iniciador e se a porta UTA/UTA2 estiver online, coloque a porta UTA/UTA2 offline:
++
+`storage disable adapter _adapter_name_`
+
++
+Os adaptadores no modo de destino são automaticamente offline no modo de manutenção.
+
+. [[man_check_4_Step8]]se a configuração atual não corresponder ao uso desejado, digite o seguinte comando para alterar a configuração conforme necessário:
++
+`ucadmin modify -m fc|cna -t initiator|target _adapter_name_`
+
++
+** `-m` É o modo personalidade: FC ou 10GbE UTA.
+** `-t` É o tipo FC4: Alvo ou iniciador.
+
+
++
+
+NOTE: Você deve usar o iniciador FC para unidades de fita e sistemas de virtualização FlexArray. Você deve usar o destino FC para clientes SAN.
+
+. Verifique as configurações inserindo o seguinte comando e examinando sua saída:
++
+`ucadmin show`
+
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento  a| 
+.. Introduza o seguinte comando:
++
+`halt`
+
++
+O sistema pára no prompt do ambiente de inicialização.
+
+.. Introduza o seguinte comando:
++
+`boot_ontap`
+
+
+
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento e está executando o Data ONTAP 8.3 | Reiniciar para o modo de manutenção: 
+`boot_ontap maint` 
+|===
+. Verifique as configurações:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento | Introduza o seguinte comando: 
+`system node hardware unified-connect show` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Introduza o seguinte comando: 
+`ucadmin show` 
+|===
++
+A saída nos exemplos a seguir mostra que o tipo FC4 de adaptador "1b" está mudando para `initiator` e que o modo dos adaptadores "2a" e "2b" está mudando para `cna`.
+
++
+[listing]
+----
+cluster1::> system node hardware unified-connect show
+               Current  Current   Pending  Pending    Admin
+Node  Adapter  Mode     Type      Mode     Type       Status
+----  -------  -------  --------- -------  -------    -----
+f-a    1a      fc       initiator -        -          online
+f-a    1b      fc       target    -        initiator  online
+f-a    2a      fc       target    cna      -          online
+f-a    2b      fc       target    cna      -          online
+4 entries were displayed.
+----
++
+[listing]
+----
+*> ucadmin show
+               Current Current   Pending  Pending    Admin
+Node  Adapter  Mode    Type      Mode     Type       Status
+----  -------  ------- --------- -------  -------    -----
+f-a    1a      fc      initiator -        -          online
+f-a    1b      fc      target    -        initiator  online
+f-a    2a      fc      target    cna      -          online
+f-a    2b      fc      target    cna      -          online
+4 entries were displayed.
+*>
+----
+. Coloque todas as portas de destino on-line inserindo um dos seguintes comandos, uma vez para cada porta:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento | `network fcp adapter modify -node _node_name_ -adapter _adapter_name_ -state up` 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | `fcp config _adapter_name_ up` 
+|===
+. [[man_check_4_Step13]]Faça o cabo da porta.
+. Execute uma das seguintes ações:
++
+[cols="35,65"]
+|===
+| Se o sistema... | Então... 
+
+
+| Tem discos de armazenamento | Vá para link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]. 
+
+
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Retorne à seção _Instalar e inicializar node4_ e retome a seção em link:install_boot_node4.html#man_install4_Step9["Passo 9"]. 
+|===
+

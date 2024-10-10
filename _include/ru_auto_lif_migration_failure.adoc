@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Depois de migrar LIFs, eles podem não vir online após a migração no Estágio 2, Estágio 3 ou Estágio 5.
+
+.Passos
+. Verifique se o tamanho da MTU da porta é o mesmo que o do nó de origem.
++
+Por exemplo, se o tamanho da MTU da porta do cluster for 9000 no nó de origem, ele deverá ser 9000 no nó de destino.
+
+. Verifique a conetividade física do cabo de rede se o estado físico da porta for `down`.
+
