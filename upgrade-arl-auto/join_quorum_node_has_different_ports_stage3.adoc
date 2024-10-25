@@ -10,7 +10,7 @@ summary: 'Durante a etapa 3, confirme se o novo nó se junta ao quórum ao atual
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Você pode atualizar o hardware do controlador convertendo um sistema a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

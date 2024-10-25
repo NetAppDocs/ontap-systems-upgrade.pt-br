@@ -122,7 +122,7 @@ WARNING: Quando as portas "e0a" e "e0b" estão sendo usadas como portas de inter
 No exemplo a seguir, os LIFs de gerenciamento e clusters nas portas de rede "e0a" e "e0b" são reatribuídos às portas de rede "e1a" e "e1b". Seus nós podem estar usando portas de rede diferentes porque variam de acordo com o sistema.
 
 +
-image::../upgrade/media/reassign_lifs.PNG[Reatribuir LIFs às portas de rede no sistema de substituição]
+image:reassign_lifs.PNG["Reatribuir LIFs às portas de rede no sistema de substituição"]
 
 
 

@@ -10,7 +10,7 @@ summary: 'Relocate manualmente agregados com falha ou vetado ao atualizar contro
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

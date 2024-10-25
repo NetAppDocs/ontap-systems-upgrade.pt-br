@@ -10,7 +10,7 @@ summary: Instale os arquivos RCF para reconfigurar os switches Cisco e Brocade d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Solucione problemas de falhas que podem ocorrer ao atualizar controlad
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Sequência de processo do estágio 2 para uma atualização manual do A
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

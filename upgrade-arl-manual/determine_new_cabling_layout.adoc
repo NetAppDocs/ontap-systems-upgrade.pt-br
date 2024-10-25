@@ -10,7 +10,7 @@ summary: Determine o layout de cabeamento dos novos módulos de controladora e c
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

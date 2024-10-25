@@ -10,7 +10,7 @@ summary: 'Verifique a integridade da configuração do MetroCluster e a operaç�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

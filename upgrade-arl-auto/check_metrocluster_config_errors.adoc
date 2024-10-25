@@ -10,7 +10,7 @@ summary: 'Use a ferramenta Config Advisor para verificar se há erros de configu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

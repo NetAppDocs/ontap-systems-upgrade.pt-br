@@ -10,7 +10,7 @@ summary: Encerre o node2 corretamente e remova-o do rack ou chassi durante uma a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

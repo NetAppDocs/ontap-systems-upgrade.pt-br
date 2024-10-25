@@ -10,7 +10,7 @@ summary: 'Decida se deseja usar o ARL para atualizar controladores executando o 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

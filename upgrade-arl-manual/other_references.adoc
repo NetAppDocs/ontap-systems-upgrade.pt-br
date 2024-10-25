@@ -10,7 +10,7 @@ summary: Conteúdo de referência e sites necessários para suportar uma atualiz
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

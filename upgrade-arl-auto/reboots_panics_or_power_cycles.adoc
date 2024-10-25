@@ -10,7 +10,7 @@ summary: 'O sistema pode falhar – reiniciar, entrar em pânico ou passar por u
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

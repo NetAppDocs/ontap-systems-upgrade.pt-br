@@ -10,7 +10,7 @@ summary: Retome as transferências e relacionamentos do SnapMirror ao usar o ARL
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Decida se deseja usar o procedimento manual ARL para atualizar controla
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

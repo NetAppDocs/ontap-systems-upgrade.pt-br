@@ -23,7 +23,7 @@ Para fazer a atualização movendo o storage, você prepara os nós originais e 
 ====
 Nas etapas para atualizar o hardware do controlador movendo o storage, os nós originais são chamados de node1 e node2, e os novos nós são chamados de node3 e node4. Durante o procedimento descrito, o node1 é substituído pelo node3 e o node2 é substituído pelo node4.
 
-image::../upgrade/media/original_to_new_nodes.png[Substituição de node3 e node4 por node1 e node2]
+image:original_to_new_nodes.png["Substituição de node1 e node2 por node3 e node4"]
 
 Os termos node1, node2, node3 e node4 são usados apenas para distinguir entre os nós originais e novos. Ao seguir o procedimento, você deve substituí-los pelos nomes reais de seus nós originais e novos. No entanto, na realidade, os nomes dos nós não mudam: node3 tem o nome node1 e node4 tem o nome node2 após o hardware do controlador ser atualizado.
 

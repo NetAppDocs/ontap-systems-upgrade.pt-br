@@ -10,7 +10,7 @@ summary: Use o Gerenciador de chaves integrado para gerenciar chaves de autentic
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

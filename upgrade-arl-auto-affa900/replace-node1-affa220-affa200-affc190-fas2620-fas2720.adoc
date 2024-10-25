@@ -10,7 +10,7 @@ summary: Substitua o node1 os módulos de sistema AFF A220, AFF A200, AFF C190, 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -32,11 +32,11 @@ Deixe os cabos no dispositivo de gerenciamento de cabos para que, ao reinstalar 
 
 . Retire e reserve os dispositivos de gerenciamento de cabos dos lados esquerdo e direito do módulo do controlador.
 +
-image::../media/drw_25xx_cable_management_arm.png[Remoção do ARM de gerenciamento de cabos]
+image:drw_25xx_cable_management_arm.png["Remoção do ARM de gerenciamento de cabos"]
 
 . Aperte o trinco na pega do excêntrico até que este se solte, abra totalmente o manípulo do excêntrico para libertar o módulo do controlador do plano médio e, em seguida, utilizando duas mãos, puxe o módulo do controlador para fora do chassis.
 +
-image::../media/drw_2240_x_opening_cam_latch.png[Abrir o manípulo do excêntrico]
+image:drw_2240_x_opening_cam_latch.png["Abrir o manípulo do excêntrico"]
 
 . Vire o módulo do controlador ao contrário e coloque-o numa superfície plana e estável.
 

@@ -10,7 +10,7 @@ summary: 'Mova agregados que não sejam raiz e LIFs de dados nas do node1 para o
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

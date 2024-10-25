@@ -10,7 +10,7 @@ summary: Verifique se o par de HA está ativado, verifique o acesso ao storage n
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

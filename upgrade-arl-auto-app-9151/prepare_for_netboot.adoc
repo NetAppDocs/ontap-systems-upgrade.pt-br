@@ -10,7 +10,7 @@ summary: 'Prepare-se para netboot node3 e node4 ao atualizar controladores execu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

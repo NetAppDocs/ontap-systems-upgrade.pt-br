@@ -10,7 +10,7 @@ summary: Verifique se as LIFs de dados nas do node2 no node1 foram relocadas de 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

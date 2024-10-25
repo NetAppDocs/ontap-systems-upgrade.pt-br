@@ -10,7 +10,7 @@ summary: Configure e gerencie criptografia de armazenamento, gerencie chaves de 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

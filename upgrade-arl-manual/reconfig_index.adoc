@@ -10,7 +10,7 @@ summary: Para o ONTAP 9.1 ou posterior, reconfigure o layout da porta e aplique 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

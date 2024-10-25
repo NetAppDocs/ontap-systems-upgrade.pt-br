@@ -10,7 +10,7 @@ summary: Solucione problemas de falhas que podem ocorrer durante uma atualiza√ß√
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

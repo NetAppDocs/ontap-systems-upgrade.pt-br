@@ -10,7 +10,7 @@ summary: Verifique a instalação do node1 com os módulos de substituição ao 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

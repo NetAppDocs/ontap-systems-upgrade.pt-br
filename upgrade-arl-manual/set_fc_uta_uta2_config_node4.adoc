@@ -10,7 +10,7 @@ summary: Configure node4 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

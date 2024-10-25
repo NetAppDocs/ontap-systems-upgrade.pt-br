@@ -10,51 +10,22 @@ indexpage:
   tiles:
   - title: Comece agora
     links:
-    - title: Notas de versão do ONTAP
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
     - title: Escolha o procedimento de atualização do hardware do controlador
       url: "/choose_controller_upgrade_procedure.html"
-  - title: Atualize com a realocação de agregados em sistemas que executam o ONTAP
-      9.8 e posterior
-    links:
-    - title: Use os comandos "System controller replace" para atualizar o hardware
-        do controlador introduzido no ONTAP 9.15,1
-      url: "/upgrade-arl-auto-app-9151/index.html"
-    - title: Use os comandos "System controller replace" para atualizar os modelos
-        de controladora no mesmo chassi
-      url: "/upgrade-arl-auto-affa900/index.html"
-    - title: Utilizar os comandos "System controller replace" (Substituir controlador
-        do sistema) (MOST)
-      url: "/upgrade-arl-auto-app/index.html"
-    - title: Use comandos manuais
-      url: "/upgrade-arl-manual-app/index.html"
-  - title: Atualize com a realocação de agregados em sistemas que executam o ONTAP
-      9.7 e versões anteriores
-    links:
-    - title: Utilize os comandos "System controller replace" (Substituir controlador
-        do sistema)
-      url: "/upgrade-arl-auto/index.html"
-    - title: Use comandos manuais
-      url: "/upgrade-arl-manual/index.html"
-  - title: Atualize movendo armazenamento ou volumes
-    links:
-    - title: Atualizar o hardware da controladora
-      url: "/upgrade/upgrade-decide-to-use-this-guide.html"
-    - title: Atualize o AFF A250 para o AFF A400 convertendo para um compartimento
-        de unidade
-      url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
-  - title: Atualizar sistemas em uma configuração MetroCluster
-    links:
-    - title: Selecione o procedimento de atualização para a configuração do MetroCluster
+    - title: Notas de versão do ONTAP
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
+    - title: Atualizar sistemas em uma configuração MetroCluster
       url: https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html
-  - title: Mais recursos
+  - title: Saiba mais sobre os sistemas e o software ONTAP
     links:
     - title: Documentação dos sistemas de hardware ONTAP
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: Documentação do switch para sistemas de hardware ONTAP
+    - title: Documentação do ONTAP switches
       url: https://docs.netapp.com/us-en/ontap-systems-switches/index.html
     - title: Documentação do software ONTAP
       url: https://docs.netapp.com/us-en/ontap/index.html
+  - title: Mais recursos
+    links:
     - title: NetApp Hardware Universe
       url: https://hwu.netapp.com/
     - title: NetApp Active IQ Config Advisor

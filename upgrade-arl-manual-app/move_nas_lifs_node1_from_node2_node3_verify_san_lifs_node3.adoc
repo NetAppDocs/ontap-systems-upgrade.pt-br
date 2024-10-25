@@ -10,7 +10,7 @@ summary: Mova as LIFs de dados do nas node1 que estão no node2 de node2 para no
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

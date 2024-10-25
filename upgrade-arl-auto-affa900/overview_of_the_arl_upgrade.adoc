@@ -10,7 +10,7 @@ summary: Entenda como funciona o procedimento ARL para atualizar modelos de cont
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

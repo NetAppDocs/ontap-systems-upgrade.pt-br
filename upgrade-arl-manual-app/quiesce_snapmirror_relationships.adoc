@@ -10,7 +10,7 @@ summary: Antes de inicializar o sistema, quiesce todas as relações do SnapMirr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Retome as transferências e relacionamentos do SnapMirror durante uma a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Notifique o suporte técnico da NetApp de que a manutenção está em a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

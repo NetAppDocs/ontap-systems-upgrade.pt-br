@@ -10,7 +10,7 @@ summary: Desligue o node2 e remova-o do rack ou chassi ao usar o ARL para atuali
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

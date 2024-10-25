@@ -10,7 +10,7 @@ summary: Mova LIFs de dados nas do node2 para o node3 durante uma atualização 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

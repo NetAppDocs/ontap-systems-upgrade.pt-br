@@ -10,7 +10,7 @@ summary: Prepare os nós, colete informações e confirme se todos os nós de cl
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

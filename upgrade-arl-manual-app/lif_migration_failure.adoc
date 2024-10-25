@@ -10,7 +10,7 @@ summary: LIFs não estão online após a migração no Estágio 2, Estágio 3 ou
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

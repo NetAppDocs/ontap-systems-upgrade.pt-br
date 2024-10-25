@@ -10,7 +10,7 @@ summary: Habilite os switches Brocade e Cisco na malha persistentemente durante 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

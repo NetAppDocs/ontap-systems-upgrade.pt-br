@@ -10,7 +10,7 @@ summary: 'Crie novamente as VLANs node1, os grupos de interface e os domínios d
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

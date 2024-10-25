@@ -10,7 +10,7 @@ summary: Ao usar o ARL para atualizar modelos de controladora no mesmo chassi, v
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

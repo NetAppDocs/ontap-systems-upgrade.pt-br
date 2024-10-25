@@ -10,7 +10,7 @@ summary: Entenda se você pode usar o ARL, mantendo o chassi e os discos antigos
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Inicialize node2 com os módulos de controlador de substituição ao us
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

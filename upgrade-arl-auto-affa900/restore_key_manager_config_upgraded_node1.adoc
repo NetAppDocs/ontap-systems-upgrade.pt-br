@@ -10,7 +10,7 @@ summary: Se necessário, restaure a configuração do gerenciador de chaves no n
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

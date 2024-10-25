@@ -10,7 +10,7 @@ summary: 'Sequência de processo da fase 1 para uma atualização ARL utilizando
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

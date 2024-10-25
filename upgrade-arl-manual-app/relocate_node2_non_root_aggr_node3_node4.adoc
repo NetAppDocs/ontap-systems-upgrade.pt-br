@@ -10,7 +10,7 @@ summary: Relocate os agregados não-raiz do node2 de node3 para node4 durante um
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

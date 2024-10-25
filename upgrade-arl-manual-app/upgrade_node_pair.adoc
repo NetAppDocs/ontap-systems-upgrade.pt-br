@@ -10,7 +10,7 @@ summary: Você pode preparar manualmente o nó original para atualização execu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

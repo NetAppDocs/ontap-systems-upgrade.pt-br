@@ -10,7 +10,7 @@ summary: Se necessário, configure a criptografia de armazenamento, instale cert
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

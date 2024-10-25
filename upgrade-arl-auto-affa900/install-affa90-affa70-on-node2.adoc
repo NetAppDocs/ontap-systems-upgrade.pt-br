@@ -10,7 +10,7 @@ summary: Instale os módulos de sistema de substituição no node2 durante uma a
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,7 +23,7 @@ Instale o módulo do controlador AFF A90 ou AFF A70 que recebeu para a atualiza�
 NOTE: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
 
 +
-image::../media/drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG[Instale um AFF A90 ou AFF A70]
+image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Instale um AFF A90 ou AFF A70"]
 
 . Cable as portas de gerenciamento e console para o módulo do controlador node1.
 +

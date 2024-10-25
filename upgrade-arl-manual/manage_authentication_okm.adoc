@@ -10,7 +10,7 @@ summary: Use o OKM para gerenciar chaves de autenticação durante uma atualiza�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

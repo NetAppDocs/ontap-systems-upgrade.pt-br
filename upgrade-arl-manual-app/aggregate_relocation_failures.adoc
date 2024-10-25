@@ -10,7 +10,7 @@ summary: Solucionar falhas de realocação de agregados que podem ocorrer durant
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

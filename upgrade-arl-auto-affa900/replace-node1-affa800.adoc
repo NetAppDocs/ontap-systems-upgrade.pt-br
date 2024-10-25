@@ -10,7 +10,7 @@ summary: Substitua os módulos do sistema AFF A800 node1 ao usar o ARL para atua
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -26,7 +26,7 @@ Se você ainda não está aterrado, aterre-se corretamente.
 .Passos
 . Na parte frontal do chassis, utilize os polegares para empurrar firmemente cada unidade até sentir um batente positivo. Isso garante que as unidades estejam firmemente assentadas contra o plano médio do chassi.
 +
-image::../media/drw_a800_drive_seated_IEOPS-960.png[Empurre a transmissão para assentar firmemente contra o plano médio do chassis]
+image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
 
 . Vá para a parte traseira do chassis.
 
@@ -50,7 +50,7 @@ Deixe os cabos no dispositivo de gerenciamento de cabos para que, ao reinstalar 
 O módulo do controlador desloca-se ligeiramente para fora do chassis.
 
 +
-image::../media/a800_cable_management.png[Remoção do ARM de gerenciamento de cabos]
+image:a800_cable_management.png["Remoção do ARM de gerenciamento de cabos"]
 
 +
 [cols="20,80"]
@@ -58,12 +58,12 @@ image::../media/a800_cable_management.png[Remoção do ARM de gerenciamento de c
 
 
  a| 
-image::../media/black_circle_one.png[Número um]
+image:black_circle_one.png["Número um"]
 | Trinco de bloqueio 
 
 
  a| 
-image::../media/black_circle_two.png[Número dois]
+image:black_circle_two.png["Número dois"]
 | Pino de bloqueio 
 |===
 
@@ -81,7 +81,7 @@ Instale, faça o cabo e conete o módulo do controlador AFF A90 ou AFF A70 em no
 NOTE: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
 
 +
-image::../media/drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG[Instale um AFF A90 ou AFF A70]
+image:drw_A70-90_PCM_remove_replace_IEOPS-1365.PNG["Instale um AFF A90 ou AFF A70"]
 
 . Cable as portas de gerenciamento e console para o módulo do controlador node1.
 +

@@ -10,7 +10,7 @@ summary: Você deve ter certas ferramentas e documentação para usar o ARL para
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

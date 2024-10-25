@@ -10,7 +10,7 @@ summary: Prepare o nó original para atualização executando tarefas nos nós o
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

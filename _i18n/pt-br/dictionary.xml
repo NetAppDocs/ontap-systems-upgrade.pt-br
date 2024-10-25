@@ -2086,7 +2086,6 @@
   <block id="3548781d8fe3c65e8421c7698ed973f9" category="list-text"><block ref="3548781d8fe3c65e8421c7698ed973f9" category="inline-link-macro-rx"></block></block>
   <block id="70df8f2f5459940187f1edf7420f9c6b" category="paragraph">Para fazer a atualização movendo o storage, você prepara os nós originais e configura os novos nós. Alguns modelos de plataforma suportam a transferência de storage interno para os novos nós. Reatribuir discos e restaurar a configuração do volume raiz para os novos nós e configurar portas de rede.</block>
   <block id="3d9010fa119828bc81f438c75af15b63" category="paragraph">Nas etapas para atualizar o hardware do controlador movendo o storage, os nós originais são chamados de node1 e node2, e os novos nós são chamados de node3 e node4. Durante o procedimento descrito, o node1 é substituído pelo node3 e o node2 é substituído pelo node4.</block>
-  <block id="1b70cbc4d15cd633d93e8057d460d873" category="image-alt">Substituição de node3 e node4 por node1 e node2</block>
   <block id="ff13d8bc09b612151174d9b83a1e0634" category="paragraph">Os termos node1, node2, node3 e node4 são usados apenas para distinguir entre os nós originais e novos. Ao seguir o procedimento, você deve substituí-los pelos nomes reais de seus nós originais e novos. No entanto, na realidade, os nomes dos nós não mudam: node3 tem o nome node1 e node4 tem o nome node2 após o hardware do controlador ser atualizado.</block>
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">Um</block>
   <block id="4b52611cbeb99e3693b2989804997376" category="inline-link-macro">Prepare-se para a atualização ao mover o armazenamento</block>
@@ -2329,7 +2328,6 @@
   <block id="26ade9476b94b8c52725c91b6938ea23" category="paragraph">Use este procedimento se quiser atualizar o hardware do controlador nas seguintes situações:</block>
   <block id="894f2e2a32e68afb6c8779c4dd1b6061" category="list-text">Ao atualizar para um sistema introduzido no ONTAP 9.15,1, o ONTAP converte a eficiência de storage de volumes existentes e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema.</block>
   <block id="20a50ea664dd251305adec2bcca06061" category="list-text">Para um sistema AFF A70, AFF A90 ou AFF A1K, o ONTAP converte a eficiência de storage de todos os volumes thin Provisioning existentes, inclusive aqueles que não usam a eficiência de storage.</block>
-  <block id="c35161fa14384d510e021a3314063cc1" category="list-text">Para um sistema FAS70 e FAS90, o ONTAP converte apenas a eficiência de storage de volumes thin Provisioning existentes que já tinham a eficiência de storage habilitada antes da atualização.</block>
   <block id="33bb7bcaf48f0fdda36a26455a40a230" category="inline-link-macro">Saiba mais sobre a eficiência de storage</block>
   <block id="6d6b534c9b53f9b5663ea4448a9c5c5a" category="paragraph"><block ref="7e7ac2ea54718abbfde88230c884c797" category="inline-link-macro-rx"></block>.</block>
   <block id="029d23f0db183aa13dd611784328ec8c" category="list-text">Os procedimentos de atualização de hardware foram simplificados no ONTAP 9.8 com a introdução do recurso de colocação automática de portas.</block>
@@ -2947,30 +2945,12 @@
   <block id="e2c52cb2e34e893afee819116adecafb" category="paragraph"><block ref="e2c52cb2e34e893afee819116adecafb" category="inline-link-macro-rx"></block></block>
   <block id="8fb4b518ce39a0704f920c9d4f2f7b77" category="summary">Use a realocação de agregados para atualizar o hardware do controlador</block>
   <block id="ee537959cbe6c4957342c94d3801abf7" category="doc">Escolha o procedimento de atualização ARL</block>
-  <block id="6e58652b4dc76659a9eeef1a0ccc6daf" category="paragraph">Este conteúdo descreve como atualizar o hardware da controladora sem interrupção usando o ARL (Aggregate Relocation).</block>
-  <block id="30fe187542d0301b8cde168dff779374" category="paragraph">Para obter outros métodos de atualização do hardware do controlador, <block ref="9f3bef3f6be14e6a346fc21a2929c802" category="inline-link-macro-rx"></block>consulte .</block>
-  <block id="645b41b640376c487d825f5296fcae9d" category="paragraph">É possível atualizar o hardware da controladora em um par de nós executando ONTAP sem interrupções, migrando agregados que não sejam raiz dos nós originais para os novos nós no mesmo cluster. Os dados hospedados nos nós que estão sendo atualizados estão acessíveis durante a atualização.</block>
-  <block id="f7a0874d2fe18058d08d01fb0120a9d9" category="paragraph">O ARL aproveita a configuração de HA para permitir que você mova a propriedade de agregados que não sejam raiz de um nó para outro, caso eles compartilhem storage no mesmo cluster.</block>
-  <block id="baf4103e3ee1058b17cd4da23c15704b" category="paragraph">Existem dois métodos ARL para atualizar o hardware do seu controlador, usando comandos do sistema ou realizando uma atualização manual. Antes de iniciar, você deve verificar se selecionou o conteúdo correto para a atualização de hardware do controlador.</block>
-  <block id="757f3d0794e578256e35f77de45e53d1" category="paragraph">Se você estiver executando uma atualização usando comandos do sistema, consulte a seguinte tabela:</block>
-  <block id="6e6a93e1bc39df87c56313cbfd41fa2c" category="cell">Se você estiver executando esta versão do ONTAP...</block>
-  <block id="c8148f766ec78479f303b8e902e9099b" category="cell">Para atualizar com comandos do sistema, use...</block>
   <block id="7e077786789216bd7864197dde6da988" category="cell">9.15.1 ou posterior</block>
   <block id="abf9ebbea401affbe4640962b00393d7" category="inline-link-macro">Use os comandos "System controller replace" para atualizar o hardware do controlador introduzido no ONTAP 9.15,1</block>
-  <block id="a98caac8456398a760c308df55a83cb5" category="cell"><block ref="a98caac8456398a760c308df55a83cb5" category="inline-link-macro-rx"></block></block>
-  <block id="2275b38e5279b78660b012808a4cb08e" category="cell">9.10.1 ou posterior</block>
-  <block id="d406be867b5acefe539dcc5fb35b0d2f" category="cell"><block ref="257ce5671d801ab32735a8f227cd7f0b" category="inline-link-macro-rx"></block> Você pode usar este procedimento para atualizar um controlador AFF configurado como um ASA (All SAN Array) para um controlador ASA para determinados modelos e versões de software ONTAP. <block ref="dd8a9320d133fc6bc4cebf159be26035" category="inline-link-macro-rx"></block>.</block>
   <block id="041dd7a51404fc5dc5a87c2a0bc90b15" category="cell">9,8 ou posterior</block>
-  <block id="9485cc727d9d60c0c782449790411372" category="cell"><block ref="9485cc727d9d60c0c782449790411372" category="inline-link-macro-rx"></block></block>
   <block id="b9872d104f5b4706bfb3c12a12c6f3d6" category="cell">9,5 a 9,7</block>
-  <block id="a80362d8850ea6131db54e8994d7ece8" category="cell"><block ref="a80362d8850ea6131db54e8994d7ece8" category="inline-link-macro-rx"></block></block>
-  <block id="f205bf1a1b77ff86829c2c9003e57d32" category="paragraph">Se estiver a efetuar uma atualização manual, consulte a seguinte tabela:</block>
-  <block id="6af074e0669e408e576b460f5c34b89b" category="cell">Para atualizar manualmente, use...</block>
   <block id="987d908c963b953e34ffd0bc33ebfd50" category="inline-link-macro">Atualize manualmente o hardware da controladora executando o ONTAP 9.8 ou posterior</block>
-  <block id="4a5512afba1f93dd83104eaac4237453" category="cell"><block ref="4a5512afba1f93dd83104eaac4237453" category="inline-link-macro-rx"></block></block>
-  <block id="4c41f3a2ec168af1924a7c5a884bdc37" category="cell">9,0 a 9,7</block>
   <block id="9732e7498adc911676ddbf1eb96c90f1" category="inline-link-macro">Atualize manualmente o hardware da controladora executando o ONTAP 9.7 ou anterior</block>
-  <block id="c96cad4c802036afa3176e87bcda336b" category="cell"><block ref="c96cad4c802036afa3176e87bcda336b" category="inline-link-macro-rx"></block></block>
   <block id="3a042ad216541ed5571bc523ce7be6e9" category="summary">Solucione falhas de realocação de agregados que podem ocorrer ao atualizar controladores executando o ONTAP 9.5 para 9,7 usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="ffd40624ae18e36b15ccf2019794cb82" category="summary">Use o procedimento ARL parcialmente automatizado para atualizar controladores que executam o ONTAP 9.5 a 9,7.</block>
   <block id="3ffee04e4bb020103f1bece18c2ac58e" category="doc">Automatize o processo de atualização do controlador</block>
@@ -5124,18 +5104,9 @@
   <block id="b0d52e5491c54658a39bbef8e5dd30a6" category="sidebar">Atualize o hardware da controladora relocando agregados, movendo volumes ou movendo storage.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Comece agora</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">Notas de versão do ONTAP</block>
-  <block id="c024cf342a69d8b35b142333f2608aa5" category="sidebar">Atualize com a realocação de agregados em sistemas que executam o ONTAP 9.8 e posterior</block>
-  <block id="194cc1951d00be469039af6dbda275d0" category="sidebar">Utilizar os comandos "System controller replace" (Substituir controlador do sistema) (MOST)</block>
-  <block id="b4d25e7f066e6393a7e3a6a7115b4f94" category="sidebar">Use comandos manuais</block>
-  <block id="5d3c4b59db4a991b7c6450c61662dc60" category="sidebar">Atualize com a realocação de agregados em sistemas que executam o ONTAP 9.7 e versões anteriores</block>
-  <block id="806e982f94b5ab4054aa07ccb047ecdb" category="sidebar">Utilize os comandos "System controller replace" (Substituir controlador do sistema)</block>
-  <block id="d58d42ec84ab0189beb36da55893f387" category="sidebar">Atualize movendo armazenamento ou volumes</block>
-  <block id="6c54fdf57ce13c518f1cc0d9d5f32820" category="sidebar">Atualizar o hardware da controladora</block>
   <block id="7d94daad2b6e9d77a6320a64c21fbc4a" category="sidebar">Atualizar sistemas em uma configuração MetroCluster</block>
-  <block id="c6bb96cc8b84319277f00b15adc71d75" category="sidebar">Selecione o procedimento de atualização para a configuração do MetroCluster</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Mais recursos</block>
   <block id="ec6e72d1c4bb7dccdc62b6caf35c95f7" category="sidebar">Documentação dos sistemas de hardware ONTAP</block>
-  <block id="6015ba5fcef1f3caa77869608d6c2789" category="sidebar">Documentação do switch para sistemas de hardware ONTAP</block>
   <block id="dd032435fa83549d8bf3928550409a3e" category="sidebar">Documentação do software ONTAP</block>
   <block id="519131237f79eadb2dc6a1e003a087bc" category="sidebar">NetApp Active IQ Config Advisor</block>
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="sidebar">Matriz de interoperabilidade do NetApp</block>
@@ -5217,4 +5188,56 @@
   <block id="48839137eaf0562b138582edd90137cb" category="sidebar">Fase 5. Instalação e inicialização node4 (atualização manual no ONTAP 9.8 ou posterior)</block>
   <block id="dae43a2f9b6862b045e06fc8e8a1f0fa" category="sidebar">Fase 6. Conclua a atualização (atualização manual no ONTAP 9.8 ou posterior)</block>
   <block id="5c57d2af87e466b26b2b4fc39ddb3528" category="sidebar">Solução de problemas (atualização manual no ONTAP 9.8 ou posterior)</block>
+  <block id="6a171bc0a83fdc8cf2cad914f26e60f7" category="inline-image-macro">Substituição de node1 e node2 por node3 e node4</block>
+  <block id="3aaf8e09b00062e6ef2a6306db035456" category="paragraph"><block ref="3aaf8e09b00062e6ef2a6306db035456" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ab209cb8d12b2f480578b4949df8aaa0" category="paragraph"><block ref="ab209cb8d12b2f480578b4949df8aaa0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="75b20a9dfdabc84f9f91512eb8cfbda8" category="list-text">Para um sistema FAS70 e FAS90, o ONTAP converte apenas a eficiência de storage de volumes thin Provisioning existentes que tinham a eficiência de storage habilitada antes da atualização.</block>
+  <block id="062789e6044bfae1e66a58c85ebf5281" category="paragraph"><block ref="062789e6044bfae1e66a58c85ebf5281" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f52cbea23351114ee0b3b28c1c53db00" category="paragraph"><block ref="f52cbea23351114ee0b3b28c1c53db00" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb53938953a64ed1298a3856f8bb8679" category="doc">Comece aqui: Escolha seu procedimento de atualização ARL</block>
+  <block id="d42c7018dcc284c2db31a4a24d2b3b3c" category="paragraph">Você pode atualizar o hardware do controlador sem interrupção usando o ARL (Aggregate Relocation). Para obter outros métodos de atualização do hardware do controlador, <block ref="9f3bef3f6be14e6a346fc21a2929c802" category="inline-link-macro-rx"></block>consulte .</block>
+  <block id="52c65abc1d4cdef95969c778420220da" category="paragraph">Com o ARL, você atualiza o hardware da controladora de forma ininterrupta em um par de nós que executam o ONTAP, migrando agregados sem raiz dos nós originais para os novos nós no mesmo cluster. Os dados hospedados nos nós que estão sendo atualizados estão acessíveis durante a atualização.</block>
+  <block id="dc32b0faeda54116d50282dbfa24dda7" category="paragraph">O ARL aproveita a configuração de HA para oferecer a capacidade de mover a propriedade de agregados que não são raiz de um nó para outro, se eles compartilharem storage no mesmo cluster.</block>
+  <block id="72e1bba43ca452b38bc94d7f96d04f68" category="paragraph">Existem vários métodos ARL para atualizar o hardware do controlador. Para selecionar o procedimento adequado, consulte as informações a seguir sobre os sistemas e as versões do ONTAP suportadas para cada opção de atualização do ARL.</block>
+  <block id="cd9547b52fda0ee4b09ec2df334b7b51" category="section-title">Use os comandos "System controller replace" com ONTAP 9.15,1 ou posterior</block>
+  <block id="788596adaaaec6cd405246037f06d6f8" category="paragraph">Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para <block ref="f609a3e8782c2c2c1207c1ab8bc1092e" category="inline-link-macro-rx"></block> para iniciar o procedimento de atualização.</block>
+  <block id="83606cabd222d0d058cfae8874f35382" category="example-title">Mostrar sistemas suportados</block>
+  <block id="37b7186b6ae7b3227f80bbe1da693be7" category="section-title">Atualize os modelos de controladora no mesmo chassi</block>
+  <block id="34cc21c16ca659d7ddb97f634ed86150" category="paragraph">Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para <block ref="8e6a41e8fa329b194a3382ccde9289cd" category="inline-link-macro-rx"></block> para iniciar o procedimento de atualização.</block>
+  <block id="3fe507461c708cfe67db6ed39b069266" category="cell">Sistema antigo</block>
+  <block id="7a3b05b130c9ce12ac95ac076b53bfcf" category="cell">AFF A70 ou AFF A90</block>
+  <block id="3e44bbb802d299056c9839f8bdfc777a" category="cell">9.15.1 e mais tarde</block>
+  <block id="184f38916b6639f5bdbf7619d90cebc3" category="paragraph">9.10.1P15, 9.11.1P11 e posterior</block>
+  <block id="45b09eba6fe8095ae38635150e57152a" category="paragraph">*Nota*: O AFF A200 não suporta versões ONTAP posteriores a 9.11.1.</block>
+  <block id="d243c4c373219990c87996aba8af4741" category="paragraph">9.11.1P7 (FAS2620)</block>
+  <block id="26ed1ff6e78b37e572170171b4fabc0f" category="paragraph">*Nota*: O FAS2620 não suporta versões ONTAP posteriores a 9.11.1.</block>
+  <block id="074a728bac13ce0b2d079bed92780d8d" category="section-title">Use os comandos "System controller replace" com o ONTAP 9.8 ou posterior</block>
+  <block id="bf2f20b69fe364bf3a76fbb262d9c675" category="paragraph">Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para <block ref="f597d5199c2cdfe3f660f286188248d5" category="inline-link-macro-rx"></block> para iniciar o procedimento de atualização.</block>
+  <block id="1694aa2f0754e25d2950e8f0248979e6" category="cell">FAS8060, FAS8080</block>
+  <block id="36b18d9d2f8a0181d8d87c7486c8a653" category="cell">AFF A300, AFF A400, AFF A700, AFF A800</block>
+  <block id="a8391478850ce78247234468f8498486" category="cell">AFF8060, AFF8080</block>
+  <block id="0ee1a7b779294c0ac023c9c91408c895" category="cell">FAS8300, FAS8700, FAS9000, FAS9500</block>
+  <block id="acacda5e23fb3293e9c45233209f315e" category="cell">AFF A400, AFF A700, AFF A800, AFF A900</block>
+  <block id="03b6470644df0355779fa63281baa419" category="section-title">Use os comandos "System controller replace" com ONTAP 9.5 a 9,7</block>
+  <block id="c1d3524ca04e13df3d78b13f4fa1729f" category="paragraph">Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para <block ref="7c59c4699adc4b75b7233df7fb60de9b" category="inline-link-macro-rx"></block> para iniciar o procedimento de atualização.</block>
+  <block id="33f30bea35826525ddc350a931a3e60e" category="cell">FAS8700, FAS9000, FAS8300</block>
+  <block id="b412f16da28f14611d953df7ec9b215a" category="cell">AFF A700, AFF A800, AFF A400</block>
+  <block id="c57c038bdb2b903ef67865f743dfc52e" category="section-title">Use comandos ARL manuais</block>
+  <block id="114c547b8e01b5b1d0aff42924c30c8c" category="paragraph">Se o cenário de atualização não for suportado usando "comandos do sistema", você pode executar uma atualização ARL usando comandos manuais.</block>
+  <block id="f3fc96e9b0f9e7ce8cc79384852e3e25" category="paragraph">Escolha o procedimento para a sua versão do ONTAP para iniciar a atualização:</block>
+  <block id="a58e3cec27f318019d650117009a9a1c" category="list-text"><block ref="a58e3cec27f318019d650117009a9a1c" category="inline-link-macro-rx"></block></block>
+  <block id="4928666bac61f347373a03116de25bb3" category="list-text"><block ref="4928666bac61f347373a03116de25bb3" category="inline-link-macro-rx"></block></block>
+  <block id="261856aec998b0985aebf71d4d5b7db7" category="paragraph"><block ref="261856aec998b0985aebf71d4d5b7db7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cbc19247d1bcf806abfae9b8ac144851" category="paragraph"><block ref="cbc19247d1bcf806abfae9b8ac144851" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6589bb9996d43753910401a792dad35f" category="paragraph"><block ref="6589bb9996d43753910401a792dad35f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="105e1829dde2a37d92ad8310c27aeb64" category="paragraph"><block ref="105e1829dde2a37d92ad8310c27aeb64" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fc1e19fb7bebdbd1fe84af4aa27b74b7" category="paragraph"><block ref="fc1e19fb7bebdbd1fe84af4aa27b74b7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6f066e6d94e620ac8fd90616927ffe5a" category="paragraph"><block ref="6f066e6d94e620ac8fd90616927ffe5a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d921f56d2d436f5a0c085db02c0735ab" category="paragraph"><block ref="d921f56d2d436f5a0c085db02c0735ab" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d183b68f24aed33d51e0d78492187ce4" category="paragraph"><block ref="d183b68f24aed33d51e0d78492187ce4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="be14b840c0e67a106966f6782397b832" category="paragraph"><block ref="be14b840c0e67a106966f6782397b832" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2981e1a4efec06a6c78b3734024a96a1" category="paragraph"><block ref="2981e1a4efec06a6c78b3734024a96a1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a8146cc42b0ac83dacd0c674c2e19baa" category="paragraph"><block ref="a8146cc42b0ac83dacd0c674c2e19baa" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd4a2232b0a4fad7f2f7a5207ee94001" category="sidebar">Saiba mais sobre os sistemas e o software ONTAP</block>
+  <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentação do ONTAP switches</block>
 </blocks>

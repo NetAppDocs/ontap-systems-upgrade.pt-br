@@ -10,7 +10,7 @@ summary: 'Crie novamente as VLANs, grupos de interface e domínios de broadcast 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Realocar agregados com falha ou vetado ao usar o ARL para atualizar mod
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Relocate os agregados não-raiz do node2 para node1 ao usar o ARL para 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

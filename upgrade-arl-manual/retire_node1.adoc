@@ -10,7 +10,7 @@ summary: Desative o par de HA com o node2 e encerre o node1 corretamente durante
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

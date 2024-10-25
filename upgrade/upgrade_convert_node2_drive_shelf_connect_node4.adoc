@@ -19,7 +19,7 @@ Converta o AFF A250 node2 em um compartimento de unidade de NS224 TB e, em segui
 . Insira o módulo do compartimento NVMe (NSM) no compartimento do node2.
 . Conete o NSM ao node4 por cabeamento da porta node4 100GbE e0c à porta NSM B e0a.
 +
-image::../upgrade/media/a400_with_ns224_shelf.PNG[AFF A400 com uma gaveta de NS224 U.]
+image:a400_with_ns224_shelf.PNG["AFF A400 com uma gaveta de NS224 U."]
 
 . Conete o cabeamento 25GbE de node2 portas e0c e e0d a quaisquer duas portas integradas 25GbE (e0e, e0f, e0g ou e0h) no node4 para criar conexões temporárias de cluster.
 +

@@ -10,7 +10,7 @@ summary: 'Entenda se você pode atualizar controladores executando o ONTAP 9.5 p
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

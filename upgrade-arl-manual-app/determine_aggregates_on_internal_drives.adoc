@@ -10,7 +10,7 @@ summary: Confirme se as unidades de disco internas não contêm agregados de rai
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

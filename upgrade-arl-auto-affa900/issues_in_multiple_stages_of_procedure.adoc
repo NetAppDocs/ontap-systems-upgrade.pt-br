@@ -10,7 +10,7 @@ summary: Informações sobre problemas que podem ocorrer ao usar o ARL para atua
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

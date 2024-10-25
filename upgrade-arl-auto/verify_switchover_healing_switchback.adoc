@@ -10,7 +10,7 @@ summary: 'Verifique as operações de comutação, recuperação e switchback de
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

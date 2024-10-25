@@ -10,7 +10,7 @@ summary: 'Solucione falhas de realocação de agregados que podem ocorrer ao atu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

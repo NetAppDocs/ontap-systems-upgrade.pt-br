@@ -10,7 +10,7 @@ summary: Desative o par de HA com node2 e desligue o node1 ao usar o ARL para at
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

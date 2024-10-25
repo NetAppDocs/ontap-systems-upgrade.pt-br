@@ -10,7 +10,7 @@ summary: Verifique a instalação e a comunicação do node3 com o node2 durante
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

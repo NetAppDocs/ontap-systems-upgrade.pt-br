@@ -10,7 +10,7 @@ summary: Deixe a NetApp saber que o sistema antigo não está mais em operação
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

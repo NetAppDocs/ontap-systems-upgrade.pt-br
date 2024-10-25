@@ -10,7 +10,7 @@ summary: 'Verifique se as node1 portas físicas são mapeadas corretamente para 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

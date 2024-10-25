@@ -10,7 +10,7 @@ summary: Desative os switches Brocade e Cisco na malha e modifique a configuraç
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

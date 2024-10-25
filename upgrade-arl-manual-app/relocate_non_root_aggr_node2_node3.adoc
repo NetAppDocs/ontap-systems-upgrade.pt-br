@@ -10,7 +10,7 @@ summary: Envie uma mensagem AutoSupport para node2 e reposicione manualmente os 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

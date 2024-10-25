@@ -10,7 +10,7 @@ summary: Registre informações sobre a rede do cluster node2, o gerenciamento, 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

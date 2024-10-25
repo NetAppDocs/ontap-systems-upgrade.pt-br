@@ -10,7 +10,7 @@ summary: Decida se deve usar o procedimento ARL que atualiza os modelos de contr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

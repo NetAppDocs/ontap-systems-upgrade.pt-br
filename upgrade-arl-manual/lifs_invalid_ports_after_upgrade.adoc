@@ -10,7 +10,7 @@ summary: Ressincronizar LIFs que estão em portas inválidas em uma configuraç�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

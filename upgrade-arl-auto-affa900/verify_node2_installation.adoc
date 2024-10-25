@@ -10,7 +10,7 @@ summary: Verifique a instalação do node2 com módulos de substituição ao usa
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

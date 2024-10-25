@@ -10,7 +10,7 @@ summary: Mova os agregados não-raiz de node1 para node2 e verifique a realocaç
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

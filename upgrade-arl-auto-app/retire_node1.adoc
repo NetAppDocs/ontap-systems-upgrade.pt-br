@@ -10,7 +10,7 @@ summary: 'Desative o par de HA com node2 e encerre o node1 ao atualizar controla
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

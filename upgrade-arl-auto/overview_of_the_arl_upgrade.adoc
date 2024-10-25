@@ -10,7 +10,7 @@ summary: 'Entenda como funciona o procedimento para atualizar controladores exec
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: 'Verifique se o node4 se junta ao quórum, recrie as VLANs do node1, gr
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -10,7 +10,7 @@ summary: Prepare os nós e execute uma série de pré-verificações ao usar o A
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

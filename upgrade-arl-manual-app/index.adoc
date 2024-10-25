@@ -10,7 +10,7 @@ summary: Usando o procedimento manual de atualização ARL para atualizar o hard
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

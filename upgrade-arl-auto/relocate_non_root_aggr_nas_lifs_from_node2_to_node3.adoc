@@ -10,7 +10,7 @@ summary: 'Relocate os agregados não-root do node2 para node3 ao atualizar as co
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

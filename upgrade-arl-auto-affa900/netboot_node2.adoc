@@ -10,7 +10,7 @@ summary: Depois de trocar os módulos de sistema node2 de substituição corresp
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

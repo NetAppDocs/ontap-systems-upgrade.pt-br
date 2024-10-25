@@ -10,7 +10,7 @@ summary: 'Verifique se LIFs de dados nas do node2 que estão no node3 são reloc
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
