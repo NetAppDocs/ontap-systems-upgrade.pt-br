@@ -4469,7 +4469,6 @@
   <block id="f43de3716b79c8e43965aeacd1411a48" category="cell">AFF A300, AFF A400, AFF A700</block>
   <block id="5fa70989a3e04b27c407da750f3d94fe" category="cell">AFF A70, AFF A90, AFF A1K</block>
   <block id="ccf78fb30997636f483e58875cad308b" category="cell">AFF A90, AFF A1K</block>
-  <block id="fd63300d56f60b7a5ff6928593e24ff3" category="paragraph">O AFF A70 e o AFF A90 são sistemas integrados com dois discos integrados e duas controladoras em um único chassi.</block>
   <block id="e0acd4a9bc97511cc024bf1c07dc8536" category="list-text">Se você estiver atualizando para um AFF A70 ou AFF A90 com unidades internas, remova a propriedade dessas unidades antes de fazer o upgrade. Após a conclusão da atualização, você pode atribuir as unidades internas aos nós AFF A70 ou AFF A90 e usá-las para criar agregados de dados. Não é obrigatório migrar agregados de raiz ou dados para unidades internas.</block>
   <block id="9f63491a94b75b12a4f685455f82295c" category="list-text">Se você estiver atualizando para um AFF A70 ou AFF A90 sem unidades internas, não será necessário atribuir unidades internas depois de concluir a atualização.</block>
   <block id="4de11ced25f5990c0cc8fa95f739e66c" category="summary">Deixe o NetApp saber que o sistema antigo não está mais em operação depois de atualizar os controladores executando o ONTAP 9.15,1 ou posterior usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
@@ -5240,4 +5239,5 @@
   <block id="a8146cc42b0ac83dacd0c674c2e19baa" category="paragraph"><block ref="a8146cc42b0ac83dacd0c674c2e19baa" category="inline-image-macro-rx" type="image"></block></block>
   <block id="fd4a2232b0a4fad7f2f7a5207ee94001" category="sidebar">Saiba mais sobre os sistemas e o software ONTAP</block>
   <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentação do ONTAP switches</block>
+  <block id="91c8d030b7d32b838af9bb14f227c952" category="paragraph">O AFF A70 e o AFF A90 são sistemas integrados com duas controladoras em uma configuração de HA e discos integrados em um único chassi.</block>
 </blocks>
