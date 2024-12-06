@@ -91,7 +91,7 @@ O sistema executa as seguintes pré-verificações; Registre a saída de cada pr
 | Verificação do estado do agregado | Se os nós que estão sendo substituídos possuem agregados para os quais eles não são o proprietário da casa, a tarefa falha. Os nós não devem possuir quaisquer agregados não locais. 
 
 
-| Verificação do estado do disco | Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de alta disponibilidade_ para configurar o armazenamento para o par de HA. 
+| Verificação do estado do disco | Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA. 
 
 
 | Verificação do estado do LIF de dados | Verifica se algum dos nós que estão sendo substituídos tem LIFs de dados não locais. Os nós não devem conter quaisquer LIFs de dados para os quais eles não são o proprietário da casa. Se um dos nós contiver LIFs de dados não locais, a tarefa falhará. 

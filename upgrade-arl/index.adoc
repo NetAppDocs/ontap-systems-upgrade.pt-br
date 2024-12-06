@@ -81,7 +81,7 @@ Se o cenário de atualização estiver listado na seguinte matriz de sistemas su
 
 
 | FAS2620 | FAS2820  a| 
-9.11.1P7 (FAS2620)
+9.11.1P7 ou versões de patch posteriores (FAS2620)
 
 *Nota*: O FAS2620 não suporta versões ONTAP posteriores a 9.11.1.
 

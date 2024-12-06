@@ -43,7 +43,7 @@ O conteúdo específico para esta atualização está listado na tabela abaixo.
 | link:https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Referência e requisitos de instalação da virtualização FlexArray"^] | Contém instruções de cabeamento e outras informações para sistemas de virtualização FlexArray. 
 
 
-| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gerenciamento de alta disponibilidade"^] | Descreve como instalar e gerenciar configurações em cluster de alta disponibilidade, incluindo failover de storage e takeover/giveback. 
+| link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gerenciamento de par HA"^] | Descreve como instalar e gerenciar configurações em cluster de alta disponibilidade, incluindo failover de storage e takeover/giveback. 
 
 
 | link:https://docs.netapp.com/us-en/ontap/volumes/index.html["Gerenciamento de storage lógico com a CLI"^] | Descreve como gerenciar com eficiência seus recursos de storage lógicos usando volumes, volumes FlexClone, arquivos e LUNs, volumes FlexCache, deduplicação, compactação, qtrees e cotas. 

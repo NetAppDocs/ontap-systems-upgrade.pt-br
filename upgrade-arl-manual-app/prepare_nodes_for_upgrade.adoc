@@ -19,7 +19,7 @@ Antes de substituir os nós originais, confirme se eles estão em um par de HA, 
 .Passos
 . Confirme se cada um dos nós originais tem recursos suficientes para suportar adequadamente a carga de trabalho de ambos os nós durante o modo de aquisição.
 +
-Consulte link:other_references.html["Referências"]o link para _High Availability Management_ e siga a seção _Best Practices for HA Pairs_. Nenhum dos nós originais deve ser executado com mais de 50% de utilização; se um nó estiver executando com menos de 50% de utilização, ele poderá lidar com as cargas de ambos os nós durante a atualização da controladora.
+link:other_references.html["Referências"]Consulte o link para _Gerenciamento de par HA_ e siga a seção _melhores práticas para pares HA_. Nenhum dos nós originais deve ser executado com mais de 50% de utilização; se um nó estiver executando com menos de 50% de utilização, ele poderá lidar com as cargas de ambos os nós durante a atualização da controladora.
 
 . Conclua as subetapas a seguir para criar uma linha de base de desempenho para os nós originais:
 +
@@ -162,7 +162,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Se qualquer nó estiver em parcial giveback, use o `storage failover giveback` comando para executar o giveback e use o `storage failover show-giveback` comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, consulte link:other_references.html["Referências"]o link para _High Availability Management_.
+Se qualquer nó estiver em parcial giveback, use o `storage failover giveback` comando para executar o giveback e use o `storage failover show-giveback` comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, link:other_references.html["Referências"]consulte o link para _HA PAIR Management_.
 
 . [[man_prepare_nodes_step9]]Confirme que nem o node1 nem o node2 possuem os agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
@@ -251,7 +251,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de alta disponibilidade_ para configurar o armazenamento para o par de HA.
+Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA.
 
 . Confirme se node1 e node2 estão saudáveis e qualificados para participar do cluster:
 +

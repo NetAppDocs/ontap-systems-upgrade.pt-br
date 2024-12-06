@@ -38,10 +38,10 @@ NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo ch
 
 . [[auto_install3_step3]]Cabo node3, movendo as conexões de node1 para node3.
 +
-Faça o cabeamento das seguintes conexões, usando as _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node3, o documento apropriado do compartimento de disco e _Gerenciamento de alta disponibilidade_.
+Faça o cabeamento das seguintes conexões, usando as _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node3, o documento apropriado de compartimento de disco e _gerenciamento de pares HA_.
 
 +
-Consulte o link:other_references.html["Referências"]link para os _requisitos de instalação de virtualização FlexArray e Referência_ e _Gerenciamento de alta disponibilidade_.
+Consulte o link:other_references.html["Referências"]link para o _FlexArray requisitos de instalação de virtualização e Referência_ e _gerenciamento de pares HA_.
 
 +
 ** Console (porta de gerenciamento remoto)

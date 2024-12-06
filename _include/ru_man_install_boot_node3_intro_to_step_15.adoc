@@ -33,7 +33,7 @@ As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá 
 +
 ** _Instruções de Instalação e Configuração_ ou _requisitos de Instalação de virtualização FlexArray e Referência_ para a plataforma node3
 ** O procedimento apropriado do compartimento de disco
-** A documentação _High Availability Management_
+** A documentação _HA PAIR Management_
 
 
 +

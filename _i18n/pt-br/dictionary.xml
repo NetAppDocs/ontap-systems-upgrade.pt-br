@@ -31,8 +31,6 @@
   <block id="e5c39acdb0f682a22a7b242d48ac3ce5" category="inline-link-macro">Referência e requisitos de instalação da virtualização FlexArray</block>
   <block id="2894d35f6fa87d4eee09a10919737e2f" category="cell"><block ref="2894d35f6fa87d4eee09a10919737e2f" category="inline-link-macro-rx"></block></block>
   <block id="d1d13e1cdd7f75473f7902868b6ba3d7" category="cell">Contém instruções de cabeamento e outras informações para sistemas de virtualização FlexArray.</block>
-  <block id="9fc34575910b3b930388b5434f515842" category="inline-link-macro">Gerenciamento de alta disponibilidade</block>
-  <block id="8b8cdc632b8dd03afd9af9cf3f0bbb00" category="cell"><block ref="8b8cdc632b8dd03afd9af9cf3f0bbb00" category="inline-link-macro-rx"></block></block>
   <block id="8514bd0cded8da51b71a7aba8599153c" category="cell">Descreve como instalar e gerenciar configurações em cluster de alta disponibilidade, incluindo failover de storage e takeover/giveback.</block>
   <block id="c1a14ef4c1320caf80e81dff4161eb9b" category="inline-link-macro">Gerenciamento de storage lógico com a CLI</block>
   <block id="23806251831778e9042b7dc8e04e42d9" category="cell"><block ref="23806251831778e9042b7dc8e04e42d9" category="inline-link-macro-rx"></block></block>
@@ -342,8 +340,6 @@
   <block id="82952c70726b36a56f0651368cd2be05" category="paragraph">Se o node4 estiver em um chassi separado do node2, você pode colocar o node4 no mesmo local que o node3. Se o node2 e o node4 estiverem no mesmo chassi, o node4 já estará no local apropriado do rack.</block>
   <block id="9ef9fab932162728d06bbfd2862c33d9" category="list-text">Instale o node4 no rack, seguindo as instruções em _instruções de instalação e configuração_ para o modelo do nó.</block>
   <block id="179ba8fe173567627d42a1a9fc1e6948" category="list-text">Cabo node4, movendo as conexões de node2 para node4.</block>
-  <block id="2e546c2ae4e7d18e3a62352f7899f8ad" category="paragraph">Faça o cabeamento das seguintes conexões, usando as instruções em _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node4, o documento apropriado do compartimento de disco e _Gerenciamento de alta disponibilidade_.</block>
-  <block id="96fc3790ed0f779b648493fc7e4b2e7c" category="paragraph">Consulte o <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>link para os _requisitos de instalação de virtualização FlexArray e Referência_ e _Gerenciamento de alta disponibilidade_.</block>
   <block id="7c37472309a8c54b0891c8e95190096e" category="list-text">Console (porta de gerenciamento remoto)</block>
   <block id="f0012d7dc9fbefbb11bb69cd6932aef8" category="list-text">Portas de cluster</block>
   <block id="b2d2606b76cd5df666c2b6a0f4bfc496" category="list-text">Portas de dados</block>
@@ -432,7 +428,6 @@
   <block id="b76de3994341c25067b438fe161926b7" category="list-text">[[auto_install3_step2]]instale o node3 no rack, seguindo as _instruções de instalação e configuração_ para o modelo do seu nó.</block>
   <block id="e642674ff2b68ba9c6309b786d87c4f9" category="admonition">Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale node4 no chassi e node3. Se você não fizer isso, quando você inicializar o node3, o nó se comportará como se estivesse em uma configuração de chassi duplo, e quando você inicializar o node4, a interconexão entre os nós não aparecerá.</block>
   <block id="c558275e7d3a61c5ffa4c89d17138a8e" category="list-text">[[auto_install3_step3]]Cabo node3, movendo as conexões de node1 para node3.</block>
-  <block id="5ab1ba3aba863ed7175637aaa48e2f73" category="paragraph">Faça o cabeamento das seguintes conexões, usando as _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node3, o documento apropriado do compartimento de disco e _Gerenciamento de alta disponibilidade_.</block>
   <block id="a237c9d74ab3870e45b318a1071c10f4" category="admonition">Talvez você não precise mover a placa de interconexão ou a conexão do cabo de interconexão de cluster de node1 para node3, pois a maioria dos modelos de plataforma tem um modelo de placa de interconexão exclusivo. Para a configuração MetroCluster, você precisa mover as conexões de cabo FC-VI de node1 para node3. Se o novo host não tiver uma placa FC-VI, talvez seja necessário mover a placa FC-VI.</block>
   <block id="a5492c1c64c93543c424918fe38a847e" category="list-text">[[auto_install3_step4]]Ligue a alimentação para node3 e, em seguida, interrompa o processo de inicialização pressionando Ctrl-C no terminal do console para acessar o prompt do ambiente de inicialização.</block>
   <block id="db32660dfabf573a3553146b10c4b358" category="paragraph">Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, o node4 também será reinicializado. No entanto, você pode ignorar a inicialização do node4 até mais tarde.</block>
@@ -958,7 +953,6 @@
   <block id="9f13bb9f267a0b057f115598b95b4a04" category="paragraph">As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>o link para eles.</block>
   <block id="2722bd9e96d97f6dd8c071e92fb500ce" category="list-text">_Instruções de Instalação e Configuração_ ou _requisitos de Instalação de virtualização FlexArray e Referência_ para a plataforma node3</block>
   <block id="72860e73833a237fd9811df9152c9a7a" category="list-text">O procedimento apropriado do compartimento de disco</block>
-  <block id="b9b51f95b333e31e76a0f718bee344fa" category="list-text">A documentação _High Availability Management_</block>
   <block id="19c5c8c6d8397114c1994a6c3eb88f1f" category="paragraph">Faça o cabo das seguintes ligações:</block>
   <block id="7abb4d22dfb96ceb2a52ebfc5cef2026" category="admonition">Talvez você não precise mover a placa de interconexão ou a conexão do cabo de interconexão de cluster de node1 para node3, pois a maioria dos modelos de plataforma tem um modelo de placa de interconexão exclusivo. Para a configuração MetroCluster, é necessário mover as conexões de cabo FC-VI de node1 para node3. Se o novo host não tiver uma placa FC-VI, talvez seja necessário mover a placa FC-VI.</block>
   <block id="63cc66bd900313017fb0834b1cbbbc81" category="list-text">[[man_install3_step4]]Ligue a alimentação para node3 e, em seguida, interrompa o processo de inicialização pressionando Ctrl-C no terminal do console para acessar o prompt do ambiente de inicialização.</block>
@@ -1373,7 +1367,6 @@
   <block id="f2d3ce1d1db6751407cc3928aac9de0c" category="paragraph">Você usará as informações nos diretórios do <block ref="17f88a9bcb978d5101977810aab93c38" category="inline-link-macro-rx"></block>.</block>
   <block id="0e1dd14206fc60d11a3acb5ef31b4193" category="paragraph">Antes de substituir os nós originais, confirme se eles estão em um par de HA, não têm discos ausentes ou com falha, podem acessar o storage uns dos outros e não possuem LIFs de dados atribuídos aos outros nós no cluster. Você também deve coletar informações sobre os nós originais e, se o cluster estiver em um ambiente SAN, confirmar se todos os nós do cluster estão em quórum.</block>
   <block id="b88f4069a24bcdd70aa256d82f95a4a7" category="list-text">Confirme se cada um dos nós originais tem recursos suficientes para suportar adequadamente a carga de trabalho de ambos os nós durante o modo de aquisição.</block>
-  <block id="986991a93176ee231138e71796e3557e" category="paragraph">Consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>o link para _High Availability Management_ e siga a seção _Best Practices for HA Pairs_. Nenhum dos nós originais deve ser executado com mais de 50% de utilização; se um nó estiver executando com menos de 50% de utilização, ele poderá lidar com as cargas de ambos os nós durante a atualização da controladora.</block>
   <block id="f57ddae179006dfe93c570a9886b51b0" category="list-text">Conclua as subetapas a seguir para criar uma linha de base de desempenho para os nós originais:</block>
   <block id="e2ce8b648cf2a8577d2ac0054c830df5" category="list-text">Certifique-se de que a conta de utilizador de diagnóstico está desbloqueada.</block>
   <block id="59b90ab4d9f5cec87646c2acefb98a3b" category="paragraph">A conta de utilizador de diagnóstico destina-se apenas a fins de diagnóstico de baixo nível e deve ser utilizada apenas com orientação do suporte técnico.</block>
@@ -1404,7 +1397,6 @@
   <block id="4fd96863c7332ca953dbbdb95b4c0457" category="list-text">Confirme se o node1 e o node2 estão em um par de HA e verifique se os nós estão conetados uns aos outros e se o takeover é possível:</block>
   <block id="7a309bb6c6af5ef06efe5f48e0c54074" category="paragraph">O exemplo a seguir mostra a saída quando os nós estão conetados uns aos outros e a aquisição é possível:</block>
   <block id="8ad3217d99ee19b408199ad575ffe3af" category="paragraph">Nenhum dos nós deve estar em giveback parcial. O exemplo a seguir mostra que node1 está em parcial giveback:</block>
-  <block id="e1cbc9b64c5a195f57ded4409cfe8fbc" category="paragraph">Se qualquer nó estiver em parcial giveback, use o<block ref="b27ff28f78c71d3027cc2fb76f6fe30c" prefix=" " category="inline-code"></block> comando para executar o giveback e use o<block ref="852ce55a153bc728405ba8a2c95bcdf1" prefix=" " category="inline-code"></block> comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>o link para _High Availability Management_.</block>
   <block id="077bf43ae0702cf4ef1519ff5ec6b8f3" category="list-text">[[man_prepare_nodes_step9]]Confirme que nem o node1 nem o node2 possuem os agregados para os quais é o proprietário atual (mas não o proprietário da casa):</block>
   <block id="e86a1d7ab77ef690a506c50aeb0e4407" category="paragraph">Se nem node1 nem node2 possuírem agregados para os quais é o proprietário atual (mas não o proprietário da casa), o sistema retornará uma mensagem semelhante ao seguinte exemplo:</block>
   <block id="b985e562bbb6750dd51f653600fe0a16" category="paragraph">O exemplo a seguir mostra a saída do comando para um nó chamado node2 que é o proprietário da casa, mas não o proprietário atual, de quatro agregados:</block>
@@ -1417,7 +1409,6 @@
   <block id="669f87e406c8fda6424e840528d9149d" category="paragraph"><block ref="e1d3c6ac19683806c70418bc46ceac97" prefix="" category="inline-code"></block></block>
   <block id="540684201c9c484246cd2060826ea5b6" category="list-text">[[man_prepare_nodes_step12]] confirmar que o node1 e o node2 podem acessar o armazenamento um do outro e verificar se não há discos ausentes:</block>
   <block id="9351d7b864e0fec6d8e9ce484c7e1792" category="paragraph">O exemplo a seguir mostra a saída quando nenhum disco está faltando:</block>
-  <block id="f6ad618b685a2a7a446cddb4787d965d" category="paragraph">Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de alta disponibilidade_ para configurar o armazenamento para o par de HA.</block>
   <block id="d951eff85d635d18c7d30d8323f2bfa4" category="list-text">Confirme se node1 e node2 estão saudáveis e qualificados para participar do cluster:</block>
   <block id="f1178fa107fef2eea6cd954e57dbda27" category="paragraph">O exemplo a seguir mostra a saída quando ambos os nós são elegíveis e íntegros:</block>
   <block id="b5c6fde8816eb583a49b6c0314b82928" category="list-text">Defina o nível de privilégio como avançado:</block>
@@ -3296,7 +3287,6 @@
   <block id="13953a740d52280d2268524a1a4a3535" category="cell">Verificação do estado do agregado</block>
   <block id="d2be5a07810282eec1226ecdcabc0e8d" category="cell">Se os nós que estão sendo substituídos possuem agregados para os quais eles não são o proprietário da casa, a tarefa falha. Os nós não devem possuir quaisquer agregados não locais.</block>
   <block id="6244df7e25591403b0d5255577576eb4" category="cell">Verificação do estado do disco</block>
-  <block id="9b4a7067960efcb28456ef46d4ac8143" category="cell">Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de alta disponibilidade_ para configurar o armazenamento para o par de HA.</block>
   <block id="320bc2c593ebed7e970715ea3832bc2e" category="cell">Verificação do estado do LIF de dados</block>
   <block id="9433521f789681a1a8fd76815674c438" category="cell">Verifica se algum dos nós que estão sendo substituídos tem LIFs de dados não locais. Os nós não devem conter quaisquer LIFs de dados para os quais eles não são o proprietário da casa. Se um dos nós contiver LIFs de dados não locais, a tarefa falhará.</block>
   <block id="eb694fc97d0bfef2c84584a29b318d85" category="cell">Estado de LIF do cluster</block>
@@ -3694,7 +3684,6 @@
   <block id="f60554150b9183af4229445611dee7e7" category="paragraph">9.10.1P15, 9.11.1P11 e posterior 2</block>
   <block id="b6000f9eed7f8ea9ee4632bd2f77961a" category="cell">AFF C190</block>
   <block id="489c8707e7f92883a9ec4c6edf2f6a9a" category="cell">FAS2620</block>
-  <block id="b7f5f3e815fc26505623dcbc51f6b401" category="paragraph">2.11.1P7 (FAS2620)</block>
   <block id="fe8a27b3504b515f0bd7508cfd89776a" category="paragraph">9.13.1 e posterior (FAS2820)</block>
   <block id="16327cd02ebd080bd4ab1439ff960ddc" category="cell">FAS2720</block>
   <block id="5abae7190ce598d45fe390e44304cde0" category="cell">9.13.1 e mais tarde</block>
@@ -3914,7 +3903,6 @@
   <block id="db4336e2ca46622010f5ba0c4094ec50" category="paragraph">Durante a fase de pré-verificações, o sistema executa a seguinte lista de verificações em segundo plano.</block>
   <block id="eeb3813f1d9a188e4d0a912235894f96" category="cell">Verifica todos os nós no cluster para confirmar se eles estão íntegros.</block>
   <block id="f1e3d153ef84dd8b3cbde456e0a2bf74" category="cell">Verifica se ambos os nós que estão sendo substituídos estão em uma configuração de par de alta disponibilidade (HA). Se o failover de armazenamento não estiver habilitado para os controladores, a tarefa falhará.</block>
-  <block id="954ad5efed3e43bfb3badad9c505735b" category="cell">Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de alta disponibilidade_ para configurar o armazenamento para o par de HA.</block>
   <block id="f51ac25569c065e7813718ef345e9ddc" category="cell">Verifica se algum dos nós que estão sendo substituídos tem LIFs de dados não locais. Os nós não devem conter quaisquer LIFs de dados para os quais eles não são o proprietário da casa. Se um dos nós contiver LIFs de dados não locais, a tarefa falhará.</block>
   <block id="bb4d829c636efdbd9439e118a1e840cb" category="cell">Se as notificações do AutoSupport não estiverem configuradas, a tarefa falhará. Você deve ativar o AutoSupport antes de iniciar o procedimento de substituição do controlador.</block>
   <block id="48536e8deacb601a8be0bcd336b79e32" category="list-text">Depois que a operação de substituição do controlador é iniciada e as pré-verificações são concluídas, a operação é interrompida, permitindo que você colete informações de saída que talvez você precise mais tarde no processo de atualização do controlador.</block>
@@ -5208,7 +5196,6 @@
   <block id="3e44bbb802d299056c9839f8bdfc777a" category="cell">9.15.1 e mais tarde</block>
   <block id="184f38916b6639f5bdbf7619d90cebc3" category="paragraph">9.10.1P15, 9.11.1P11 e posterior</block>
   <block id="45b09eba6fe8095ae38635150e57152a" category="paragraph">*Nota*: O AFF A200 não suporta versões ONTAP posteriores a 9.11.1.</block>
-  <block id="d243c4c373219990c87996aba8af4741" category="paragraph">9.11.1P7 (FAS2620)</block>
   <block id="26ed1ff6e78b37e572170171b4fabc0f" category="paragraph">*Nota*: O FAS2620 não suporta versões ONTAP posteriores a 9.11.1.</block>
   <block id="074a728bac13ce0b2d079bed92780d8d" category="section-title">Use os comandos "System controller replace" com o ONTAP 9.8 ou posterior</block>
   <block id="bf2f20b69fe364bf3a76fbb262d9c675" category="paragraph">Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para <block ref="f597d5199c2cdfe3f660f286188248d5" category="inline-link-macro-rx"></block> para iniciar o procedimento de atualização.</block>
@@ -5240,4 +5227,25 @@
   <block id="fd4a2232b0a4fad7f2f7a5207ee94001" category="sidebar">Saiba mais sobre os sistemas e o software ONTAP</block>
   <block id="743b2bde29eae11996923323c6b89672" category="sidebar">Documentação do ONTAP switches</block>
   <block id="91c8d030b7d32b838af9bb14f227c952" category="paragraph">O AFF A70 e o AFF A90 são sistemas integrados com duas controladoras em uma configuração de HA e discos integrados em um único chassi.</block>
+  <block id="664f9c52f93e2fbf6e801148b0f573ad" category="inline-link-macro">Gerenciamento de par HA</block>
+  <block id="fc0b22bb38f11521c03de86c56643d5d" category="cell"><block ref="fc0b22bb38f11521c03de86c56643d5d" category="inline-link-macro-rx"></block></block>
+  <block id="89f76e97cb211d84e00c11992dfadf74" category="paragraph">Faça o cabeamento das seguintes conexões, usando as instruções em _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node4, o documento apropriado de compartimento de disco e _gerenciamento de pares HA_.</block>
+  <block id="26c5c260ce25606c1c0bb202b032dfa3" category="paragraph">Consulte o <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>link para o _FlexArray requisitos de instalação de virtualização e Referência_ e _gerenciamento de pares HA_.</block>
+  <block id="b082861c64ae79f202957f36b4724f12" category="paragraph">Faça o cabeamento das seguintes conexões, usando as _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node3, o documento apropriado de compartimento de disco e _gerenciamento de pares HA_.</block>
+  <block id="62e8c46614cda642480e223b008f5dfc" category="list-text">A documentação _HA PAIR Management_</block>
+  <block id="147e1330d5f2538de36e6ee787c5446d" category="paragraph"><block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>Consulte o link para _Gerenciamento de par HA_ e siga a seção _melhores práticas para pares HA_. Nenhum dos nós originais deve ser executado com mais de 50% de utilização; se um nó estiver executando com menos de 50% de utilização, ele poderá lidar com as cargas de ambos os nós durante a atualização da controladora.</block>
+  <block id="270b6acdba0a7f34d4c1dd4dd05525ab" category="paragraph">Se qualquer nó estiver em parcial giveback, use o<block ref="b27ff28f78c71d3027cc2fb76f6fe30c" prefix=" " category="inline-code"></block> comando para executar o giveback e use o<block ref="852ce55a153bc728405ba8a2c95bcdf1" prefix=" " category="inline-code"></block> comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _HA PAIR Management_.</block>
+  <block id="395d4fd7f065a92548b412c96dbe1faa" category="paragraph">Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA.</block>
+  <block id="7c67b8b9f7d3533c33fb6cecf037204c" category="inline-link-macro">Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2</block>
+  <block id="e8a1c12a435b7bb9c68529ddb55c1850" category="admonition">A atualização do ASA para um sistema de substituição do ASA R2 não é suportada. Para obter informações sobre como migrar dados do ASA para o ASA R2, <block ref="1aa51bb167bf6182c65d56fb25d15ddf" category="inline-link-macro-rx"></block>consulte .</block>
+  <block id="c8d7e0b6f3e69fd12ca1cfc90687f6a8" category="paragraph">9.11.1P7 ou versões de patch posteriores (FAS2620)</block>
+  <block id="8499179dca2bc3203741083d0d24160c" category="cell">Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA.</block>
+  <block id="96921c9c55ac5491d93180278bb4bc78" category="paragraph">9.11.1P7 ou versões posteriores de patch (FAS2620) 2</block>
+  <block id="8ac418c9132657ca13947b8d7087efa1" category="cell">Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA.</block>
+  <block id="66691da5eb04d0eba08bba016646849a" category="paragraph">Só pode atualizar para um sistema de substituição na mesma série:</block>
+  <block id="e882986702fe0f326c1fa2d4698be2cd" category="list-text">Sistema AFF A-Series para sistema AFF A-Series</block>
+  <block id="737115f91c530c4e8ddec392681db510" category="list-text">Sistema AFF C-Series para sistema AFF C-Series</block>
+  <block id="04a7d3ed17290dfa8c947b7265180931" category="list-text">Sistema ASA para sistema ASA</block>
+  <block id="6cc3f2b4a05b456b1f754eaf8cb03200" category="list-text">Sistema ASA A-Series para sistema ASA A-Series</block>
+  <block id="af2a1a7e91ed894338bb4bd32c3e13d0" category="list-text">Sistema ASA C-Series para sistema ASA C-Series</block>
 </blocks>

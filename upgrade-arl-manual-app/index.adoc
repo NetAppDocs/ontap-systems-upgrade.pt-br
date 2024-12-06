@@ -25,6 +25,26 @@ Este procedimento descreve como atualizar o hardware da controladora usando ARL 
 * Sistema FAS para sistema FAS
 * Sistema FAS para um sistema com software de virtualização FlexArray ou um sistema da série V.
 * Sistema AFF para sistema AFF
++
+Só pode atualizar para um sistema de substituição na mesma série:
+
++
+** Sistema AFF A-Series para sistema AFF A-Series
+** Sistema AFF C-Series para sistema AFF C-Series
+
+
+* Sistema ASA para sistema ASA
++
+A atualização do ASA para um sistema de substituição do ASA R2 não é suportada. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
+
++
+Só pode atualizar para um sistema de substituição na mesma série:
+
++
+** Sistema ASA A-Series para sistema ASA A-Series
+** Sistema ASA C-Series para sistema ASA C-Series
+
+
 * Sistema com software de virtualização FlexArray ou um sistema da série V para um sistema FAS, desde que o sistema com software de virtualização FlexArray ou sistema da série V não tenha LUNs de matriz.
 * Sistema V-Series para um sistema com software de virtualização FlexArray ou um sistema V-Series
 
