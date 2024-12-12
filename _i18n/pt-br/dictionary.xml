@@ -3642,7 +3642,6 @@
   <block id="a3bad37bbfc8cbb39ebdfc42ccfa6bec" category="list-text">Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.</block>
   <block id="3767c7624c68d0c29496b5a31369dec4" category="paragraph">Você não pode usar este procedimento nas seguintes circunstâncias:</block>
   <block id="2c379faac9baae13e7fda4f15aafa273" category="list-text">Você está usando o software de virtualização FlexArray nos sistemas AFF A800, AFF A700 ou FAS9000.</block>
-  <block id="d94e9d7914bbd98510d8cb9e0a6d08b1" category="list-text">Você está usando um switch compartilhado para interconexão de cluster e armazenamento conetado à Ethernet.</block>
   <block id="5c0e76f0393e88c4759906519a65389b" category="paragraph">Para atualizar configurações IP do MetroCluster em sistemas AFF A800, AFF A700 ou FAS9000, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block>consulte para vincular ao conteúdo _Atualização e expansão_ do MetroCluster.</block>
   <block id="98b9e41d81ea8470149a461f166a4b92" category="summary">Deixe a NetApp saber que o sistema antigo não está mais em operação após a atualização da controladora.</block>
   <block id="658ce0717b565ad383d87651864b67d1" category="summary">Verifique se o par de HA está ativado, verifique o acesso ao storage node1 e node2 e o LIF e confirme a propriedade agregada após a atualização dos modelos de controladora no mesmo chassi.</block>
@@ -5248,4 +5247,5 @@
   <block id="04a7d3ed17290dfa8c947b7265180931" category="list-text">Sistema ASA para sistema ASA</block>
   <block id="6cc3f2b4a05b456b1f754eaf8cb03200" category="list-text">Sistema ASA A-Series para sistema ASA A-Series</block>
   <block id="af2a1a7e91ed894338bb4bd32c3e13d0" category="list-text">Sistema ASA C-Series para sistema ASA C-Series</block>
+  <block id="bd78dcbf9a0f6c9dff2586a02d89b664" category="list-text">Seus sistemas estão executando o ONTAP 9.15.1 ou posterior e estão usando switches Ethernet para se conetar ao storage conetado à Ethernet.</block>
 </blocks>
