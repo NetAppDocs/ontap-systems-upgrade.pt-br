@@ -26,13 +26,22 @@ Existem vários métodos ARL para atualizar o hardware do controlador. Para sele
 
 == Use os comandos "System controller replace" com ONTAP 9.15,1 ou posterior
 
-Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para link:../upgrade-arl-auto-app-9151/index.html["Use os comandos "System controller replace" para atualizar o hardware do controlador introduzido no ONTAP 9.15,1"] para iniciar o procedimento de atualização.
+Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para link:../upgrade-arl-auto-app-9151/index.html["Use os comandos "System controller replace" para atualizar o hardware do controlador introduzido no ONTAP 9.15.1 e posterior"] para iniciar o procedimento de atualização.
 
 .Mostrar sistemas suportados
 [%collapsible]
 ====
 |===
 | Controlador existente | Controlador de substituição | Suportado a partir do ONTAP... 
+
+
+| AFF A400 | AFF A50 | 9.16.1 
+
+
+| AFF A300 | AFF A50 | 9.16.1 
+
+
+| AFF A220, AFF A150 | AFF A20 | 9.16.1 
 
 
 | FAS8200, FAS8300, FAS8700, FAS9000 | FAS70, FAS90 | 9.15.1P3 
@@ -59,6 +68,15 @@ Se o cenário de atualização estiver listado na seguinte matriz de sistemas su
 [cols="20,20,40"]
 |===
 | Sistema antigo | Sistema de substituição | Versões de ONTAP compatíveis 
+
+
+| AFF C250 | AFF C30, AFF C60 | 9.16.1 e mais tarde 
+
+
+| AFF A250 | AFF A50, AFF A30 | 9.16.1 e mais tarde 
+
+
+| AFF C800 | AFF C80 | 9.16.1 e mais tarde 
 
 
 | AFF A800 | AFF A70 ou AFF A90 | 9.15.1 e mais tarde 

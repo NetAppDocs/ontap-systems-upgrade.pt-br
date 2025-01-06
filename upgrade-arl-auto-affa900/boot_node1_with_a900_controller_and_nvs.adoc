@@ -14,43 +14,22 @@ summary: Inicialize node1 com os módulos de controlador de substituição ao us
 
 
 [role="lead"]
-node1 com os módulos de substituição está agora pronto para arrancar. Esta seção fornece as etapas necessárias para inicializar o node1 com os módulos de substituição para as seguintes configurações de atualização:
+node1 com os módulos de substituição está agora pronto para arrancar. Os módulos de substituição suportados estão listados no link:index.html#supported-systems,["matriz de sistemas suportados"].
 
-[cols="35,65"]
-|===
-| Controlador node1 existente | Substituição dos módulos do sistema node1 
+[NOTE]
+====
+Ao substituir os módulos do controlador, mova todas as conexões do antigo para o módulo do controlador de substituição.
 
+Ao substituir o controlador e os módulos NVRAM, mova somente o console e as conexões de gerenciamento.
 
-| AFF A800 | AFF A90 ou AFF A70 1 
-
-
-| AFF A220 configurado como um ASA | Módulo controlador AFF A150 1 
-
-
-| AFF A220 AFF A200 AFF C190 | Módulo controlador AFF A150 1 
-
-
-| FAS2620 FAS2720 | Módulo controlador FAS2820 1 
-
-
-| AFF A700 configurado como um ASA | Controlador ASA A900 e módulos NVRAM 2 
-
-
-| AFF A700 | Controlador AFF A900 e módulos NVRAM 2 
-
-
-| FAS9000 | Controlador FAS9500 e módulos NVRAM 2 
-|===
-1 ao substituir os módulos do controlador, você move todas as conexões do antigo para o módulo do controlador de substituição.
-
-2 ao substituir o controlador e os módulos NVRAM, você move apenas as conexões de console e gerenciamento.
-
+====
 .Passos
-. (Apenas atualização do AFF A800) no prompt Loader, entre no modo de manutenção:
+. (Apenas atualização AFF A250, AFF C250, AFF A800 ou AFF C800) no prompt Loader, entre no modo de manutenção:
 +
 `boot_ontap maint`
 
 +
+.. Anser `y` para o prompt de confirmação da plataforma mista.
 .. Responda `yes` ao prompt de confirmação.
 .. Mostrar o estado das interfaces 100GbE:
 +

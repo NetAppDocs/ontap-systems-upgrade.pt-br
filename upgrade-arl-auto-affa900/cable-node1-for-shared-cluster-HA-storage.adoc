@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.ht
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
 summary: Conecte o cluster, a HA, o storage e as conexões de dados anteriormente conectadas ao AFF A800 node1 ao AFF A90 ou ao AFF A70 node1 recém-instalado 
 ---
-= Cabo node1 para cluster compartilhado de HA e storage (somente atualização AFF A800)
+= Cabo node1 para cluster-HA e armazenamento compartilhados
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,25 +14,41 @@ summary: Conecte o cluster, a HA, o storage e as conexões de dados anteriorment
 
 
 [role="lead"]
-Conecte o cluster, a HA, o storage, os dados e as conexões de gerenciamento anteriormente conectadas ao AFF A800 node1 ao AFF A90 ou ao AFF A70 node1 recém-instalado.
+Se você estiver executando uma das atualizações a seguir, será necessário conectar as conexões de cluster, HA, storage, dados e gerenciamento que estavam anteriormente conetadas ao node1 no sistema existente ao node1 recém-instalado no sistema de substituição.
 
+[cols="35,65"]
+|===
+| Sistema existente | Sistema de substituição 
+
+
+| AFF A250 | AFF A30, AFF A50 
+
+
+| AFF C250 | AFF C30, AFF C60 
+
+
+| AFF A800 | AFF A70, AFF A90 
+
+
+| AFF C800 | C80 
+|===
 
 
 == Ligue as portas e0M e BMC
 
-O AFF A800 tem uma porta de gerenciamento (e0M) e uma porta BMC. No AFF A90 e no AFF A70, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench". Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no AFF A800 antes de se conetar ao AFF A90 ou ao AFF A70.
+Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC. No sistema de substituição, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench". Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no sistema existente antes de se conetar ao sistema de substituição.
 
 [cols="35,65"]
 |===
 | Se o... | Então... 
 
 
-| Os endereços IP e0M e BMC estão na mesma sub-rede IP | Conete a porta e0M ou BMC no AFF A800 à porta "Wrench" no AFF A90 ou no AFF A70. 
+| Os endereços IP e0M e BMC estão na mesma sub-rede IP | Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição. 
 
 
 | Os endereços IP e0M e BMC estão em sub-redes diferentes  a| 
 . Mesclar os endereços IP e0M e BMC em uma sub-rede IP.
-. Conete a porta e0M ou BMC no AFF A800 à porta "Wrench" no AFF A90 ou no AFF A70.
+. Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição.
 
 
 |===
@@ -40,10 +56,10 @@ O AFF A800 tem uma porta de gerenciamento (e0M) e uma porta BMC. No AFF A90 e no
 
 == Conecte-se a um cluster sem switch de dois nós
 
-A tabela a seguir mostra o uso da porta do switch para configurações de cluster sem switch de dois nós.
+As tabelas a seguir mostram o uso da porta do switch para configurações de cluster sem switch de dois nós.
 
 |===
-| Porta | Nó AFF A800 | Nó AFF A90 | Nó AFF A70 
+| Porta | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
 
 
 | Cluster | e0a | e1a | e1a 
@@ -63,12 +79,27 @@ A tabela a seguir mostra o uso da porta do switch para configurações de cluste
 
 | Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
 |===
+|===
+| Porta | AFF A250, AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 
+
+
+| Cluster e HA | e0c | e4a | e4a 
+
+
+| Cluster e HA | e0d | e2a (use e4b se não houver e2a) | e2a (use e4b se não houver e2a) 
+
+
+| Portas de armazenamento Ethernet | Qualquer porta disponível | e3a, e3b | e3a, e3b 
+
+
+| Portas de storage SAS | Qualquer porta disponível | 3a, 3b | 3a, 3b 
+|===
 
 
 == Conete-se a um cluster conetado a switch
 
-Para um cluster conetado a switch, verifique se você atende aos seguintes requisitos:
+Para um cluster conectado a um switch, verifique se você atende aos seguintes requisitos para o nó AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (substituição):
 
-* As portas de cluster idênticas nos nós AFF A90 ou AFF A70 estão no mesmo switch. Por exemplo, após a conclusão da atualização, e1a em node1 e e1a em node2 devem ser conetados a um switch de cluster. Da mesma forma, a segunda porta de cluster de ambos os nós deve ser conetada ao segundo switch de cluster. A conexão cruzada de portas compartilhadas de cluster-HA, onde e1a de node1 é conetada ao switchA e e1a de node2 é conetada ao switchB, resultará em falhas de comunicação HA.
-* Os nós AFF A90 e AFF A70 usam portas Ethernet de cluster-HA compartilhadas. Certifique-se de que os switches do cluster estejam instalados com um arquivo de configuração de referência (RCF) que suporte portas de cluster-HA compartilhadas.
+* As portas de cluster idênticas no nó de substituição estão no mesmo switch. Por exemplo, após a conclusão da atualização, e1a em node1 e e1a em node2 devem ser conetados a um switch de cluster. Da mesma forma, a segunda porta de cluster de ambos os nós deve ser conetada ao segundo switch de cluster. A conexão cruzada de portas de cluster-HA compartilhadas, onde e1a de node1 é conetada ao switchA e e1a de node2 é conetada ao switchB, resulta em falhas de comunicação HA.
+* O nó de substituição usa portas Ethernet de cluster-HA compartilhadas. Verifique se os switches de cluster estão instalados com um arquivo de configuração de referência (RCF) que suporte portas de cluster-HA compartilhadas.
 

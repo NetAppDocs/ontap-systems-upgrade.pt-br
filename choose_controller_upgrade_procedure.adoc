@@ -23,13 +23,17 @@ Escolha um procedimento de atualização para um sistema com unidades internas, 
 * AFF A150, AFF A200, AFF A220, AFF A250, AFF A700s e AFF A800
 +
 
-NOTE: Você também pode atualizar um AFF A800 para um AFF A70 ou AFF A90 usando a realocação de agregados. link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Saiba mais"].
+NOTE: Você também pode atualizar um AFF A800 para um AFF A70 ou AFF A90 usando a realocação de agregados. link:upgrade-arl-auto-affa900/index.html["Saiba mais"].
 
 * AFF C190, AFF C250 e AFF C800
++
+
+NOTE: Você também pode atualizar um AFF A250 e AFF C250 usando realocação agregada. link:upgrade-arl-auto-affa900/index.html["Saiba mais"].
+
 * ASA A150, ASA A250, ASA A800 e ASA AFF A220
 +
 
-NOTE: A atualização do ASA para um sistema de substituição do ASA R2 não é suportada. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
+NOTE: As atualizações ASA para um sistema de substituição ASA R2 não são suportadas. Para obter informações sobre como migrar dados de um sistema ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
 
 
 
@@ -48,7 +52,7 @@ Escolha um procedimento de atualização para um sistema com apenas unidades ext
 * ASA A400, ASA A900 e ASA AFF A700
 +
 
-NOTE: A atualização do ASA para um sistema de substituição do ASA R2 não é suportada. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
+NOTE: As atualizações ASA para um sistema de substituição ASA R2 não são suportadas. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
 
 
 

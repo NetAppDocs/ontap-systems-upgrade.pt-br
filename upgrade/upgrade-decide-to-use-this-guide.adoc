@@ -17,10 +17,10 @@ Use este procedimento se quiser atualizar o hardware do controlador nas seguinte
 
 [NOTE]
 ====
-* A atualização do ASA para um sistema de substituição do ASA R2 não é suportada. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
-* Ao atualizar para um sistema introduzido no ONTAP 9.15,1, o ONTAP converte a eficiência de storage de volumes existentes e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema.
+* As atualizações ASA para um sistema de substituição ASA R2 não são suportadas. Para obter informações sobre como migrar dados de um sistema ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
+* Ao atualizar para um sistema introduzido no ONTAP 9.15.1 ou posterior, o ONTAP converte a eficiência de storage de volumes existentes e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema.
 +
-** Para um sistema AFF A70, AFF A90 ou AFF A1K, o ONTAP converte a eficiência de storage de todos os volumes thin Provisioning existentes, inclusive aqueles que não usam a eficiência de storage.
+** Para o AFF A20, AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60 e AFF C80, o ONTAP converte a eficiência de storage de todos os volumes thin Provisioning existentes, incluindo aqueles que não usam a eficiência de storage.
 ** Para um sistema FAS70 e FAS90, o ONTAP converte apenas a eficiência de storage de volumes thin Provisioning existentes que tinham a eficiência de storage habilitada antes da atualização.
 +
 link:https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Saiba mais sobre a eficiência de storage"^].

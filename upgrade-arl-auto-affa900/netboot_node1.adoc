@@ -72,6 +72,23 @@ NOTE: Outros parâmetros podem ser necessários para sua interface. Insira `help
 
 NOTE: Não interrompa a inicialização.
 
+. (Apenas atualizações AFF A250 e AFF C250) quando o node1 para o módulo de controlador de substituição está a arrancar, é apresentado o seguinte aviso:
++
+[listing]
+----
+*****************************************************
+* WARNING: Partner is not of the same family/model. *
+* Mixing is only allowed when upgrading the system. *
+* The system will shut down in 24 hours.            *
+*****************************************************
+Do you want to continue (y/n):
+----
++
+Resposta `y`.
+
++
+Este aviso é exibido porque a configuração inclui node2 para o controlador existente. Ele é exibido para cada inicialização do sistema até que você atualize node2. Este é o comportamento esperado.
+
 . Aguarde que o node1 em execução no módulo do controlador de substituição inicialize e exiba as opções do menu de inicialização, conforme mostrado abaixo:
 +
 [listing]

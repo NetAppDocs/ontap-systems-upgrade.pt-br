@@ -17,6 +17,6 @@ summary: 'Sequência de processo do estágio 5 para uma atualização ARL usando
 Durante a fase 5, você instala os novos módulos de sistema que você recebeu para o node2 atualizado e, em seguida, netboot node2.
 
 .Passos
-. link:install-affa90-affa70-on-node2.html["Instale os módulos do sistema de substituição no node2"]
+. link:install-aff-a30-a50-c30-c50-node2.html["Instale os módulos do sistema de substituição no node2"]
 . link:netboot_node2.html["Netboot node2"]
 

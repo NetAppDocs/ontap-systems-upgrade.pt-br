@@ -22,7 +22,7 @@ Para entender se você pode usar o ARL (Aggregate Relocation), manter o chassi e
 
 Atualizações de controladora são suportadas para certas configurações de sistema. Para exibir a lista de sistemas suportados e versões mínimas do ONTAP, link:index.html["Visão geral"]consulte .
 
-Se você recebeu um novo AFF A150, FAS2820, AFF A900 ou FAS9500 como um sistema completo, incluindo um novo chassi, link:other_references.html["Referências"]consulte o link para os comandos _Use "System controller replace" para atualizar o hardware do controlador que executa o conteúdo do ONTAP 9.8 ou posterior_.
+Se você recebeu um novo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 ou FAS9500 como um sistema completo, incluindo um novo chassi, link:other_references.html["Referências"]consulte o link para os comandos _use "System controller replace" para atualizar o hardware da controladora executando o conteúdo do ONTAP 9,8 ou posterior_.
 
 A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
 

@@ -14,30 +14,35 @@ summary: Antes de iniciar a atualização, verifique se você tem o hardware cor
 
 
 [role="lead"]
-Antes de iniciar a atualização, verifique se você tem o hardware correto para a atualização. Dependendo da atualização, para cada par de HA que você está atualizando, é necessário ter dois módulos de controladora ou dois módulos de controladora e dois módulos NVRAM para o sistema de substituição. Se houver peças em falta, entre em Contato com o suporte técnico ou com o representante de vendas da NetApp para obter assistência.
+Antes de iniciar a atualização, verifique se você tem os módulos corretos para o seu sistema de substituição. Se houver peças em falta, entre em Contato com o suporte técnico ou com o representante de vendas da NetApp para obter assistência.
 
 [cols="50,50"]
 |===
-| Se você estiver atualizando ... | O sistema de substituição deve ter ... 
+| Se você estiver atualizando de ... | O sistema de substituição deve ter ... 
 
 
-| AFF A800 | Dois módulos de controladora, dois NVRAMs e novos módulos de e/S 
+| AFF A250, AFF C250 | Dois módulos de controladora e novos módulos de e/S 
 
 
-| AFF A220 configurado como um ASA para ASA A150 | Dois módulos de controlador 
+| AFF A800, AFF C800 | Dois módulos de controladora, dois NVRAMs e novos módulos de e/S 
 
 
-| AFF A220, AFF A200 ou AFF C190 para AFF A150 | Dois módulos de controlador 
+ a| 
+* AFF A220 configurado como um ASA
+* AFF A220, AFF A200, AFF C190
+* FAS2620, FAS2720
+
+ a| 
+Dois módulos de controlador
+
+Se você estiver convertendo o sistema existente em um compartimento de armazenamento para que possa anexá-lo a outro sistema, o sistema de substituição também deve ter dois módulos de e/S.
 
 
-| FAS2620 ou FAS2720 para FAS2820 | Dois módulos de controlador 
 
+ a| 
+* AFF A700 configurado como um ASA
+* AFF A700 para AFF A900
+* FAS9000 a FAS9500
 
-| AFF A700 configurado como um ASA para ASA A900 | Dois controladores e dois módulos NVRAM 
-
-
-| AFF A700 para AFF A900 | Dois controladores e dois módulos NVRAM 
-
-
-| FAS9000 a FAS9500 | Dois controladores e dois módulos NVRAM 
+| Dois controladores e dois módulos NVRAM 
 |===

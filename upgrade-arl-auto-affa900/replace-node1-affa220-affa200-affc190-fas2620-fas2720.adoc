@@ -14,7 +14,10 @@ summary: Substitua o node1 os módulos de sistema AFF A220, AFF A200, AFF C190, 
 
 
 [role="lead"]
-Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Como o node1 e o node2 estão no mesmo chassi e alimentados pelo mesmo conjunto de fontes de alimentação, NÃO desligue o chassi. Tem de ter cuidado para remover apenas o módulo do controlador node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
+Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Tem de ter cuidado para remover apenas o módulo do controlador node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
+
+
+CAUTION: Não desligue o chassi porque o node1 e o node2 estão no mesmo chassi e alimentados pelas mesmas fontes de alimentação.
 
 .Antes de começar
 Se você ainda não está aterrado, aterre-se corretamente.
@@ -61,7 +64,7 @@ NOTE: Como o chassi já está ligado, o node1 inicia a inicialização do BIOS s
 . Com a alavanca do came na posição aberta, empurre firmemente o módulo do controlador até que ele atenda ao plano médio e esteja totalmente assentado. O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente. Feche o manípulo do excêntrico para a posição de bloqueio.
 +
 
-NOTE: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para dentro do chassis.
+NOTE: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para o chassis.
 
 . Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
 . Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
