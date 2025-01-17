@@ -21,7 +21,7 @@ O ARL aproveita a configuração de HA e a comunicação de interconexão de clu
 A tabela a seguir mostra a matriz de sistemas suportados para a atualização do controlador.
 
 
-CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para efetuar uma atualização entre quaisquer outras combinações do sistema. Para todos os outros modelos de controladora, link:other_references.html["Referências"]consulte o link para os comandos _use "system controller replace" para atualizar o hardware da controladora executando o ONTAP 9,8 ou posterior_ e _usando realocação agregada para atualizar manualmente o hardware da controladora executando o conteúdo do ONTAP 9,8 ou posterior_.
+CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para efetuar uma atualização entre quaisquer outras combinações do sistema. Para todos os outros modelos de controladora, consulte link:other_references.html["Referências"]o link para _usar comandos "System controller replace" para atualizar o hardware do controlador executando o ONTAP 9,8 ou posterior_ e _usando realocação agregada para atualizar manualmente o hardware do controlador executando o ONTAP 9,8 ou posterior_.
 
 [cols="20,20,40"]
 |===
@@ -37,7 +37,7 @@ CAUTION: Este procedimento aplica-se estritamente às seguintes configurações 
 | AFF C800 1 | AFF C80 | 9.16.1 
 
 
-| AFF A800 1 | AFF A90 ou AFF A70 | 9.15.1 
+| AFF A800 1 | AFF A90 ou AFF A70 | 9.15.1 e mais tarde 
 
 
 | AFF A220 configurado como um All SAN Array (ASA) | ASA A150 | 9.13.1P1 e posterior 
@@ -101,10 +101,8 @@ O hardware da controladora que você substitui depende do tipo de modelo de sist
 | AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 | Troque o módulo do controlador em cada nó do controlador antigo pelo novo módulo. 
 
 
-| AFF A700 ou FAS9000 | Troque o controlador e os módulos NVRAM em cada nó no controlador antigo pelos novos módulos. 1 
+| AFF A700 ou FAS9000 | Troque o controlador e os módulos NVRAM em cada nó no controlador antigo pelos novos módulos. *Nota*: Não é necessário mover, desconetar ou reconetar as placas de e/S, cabos de dados, compartimentos de disco e discos. 
 |===
-1 não é necessário mover, desconetar ou reconetar as placas de e/S, cabos de dados, compartimentos de disco e discos.
-
 
 NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes de nós neste documento. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós.
 
@@ -116,8 +114,8 @@ NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes 
 * Os sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 e FAS90 compartilham 100GbE portas de rede para conexões de cluster e HA. Esses sistemas podem oferecer suporte a conexões de cluster 10GbE ou 25GbE a switches de cluster legados. No entanto, a NetApp recomenda a atualização para velocidades de cluster 100GbE quando os switches 10GbE e 25GbE não forem mais necessários. Para obter mais informações, consulte os seguintes artigos da base de dados de Conhecimento:
 +
 --
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup_on_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Como configurar portas de cluster 10G ou 25G em uma nova configuração de cluster no AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
-** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_an_existing_cluster_from_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports_on_an_AFF_ASA_A1K_A90_A70_FAS90_FAS70["Como converter um cluster existente de 10G ou 25G portas de cluster para 40G ou 100g portas de cluster em um AFF/ASA A1K, A90, A70, FAS90, FAS70"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup["Como configurar portas de cluster 10G ou 25G em uma nova configuração de cluster"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_existing_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports["Como converter portas de cluster 10G ou 25G existentes para portas de cluster 40G ou 100g"^]
 
 
 --

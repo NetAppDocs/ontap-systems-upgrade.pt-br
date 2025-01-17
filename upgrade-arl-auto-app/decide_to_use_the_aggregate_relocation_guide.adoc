@@ -18,12 +18,12 @@ Este conteúdo descreve como atualizar as controladoras de storage em um par de 
 
 Você pode usar este conteúdo nas seguintes circunstâncias:
 
-* Você está executando o ONTAP 9.8 ou posterior.
-* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
+* Você está executando o ONTAP 9,8 ou posterior.
+* Você não quer adicionar os novos controladores como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
 * Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
-* Se você estiver atualizando uma configuração do MetroCluster, ela será uma configuração de FC de quatro nós ou superior e todos os nós executarão o ONTAP 9.8 ou posterior.
+* Se você estiver atualizando uma configuração do MetroCluster, ela será uma configuração de FC de quatro nós ou superior e todos os nós executarão o ONTAP 9,8 ou posterior.
 +
-Para atualizar configurações IP do MetroCluster, link:other_references.html["Referências"]consulte o link para o conteúdo _Atualização e expansão_ do MetroCluster.
+Para atualizar configurações IP do MetroCluster, consulte link:other_references.html["Referências"]o link para _Atualização e expansão do MetroCluster_.
 
 
 
@@ -106,10 +106,11 @@ Para as combinações de atualização mostradas na tabela anterior:
 
 * Não é necessário usar a mesma versão do ONTAP nos controladores existentes e de substituição. A atualização do software ONTAP é realizada com a atualização do controlador.
 * Ao atualizar, você deve instalar um controlador de substituição com uma versão e nível de patch do ONTAP suportados.
-* Não é possível cancelar ou fazer o back-out de uma atualização da controladora depois de iniciar o procedimento e atualizar o primeiro nó.
+* Não é possível cancelar ou fazer o back-out de uma atualização do controlador depois de iniciar o procedimento e atualizar o primeiro nó.
 
 
 ====
 Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
+.Informações relacionadas
 Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

@@ -18,7 +18,7 @@ Antes de iniciar a atualização, verifique se você tem os módulos corretos pa
 
 [cols="50,50"]
 |===
-| Se você estiver atualizando de ... | O sistema de substituição deve ter ... 
+| Se você estiver atualizando a partir de ... | O sistema de substituição deve ter ... 
 
 
 | AFF A250, AFF C250 | Dois módulos de controladora e novos módulos de e/S 
@@ -41,8 +41,8 @@ Se você estiver convertendo o sistema existente em um compartimento de armazena
 
  a| 
 * AFF A700 configurado como um ASA
-* AFF A700 para AFF A900
-* FAS9000 a FAS9500
+* AFF A700
+* FAS9000
 
 | Dois controladores e dois módulos NVRAM 
 |===

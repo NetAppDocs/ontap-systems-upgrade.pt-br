@@ -65,4 +65,5 @@ NOTE: Se a combinação do modelo de atualização da controladora não estiver 
 
 Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
+.Informações relacionadas
 Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.

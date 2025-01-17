@@ -40,7 +40,7 @@ entries:
     entries:
     - title: Substitua o AFF A250 ou o AFF C250
       url: "/upgrade-arl-auto-affa900/replace-node1-affa250-affc250.html"
-    - title: Substitua o AFF A800
+    - title: Substitua o AFF A800 ou o AFF C800
       url: "/upgrade-arl-auto-affa900/replace-node1-affa800.html"
     - title: Substitua AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
       url: "/upgrade-arl-auto-affa900/replace-node1-affa220-affa200-affc190-fas2620-fas2720.html"
@@ -60,8 +60,8 @@ entries:
     url: "/upgrade-arl-auto-affa900/verify_node1_installation.html"
   - title: Restaure a configuração do gerenciador de chaves no node1 atualizado
     url: "/upgrade-arl-auto-affa900/restore_key_manager_config_upgraded_node1.html"
-  - title: Mova agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1
-      de node2 para o node1 atualizado
+  - title: Migre node1 agregados não-raiz e LIFs de dados nas de node2 para o node1
+      atualizado
     url: "/upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html"
 - title: Fase 4. Transferir recursos e aposentar-se node2
   entries:

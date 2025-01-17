@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/move_non_root_aggr_nas_lifs_node1_from_node2
 keywords: moving, non-root, aggregates, nas, lif, node1, node2 
 summary: Verifique se as LIFs de dados nas node1 no node2 foram relocadas de node2 para node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
 ---
-= Mova agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1 de node2 para o node1 atualizado
+= Migre node1 agregados não-raiz e LIFs de dados nas de node2 para o node1 atualizado
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

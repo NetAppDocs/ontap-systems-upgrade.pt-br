@@ -17,22 +17,10 @@ summary: Substitua os módulos de sistema AFF A800 ou AFF C800 node1 ao usar o A
 Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Tem de ter cuidado para remover apenas o módulo do controlador node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
 
 
-CAUTION: Não desligue o chassi porque o node1 e o node2 estão no mesmo chassi e alimentados pelas mesmas fontes de alimentação.
+CAUTION: Não desligue o chassi porque o node1 e o node2 estão no mesmo chassi e conetados às mesmas fontes de alimentação.
 
 .Antes de começar
 Se você ainda não está aterrado, aterre-se corretamente.
-
-
-
-== Prepare-se para remover o módulo do controlador AFF A800 ou AFF C800
-
-.Passos
-. Na parte frontal do chassis, utilize os polegares para empurrar firmemente cada unidade até sentir um batente positivo. Isso garante que as unidades estejam firmemente assentadas contra o plano médio do chassi.
-+
-image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
-
-. Vá para a parte traseira do chassis.
-
 
 
 
@@ -41,6 +29,15 @@ image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar 
 Remova o dispositivo de gerenciamento de cabos do módulo existente e mova o controlador ligeiramente para fora do chassi.
 
 .Passos
+. Prepare-se para remover o módulo do controlador:
++
+.. Na parte frontal do chassis, utilize os polegares para empurrar firmemente cada unidade até sentir um batente positivo. Isso garante que as unidades estejam firmemente assentadas contra o plano médio do chassi.
++
+image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
+
+.. Vá para a parte traseira do chassis.
+
+
 . Desconete as fontes de alimentação do módulo do controlador node1 da fonte.
 . Solte os fixadores do cabo de alimentação e, em seguida, desconete os cabos das fontes de alimentação.
 . Solte o gancho e a alça de loop que prendem os cabos ao dispositivo de gerenciamento de cabos e, em seguida, desconete os cabos do sistema e os módulos SFP e QSFP (se necessário) do módulo do controlador, mantendo o controle de onde os cabos foram conetados.

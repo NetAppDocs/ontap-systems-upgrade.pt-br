@@ -25,17 +25,19 @@ Pode utilizar este procedimento nas seguintes circunstâncias:
 * A atualização do controlador está listada no link:index.html#supported-systems,["matriz de sistemas suportados"].
 * Você verificou com seu representante de vendas da NetApp que recebeu o hardware necessário para a atualização da controladora:
 +
-** Dois controladores AFF A90, AFF A70 ou AFF C80 e todos os módulos de e/S. O comprimento necessário de 100GbE cabos.
-** Dois controladores e módulos de e/S AFF A50, AFF A30, AFF C30 ou AFF C60. Os cabos necessários.
+** Dois controladores AFF A90, AFF A70 ou AFF C80 e todos os módulos de e/S. Os comprimentos necessários de 100GbE cabos.
+** Dois controladores e módulos de e/S A50, AFF A30, AFF C30 ou AFF C60 AFF e dois cabos necessários
 ** Controlador ASA A150, AFF A150 ou FAS2820
-** Controlador ASA A900, AFF A900 ou FAS9500 e módulos NVRAM e as peças
+** Controlador ASA A900, AFF A900 ou FAS9500 e módulos e peças NVRAM
 
 
 * Você está executando a versão mínima do ONTAP para sua atualização. Para obter mais informações, link:index.html["Visão geral"]consulte .
-* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
 * Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
 * Seus sistemas estão executando o ONTAP 9.15.1 ou posterior e estão usando switches Ethernet para se conetar ao storage conetado à Ethernet.
 
+
+
+NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 
 
 
@@ -43,15 +45,13 @@ Pode utilizar este procedimento nas seguintes circunstâncias:
 
 Você não pode usar este procedimento nas seguintes circunstâncias:
 
+* Você deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
 * Você está usando o software de virtualização FlexArray no sistema existente que está sendo atualizado.
 * Você está atualizando uma configuração IP do MetroCluster.
 +
 Para atualizar uma configuração IP do MetroCluster, link:other_references.html["Referências"] consulte para vincular ao conteúdo _Atualização e expansão_ do MetroCluster.
 
 
-
-
-NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 
 Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 

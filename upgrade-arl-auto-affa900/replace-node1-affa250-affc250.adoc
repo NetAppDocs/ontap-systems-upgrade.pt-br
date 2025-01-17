@@ -17,7 +17,7 @@ summary: Substitua os módulos de sistema AFF A250 ou AFF C250 node1 ao usar o A
 Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Tem de ter cuidado para remover apenas o módulo do controlador node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
 
 
-CAUTION: Não desligue o chassi porque o node1 e o node2 estão no mesmo chassi e alimentados pelas mesmas fontes de alimentação.
+CAUTION: Não desligue o chassi porque o node1 e o node2 estão no mesmo chassi e conetados às mesmas fontes de alimentação.
 
 
 

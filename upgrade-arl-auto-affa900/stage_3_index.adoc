@@ -21,5 +21,5 @@ Durante a fase 3, você coneta as conexões de armazenamento e HA do cluster com
 . link:boot_node1_with_a900_controller_and_nvs.html["Arranque node1 com os módulos do sistema de substituição"]
 . link:verify_node1_installation.html["Verifique a instalação do node1"]
 . link:restore_key_manager_config_upgraded_node1.html["Restaure a configuração do gerenciador de chaves no node1 atualizado"]
-. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Mova agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1 de node2 para o node1 atualizado"]
+. link:move_non_root_aggr_nas_lifs_node1_from_node2_to_upgraded_node1.html["Migre node1 agregados não-raiz e LIFs de dados nas de node2 para o node1 atualizado"]
 

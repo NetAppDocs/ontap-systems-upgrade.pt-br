@@ -16,9 +16,7 @@ summary: Verifique a instalação do node1 com os módulos de substituição ao 
 [role="lead"]
 Depois de inicializar o node1 com o módulo do controlador de substituição, verifique se ele está instalado corretamente.
 
-Somente para atualizações AFF A250, AFF C250, AFF A800 ou AFF C800, você mapeia as portas físicas do node1 existente para o node1 de substituição porque as portas físicas estão mudando entre os controladores existente e de substituição.
-
-Para todas as outras atualizações, você não precisa mapear as portas físicas do node1 existente para o node1 de substituição.
+Somente para atualizações AFF A250, AFF C250, AFF A800 ou AFF C800, você mapeia as portas físicas do node1 existente para o node1 de substituição porque as portas físicas estão mudando entre os controladores existente e de substituição. As portas físicas não são alteradas para os outros sistemas suportados por este procedimento de atualização.
 
 .Sobre esta tarefa
 Você deve esperar que o node1 entre no quórum e, em seguida, retomar a operação de substituição do controlador.
