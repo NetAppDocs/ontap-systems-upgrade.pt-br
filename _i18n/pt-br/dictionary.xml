@@ -5306,4 +5306,8 @@
   <block id="ea168cafe9d6c1f639359b30e7152b3d" category="list-text">Você está atualizando um sistema V-Series ou um sistema de armazenamento de virtualização FlexArray usando um array externo para armazenamento de back-end. Contacte o suporte técnico para obter opções para atualizar um sistema da série V ou FlexArray.</block>
   <block id="3f0336dfa0e5a25ff8e8c549a2b18cef" category="list-text">Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> consulte para vincular à documentação de atualização e expansão _MetroCluster_.</block>
   <block id="ebf1d57729bed03eb5fd256caca2fe3f" category="sidebar">Substitua o AFF A800 ou o AFF C800</block>
+  <block id="761e2863e356e8bb23f79549fde56e25" category="cell">FAS8200, FAS8300, FAS9000</block>
+  <block id="5631dfc64a5dfd9535518e48f79b6c93" category="cell">FAS70, FAS90, FAS50</block>
+  <block id="179f979e0b97fa0abce7d9de4a3dcf35" category="cell">9.15.1P3 para FAS70, FAS90 9.16.1P2 para FAS50</block>
+  <block id="0588c4f1b58eac9f5062dc1da6e8435a" category="cell">FAS8700</block>
 </blocks>
