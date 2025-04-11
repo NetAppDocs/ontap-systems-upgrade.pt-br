@@ -60,7 +60,7 @@ Propriedade agregada no final da fase 2:
 
 
 | link:stage_3_index.html["Fase 3. Instale e inicialize node3"]  a| 
-Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node3. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
+Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3, reatribua os discos node1 ao node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node3. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
 
 Propriedade agregada no final da fase 3:
 
@@ -83,7 +83,7 @@ Propriedade agregada no final da fase 4:
 
 
 | link:stage_5_index.html["Fase 5. Instale e inicialize node4"]  a| 
-Durante o Estágio 5, você instala e inicia o node4, verifique se as portas de gerenciamento de clusters e nós do node2 estão online no node4 e verifique a instalação do node4. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node4. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
+Durante o Estágio 5, você instala e inicia o node4, verifique se as portas de gerenciamento de clusters e nós do node2 estão online no node4, reatribua os discos node2 ao node4 e verifique a instalação do node4. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node4. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
 
 Propriedade agregada no final da fase 5:
 

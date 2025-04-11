@@ -2,10 +2,37 @@
 :allow-uri-read: 
 
 
-Antes de poder substituir node2 por node4, você deve enviar uma mensagem AutoSupport para node2 e, em seguida, realocar os agregados não-raiz que são de propriedade de node2 para node3.
+Antes de poder substituir node2 por node4, é necessário enviar uma mensagem AutoSupport para node2 e, em seguida, realocar os agregados não-raiz que são de propriedade de node2 para node3.
 
+[[sysconfig-a-command]]
 .Passos
-. [[step1]] Envie uma mensagem do AutoSupport para o NetApp para node2:
+. Verifique se a ID do sistema do parceiro está definida corretamente em node2 e node3:
++
+** `system node run -node _node2_ -command sysconfig -a`
+** `system node run -node _node3_ -command sysconfig -a`
++
+O sistema exibe a saída semelhante ao seguinte exemplo:
+
++
+[listing, subs="+quotes"]
+----
+NetApp Release 9.16.1: Mon Feb 10 07:55:45 EST 2025
+System ID: _system-ID_; *partner ID: _partner-system-ID_*
+System Serial Number: _system-serial-number_
+System Rev: A0
+System Storage Configuration: Mixed-Path HA
+----
++
+Se a "ID do parceiro" estiver incorreta para node2 ou node3:
+
++
+... Reinicie o nó com o valor incorreto.
+... Execute novamente os comandos no <<sysconfig-a-command,Passo 1>>e confirme se o "ID do parceiro" foi alterado para o valor correto.
+
+
+
+
+. Envie uma mensagem AutoSupport para o NetApp para node2:
 +
 `system node autosupport invoke -node _node2_ -type all -message "Upgrading _node2_ from _platform_old_ to _platform_new_"`
 
@@ -16,7 +43,7 @@ Antes de poder substituir node2 por node4, você deve enviar uma mensagem AutoSu
 +
 Os campos "último assunto enviado:" e "último tempo enviado:"" contêm o título da mensagem da última mensagem que foi enviada e a hora em que a mensagem foi enviada.
 
-. [[step3]]relocate os agregados não-raiz:
+. Realocar os agregados não-raiz:
 +
 .. Defina o nível de privilégio como avançado:
 +
@@ -49,7 +76,7 @@ A realocação ocorre em segundo plano. Pode levar de alguns segundos a alguns m
 `storage aggregate relocation show -node _node2_`
 
 +
-A saída exibirá "Done" para um agregado depois que ele tiver sido relocado.
+A saída exibe "Done" para um agregado depois de ter sido relocado.
 
 +
 
@@ -62,7 +89,7 @@ NOTE: Você deve esperar até que todos os agregados que são de propriedade do 
 | Se a relocalização de... | Então... 
 
 
-| Todos os agregados tiveram sucesso | Vá para <<man_relocate_2_3_step6,Passo 6>>. 
+| Todos os agregados tiveram sucesso | Vá para <<man_relocate_2_3_step7,Passo 7>>. 
 
 
 | Todos os agregados falharam ou foram vetados  a| 
@@ -108,7 +135,7 @@ Se necessário, você pode forçar a realocação usando um dos seguintes métod
 Para obter mais informações sobre os comandos de realocação de agregados de armazenamento, vá para link:other_references.html["Referências"]vincular a _Disk e gerenciamento de agregados com a CLI_ e os comandos _ONTAP 9: Manual Page Reference_.
 
 |===
-. [[man_relocate_2_3_step6]]Verifique se todos os agregados não-root estão online no node3:
+. [[man_relocate_2_3_step7]]Verifique se todos os agregados não-root estão online no node3:
 +
 `storage aggregate show -node _node3_ -state offline -root false`
 

@@ -65,7 +65,7 @@ NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volu
 
 NOTE: Se a combinação do modelo de atualização da controladora não estiver na tabela acima, entre em Contato com o suporte técnico.
 
-1 para as etapas adicionais necessárias para os sistemas AFF A800, vá para a etapa que faz referência a A800 na link:set_fc_or_uta_uta2_config_on_node3.html#auto_check3_step23["Verifique e configure as portas UTA/UTA2 no node3, passo 23"]seção , ou link:set_fc_or_uta_uta2_config_node4.html#auto_check_4_step23["Verifique e configure as portas UTA/UTA2 no node4, passo 23"].
+1 para as etapas adicionais necessárias para os sistemas AFF A800, vá para a etapa que faz referência a A800 na link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step9["Reatribuir discos node1 a node3, passo 9"]seção , ou link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Reatribuir discos node2 a node4, passo 9"].
 
 2 se você estiver atualizando de um AFF A300 para um AFF A400 ou um FAS8200 para um sistema FAS8300 em uma configuração de cluster sem switch de dois nós, você deve escolher portas de cluster temporárias para a atualização do controlador. Os sistemas AFF A400 e FAS8300 vêm em duas configurações, como um pacote Ethernet onde as portas da placa mezzanine são do tipo Ethernet e como um pacote FC onde as portas mezzanine são do tipo FC.
 

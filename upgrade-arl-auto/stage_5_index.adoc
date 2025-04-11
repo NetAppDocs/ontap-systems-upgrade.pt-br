@@ -14,11 +14,12 @@ summary: 'Sequência de processo do estágio 5 para uma atualização do ARL usa
 
 
 [role="lead"]
-Durante a fase 5, você instala e inicia o node4, mapeia as portas de gerenciamento de clusters e nós de node2 a node4 e verifica a instalação do node4. Se necessário, você define a configuração FC ou UTA/UTA2 em node4 e confirma que o node4 aderiu ao quórum. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
+Durante a fase 5, você instala e inicia o node4, mapeia as portas de gerenciamento de clusters e nós de node2 a node4, reatribui os discos node2 a node4 e verifica a instalação do node4. Se necessário, você define a configuração FC ou UTA/UTA2 em node4 e confirma que o node4 aderiu ao quórum. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
 
 .Passos
 . link:install_boot_node4.html["Instale e inicialize node4"]
 . link:set_fc_or_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"]
+. link:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"]
 . link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]
 . link:join_quorum_node_has_different_ports_stage5.html["Junte-se ao quórum quando um nó tiver um conjunto diferente de portas de rede"]
 . link:verify_node4_installation.html["Verifique a instalação do node4"]

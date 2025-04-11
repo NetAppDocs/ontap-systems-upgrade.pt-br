@@ -28,7 +28,7 @@ O processo de substituição do controlador começa com uma série de pré-verif
 +
 `system controller replace start -nodes _node_names_ -nso false`
 
-** O `system controller replace start` comando só pode ser executado no nível de privilégio avançado:
+** Você só pode executar o `system controller replace start` comando no nível de privilégio avançado:
 +
 `set -privilege advanced`
 

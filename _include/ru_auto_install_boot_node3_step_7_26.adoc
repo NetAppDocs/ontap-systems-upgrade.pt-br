@@ -142,7 +142,7 @@ Para node3, `partner-sysid` deve ser o de node2.
 | Se o seu sistema... | Descrição 
 
 
-| Tem discos e nenhum armazenamento de back-end | Vá para <<auto_install3_step23,Passo 23>> 
+| Tem discos e nenhum armazenamento de back-end | Vá para <<auto_install3_step27,Passo 27>> 
 
 
 | É um sistema da série V ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento  a| 

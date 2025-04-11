@@ -19,14 +19,15 @@ Se o node4 tiver portas FC integradas, portas de adaptador unificado de destino 
 .Sobre esta tarefa
 Talvez seja necessário concluir a <<Configurar portas FC no node4>> seção ou<<Verifique e configure as portas UTA/UTA2 no node4>>, ou ambas as seções.
 
+[NOTE]
+====
+Se o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2 e estiver atualizando um sistema com discos de storage, será possível pular para link:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"]o .
 
-NOTE: Se o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2 e estiver atualizando um sistema com discos de storage, será possível pular para link:verify_node4_installation.html["Verifique a instalação do node4"]o . No entanto, se você tiver um sistema da série V ou tiver um software de virtualização FlexArray e estiver conetado a storages de armazenamento, e o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você deverá retornar à seção _Instalar e inicializar node4_ e continuar em link:install_boot_node4.html#step22["Passo 22"]. Certifique-se de que o node4 tem espaço suficiente no rack. Se o node4 estiver em um chassi separado do node2, você pode colocar o node4 no mesmo local que o node3. Se o node2 e o node4 estiverem no mesmo chassi, o node4 já estará no local apropriado do rack.
+No entanto, se você tiver um sistema da série V ou tiver um software de virtualização FlexArray e estiver conetado a storages de armazenamento, e o node4 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você deverá retornar a _Instalar e inicializar node4_ e retomar o procedimento em link:install_boot_node4.html#step22["Passo 22"].
 
-.Opções
-* <<Configurar portas FC no node4>>
-* <<Verifique e configure as portas UTA/UTA2 no node4>>
+Certifique-se de que o node4 tem espaço suficiente no rack. Se o node4 estiver em um chassi separado do node2, você pode colocar o node4 no mesmo local que o node3. Se o node2 e o node4 estiverem no mesmo chassi, o node4 já estará no local apropriado do rack.
 
-
+====
 
 
 == Configurar portas FC no node4
@@ -114,14 +115,14 @@ NOTE: As portas FC devem ser programadas como iniciadores.
 
 
 | Tem discos de armazenamento  a| 
-** Ignore esta seção e vá para link:verify_node4_installation.html["Verifique a instalação do node4"] se o node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
+** Ignore esta seção e vá para link:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"] se o node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
 
 
 
 
 | É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
 ** Vá para <<Verifique e configure as portas UTA/UTA2 no node4>> se o node4 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
-** Ignore a seção _verificar e configurar portas UTA/UTA2 no node4_ se o node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, retorne à seção _Instalar e inicializar node4_ e continue em link:install_boot_node4.html#auto_install4_step23["Passo 23"].
+** Skip _Check and configure portas UTA/UTA2 no node4_ se o node4 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, retorne a _Install and boot node4_ e continue o procedimento em link:install_boot_node4.html#auto_install4_step23["Passo 23"].
 
 
 |===
@@ -288,10 +289,10 @@ f-a   2b       fc             target       cna           -             online
 | Se o sistema... | Então... 
 
 
-| Tem discos de armazenamento | Vá para link:verify_node4_installation.html["Verifique a instalação do node4"]. 
+| Tem discos de armazenamento | Vá para link:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"]. 
 
 
-| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Retorne à seção _Instalar e inicializar node4_ e continue em link:install_boot_node4.html#auto_install4_step23["Passo 23"]. 
+| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento | Retorne a _Install and boot node4_ e continue em link:install_boot_node4.html#auto_install4_step23["Passo 23"]. 
 |===
 . [[auto_check_4_step13]]Sair do modo de manutenção:
 +
@@ -302,278 +303,6 @@ f-a   2b       fc             target       cna           -             online
 `boot_ontap menu`.
 
 +
-Se você estiver atualizando para um A800, vá para <<auto_check_4_step23,Passo 23>>
+Se você estiver atualizando para um A800, vá para link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Reatribuir discos do nó 2 ao nó 4, etapa 9"].
 
-. [[auto_check_4_step15]]no node4, vá para o menu de inicialização e, usando 22/7, selecione a opção oculta `boot_after_controller_replacement` . No prompt, digite node2 para reatribuir os discos de node2 a node4, conforme o exemplo a seguir.
-+
-.Expanda o exemplo de saída do console
-[%collapsible]
-====
-[listing]
-----
-LOADER-A> boot_ontap menu
-.
-.
-<output truncated>
-.
-All rights reserved.
-*******************************
-*                             *
-* Press Ctrl-C for Boot Menu. *
-*                             *
-*******************************
-.
-<output truncated>
-.
-Please choose one of the following:
-(1)  Normal Boot.
-(2)  Boot without /etc/rc.
-(3)  Change password.
-(4)  Clean configuration and initialize all disks.
-(5)  Maintenance mode boot.
-(6)  Update flash from backup config.
-(7)  Install new software first.
-(8)  Reboot node.
-(9)  Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-Selection (1-11)? 22/7
-(22/7)                          Print this secret List
-(25/6)                          Force boot with multiple filesystem disks missing.
-(25/7)                          Boot w/ disk labels forced to clean.
-(29/7)                          Bypass media errors.
-(44/4a)                         Zero disks if needed and create new flexible root volume.
-(44/7)                          Assign all disks, Initialize all disks as SPARE, write DDR labels
-.
-.
-<output truncated>
-.
-.
-(wipeconfig)                        Clean all configuration on boot device
-(boot_after_controller_replacement) Boot after controller upgrade
-(boot_after_mcc_transition)         Boot after MCC transition
-(9a)                                Unpartition all disks and remove their ownership information.
-(9b)                                Clean configuration and initialize node with partitioned disks.
-(9c)                                Clean configuration and initialize node with whole disks.
-(9d)                                Reboot the node.
-(9e)                                Return to main boot menu.
-The boot device has changed. System configuration information could be lost. Use option (6) to
-restore the system configuration, or option (4) to initialize all disks and setup a new system.
-Normal Boot is prohibited.
-Please choose one of the following:
-(1)  Normal Boot.
-(2)  Boot without /etc/rc.
-(3)  Change password.
-(4)  Clean configuration and initialize all disks.
-(5)  Maintenance mode boot.
-(6)  Update flash from backup config.
-(7)  Install new software first.
-(8)  Reboot node.
-(9)  Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-Selection (1-11)? boot_after_controller_replacement
-This will replace all flash-based configuration with the last backup to disks. Are you sure
-you want to continue?: yes
-.
-.
-<output truncated>
-.
-.
-Controller Replacement: Provide name of the node you would like to replace:
-<nodename of the node being replaced>
-Changing sysid of node node2 disks.
-Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
-Partner sysid = 4294967295, owner sysid = 536940063
-.
-.
-<output truncated>
-.
-.
-varfs_backup_restore: restore using /mroot/etc/varfs.tgz
-varfs_backup_restore: attempting to restore /var/kmip to the boot device
-varfs_backup_restore: failed to restore /var/kmip to the boot device
-varfs_backup_restore: attempting to restore env file to the boot device
-varfs_backup_restore: successfully restored env file to the boot device wrote
-    key file "/tmp/rndc.key"
-varfs_backup_restore: timeout waiting for login
-varfs_backup_restore: Rebooting to load the new varfs
-Terminated
-<node reboots>
-System rebooting...
-.
-.
-Restoring env file from boot media...
-copy_env_file:scenario = head upgrade
-Successfully restored env file from boot media...
-Rebooting to load the restored env file...
-.
-System rebooting...
-.
-.
-.
-<output truncated>
-.
-.
-.
-.
-WARNING: System ID mismatch. This usually occurs when replacing a
-boot device or NVRAM cards!
-Override system ID? {y|n} y
-.
-.
-.
-.
-Login:
-----
-====
-+
-
-NOTE: No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).
-
-. Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found`, isso indica que o sistema redefiniu as portas FC ou UTA/UTA2 de volta ao modo de destino e, portanto, não consegue ver nenhum disco. Para resolver isso, continue com <<auto_check_4_step17,Passo 17>> para <<auto_check_4_step22,Passo 22>> ou vá para a seção link:verify_node4_installation.html["Verifique a instalação do node4"].
-. [[auto_check_4_step17]]pressione Ctrl-C durante o AUTOBOOT para parar o nó no prompt Loader>.
-. No prompt Loader, entre no modo de manutenção:
-+
-`boot_ontap maint`
-
-. No modo de manutenção, exiba todas as portas do iniciador definidas anteriormente que estão agora no modo de destino:
-+
-`ucadmin show`
-
-+
-Altere as portas novamente para o modo iniciador:
-
-+
-`ucadmin modify -m fc -t initiator -f _adapter name_`
-
-. Verifique se as portas foram alteradas para o modo iniciador:
-+
-`ucadmin show`
-
-. Sair do modo de manutenção:
-+
-`halt`
-
-+
-[NOTE]
-====
-Se você estiver atualizando de um sistema que suporte discos externos para um sistema que também suporte discos externos, vá para <<auto_check_4_step22,Passo 22>>.
-
-Se você estiver atualizando de um sistema que usa discos externos para um sistema que suporta discos internos e externos, por exemplo, um sistema AFF A800, vá para <<auto_check_4_step23,Passo 23>>.
-
-====
-. [[auto_check_4_step22]]no prompt DO Loader, inicialize:
-+
-`boot_ontap menu`
-
-+
-Agora, na inicialização, o nó pode detetar todos os discos que foram atribuídos anteriormente a ele e pode inicializar como esperado.
-
-+
-Quando os nós de cluster que você está substituindo usam criptografia de volume raiz, o ONTAP não consegue ler as informações de volume dos discos. Restaure as chaves para o volume raiz.
-
-+
-
-NOTE: Isto aplica-se apenas quando o volume raiz está a utilizar a encriptação de volume NetApp.
-
-+
-.. Voltar ao menu de arranque especial:
-+
-`LOADER> boot_ontap menu`
-
-+
-[listing]
-----
-Please choose one of the following:
-(1) Normal Boot.
-(2) Boot without /etc/rc.
-(3) Change password.
-(4) Clean configuration and initialize all disks.
-(5) Maintenance mode boot.
-(6) Update flash from backup config.
-(7) Install new software first.
-(8) Reboot node.
-(9) Configure Advanced Drive Partitioning.
-(10) Set Onboard Key Manager recovery secrets.
-(11) Configure node for external key management.
-
-Selection (1-11)? 10
-----
-.. Selecione *(10) Definir segredos de recuperação do Onboard Key Manager*
-.. Digite `y` no seguinte prompt:
-+
-`This option must be used only in disaster recovery procedures. Are you sure? (y or n): y`
-
-.. No prompt, insira a senha do gerenciador de chaves.
-.. Insira os dados de backup quando solicitado.
-+
-
-NOTE: Tem de ter obtido a frase-passe e os dados de cópia de segurança na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]secção deste procedimento.
-
-.. Depois de o sistema reiniciar para o menu de inicialização especial, execute a opção *(1) normal Boot*
-+
-
-NOTE: Você pode encontrar um erro nesta fase. Se ocorrer um erro, repita as subetapas em <<auto_check_4_step22,Passo 22>> até que o sistema inicialize normalmente.
-
-
-
-. [[auto_check_4_step23]] se você estiver atualizando de um sistema com discos externos para um sistema que suporte discos internos e externos (sistemas AFF A800, por exemplo), defina o agregado node2 como o agregado raiz para garantir que o node4 seja inicializado a partir do agregado raiz do node2. Para definir o agregado raiz, vá para o menu de inicialização e selecione a opção `5` para entrar no modo de manutenção.
-+
-
-WARNING: *Você deve executar as seguintes subetapas na ordem exata mostrada; a falha em fazê-lo pode causar uma interrupção ou até mesmo perda de dados.*
-
-+
-O procedimento a seguir define node4 para inicializar a partir do agregado raiz de node2:
-
-+
-.. Entre no modo de manutenção:
-+
-`boot_ontap maint`
-
-.. Verifique as informações de RAID, Plex e checksum para o agregado node2:
-+
-`aggr status -r`
-
-.. Verifique o status do agregado node2:
-+
-`aggr status`
-
-.. Se necessário, coloque o agregado node2 online:
-+
-`aggr_online root_aggr_from___node2__`
-
-.. Evite que o node4 inicialize a partir do seu agregado raiz original:
-+
-`aggr offline _root_aggr_on_node4_`
-
-.. Defina o agregado de raiz node2 como o novo agregado de raiz para node4:
-+
-`aggr options aggr_from___node2__ root`
-
-.. Verifique se o agregado raiz do node4 está offline e o agregado raiz dos discos trazidos do node2 está online e definido como root:
-+
-`aggr status`
-
-+
-
-NOTE: A falha na execução da subetapa anterior pode fazer com que o node4 seja inicializado a partir do agregado raiz interno, ou pode fazer com que o sistema assuma que existe uma nova configuração de cluster ou peça para que você identifique uma.
-
-+
-O seguinte mostra um exemplo da saída do comando:
-
-
-
-+
-....
----------------------------------------------------------------------
-Aggr State                       Status               Options
-aggr 0_nst_fas8080_15 online     raid_dp, aggr        root, nosnap=on
-                                 fast zeroed
-                                 64-bit
-aggr0 offline                    raid_dp, aggr        diskroot
-                                 fast zeroed`
-                                 64-bit
----------------------------------------------------------------------
-....
 

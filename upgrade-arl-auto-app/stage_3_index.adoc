@@ -14,11 +14,12 @@ summary: 'Sequência de processo do estágio 3 para uma atualização do ARL usa
 
 
 [role="lead"]
-Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node3. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
+Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3, reatribua os discos node1 ao node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Se necessário, defina a configuração FC ou UTA/UTA2 em node3. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
 
 .Passos
 . link:install_boot_node3.html["Instale e inicialize node3"]
 . link:set_fc_or_uta_uta2_config_on_node3.html["Defina a configuração FC ou UTA/UTA2 em node3"]
+. link:reassign-node1-disks-to-node3.html["Reatribuir discos node1 a node3"]
 . link:verify_node3_installation.html["Verifique a instalação do node3"]
 . link:restore_key-manager_configuration_node3.html["Restaure a configuração do gerenciador de chaves no node3"]
 . link:move_non-root_aggr_and_nas_data_lifs_node1_from_node2_to_node3.html["Migre agregados que não sejam raiz e LIFs de dados nas pertencentes ao node1 de node2 para node3"]

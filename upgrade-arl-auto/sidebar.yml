@@ -57,6 +57,8 @@ entries:
     url: "/upgrade-arl-auto/install_boot_node3.html"
   - title: Defina a configuração FC ou UTA/UTA2 em node3
     url: "/upgrade-arl-auto/set_fc_or_uta_uta2_config_on_node3.html"
+  - title: Reatribuir discos node1 a node3
+    url: "/upgrade-arl-auto/reassign-node1-disks-to-node3.html"
   - title: Portas de mapa de node1 a node3
     url: "/upgrade-arl-auto/map_ports_node1_node3.html"
   - title: Junte-se ao quórum quando um nó tiver um conjunto diferente de portas de
@@ -87,6 +89,8 @@ entries:
     url: "/upgrade-arl-auto/install_boot_node4.html"
   - title: Defina a configuração FC ou UTA/UTA2 em node4
     url: "/upgrade-arl-auto/set_fc_or_uta_uta2_config_node4.html"
+  - title: Reatribuir discos node2 a node4
+    url: "/upgrade-arl-auto/reassign-node2-disks-to-node4.html"
   - title: Portas de mapa de node2 a node4
     url: "/upgrade-arl-auto/map_ports_node2_node4.html"
   - title: Junte-se ao quórum quando um nó tiver um conjunto diferente de portas de

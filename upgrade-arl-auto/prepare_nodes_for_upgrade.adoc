@@ -23,7 +23,7 @@ O processo de substituição do controlador começa com uma série de pré-verif
 
 +
 
-NOTE: Este comando só pode ser executado no nível de privilégio avançado:
+NOTE: Você só pode executar este comando no nível de privilégio avançado:
 `set -privilege advanced`
 
 +
