@@ -298,11 +298,11 @@ f-a   2b       fc             target       cna           -             online
 +
 `halt`
 
-. [[step14]]nó de inicialização no menu de inicialização:
+. [[step14]]Inicialize o nó no menu de inicialização:
 +
 `boot_ontap menu`.
 
 +
-Se você estiver atualizando para um A800, vá para link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Reatribuir discos do nó 2 ao nó 4, etapa 9"].
+Se você estiver atualizando para um sistema AFF A800, vá para link:reassign-node2-disks-to-node4.html#reassign-node2-node4-app-step9["Reatribuir discos do nó 2 ao nó 4, etapa 9"].
 
 

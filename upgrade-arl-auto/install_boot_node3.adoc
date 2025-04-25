@@ -310,7 +310,7 @@ Não é possível combinar unidades FIPS com outros tipos de unidades no mesmo n
 .. Entre em Contato com o suporte da NetApp para obter assistência para restaurar as informações de gerenciamento de chaves integradas.
 
 
-. Nó de inicialização no menu de inicialização:
+. Inicialize o nó no menu de inicialização:
 +
 `boot_ontap menu`
 

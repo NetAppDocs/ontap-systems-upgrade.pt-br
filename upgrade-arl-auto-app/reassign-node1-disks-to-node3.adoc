@@ -20,7 +20,7 @@ Você precisa reatribuir os discos que pertenciam ao node1 ao node3 antes de ver
 Execute as etapas nesta seção em node3.
 
 .Passos
-. Vá para o menu de inicialização e, usando 22/7, selecione a opção oculta `boot_after_controller_replacement` . No prompt, digite node1 para reatribuir os discos de node1 a node3, conforme o exemplo a seguir.
+. [[reassign-node1-node3-app-step1]]vá para o menu de inicialização e, usando 22/7, selecione a opção oculta `boot_after_controller_replacement` . No prompt, digite node1 para reatribuir os discos de node1 a node3, conforme o exemplo a seguir.
 +
 .Expanda o exemplo de saída do console
 [%collapsible]

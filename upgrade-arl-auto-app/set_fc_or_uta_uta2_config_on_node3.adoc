@@ -309,5 +309,5 @@ Adapter  Mode       Type        Mode     Type        Status
 +
 `halt`
 
-. [[step14]]Inicialize o nó no menu de inicialização executando `boot_ontap menu`. Se você estiver atualizando para um A800, vá para link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step9["Reatribuir discos node1 a node3, passo 9"].
+. [[step14]]inicie o nó no menu de inicialização executando `boot_ontap menu`. Se você estiver atualizando para um sistema AFF A800, vá para link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step9["Reatribuir discos node1 a node3, passo 9"].
 

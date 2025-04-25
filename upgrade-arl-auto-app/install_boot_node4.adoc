@@ -311,7 +311,7 @@ Introduza a frase-passe e as informações de cópia de segurança que registou 
 
 
 
-. Nó de inicialização no menu de inicialização:
+. Inicialize o nó no menu de inicialização:
 +
 `boot_ontap menu`
 

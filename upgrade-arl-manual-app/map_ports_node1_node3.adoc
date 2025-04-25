@@ -19,7 +19,7 @@ Você deve garantir que as portas físicas no node1 sejam mapeadas corretamente 
 .Antes de começar
 Você já deve ter informações sobre as portas nos novos nós a partir do _Hardware Universe_. (Vá para link:other_references.html["Referências"]o link para o _Hardware Universe_). Use as informações posteriormente nesta seção e no link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"].
 
-A configuração de software do node3 deve corresponder à conetividade física do node3 e a conetividade IP deve ser restaurada antes de continuar com a atualização.
+A configuração de software do node3 deve corresponder à conetividade física do node3 e a conetividade de rede deve ser restaurada antes de continuar com a atualização.
 
 .Sobre esta tarefa
 As configurações de porta podem variar, dependendo do modelo dos nós.

@@ -313,12 +313,12 @@ Introduza a frase-passe e as informações de cópia de segurança que registou 
 
 
 
-. Nó de inicialização no menu de inicialização:
+. Inicialize o nó no menu de inicialização:
 +
 `boot_ontap menu`
 
 +
-Se você não tiver uma configuração FC ou UTA/UTA2, execute link:reassign-node2-disks-to-node4.html#reassign-node1-node3-app-step1["Reatribuir discos node1 a node3, passo 1"] para que o node3 possa reconhecer os discos do node1.
+Se você não tiver uma configuração FC ou UTA/UTA2, execute link:reassign-node1-disks-to-node3.html#reassign-node1-node3-app-step1["Reatribuir discos node1 a node3, passo 1"] para que o node3 possa reconhecer os discos do node1.
 
 . [[step29]]para uma configuração MetroCluster, sistemas e sistemas da série V com software de virtualização FlexArray conetado a arrays de armazenamento, você deve definir e configurar as portas FC ou UTA/UTA2 no node3 para detetar os discos conetados ao nó. Para concluir esta tarefa, vá para a secção link:set_fc_or_uta_uta2_config_on_node3.html["Defina a configuração FC ou UTA/UTA2 em node3"].
 
