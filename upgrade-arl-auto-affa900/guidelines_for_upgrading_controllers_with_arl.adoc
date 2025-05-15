@@ -38,7 +38,7 @@ Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá
 
 Se você estiver atualizando nós em um cluster que está conetado a um switch de cluster, verifique se a versão de marca, modelo, firmware, RCF e ONTAP em execução no switch será a mesma que a versão em execução no controlador de substituição após a atualização. Se necessário, você deve executar a atualização do switch antes de atualizar os controladores usando o ARL.
 
-Para obter mais informações, link:upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conete-se a um cluster conetado a switch"]consulte .
+Para obter mais informações, link:cable-node1-for-shared-cluster-HA-storage.html#connect-switch-attached-cluster["Conete-se a um cluster conetado a switch"]consulte .
 
 
 

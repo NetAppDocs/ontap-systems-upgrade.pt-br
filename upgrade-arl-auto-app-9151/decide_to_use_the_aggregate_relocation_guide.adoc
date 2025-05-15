@@ -63,8 +63,8 @@ NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volu
 
 2 os sistemas AFF A20, AFF A50, AFF A70 e AFF A90 são sistemas integrados com dois controladores em uma configuração de HA e discos integrados em um único chassi:
 
-* Se você estiver atualizando para um AFF A20, AFF A70 ou AFF A90 com unidades internas, remova a propriedade dessas unidades internas antes de fazer o upgrade. Após a conclusão da atualização, você pode atribuir as unidades internas aos nós AFF A20, AFF A70 ou AFF A90 e usá-las para criar agregados de dados. Não é necessário migrar agregados de raiz ou dados para unidades internas.
-* Se você estiver atualizando para um AFF A20, AFF A70 ou AFF A90 sem unidades internas, não será necessário atribuir unidades internas depois de concluir a atualização.
+* Se você estiver atualizando para um AFF A20, AFF A50, AFF A70 ou AFF A90 com unidades internas, remova a propriedade dessas unidades internas antes de fazer o upgrade. Após a conclusão da atualização, você pode atribuir as unidades internas aos nós AFF A20, AFF A50, AFF A70 ou AFF A90 e usá-las para criar agregados de dados. Não é necessário migrar agregados de raiz ou dados para unidades internas.
+* Se você estiver atualizando para um AFF A20, AFF A50, AFF A70 ou AFF A90 sem unidades internas, não será necessário atribuir unidades internas depois de concluir a atualização.
 
 
 Se a combinação do modelo de atualização da controladora não estiver na tabela acima, entre em Contato com o suporte técnico.
