@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: complete, procedure, upgrading, upgrade, move, moving, volume, configure, service, processor, sp, license, autosupport, storage, encryption, fc, nca, port, complete the upgrade 
 summary: 'Para concluir o procedimento de atualização movendo volumes, você precisa configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.' 
 ---
-= Conclua a atualização
+= Concluir a atualização dos volumes de movimentação
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -38,7 +38,7 @@ Use um dos procedimentos a seguir, dependendo se você estiver usando o gerencia
 ** "Restaurar chaves de criptografia de gerenciamento de chaves externas"
 
 
-. Se os novos nós tiverem portas FC (integradas ou em adaptadores FC), portas CNA integradas ou uma placa CNA, configurar as portas FC ou CNA, digite o seguinte comando no prompt do sistema de storage:
+. Se os novos nós tiverem portas FC (integradas ou em adaptadores FC), portas CNA integradas ou uma placa CNA, configure as portas FC ou CNA inserindo o seguinte comando no prompt do sistema de armazenamento:
 +
 `system node hardware unified-connect modify -node node-name -adapter adapter-name -mode {fc|cna} -type {target|initiator}`
 

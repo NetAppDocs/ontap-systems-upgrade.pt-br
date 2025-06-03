@@ -31,7 +31,36 @@ Neste ponto do procedimento, a operação de atualização do controlador deve t
 +
 A saída `health` do campo deve ser `true`.
 
-. Verifique se o node1 faz parte do mesmo cluster que o node2 e se está em bom estado:
+. Esta etapa se aplica às seguintes configurações de atualização. Para todas as outras atualizações do sistema, pule esta etapa e vá para <<verify-node1-step3,Passo 3>> :
++
+** Clusters sem comutação de dois nós
+** Trocar sistemas AFF A250 ou AFF C250 conectados atualizando para um sistema AFF A50, AFF A30, AFF C30 ou AFF C60
+
+
++
+--
+Se o node1 não ingressar no quorum automaticamente:
+
+.. Verifique o IPspace das portas e1a e e1b:
++
+`network port show`
+
+.. Se o IPspace não for "Cluster", altere o IPspace para "Cluster" em e1a e e1b:
++
+`network port modify -node <node_name> -port <port> -ipspace Cluster`
+
+.. Verifique se o IPspace das portas e1a e e1b é "Cluster":
++
+`network port show`
+
+.. Migrar LIFs do cluster node1 para e1a e e1b:
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node1_name> -destination-port <port_name>`
+
+
+
+--
+. [[verify-node1-step3]]Verifique se node1 e node2 fazem parte do mesmo cluster e se o cluster está íntegro:
 +
 `cluster show`
 

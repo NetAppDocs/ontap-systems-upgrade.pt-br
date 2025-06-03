@@ -53,6 +53,6 @@ Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:
 | Todos os outros sistemas | Sua lista de diretórios deve conter o seguinte arquivo:  `<ontap_version>_image.tgz` OBSERVAÇÃO: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arquivo. 
 |===
 +
-Você usará as informações nos diretórios do link:stage_3_index.html["Fase 3"].
+Você usará as informações nos diretórios do link:install_boot_node3.html["Fase 3"].
 
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade by moving volumes 
 summary: Se você estiver atualizando movendo volumes, prepare os nós originais e junte os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster. A atualização ao mover volumes é um procedimento sem interrupções. 
 ---
-= Fluxo de trabalho
+= Fluxo de trabalho de atualização por movimentação de volumes
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

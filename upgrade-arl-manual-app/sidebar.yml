@@ -2,9 +2,9 @@
 section: upgrade-arl-manual-app
 title: Atualize manualmente o hardware da controladora executando o ONTAP 9.8 ou posterior
 entries:
-- title: Visão geral
+- title: Saiba mais sobre este procedimento ARL
   url: "/upgrade-arl-manual-app/index.html"
-- title: Decida se deve usar o conteúdo agregado de realocação
+- title: Decida se deve usar este procedimento ARL
   url: "/upgrade-arl-manual-app/decide_to_use_arl_guide.html"
 - title: Fluxo de trabalho de atualização ARL
   url: "/upgrade-arl-manual-app/arl_upgrade_workflow.html"
@@ -18,8 +18,6 @@ entries:
   pdf-filename: Fase 1. Prepare-se para a atualização (atualização manual no ONTAP
     9.8 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_1_index.html"
   - title: Determine se a controladora possui agregados em unidades de disco internas
     url: "/upgrade-arl-manual-app/determine_aggregates_on_internal_drives.html"
   - title: Prepare os nós para atualização
@@ -34,8 +32,6 @@ entries:
   pdf-filename: Fase 2. Relocate e retire node1 (atualização manual no ONTAP 9.8 ou
     posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_2_index.html"
   - title: Realocar agregados não-raiz de node1 para node2
     url: "/upgrade-arl-manual-app/relocate_non_root_aggr_node1_node2.html"
   - title: Mover LIFs de dados nas de propriedade do node1 para o node2
@@ -48,8 +44,6 @@ entries:
   pdf-filename: Fase 3. Instalação e inicialização node3 (atualização manual no ONTAP
     9.8 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_3_index.html"
   - title: Instale e inicialize node3
     url: "/upgrade-arl-manual-app/install_boot_node3.html"
   - title: Defina a configuração FC ou UTA/UTA2 em node3
@@ -70,8 +64,6 @@ entries:
   pdf-filename: Fase 4. Registre informações e retire node2 (atualização manual no
     ONTAP 9.8 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_4_index.html"
   - title: Registe node2 informações
     url: "/upgrade-arl-manual-app/record_node2_information.html"
   - title: Aposentar-se node2
@@ -80,8 +72,6 @@ entries:
   pdf-filename: Fase 5. Instalação e inicialização node4 (atualização manual no ONTAP
     9.8 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_5_index.html"
   - title: Instale e inicialize node4
     url: "/upgrade-arl-manual-app/install_boot_node4.html"
   - title: Defina o configuarion FC ou UTA/UTA2 em node4
@@ -100,8 +90,6 @@ entries:
   pdf-filename: Fase 6. Conclua a atualização (atualização manual no ONTAP 9.8 ou
     posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/stage_6_index.html"
   - title: Gerenciar a autenticação usando servidores KMIP
     url: "/upgrade-arl-manual-app/manage_authentication_kmip.html"
   - title: Confirme se os novos controladores estão configurados corretamente
@@ -117,8 +105,6 @@ entries:
 - title: Solucionar problemas
   pdf-filename: Solução de problemas (atualização manual no ONTAP 9.8 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-manual-app/troubleshoot_index.html"
   - title: Falhas de realocação de agregados
     url: "/upgrade-arl-manual-app/aggregate_relocation_failures.html"
   - title: Reinicializa, pânicos ou ciclos de energia

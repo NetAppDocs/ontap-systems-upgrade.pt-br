@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app-9151/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
 summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos, relocando a propriedade de agregados que não sejam raiz.' 
 ---
-= Visão geral
+= Saiba mais sobre este procedimento de atualização do ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,8 @@ summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.1
 
 
 [role="lead"]
-Este procedimento descreve como atualizar o hardware da controladora usando ARL (Aggregate Relocation) para as seguintes configurações do sistema:
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento de ARL descreve como atualizar um par de controladores HA em sistemas de armazenamento AFF e FAS introduzidos no ONTAP 9.15.1 ou posterior com novos controladores, mantendo os dados e discos existentes.
 
-[cols="40,20,40"]
-|===
-| Método | Versão de ONTAP | Sistemas suportados 
-
-
-| Usando `system controller replace` comandos | 9.15.1 ou posterior | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_9151_supported_systems["Link para a matriz de sistemas suportados"] 
-|===
 
 NOTE: Não é possível usar este procedimento para atualizar uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
 
@@ -34,7 +27,7 @@ Nesta informação, os nós originais são chamados "node1" e "node2", e os novo
 Os termos "node1", "node2", "node3" e "node4" são usados apenas para distinguir entre os nós originais e novos. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós originais e novos. No entanto, na realidade, os nomes dos nós não mudam: node3 tem o nome node1 e node4 tem o nome node2 após o hardware do controlador ser atualizado.
 
 .Informações importantes:
-* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e entender as link:guidelines_for_upgrading_controllers_with_arl.html["Diretrizes para atualização de controladores com ARL"]seções e link:overview_of_the_arl_upgrade.html["Visão geral da atualização ARL"]antes de iniciar a atualização.
+* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores com ARL"] e o link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição tiver sido usado anteriormente.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de alta disponibilidade (HA) no cluster.
 * Ao atualizar para um sistema introduzido no ONTAP 9.15.1 ou posterior, o ONTAP converte a eficiência de storage de volumes existentes e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema.

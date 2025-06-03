@@ -59,6 +59,6 @@ Se você quiser atualizar controladores de nível de entrada com unidades intern
 
 == Solucionar problemas
 
-Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"] para obter mais informações e possíveis soluções.
+Se ocorrerem problemas durante a atualização dos controladores, consulte link:aggregate_relocation_failures.htmll["Solucionar problemas"] para obter mais informações e possíveis soluções.
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

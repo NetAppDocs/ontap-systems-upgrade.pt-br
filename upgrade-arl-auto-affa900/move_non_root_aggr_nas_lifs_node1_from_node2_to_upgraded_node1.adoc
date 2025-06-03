@@ -63,7 +63,7 @@ Confirme se todas as portas conetadas, incluindo o grupo de interfaces e as port
 | AFF A800 | AFF A70, AFF A90 
 
 
-| AFF C800 | C80 
+| AFF C800 | AFF C80 
 |===
 +
 Para todas as outras atualizações do sistema, avance para <<resume_relocation_step4,Passo 4>>.

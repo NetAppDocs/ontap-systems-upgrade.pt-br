@@ -55,7 +55,7 @@ Warning: Cluster HA has not been configured. Cluster HA must be configured on a 
 ----
 +
 
-NOTE: Se você estiver atualizando um par de HA em um cluster com vários pares de HA, precisará mover o epsilon para o nó de um par de HA que não está passando por uma atualização da controladora. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD.
+NOTE: Se você estiver atualizando um par de HA em um cluster com vários pares de HA, deverá mover o epsilon para o nó de um par de HA que não esteja passando por uma atualização de controlador. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD.
 
 . Se o node2 tiver o epsilon, marque o epsilon como `false` no nó para que ele possa ser transferido para o node3:
 +

@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology, old, system, chassis, disk, disks 
 summary: Você pode atualizar o hardware do controlador convertendo um sistema antigo em um sistema de substituição, mantendo o chassi e os discos antigos do sistema. 
 ---
-= Visão geral
+= Saiba mais sobre este procedimento de atualização do ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,75 +14,10 @@ summary: Você pode atualizar o hardware do controlador convertendo um sistema a
 
 
 [role="lead"]
-Você pode atualizar o hardware da controladora em um par de HA sem interrupções, usando a realocação de agregados (ARL) e a conversão do sistema existente para o sistema de substituição, mantendo os discos e o chassi do sistema existentes.
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar controladores de armazenamento em um par de HA, convertendo o sistema existente para o sistema de substituição, mantendo o chassi e os discos do sistema existente.
 
 O ARL aproveita a configuração de HA e a comunicação de interconexão de cluster. Isso permite que você mova a propriedade de agregados que não sejam raiz de um nó para outro, se eles compartilharem storage no mesmo cluster.
 
-A tabela a seguir mostra a matriz de sistemas suportados para a atualização do controlador.
-
-
-CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para efetuar uma atualização entre quaisquer outras combinações do sistema. Para todos os outros modelos de controladora, consulte link:other_references.html["Referências"]o link para _usar comandos "System controller replace" para atualizar o hardware do controlador executando o ONTAP 9,8 ou posterior_ e _usando realocação agregada para atualizar manualmente o hardware do controlador executando o ONTAP 9,8 ou posterior_.
-
-[cols="20,20,40"]
-|===
-| Sistema existente | Sistema de substituição | Versões de ONTAP compatíveis 
-
-
-| AFF C250 1 | AFF C30, AFF C60 | 9.16.1 
-
-
-| AFF A250 1 | AFF A30, AFF A50 | 9.16.1 
-
-
-| AFF C800 1 | AFF C80 | 9.16.1 
-
-
-| AFF A800 1 | AFF A90 ou AFF A70 | 9.15.1 e mais tarde 
-
-
-| AFF A220 configurado como um All SAN Array (ASA) | ASA A150 | 9.13.1P1 e posterior 
-
-
-| AFF A220 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 e posterior 
-
-
-| AFF A200 | AFF A150  a| 
-9.10.1P15, 9.11.1P11 e posterior 2
-
-
-
-| AFF C190 | AFF A150 | 9.10.1P15, 9.11.1P11, 9.12.1P5 e posterior 
-
-
-| FAS2620 | FAS2820  a| 
-9.11.1P7 ou versões posteriores de patch (FAS2620) 2
-
-9.13.1 e posterior (FAS2820)
-
-
-
-| FAS2720 | FAS2820 | 9.13.1 e mais tarde 
-
-
-| AFF A700 configurado como um ASA | ASA A900 | 9.13.1P1 e posterior 
-
-
-| AFF A700 | AFF A900 | 9.10.1P10, 9.11.1P6 e posterior 
-
-
-| FAS9000 | FAS9500 | 9.10.1P10, 9.11.1P6 e posterior 
-|===
-1. Quando você atualiza para um sistema introduzido no ONTAP 9.15.1 ou posterior, o ONTAP converte a eficiência de storage de todos os volumes thin Provisioning existentes, incluindo aqueles que não usam a eficiência de storage, e aplica os novos recursos de eficiência de storage que utilizam a funcionalidade de descarga de hardware. Este é um processo de fundo automático, sem impactos visível no desempenho do sistema. https://docs.netapp.com/us-en/ontap/concepts/builtin-storage-efficiency-concept.html["Saiba mais"^].
-
-2 os sistemas AFF A200 e FAS2620 não suportam versões ONTAP posteriores a 9.11.1.
-
-[NOTE]
-====
-A NetApp recomenda vivamente, sempre que possível, que tenha a mesma versão do ONTAP nos sistemas antigos e de substituição.
-
-As versões mínimas do ONTAP na tabela anterior são obrigatórias. Essas versões do ONTAP têm a versão de firmware do processador de serviço ou do controlador de gerenciamento de placa base (BMC) necessária para suportar a mistura de tipos de controladora em um chassi durante uma atualização.
-
-====
 Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, relocando a propriedade de agregados que não sejam raiz. Você migra os agregados que não são raiz entre os nós de controladora antigos. Depois de instalar os nós de substituição, você migra os agregados que não são raiz dos nós antigos do controlador para os nós de controladora de substituição. Os dados hospedados nos nós que você está atualizando estão acessíveis durante o procedimento de atualização. Você também migra LIFs de dados entre nós no cluster à medida que avança.
 
 O hardware da controladora que você substitui depende do tipo de modelo de sistema existente:
@@ -106,11 +41,20 @@ O hardware da controladora que você substitui depende do tipo de modelo de sist
 
 NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes de nós neste documento. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós.
 
-.Informações importantes
-* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e entender as link:guidelines_for_upgrading_controllers_with_arl.html["Diretrizes para atualização de controladores"]seções e link:overview_of_the_arl_upgrade.html["Visão geral da atualização ARL"]antes de iniciar a atualização.
+
+
+== Requisitos e limitações
+
+Você precisa considerar fatores importantes antes de iniciar seu procedimento de atualização.
+
+
+NOTE: Você deve revisar todas as informações importantes a seguir antes de iniciar o procedimento de atualização.
+
+* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores"] e link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado noutro sistema. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware da controladora de substituição tiver sido usado anteriormente como parte de outro cluster ONTAP ou como um sistema autônomo de nó único.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
 * Se você tiver um switch que não é suportado pela versão do ONTAP e pelo sistema de substituição para o qual você está atualizando, consulte link:other_references.html["Referências"]o link para o _Hardware Universe_.
+* Os sistemas AFF A250 e AFF C250 utilizam portas onboard 10/25 GbE para interconexão de clusters. Para atualizar clusters sem switch de dois nós de um sistema AFF A250 ou AFF C250 para um sistema AFF A50, AFF A30, AFF C60 ou AFF C30, é necessário usar uma placa X60132A de 4 portas 10/25 GbE no slot 1 em ambos os nós. Isso fornece interconexão de cluster para LIFs de cluster a uma porta temporária na plataforma de destino.
 * Os sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 e FAS90 compartilham 100GbE portas de rede para conexões de cluster e HA. Esses sistemas podem oferecer suporte a conexões de cluster 10GbE ou 25GbE a switches de cluster legados. No entanto, a NetApp recomenda a atualização para velocidades de cluster 100GbE quando os switches 10GbE e 25GbE não forem mais necessários. Para obter mais informações, consulte os seguintes artigos da base de dados de Conhecimento:
 +
 --

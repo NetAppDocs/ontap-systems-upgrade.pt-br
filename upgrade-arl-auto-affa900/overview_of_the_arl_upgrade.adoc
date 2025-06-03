@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-affa900/overview_of_the_arl_upgrade.html
 keywords: overview, arl, upgrade, owner, controller, hardware, old, system, chassis, disk, disks 
 summary: Entenda como funciona o procedimento ARL para atualizar modelos de controladora no mesmo chassi. 
 ---
-= Visão geral da atualização ARL
+= Saiba mais sobre a sequência de atualização do ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -37,7 +37,7 @@ A tabela a seguir descreve as tarefas de alto nível executadas durante cada eta
 | Fase | Passos 
 
 
-| link:stage_1_index.html["Etapa 1: Prepare-se para a atualização"]  a| 
+| link:verify_upgrade_hardware.html["Etapa 1: Prepare-se para a atualização"]  a| 
 Durante a fase 1, você verifica se tem o hardware correto para a atualização, executa pré-verificações e, se necessário, corrige a propriedade agregada. Você deve Registrar certas informações se estiver gerenciando a criptografia de armazenamento usando o Gerenciador de chaves integrado e você pode optar por silenciar as relações do SnapMirror.
 
 Propriedade agregada no final da fase 1:
@@ -48,7 +48,7 @@ Propriedade agregada no final da fase 1:
 
 
 
-| link:stage_2_index.html["Etapa 2: Realocar recursos e aposentar-se node1"]  a| 
+| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Etapa 2: Realocar recursos e aposentar-se node1"]  a| 
 Durante a fase 2, você realocar node1 agregados não-raiz e LIFs de dados nas de node1 para node2. Esse processo é amplamente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Se necessário, você realocar agregados com falha ou vetado. Você grava informações node1 para uso mais tarde no procedimento antes de se aposentar node1. Você também pode se preparar para netboot node1 posteriormente no procedimento.
 
 Propriedade agregada no final da fase 2:
@@ -59,7 +59,7 @@ Propriedade agregada no final da fase 2:
 
 
 
-| link:stage_3_index.html["Fase 3: Arranque node1 com os módulos do sistema de substituição"]  a| 
+| link:cable-node1-for-shared-cluster-HA-storage.html["Fase 3: Arranque node1 com os módulos do sistema de substituição"]  a| 
 Durante a fase 3, você inicializa o node1 com módulos de sistema atualizados e verifica a instalação do node1 atualizado. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Você também relocaliza node1 agregados não-raiz e LIFs de dados nas do node2 para o node1 atualizado e verifica se os LIFs SAN existem no node1.
 
 Propriedade agregada no final da fase 3:
@@ -70,7 +70,7 @@ Propriedade agregada no final da fase 3:
 
 
 
-| link:stage_4_index.html["Etapa 4: Realocar recursos e aposentar-se node2"]  a| 
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Etapa 4: Realocar recursos e aposentar-se node2"]  a| 
 Durante a fase 4, você realocar agregados não-raiz e LIFs de dados nas de node2 para o node1 atualizado e desativar o node2.
 
 Propriedade agregada no final da fase 4:
@@ -81,7 +81,7 @@ Propriedade agregada no final da fase 4:
 
 
 
-| link:stage_5_index.html["Etapa 5: Instale os módulos de sistema de substituição no node2"]  a| 
+| link:install-aff-a30-a50-c30-c50-node2.html["Etapa 5: Instale os módulos de sistema de substituição no node2"]  a| 
 Durante a fase 5, você instala os novos módulos de sistema que você recebeu para o node2 atualizado e, em seguida, netboot node2.
 
 Propriedade agregada no final da fase 5:
@@ -92,12 +92,12 @@ Propriedade agregada no final da fase 5:
 
 
 
-| link:stage_6_index.html["Fase 6: Arranque node2 com os módulos do sistema de substituição"]  a| 
+| link:boot_node2_with_a900_controller_and_nvs.html["Fase 6: Arranque node2 com os módulos do sistema de substituição"]  a| 
 Durante a fase 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Você também relocaliza node1 agregados não-raiz e LIFs de dados nas do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.
 
 
 
-| link:stage_7_index.html["Etapa 7: Concluir a atualização"]  a| 
+| link:manage-authentication-using-kmip-servers.html["Etapa 7: Concluir a atualização"]  a| 
 Durante a fase 7, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
 
 |===

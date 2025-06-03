@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app-9151/overview_of_the_arl_upgrade.html
 keywords: overview, arl, upgrade, owner, controller, hardware 
 summary: 'Entenda como funciona o procedimento para atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
 ---
-= Visão geral da atualização ARL
+= Saiba mais sobre a sequência de atualização do ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -37,7 +37,7 @@ A tabela a seguir descreve as tarefas de alto nível executadas durante cada eta
 | Fase | Descrição 
 
 
-| link:stage_1_index.html["Fase 1. Prepare-se para a atualização"]  a| 
+| link:prepare_nodes_for_upgrade.html["Fase 1. Prepare-se para a atualização"]  a| 
 Durante a fase 1, você executa pré-verificações e, se necessário, corrige a propriedade agregada. Você deve Registrar certas informações se estiver gerenciando a criptografia de armazenamento usando o OKM e você pode optar por silenciar as relações do SnapMirror.
 
 Propriedade agregada no final da fase 1:
@@ -48,7 +48,7 @@ Propriedade agregada no final da fase 1:
 
 
 
-| link:stage_2_index.html["Fase 2. Transferir e retirar node1"]  a| 
+| link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Fase 2. Transferir e retirar node1"]  a| 
 Durante a fase 2, você realocar node1 agregados não-raiz e LIFs de dados nas para node2. Esse processo é amplamente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Se necessário, você realocar agregados com falha ou vetado. Você grava informações node1 para uso mais tarde no procedimento antes de se aposentar node1. Você também pode se preparar para netboot node3 e node4 posteriormente no procedimento.
 
 Propriedade agregada no final da fase 2:
@@ -59,7 +59,7 @@ Propriedade agregada no final da fase 2:
 
 
 
-| link:stage_3_index.html["Fase 3. Instale e inicialize node3"]  a| 
+| link:install_boot_node3.html["Fase 3. Instale e inicialize node3"]  a| 
 Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
 
 Propriedade agregada no final da fase 3:
@@ -70,7 +70,7 @@ Propriedade agregada no final da fase 3:
 
 
 
-| link:stage_4_index.html["Fase 4. Transferir e retirar node2"]  a| 
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Fase 4. Transferir e retirar node2"]  a| 
 Durante a fase 4, você realocar agregados não-raiz e LIFs de dados nas de node2 para node3. Você também grava informações node2 para uso mais tarde no procedimento antes de se aposentar node2.
 
 Propriedade agregada no final da fase 4:
@@ -82,7 +82,7 @@ Propriedade agregada no final da fase 4:
 
 
 
-| link:stage_5_index.html["Fase 5. Instale e inicialize node4"]  a| 
+| link:install_boot_node4.html["Fase 5. Instale e inicialize node4"]  a| 
 Durante o Estágio 5, você instala e inicia o node4, verifique se as portas de gerenciamento de clusters e nós do node2 estão online no node4 e verifique a instalação do node4. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
 
 Propriedade agregada no final da fase 5:
@@ -93,7 +93,7 @@ Propriedade agregada no final da fase 5:
 
 
 
-| link:stage_6_index.html["Fase 6. Conclua a atualização"]  a| 
+| link:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"]  a| 
 Durante a fase 6, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
 
 |===

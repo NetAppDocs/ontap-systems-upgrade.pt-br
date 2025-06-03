@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade 
 summary: Se você estiver atualizando movendo o storage, prepare os nós originais e configure os novos nós. Alguns modelos de plataforma suportam a transferência de storage interno para os novos nós. Reatribuir discos e restaurar a configuração do volume raiz para os novos nós e configurar portas de rede. A atualização ao mover o storage é um procedimento de interrupção. 
 ---
-= Fluxo de trabalho
+= Fluxo de trabalho de atualização por movimentação de armazenamento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -2,9 +2,9 @@
 permalink: upgrade/upgrade-complete.html 
 sidebar: sidebar 
 keywords: complete, upgrade, ontap, complete the upgrade 
-summary: Conclua a atualização no ONTAP 9.8 ou posterior, ou no ONTAP 9.7 ou anterior. 
+summary: Conclua a atualização do armazenamento de movimentação no ONTAP 9.8 ou posterior, ou no ONTAP 9.7 ou anterior. 
 ---
-= Visão geral
+= Concluir o fluxo de trabalho de atualização do armazenamento móvel
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -17,6 +17,6 @@ Você deve usar o procedimento para sua versão do ONTAP.
 
 image:workflow_completing_upgrade_98_or_97x.png["Conclua a atualização"]
 
-* link:upgrade-complete-ontap-9-8.html["Conclua a atualização no ONTAP 9.8 ou posterior"]
-* link:upgrade-complete-ontap-9-7-or-earlier.html["Conclua a atualização no ONTAP 9.7 ou anterior"]
+* link:upgrade-map-network-ports-ontap-9-8.html["Conclua a atualização no ONTAP 9.8 ou posterior"]
+* link:upgrade-map-network-ports-ontap-9-7-or-earlier.html["Conclua a atualização no ONTAP 9.7 ou anterior"]
 

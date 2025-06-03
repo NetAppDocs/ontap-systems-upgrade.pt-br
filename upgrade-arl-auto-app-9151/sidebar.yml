@@ -3,24 +3,22 @@ section: upgrade-arl-auto-app-9151
 title: Use os comandos "System controller replace" para atualizar o hardware do controlador
   introduzido no ONTAP 9.15.1 e posterior
 entries:
-- title: Visão geral
+- title: Saiba mais sobre este procedimento ARL
   url: "/upgrade-arl-auto-app-9151/index.html"
 - title: Automatize o processo de atualização do controlador
   url: "/upgrade-arl-auto-app-9151/automate_the_controller_upgrade_process.html"
-- title: Decida se deve usar o conteúdo agregado de realocação
+- title: Decida se deve usar este procedimento ARL
   url: "/upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guide.html"
 - title: Ferramentas e documentação necessárias
   url: "/upgrade-arl-auto-app-9151/required_tools_and_documentation.html"
 - title: Diretrizes para atualização de controladores com ARL
   url: "/upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html"
-- title: Visão geral da atualização ARL
+- title: Saiba mais sobre a sequência de atualização do ARL
   url: "/upgrade-arl-auto-app-9151/overview_of_the_arl_upgrade.html"
 - title: Fase 1. Prepare-se para a atualização
   pdf-filename: Fase 1. Prepare-se para a atualização (atualize com 'substituição
     do controlador do sistema de sistema auxiliar' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_1_index.html"
   - title: Prepare os nós para atualização
     url: "/upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html"
   - title: Gerencie a criptografia de armazenamento usando o Gerenciador de chaves
@@ -30,8 +28,6 @@ entries:
   pdf-filename: Fase 2. Relocate e retire o node1 (atualize com o 'controlador do
     sistema de retenção' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_2_index.html"
   - title: Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1
       para o node2
     url: "/upgrade-arl-auto-app-9151/relocate_non_root_aggr_nas_data_lifs_node1_node2.html"
@@ -45,8 +41,6 @@ entries:
   pdf-filename: Fase 3. Instale e inicialize o node3 (atualize com o 'controlador
     do sistema de retenção' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_3_index.html"
   - title: Instale e inicialize node3
     url: "/upgrade-arl-auto-app-9151/install_boot_node3.html"
   - title: Verifique a instalação do node3
@@ -60,8 +54,6 @@ entries:
   pdf-filename: Fase 4. Relocate e retire o node2 (atualize com o 'controlador do
     sistema de retenção' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_4_index.html"
   - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node3
     url: "/upgrade-arl-auto-app-9151/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
   - title: Aposentar-se node2
@@ -70,8 +62,6 @@ entries:
   pdf-filename: Fase 5. Instale e inicialize o node4 (atualize com o 'controlador
     do sistema de retenção' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_5_index.html"
   - title: Instale e inicialize node4
     url: "/upgrade-arl-auto-app-9151/install_boot_node4.html"
   - title: Verifique a instalação do node4
@@ -85,8 +75,6 @@ entries:
   pdf-filename: Fase 6. Concluir a atualização (atualizar com 'stem controller replace'
     no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/stage_6_index.html"
   - title: Gerenciar a autenticação usando servidores KMIP
     url: "/upgrade-arl-auto-app-9151/manage-authentication-using-kmip-servers.html"
   - title: Confirme se os novos controladores estão configurados corretamente
@@ -103,8 +91,6 @@ entries:
   pdf-filename: Resolução de problemas (atualização com 'controlador do sistema de
     sistema auxiliar de substituição' no ONTAP 9.15,1 ou posterior)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto-app-9151/troubleshoot_index.html"
   - title: Falhas de realocação de agregados
     url: "/upgrade-arl-auto-app-9151/aggregate_relocation_failures.html"
   - title: Reinicializa, pânicos ou ciclos de energia

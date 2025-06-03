@@ -13,6 +13,12 @@ summary: Se o nó original for um dos modelos com suporte, durante o processo de
 [role="lead"]
 Se o nó original for um dos modelos com suporte, durante o processo de atualização movendo o storage, você poderá converter o nó em um compartimento de unidades e anexá-lo aos novos nós no mesmo cluster.
 
+
+NOTE: link:upgrade-move-internal-drives.html["Você também pode optar por mover unidades internas de um nó original"].
+
+.Sobre esta tarefa
+Você pode mover prateleiras de unidade somente dentro do mesmo cluster.
+
 .Antes de começar
 Você precisa ter revisado link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"] sobre a conversão de um nó em um compartimento de unidade. Entre em Contato com o suporte técnico se precisar de orientação específica para sua configuração.
 

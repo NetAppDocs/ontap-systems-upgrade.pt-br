@@ -21,11 +21,14 @@ A operação de relocalização é interrompida no início desta fase. Esse proc
 
 Você precisa netboot node3 se ele não tiver a mesma versão do ONTAP 9 instalada no node1. Depois de instalar o node3, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"].
 
-.Importante:
+[IMPORTANT]
+====
+* Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
 * Se você estiver atualizando um sistema da série V conetado a matrizes de armazenamento ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento, você precisará concluir <<auto_install3_step1,Passo 1>> através <<auto_install3_step21,Passo 21>>do , em seguida, deixe esta seção e siga as instruções nas link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"]seções e link:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Verifique e configure as portas UTA/UTA2 no node3"]conforme necessário, inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<auto_install3_step23,Passo 23>>.
 * Se você estiver atualizando um sistema com discos de armazenamento, será necessário concluir toda esta seção e, em seguida, ir para as link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"]seções elink:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Verifique e configure as portas UTA/UTA2 no node3"], digitando comandos no prompt do cluster.
 
 
+====
 .Passos
 . [[auto_install3_step1]]Certifique-se de que você tem espaço em rack para node3.
 +
@@ -34,7 +37,7 @@ Se node1 e node2 estivessem em chassi separado, você pode colocar node3 no mesm
 . [[auto_install3_step2]]instale o node3 no rack, seguindo as _instruções de instalação e configuração_ para o modelo do seu nó.
 +
 
-NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale node4 no chassi e node3. Se você não fizer isso, quando você inicializar o node3, o nó se comportará como se estivesse em uma configuração de chassi duplo, e quando você inicializar o node4, a interconexão entre os nós não aparecerá.
+NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale node4 no chassi e node3. Se você não fizer isso, ao inicializar o node3, o nó se comportará como se estivesse em uma configuração de chassi duplo e, ao inicializar o node4, a interconexão entre os nós não será ativada.
 
 . [[auto_install3_step3]]Cabo node3, movendo as conexões de node1 para node3.
 +

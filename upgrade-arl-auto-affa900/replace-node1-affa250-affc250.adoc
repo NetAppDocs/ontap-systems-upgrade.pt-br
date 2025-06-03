@@ -79,6 +79,9 @@ Certifique-se de que suporta o peso do módulo do controlador enquanto o desliza
 
 Instale, faça o cabo e ligue o módulo de substituição em node1.
 
+.Antes de começar
+Verifique se você possui uma placa X60132A, 10/25 GbE de 4 portas no slot 1 do nó 1. A placa X60132A é necessária para a interconexão do cluster em configurações de cluster sem switch de dois nós durante a atualização.
+
 .Passos
 . Alinhe a extremidade do módulo do controlador com a abertura no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
 +

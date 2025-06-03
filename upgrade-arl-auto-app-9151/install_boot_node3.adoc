@@ -376,7 +376,7 @@ Login:
 
 NOTE: No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).
 
-. Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found`, isso indica que houve um problema com a reatribuição do disco. link:troubleshoot_index.html["Solucionar problemas"]Consulte para resolver o problema.
+. Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found`, isso indica que houve um problema com a reatribuição do disco. link:aggregate_relocation_failures.html["Solucionar problemas"]Consulte para resolver o problema.
 . Prima `Ctrl-C` durante a ação para parar o nó no `LOADER>` aviso.
 . No prompt Loader, entre no modo de manutenção:
 +

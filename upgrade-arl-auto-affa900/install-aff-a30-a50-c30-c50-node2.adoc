@@ -14,7 +14,7 @@ summary: Instale os módulos de sistema de substituição no node2 durante uma a
 
 
 [role="lead"]
-Instale o módulo do controlador de substituição que recebeu para a atualização em node2. O Node2 é o controlador B localizado no lado direito do chassi quando se olha para os controladores da parte traseira do sistema.
+Instale o módulo do controlador de substituição que recebeu para a atualização em node2. O Node2 é o controlador B localizado na metade inferior do chassi quando se olha os controladores pela parte traseira do sistema.
 
 .Passos
 . Posicione o sistema de armazenamento nos trilhos no meio do gabinete ou rack de telecomunicações e, em seguida, apoie o sistema de armazenamento a partir da parte inferior e deslize-o para o lugar.
@@ -42,4 +42,5 @@ NOTE: Para evitar danificar os conetores, não utilize força excessiva ao desli
 +
 `saveenv`
 
+. Para configurações sem switch de dois nós, verifique se você possui uma placa X60132A de 4 portas 10/25 GbE no slot 1 do nó 2. A placa X60132A é necessária para a interconexão do cluster durante a atualização.
 

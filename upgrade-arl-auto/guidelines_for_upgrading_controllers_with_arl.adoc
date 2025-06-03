@@ -60,8 +60,18 @@ Se você quiser atualizar controladores de nível de entrada com unidades intern
 
 
 
-== Solução de problemas
+== Configuração FC do MetroCluster
 
-Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"]a secção no final do procedimento para obter mais informações e possíveis soluções.
+Em uma configuração MetroCluster FC, você precisa substituir os nós do local de failover/recuperação de desastre o mais rápido possível. A incompatibilidade entre modelos de controladores em uma configuração do MetroCluster não é suportada porque a incompatibilidade entre modelos de controladores pode fazer com que o espelhamento de recuperação de desastres fique offline. Use o  `-skip-metrocluster-check true` comando para ignorar as verificações do MetroCluster quando você estiver substituindo nós no segundo site.
+
+
+
+== Solucionar problemas
+
+Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.
+
+Consulte a tabela que descreve as diferentes fases do procedimento na seção Visão geral da atualização do ARL. As informações sobre as falhas que podem ocorrer são listadas pela fase do procedimento.
+
+Caso ocorra algum problema durante a atualização dos controladores, consulte o link:aggregate_relocation_failures.html["Solucionar problemas"] seção. As informações sobre falhas que podem ocorrer são listadas por fase do procedimento no link:arl_upgrade_workflow.html["Sequência de atualização do ARL"] .
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

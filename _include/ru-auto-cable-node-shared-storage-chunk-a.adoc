@@ -1,0 +1,51 @@
+= Ligue as portas e0M e BMC
+:allow-uri-read: 
+
+
+
+
+== Ligue as portas e0M e BMC
+
+Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench" no sistema de substituição. Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no sistema existente antes de se conetar ao sistema de substituição.
+
+[cols="35,65"]
+|===
+| Se o... | Então... 
+
+
+| Os endereços IP e0M e BMC estão na mesma sub-rede IP | Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição. 
+
+
+| Os endereços IP e0M e BMC estão em sub-redes diferentes  a| 
+. Mesclar os endereços IP e0M e BMC em uma sub-rede IP.
+. Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição.
+
+
+|===
+
+
+== Conecte-se a um cluster sem switch de dois nós
+
+As tabelas a seguir mostram o uso da porta do switch para configurações de cluster sem switch de dois nós.
+
+|===
+| Tipo de porta | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | e7a (use e1b se não houver e7a) | e1b 
+
+
+| HA | e0b | Não conecte | Não conecte 
+
+
+| HA | e1b | Não conecte | Não conecte 
+
+
+| Portas de armazenamento SAS (se presentes e usadas) | Qualquer porta disponível | Qualquer porta disponível | Qualquer porta disponível 
+
+
+| Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
+|===

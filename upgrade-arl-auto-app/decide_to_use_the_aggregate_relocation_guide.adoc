@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app/decide_to_use_the_aggregate_relocation_guide.htm
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
 summary: 'Decida se deseja usar o ARL para atualizar controladores executando o ONTAP 9.8 ou posterior usando `system controller replace` comandos.' 
 ---
-= Decida se deve usar o procedimento de realocação agregada
+= Decida se deve usar este procedimento de realocação agregada
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: 'Decida se deseja usar o ARL para atualizar controladores executando o 
 
 
 [role="lead"]
-Este conteúdo descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém os dados e os discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar o hardware do controlador usando a realocação agregada (ARL) com "comandos de substituição do controlador do sistema" em sistemas que executam o ONTAP 9.8 ou posterior. Você só deve usar este procedimento complexo se for um administrador ONTAP experiente.
 
-Você pode usar este conteúdo nas seguintes circunstâncias:
+Para ajudar você a decidir se este procedimento ARL é adequado para a atualização de hardware do seu controlador, você deve revisar todas as seguintes circunstâncias para atualizações suportadas:
 
 * Você está executando o ONTAP 9,8 ou posterior.
 * Você não quer adicionar os novos controladores como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
@@ -27,10 +27,21 @@ Para atualizar configurações IP do MetroCluster, consulte link:other_reference
 
 
 
+[NOTE]
+====
+* Se você estiver atualizando um sistema trocando módulos de controlador no mesmo chassi, como AFF A800 ou AFF C800, a NetApp recomenda fortemente usar o procedimento de atualização que link:../upgrade-arl-auto-affa900/index.html["atualiza modelos de controlador usando ARL, mantendo o chassi e os discos do sistema existentes"] . Este procedimento ARL inclui as etapas que garantem que os discos internos permaneçam seguros no chassi quando você remove e instala os controladores durante o procedimento de atualização.
++
+link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Aprenda sobre as combinações de atualização de sistema suportadas usando ARL, mantendo o chassi e os discos do sistema existentes"].
 
-NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+* Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 
-[[sys_Commands_98_supported_Systems]]a tabela a seguir mostra a matriz de modelo suportada para a atualização do controlador.
+
+====
+
+
+== Combinações de atualização de sistema suportadas
+
+A tabela a seguir mostra a matriz de sistemas suportados para executar uma atualização de controlador usando este procedimento ARL.
 
 |===
 | Controlador antigo | Controlador de substituição 
@@ -110,7 +121,13 @@ Para as combinações de atualização mostradas na tabela anterior:
 
 
 ====
-Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+
+== Escolha um procedimento de atualização de hardware diferente
+
+* link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
+* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
 
 .Informações relacionadas
-Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.
+Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.

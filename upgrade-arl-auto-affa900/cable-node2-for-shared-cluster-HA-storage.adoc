@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/cable-node1-for-shared-cluster-HA-storage.html 
+permalink: upgrade-arl-auto-affa900/cable-node2-for-shared-cluster-HA-storage.html 
 keywords: cluster, ha, aff, a800, shared, storage, data, management 
-summary: Conecte o cluster, a HA, o storage e as conexões de dados anteriormente conectadas ao AFF A800 node1 ao AFF A90 ou ao AFF A70 node1 recém-instalado 
+summary: Conecte o cluster, o HA, o armazenamento e as conexões de dados que estavam conectados anteriormente ao nó 2 do AFF A800 ao nó 1 do AFF A90 ou AFF A70 recém-instalado. 
 ---
-= Cabo node1 para cluster-HA e armazenamento compartilhados
+= Cabo node2 para cluster-HA e armazenamento compartilhados
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Conecte o cluster, a HA, o storage e as conexões de dados anteriorment
 
 
 [role="lead"]
-Se você estiver executando uma das atualizações a seguir, será necessário conectar as conexões de cluster, HA, storage, dados e gerenciamento que estavam anteriormente conetadas ao node1 no sistema existente ao node1 recém-instalado no sistema de substituição.
+Se estiver executando uma das seguintes atualizações, você precisará conectar o cluster, o HA, o armazenamento, os dados e as conexões de gerenciamento que estavam conectados anteriormente ao node2 no sistema existente ao node2 recém-instalado no sistema de substituição.
 
 [cols="35,65"]
 |===
@@ -80,7 +80,7 @@ As tabelas a seguir mostram o uso da porta do switch para configurações de clu
 | Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
 |===
 |===
-| Porta | AFF A250, AFF C250 | AFF A30, AFF C30, AFF C60 | AFF A50 
+| Tipo de porta | AFF A250, AFF C250 | AFF A30, AFF C60 | AFF A50 
 
 
 | Cluster | e0c | e1a (Use e1a para interconexão temporária de cluster) | e1a (Use e1a para interconexão temporária de cluster) 
@@ -89,13 +89,16 @@ As tabelas a seguir mostram o uso da porta do switch para configurações de clu
 | Cluster | e0d | e1b (Use e1b para interconexão temporária de cluster) | e1b (Use e1b para interconexão temporária de cluster) 
 
 
-| HA | Não é necessário | As portas HA não são necessárias para a atualização do node1 | As portas HA não são necessárias para a atualização do node1 
+| HA | A porta e0c HA é compartilhada com a porta do Cluster | e4a no nó 1 está conectado diretamente ao e4a no nó 2 usando um cabo 100 GbE | e4a no nó 1 está conectado diretamente ao e4a no nó 2 usando um cabo 100 GbE 
 
 
-| Portas de armazenamento Ethernet | Qualquer porta disponível | e3a, e3b | e3a, e3b 
+| HA | A porta HA do e0d é compartilhada com a porta do Cluster | e2a no nó 1 é conectado diretamente a e2a no nó 2 usando um cabo de 100 GbE. Se e2a não estiver presente ou não suportar 100 GbE, conecte diretamente e4b no nó 1 a e4b no nó 2 usando um cabo de 100 GbE. | e2a no nó 1 conectado diretamente a e2a no nó 2 usando um cabo de 100 GbE. Se e2a não estiver presente ou não suportar 100 GbE, conecte diretamente e4b no nó 1 a e4b no nó 2 usando um cabo de 100 GbE. 
 
 
-| Portas de storage SAS | Qualquer porta disponível | 3a, 3b | 3a, 3b 
+| Porta de armazenamento Ethernet | Qualquer porta disponível | e3a, e3b | e3a, e3b 
+
+
+| Porta de armazenamento SAS | Qualquer porta disponível | 3a, 3b | 3a, 3b 
 |===
 
 

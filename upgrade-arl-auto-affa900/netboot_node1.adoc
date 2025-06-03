@@ -16,7 +16,7 @@ summary: Ao usar o ARL para atualizar modelos de controladora no mesmo chassi, v
 [role="lead"]
 Depois de trocar os módulos do sistema de substituição correspondentes, você deve netboot node1. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você adiciona uma cópia da imagem de inicialização do ONTAP 9 a um servidor da Web que o sistema pode acessar.
 
-Não é possível verificar a versão do ONTAP instalada no suporte de arranque do módulo do controlador de substituição, a menos que esteja instalado num chassis e ligado. A versão do ONTAP na Mídia de inicialização do sistema de substituição deve ser igual à versão do ONTAP em execução no sistema antigo que você está atualizando e as imagens de inicialização principal e de backup na Mídia de inicialização devem corresponder. Para verificar a versão mínima suportada do ONTAP para a atualização, link:index.html["Visão geral"]consulte .
+Não é possível verificar a versão do ONTAP instalada na mídia de inicialização do módulo controlador de substituição, a menos que ele esteja instalado em um chassi e ligado. A versão do ONTAP na Mídia de inicialização do sistema de substituição deve ser igual à versão do ONTAP em execução no sistema antigo que você está atualizando e as imagens de inicialização principal e de backup na Mídia de inicialização devem corresponder. Para verificar a versão mínima do ONTAP suportada para sua atualização, consulte link:decide_to_use_the_aggregate_relocation_guide.html#supported-systems,["combinações de atualização de sistema suportadas"] .
 
 Você pode configurar as imagens executando um netboot seguido do `wipeconfig` comando no menu de inicialização. Se o módulo do controlador foi usado anteriormente em outro cluster, o `wipeconfig` comando limpa qualquer configuração residual na Mídia de inicialização.
 
@@ -149,8 +149,27 @@ O módulo do controlador reinicializa, mas pára no menu de inicialização porq
 
 
 
-. No prompt, execute o `wipeconfig` comando para limpar qualquer configuração anterior na Mídia de inicialização:
+. Limpe qualquer configuração anterior na mídia de inicialização.
 +
+.. No prompt a seguir, execute o  `wipeconfig` comando e pressione a tecla Enter:
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? wipeconfig
+----
 .. Quando vir a mensagem abaixo, responda `yes`:
 +
 [listing]
@@ -160,6 +179,10 @@ Warning: do not run this option on a HA node that has been taken over.
 Are you sure you want to continue?:
 ----
 .. O nó reinicializa para terminar o `wipeconfig` e, em seguida, pára no menu de inicialização.
++
+
+NOTE: Aguarde até que o nó pare no menu de inicialização após concluir o  `wipeconfig` operação.
+
 
 
 . Selecione a opção `5` para ir para o modo de manutenção a partir do menu de arranque. Responda `yes` aos prompts até que o nó pare no modo de manutenção e no prompt de comando `*>` .

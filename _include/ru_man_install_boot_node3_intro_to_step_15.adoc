@@ -5,15 +5,16 @@
 Você deve instalar o node3 no rack, transferir as conexões do node1 para node3, inicializar node3 e instalar o ONTAP. Você também deve reatribuir qualquer um dos discos sobressalentes do node1, todos os discos pertencentes ao volume raiz e quaisquer agregados que não sejam raiz não relocados para o node2 anterior.
 
 .Sobre esta tarefa
-Você deve netboot node3 se ele não tiver a mesma versão do ONTAP 9 instalada no node1. Depois de instalar o node3, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema. link:prepare_for_netboot.html["Prepare-se para netboot"]Consulte .
+Você deve inicializar o node3 pela rede se ele não tiver a mesma versão do ONTAP 9 que está instalada no node1. Depois de instalar o node3, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema. link:prepare_for_netboot.html["Prepare-se para netboot"]Consulte .
 
-No entanto, você não precisa netboot node3 se ele tiver a mesma ou uma versão posterior do ONTAP 9 instalada no node1.
+No entanto, você não precisa inicializar o node3 pela rede se ele tiver a mesma versão ou uma versão posterior do ONTAP 9 instalada no node1.
 
 [IMPORTANT]
 ====
-Se você estiver atualizando um sistema da série V conetado a storages de armazenamento ou a um sistema com software de virtualização FlexArray conetado a storages de armazenamento, você deve concluir <<man_install3_step1,Passo 1>> o <<man_install3_step5,Passo 5>>, deixe esta seção em <<man_install3_step6,Passo 6>> e siga as instruções no link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"]conforme necessário, inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<man_install3_step7,Passo 7>>.
+* Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
+* Se você estiver atualizando um sistema da série V conetado a storages de armazenamento ou a um sistema com software de virtualização FlexArray conetado a storages de armazenamento, você deve concluir <<man_install3_step1,Passo 1>> o <<man_install3_step5,Passo 5>>, deixe esta seção em <<man_install3_step6,Passo 6>> e siga as instruções no link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"]conforme necessário, inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<man_install3_step7,Passo 7>>.
+* Se você estiver atualizando um sistema com discos de armazenamento, deverá concluir toda esta seção e então ir para link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"] , inserindo comandos no prompt do cluster.
 
-No entanto, se você estiver atualizando um sistema com discos de armazenamento, deve concluir toda esta seção e, em seguida, ir para link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"], digitando comandos no prompt do cluster.
 
 ====
 .Passos

@@ -3,11 +3,11 @@ section: upgrade-arl-auto
 title: Use os comandos "System controller replace" para atualizar o hardware da controladora
   executando o ONTAP 9.5 a 9,7
 entries:
-- title: Visão geral
+- title: Saiba mais sobre este procedimento ARL
   url: "/upgrade-arl-auto/index.html"
 - title: Automatize o processo de atualização do controlador
   url: "/upgrade-arl-auto/automate_the_controller_upgrade_process.html"
-- title: Decida se deve usar o conteúdo agregado de realocação
+- title: Decida se deve usar este procedimento ARL
   url: "/upgrade-arl-auto/decide_to_use_the_aggregate_relocation_guide.html"
 - title: Ferramentas e documentação necessárias
   url: "/upgrade-arl-auto/required_tools_and_documentation.html"
@@ -19,14 +19,12 @@ entries:
   url: "/upgrade-arl-auto/check_metrocluster_config_errors.html"
 - title: Verifique o switchover, a recuperação e o switchback
   url: "/upgrade-arl-auto/verify_switchover_healing_switchback.html"
-- title: Visão geral da atualização ARL
+- title: Saiba mais sobre a sequência de atualização do ARL
   url: "/upgrade-arl-auto/overview_of_the_arl_upgrade.html"
 - title: Fase 1. Prepare-se para a atualização
   pdf-filename: Fase 1. Prepare-se para a atualização (atualize com a 'substituição
     do controlador do sistema' no ONTAP 9.5 a 9,7)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_1_index.html"
   - title: Prepare os nós para atualização
     url: "/upgrade-arl-auto/prepare_nodes_for_upgrade.html"
   - title: Gerenciar criptografia de armazenamento usando o Gerenciador de chaves
@@ -36,8 +34,6 @@ entries:
   pdf-filename: Fase 2. Relocate e retire node1 (atualize com 'controlador do sistema
     Substituir' no ONTAP 9.5 para 9,7)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_2_index.html"
   - title: Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1
       para o node2
     url: "/upgrade-arl-auto/relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html"
@@ -51,8 +47,6 @@ entries:
   pdf-filename: Fase 3. Instalar e inicializar node3 (atualizar com 'controlador do
     sistema Substituir' no ONTAP 9 9,7.5 a 4)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_3_index.html"
   - title: Instale e inicialize node3
     url: "/upgrade-arl-auto/install_boot_node3.html"
   - title: Defina a configuração FC ou UTA/UTA2 em node3
@@ -73,8 +67,6 @@ entries:
   pdf-filename: Fase 4. Relocate e retire node2 (atualize com 'controlador do sistema
     Substituir' no ONTAP 9.5 para 9,7)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_4_index.html"
   - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node3
     url: "/upgrade-arl-auto/relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html"
   - title: Aposentar-se node2
@@ -83,8 +75,6 @@ entries:
   pdf-filename: Fase 5. Instalar e inicializar node4 (atualizar com 'controlador do
     sistema Substituir' no ONTAP 9 9,7.5 a 4)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_5_index.html"
   - title: Instale e inicialize node4
     url: "/upgrade-arl-auto/install_boot_node4.html"
   - title: Defina a configuração FC ou UTA/UTA2 em node4
@@ -105,8 +95,6 @@ entries:
   pdf-filename: Fase 6. Conclua a atualização (atualize com 'controlador do sistema
     Substituir' no ONTAP 9.5 para 9,7)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/stage_6_index.html"
   - title: Gerenciar a autenticação usando servidores KMIP
     url: "/upgrade-arl-auto/manage-authentication-using-kmip-servers.html"
   - title: Confirme se os novos controladores estão configurados corretamente
@@ -123,8 +111,6 @@ entries:
   pdf-filename: Solução de problemas (atualizar com "controlador do sistema Substituir"
     no ONTAP 9 F.5 a 9,7)
   entries:
-  - title: Visão geral
-    url: "/upgrade-arl-auto/troubleshoot_index.html"
   - title: Falhas de realocação de agregados
     url: "/upgrade-arl-auto/aggregate_relocation_failures.html"
   - title: Reinicializa, pânicos ou ciclos de energia

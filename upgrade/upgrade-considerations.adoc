@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan, upgrade, consideration, contact, technical, support, recommendation, guidance, cluster, considerations for upgrading controller hardware 
 summary: Para Planejar a atualização, você deve se familiarizar com as considerações gerais de atualização. Se necessário, entre em Contato com o suporte técnico para obter recomendações e orientações específicas para a configuração do cluster. 
 ---
-= Considerações para atualizar o hardware do controlador
+= Considerações para atualizar o hardware do controlador movendo volumes ou armazenamento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -30,7 +30,7 @@ NOTE: Antes de iniciar o procedimento de atualização da controladora, você de
 | Estou combinando diferentes modelos de plataforma de controlador em um cluster?  a| 
 link:https://hwu.netapp.com["Verifique se você está seguindo regras de mistura de plataforma de armazenamento"^].
 
-As controladoras de um par de HA devem ser dois modelos AFF, FAS ou ASA.
+Os controladores em um par HA devem ser dois modelos AFF, FAS ou ASA.
 
 
 
@@ -67,7 +67,7 @@ NOTE: Se você estiver atualizando um cluster de oito nós que atende protocolos
 
 
 
-| Estou atualizando um par de HA em um cluster com vários pares de HA? | Mova o epsilon para o nó de um par de HA que não está passando por uma atualização da controladora. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD. 
+| Estou atualizando um par de HA em um cluster com vários pares de HA? | Mova o epsilon para o nó de um par HA que não está passando por uma atualização de controlador. Por exemplo, se você estiver atualizando nodeA/nodeB em um cluster com a configuração de par HA nodeA/nodeB e nodeC/nodeD, você deverá mover epsilon para nodeC ou nodeD. 
 
 
 | Estou executando o ONTAP 9.6P11, 9.7P8 ou versões posteriores? | A NetApp recomenda que você habilite o recurso de monitoramento de disponibilidade, vivacidade e disponibilidade (CLAM) para retornar o cluster ao quorum quando certas falhas de nó ocorrerem. O `kernel-service` comando requer acesso avançado ao nível de privilégio. Para obter mais informações, consulte o artigo da base de dados de Conhecimento da NetApp https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU436["Configuração padrão DO controle de CLAM alterada"^] . A partir de ONTAP 9.8, o `kcs-enable-takeover` parâmetro é ativado por padrão. 

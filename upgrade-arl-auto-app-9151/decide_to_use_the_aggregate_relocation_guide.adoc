@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guid
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
 summary: 'Decida se deve usar o ARL para atualizar controladores que executam o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
 ---
-= Decida se deve usar o procedimento de realocação agregada
+= Decida se deve usar este procedimento de realocação agregada
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,23 +14,60 @@ summary: 'Decida se deve usar o ARL para atualizar controladores que executam o 
 
 
 [role="lead"]
-Este procedimento descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém os dados e os discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento de ARL descreve como atualizar um par de controladores HA em sistemas de armazenamento AFF e FAS introduzidos no ONTAP 9.15.1 ou posterior com novos controladores, mantendo os dados e discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores ONTAP experientes.
+
+Para ajudar você a decidir se este procedimento ARL é adequado para a atualização de hardware do seu controlador, você deve revisar todas as seguintes circunstâncias para atualizações suportadas e não suportadas.
 
 
 
-== Atualizações suportadas para ARL
+== Atualizações suportadas para este procedimento ARL
 
-Você pode atualizar um par de nós nas seguintes circunstâncias:
+Você pode usar este procedimento ARL para atualizar um par de nós nas seguintes circunstâncias:
 
 * Você está executando o ONTAP 9.15.1 ou posterior.
 * Você não quer adicionar os novos controladores como um novo par de HA ao cluster e migrar os dados usando o procedimento de movimentação de volume.
 * Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+* Sua combinação de atualização de hardware está listada em <<sys_commands_9151_supported_systems,matriz de modelo suportada>> .
 
 
 
 NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 
-[[sys_Commands_9151_supported_Systems]]a tabela a seguir mostra a matriz de modelo suportada para a atualização do controlador.
+
+
+== Atualizações não suportadas para este procedimento ARL
+
+Você não pode usar este procedimento ARL para atualizar um par de nós nas seguintes circunstâncias:
+
+* Você está executando uma das seguintes atualizações:
++
+|===
+| Controlador existente | Controlador de substituição 
+
+
+| AFF A250 | AFF A50, AFF A30 
+
+
+| AFF A800 | AFF A70, AFF A90 
+
+
+| AFF C250 | AFF C30, AFF C60 
+
+
+| AFF C800 | AFF C80 
+|===
++
+Para realizar a atualização listada na tabela acima, link:other_references.html["Referências"]consulte para vincular a comandos _use "System controller replace" para atualizar modelos de controladora no mesmo chassi_.
+
+* Você está atualizando um sistema V-Series ou um sistema de armazenamento de virtualização FlexArray usando um array externo para armazenamento de back-end. Contacte o suporte técnico para obter opções para atualizar um sistema da série V ou FlexArray.
+* Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
+
+
+
+
+== Combinações de atualização de sistema suportadas
+
+A tabela a seguir mostra as combinações de atualização de controlador suportadas usando ARL para sistemas AFF e FAS introduzidas no ONTAP 9.15.1 ou posterior. Se a sua combinação de atualização de controlador não estiver listada, entre em contato com o suporte técnico.
 
 |===
 | Controlador existente | Controlador de substituição | Suportado a partir do ONTAP... 
@@ -67,39 +104,13 @@ NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volu
 * Se você estiver atualizando para um AFF A20, AFF A50, AFF A70 ou AFF A90 sem unidades internas, não será necessário atribuir unidades internas depois de concluir a atualização.
 
 
-Se a combinação do modelo de atualização da controladora não estiver na tabela acima, entre em Contato com o suporte técnico.
 
 
+== Escolha um procedimento de atualização de hardware diferente
 
-== Atualizações não suportadas para ARL
+* link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
+* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
-Você não pode realizar atualizações usando o ARL nas seguintes circunstâncias:
-
-* Você está executando uma das seguintes atualizações:
-+
-|===
-| Controlador existente | Controlador de substituição 
-
-
-| AFF A250 | AFF A50, AFF A30 
-
-
-| AFF A800 | AFF A70, AFF A90 
-
-
-| AFF C250 | AFF C30, AFF C60 
-
-
-| AFF C800 | AFF C80 
-|===
-+
-Para realizar a atualização listada na tabela acima, link:other_references.html["Referências"]consulte para vincular a comandos _use "System controller replace" para atualizar modelos de controladora no mesmo chassi_.
-
-* Você está atualizando um sistema V-Series ou um sistema de armazenamento de virtualização FlexArray usando um array externo para armazenamento de back-end. Contacte o suporte técnico para obter opções para atualizar um sistema da série V ou FlexArray.
-* Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
-
-
-Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
 .Informações relacionadas
-Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.
+Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.

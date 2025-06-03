@@ -13,6 +13,9 @@ summary: Se o nó original for um dos modelos suportados, durante o processo de 
 [role="lead"]
 Se o nó original for um dos modelos suportados, durante o processo de atualização movendo o armazenamento, você poderá mover as unidades SATA internas, SSDs ou unidades SAS do nó para um compartimento de unidades anexado ao novo nó no mesmo cluster.
 
+
+NOTE: link:upgrade-convert-node-to-shelf.html["Você também pode optar por converter o sistema em uma prateleira de unidade e anexá-lo aos novos nós"].
+
 .Antes de começar
 * Você deve ter revisado link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"] sobre a movimentação de unidades internas.
 +
@@ -22,6 +25,9 @@ Entre em Contato com o suporte técnico se precisar de orientação específica 
 * Um compartimento de unidade compatível já deve estar conetado ao novo nó.
 * O compartimento de unidades deve ter compartimentos livres suficientes para acomodar os suportes de unidades SATA, SSD ou SAS do nó original.
 
+
+.Sobre esta tarefa
+Você pode mover unidades somente dentro do mesmo cluster.
 
 .Passos
 . Retire cuidadosamente a moldura da parte frontal do sistema.

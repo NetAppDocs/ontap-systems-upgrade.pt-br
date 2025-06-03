@@ -21,11 +21,14 @@ A operação de relocalização é interrompida no início desta fase. Este proc
 
 Você precisa netboot node4 se ele não tiver a mesma versão do ONTAP 9 instalada no node2. Depois de instalar o node4, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"].
 
-.Importante:
+[IMPORTANT]
+====
+* Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 2. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
 * Se você estiver atualizando um sistema da série V conetado a matrizes de armazenamento ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento, você deve concluir <<auto_install4_step1,Passo 1>> através <<auto_install4_step21,Passo 21>>do , em seguida, deixar esta seção e seguir as instruções para link:set_fc_or_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurar portas FC no node4"] e para link:set_fc_or_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Verifique e configure as portas UTA/UTA2 no node4"], inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<auto_install4_step23,Passo 23>>.
-* No entanto, se você estiver atualizando um sistema com discos de armazenamento, deve concluir toda esta seção e, em seguida, prosseguir para link:set_fc_or_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"], inserindo comandos no prompt do cluster.
+* Se você estiver atualizando um sistema com discos de armazenamento, deverá concluir toda esta seção e prosseguir para link:set_fc_or_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"] , inserindo comandos no prompt do cluster.
 
 
+====
 .Passos
 . [[auto_install4_step1]]Certifique-se de que o node4 tem espaço suficiente em rack.
 +

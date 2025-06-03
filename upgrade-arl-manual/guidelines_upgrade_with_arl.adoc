@@ -134,10 +134,10 @@ Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá
 
 
 
-== Solução de problemas
+== Solucionar problemas
 
-Este procedimento inclui sugestões de resolução de problemas.
+Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.
 
-Se ocorrerem problemas durante a atualização dos controladores, consulte link:troubleshoot_index.html["Solucionar problemas"]a secção no final do procedimento para obter mais informações e possíveis soluções.
+Caso ocorra algum problema durante a atualização dos controladores, consulte o link:aggregate_relocation_failures.html["Solucionar problemas"] seção. As informações sobre falhas que podem ocorrer são listadas por fase do procedimento no link:arl_upgrade_workflow.html["Sequência de atualização do ARL"] .
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

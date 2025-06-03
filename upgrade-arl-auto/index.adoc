@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto/index.html
 keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
 summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.5 para o 9,7 usando `system controller replace` comandos, relocando a propriedade de agregados que não sejam raiz.' 
 ---
-= Visão geral
+= Saiba mais sobre este procedimento de atualização do ARL
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,15 +14,8 @@ summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.5
 
 
 [role="lead"]
-Este procedimento descreve como atualizar o hardware da controladora usando ARL (Aggregate Relocation) para as seguintes configurações do sistema:
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar o hardware do controlador usando ARL com "comandos de substituição do controlador do sistema" em sistemas que executam o ONTAP 9.7, 9.6 ou 9.5.
 
-[cols="40,20,40"]
-|===
-| Método | Versão de ONTAP | Sistemas suportados 
-
-
-| Usando `system controller replace` comandos | 9,5 a 9,7 | link:decide_to_use_the_aggregate_relocation_guide.html#sys_commands_95_97_supported_systems["Link para a matriz de sistemas suportados"] 
-|===
 Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, relocando a propriedade de agregados que não sejam raiz. Migre agregados várias vezes de nó para nó para confirmar se pelo menos um nó está fornecendo dados dos agregados durante o procedimento de atualização. Você também migra interfaces lógicas de dados (LIFs) e atribui as portas de rede do novo controlador aos grupos de interface à medida que avança.
 
 .Terminologia utilizada nesta informação
@@ -33,7 +26,7 @@ Os termos "node1", "node2", "node3" e "node4" são usados apenas para distinguir
 Ao longo dessas informações, o termo "sistemas com software de virtualização FlexArray" refere-se a sistemas que pertencem a essas novas plataformas. O termo "sistema V-Series" refere-se aos sistemas de hardware separados que podem ser conetados a matrizes de armazenamento.
 
 .Informações importantes:
-* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e entender link:guidelines_for_upgrading_controllers_with_arl.html["Diretrizes para atualização de controladores com ARL"] e o link:overview_of_the_arl_upgrade.html["Visão geral da atualização ARL"] antes de iniciar a atualização.
+* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores com ARL"] e o link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o Data ONTAP no modo 7.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
 * Este procedimento aplica-se a sistemas FAS, sistemas da série V, sistemas AFF e sistemas com software de virtualização FlexArray. Os sistemas FAS lançados após o ONTAP 9.5 podem ser anexados a storage arrays se a licença necessária for instalada. Os sistemas da série V existentes são suportados no ONTAP 9.5. Para obter mais informações sobre a matriz de armazenamento e os modelos da série V, consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ e aceda à Matriz de suporte da série V.

@@ -21,7 +21,11 @@ Antes de iniciar a atualização, verifique se você tem os módulos corretos pa
 | Se você estiver atualizando a partir de ... | O sistema de substituição deve ter ... 
 
 
-| AFF A250, AFF C250 | Dois módulos de controladora e novos módulos de e/S 
+| AFF A250, AFF C250  a| 
+* Dois módulos de controladora e novos módulos de e/S
+* Uma placa X60132A, 10/25GbE de 4 portas para configurações de atualização sem switch de dois nós
+
+
 
 
 | AFF A800, AFF C800 | Dois módulos de controladora, dois NVRAMs e novos módulos de e/S 

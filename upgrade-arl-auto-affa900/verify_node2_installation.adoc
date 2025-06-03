@@ -29,7 +29,36 @@ Neste ponto do procedimento, a operação pára enquanto node2 se junta ao quór
 +
 A saída `health` do campo deve ser `true`.
 
-. Verifique se o node2 faz parte do mesmo cluster que o node1 e se está em bom estado:
+. Esta etapa se aplica às seguintes configurações de atualização. Para todas as outras atualizações do sistema, pule esta etapa e vá para <<verify-node2-step3,Passo 3>> :
++
+** Clusters sem comutação de dois nós
+** Troque os sistemas AFF A250 ou AFF C250 conectados atualizando para um sistema AFF A50, AFF A30, AFF C30 ou AFF C60.
+
+
++
+--
+Se o node2 não ingressar no quorum automaticamente:
+
+.. Verifique o IPspace das portas e1a e e1b:
++
+`network port show`
+
+.. Se o IPspace não for "Cluster", altere o IPspace para "Cluster" em e1a e e1b:
++
+`network port modify -node <node_name> -port <port> -ipspace Cluster`
+
+.. Verifique se o IPspace das portas e1a e e1b é "Cluster":
++
+`network port show`
+
+.. Migrar LIFs do cluster node2 para e1a e e1b:
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name`
+
+
+
+--
+. [[verify-node2-step3]]Verifique se node2 e node1 fazem parte do mesmo cluster e se o cluster está íntegro:
 +
 `cluster show`
 
@@ -37,7 +66,46 @@ A saída `health` do campo deve ser `true`.
 +
 `set advanced`
 
-. Verifique o status da operação de substituição do controlador e verifique se ele está em um estado de pausa e no mesmo estado em que estava antes de node2 ser interrompido para executar as tarefas físicas de instalação de novos controladores e movimentação de cabos:
+. Esta etapa se aplica apenas a atualizações de configuração sem switch de dois nós de um AFF A250 ou AFF C250 para um AFF A50, AFF A30, AFF C60 ou AFF C30. Para todas as outras atualizações de sistema, pule esta etapa e vá para <<verify-node2-step6,Passo 6>> :
++
+Verifique se as portas e4a, e2a, e1a, e1b ou e4a, e4b, e1a, e1b são as portas do cluster no domínio de transmissão "Cluster".
+
++
+Os sistemas AFF A50, AFF A30, AFF C30 e AFF C60 compartilham portas de cluster e HA. Você pode migrar com segurança todos os LIFs de cluster para e4a, e4b ou e4a, e2a nos nós 1 e 2:
+
++
+.. Listar as portas iniciais e atuais para todos os LIFs do cluster:
++
+`network interface show -role Cluster -fields home-port,curr-port`
+
+.. [[migrate-cluster-lif-step-4b]]No nó 1 e no nó 2, migre os LIFs do cluster que estão usando e1a como porta inicial para e4a:
++
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node> -destination-port e4a`
+
+.. No nó1 e nó2, modifique os LIFs do cluster migrados em <<migrate-cluster-lif-step-4b,subetapa b>> para usar e4a como porta inicial:
++
+`network  interface modify -vserver Cluster -lif <cluster_lif> -home-port e4a`
+
+.. Verifique se o cluster está no quorum:
++
+`cluster show`
+
+.. Repita <<migrate-cluster-lif-step-4b,subetapa b e subetapa c>> para migrar e modificar o segundo cluster LIF em cada nó para e2a ou e4b:
++
+Se e2a estiver presente e for uma porta de rede de 100 GbE, esta será a segunda porta do cluster padrão. Se e2a não for uma porta de rede de 100 GbE, o ONTAP usará e4b como segunda porta do cluster e de alta disponibilidade.
+
+.. Remover e1a e e1b do domínio de transmissão "Cluster":
++
+`broadcast-domain remove-ports -broadcast-domain Cluster -ipspace Cluster -ports <node_name>:e1a`
+
+.. Verifique se apenas as portas de cluster e4a, e2a ou e4a, e4b estão no domínio de transmissão "Cluster"
++
+`broadcast domain show`
+
+.. Remova as conexões de cabo entre e1a node1 e e1a node2, e e1b node1 e e1b node2 para garantir que somente conexões cluster-HA válidas sejam usadas e que não haja conectividade redundante.
+
+
+. [[verify-node2-step6]]Verifique o status da operação de substituição do controlador e verifique se ela está em um estado pausado e no mesmo estado em que estava antes de o node2 ser interrompido para executar as tarefas físicas de instalação de novos controladores e movimentação de cabos:
 +
 `system controller replace show`
 

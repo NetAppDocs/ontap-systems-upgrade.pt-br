@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: upgrade-arl-manual/decide_to_use_arl_guide.html 
 keywords: decision, decision, what to use, upgrade, HA pair, metrocluster, storage encryption, volume encryption, NSE, NVE 
-summary: Decida se deseja usar o procedimento manual ARL para atualizar controladores de storage em um par de HA com novas controladoras executando o ONTAP 9.7 ou anterior. 
+summary: Decida se deseja usar o procedimento ARL manual para atualizar controladores de armazenamento em um par HA com novos controladores executando o ONTAP 9.7 ou anterior. 
 ---
-= Decida se deve usar o procedimento de realocação agregada
+= Decida se deve usar este procedimento de realocação agregada
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,18 +14,37 @@ summary: Decida se deseja usar o procedimento manual ARL para atualizar controla
 
 
 [role="lead"]
-Este conteúdo descreve como atualizar as controladoras de storage em um par de HA com novas controladoras enquanto mantém todos os dados e discos existentes. Este é um procedimento complexo que deve ser usado apenas por administradores experientes.
+Este procedimento descreve como atualizar o hardware do controlador usando a realocação manual de agregados (ARL) em sistemas que executam o ONTAP 9.7 ou anterior. Você só deve usar este procedimento complexo se for um administrador ONTAP experiente.
 
 Use este conteúdo nas seguintes circunstâncias:
 
-* Não deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
+* Você não quer adicionar os novos controladores como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
 * Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
+* Seus controladores estão executando o ONTAP 9.7 ou anterior.
 * Você tem um sistema que usa configurações de 4 nós e 8 nós do Fabric MetroCluster executando o ONTAP 9.5 ou anterior.
 
 
+[NOTE]
+====
+* Se você estiver atualizando um sistema trocando módulos de controlador no mesmo chassi, como AFF A800 ou AFF C800, a NetApp recomenda fortemente usar o procedimento de atualização que link:../upgrade-arl-auto-affa900/index.html["atualiza modelos de controlador usando ARL, mantendo o chassi e os discos do sistema existentes"] . Este procedimento ARL inclui as etapas que garantem que os discos internos permaneçam seguros no chassi quando você remove e instala os controladores durante o procedimento de atualização.
++
+link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Aprenda sobre as combinações de atualização de sistema suportadas usando ARL, mantendo o chassi e os discos do sistema existentes"].
 
-NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
+* Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 
+
+====
 Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
 Consulte o link:other_references.html["Referências"]link para o _Centro de Documentação do ONTAP 9_, onde você pode acessar a documentação do produto ONTAP 9.
+
+
+
+== Escolha um procedimento de atualização de hardware diferente
+
+* link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
+* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+
+.Informações relacionadas
+Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
