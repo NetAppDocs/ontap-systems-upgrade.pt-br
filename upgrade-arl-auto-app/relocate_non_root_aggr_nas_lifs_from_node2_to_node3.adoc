@@ -30,7 +30,7 @@ NOTE: O proprietário da casa para os agregados e LIFs não são modificados; ap
 .Passos
 . Verifique se todos os agregados não-raiz estão online e seu estado em node3:
 +
-`storage aggregate show -node _node3_ -state online -root false`
+`storage aggregate show -node <node3> -state online -root false`
 
 +
 O exemplo a seguir mostra que os agregados não-root no node2 estão online:
@@ -49,24 +49,21 @@ aggr_2         825.0GB      825.0GB      0%     online  1      node2  raid_dp  n
 Se os agregados ficaram offline ou se tornaram estrangeiros no node3, coloque-os online usando o seguinte comando no node3, uma vez para cada agregado:
 
 +
-`storage aggregate online -aggregate _aggr_name_`
+`storage aggregate online -aggregate <aggregate_name>`
 
 . Verifique se todos os volumes estão online no node3 usando o seguinte comando no node3 e examinando a saída:
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
 Se algum volume estiver offline no node3, coloque-o online usando o seguinte comando no node3, uma vez para cada volume:
 
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
-
-+
-O `_vserver_name_` a usar com este comando é encontrado na saída do comando anterior `volume show`.
+`volume online -vserver <vserver_name> -volume <volume_name>` < O  `vserver_name` para usar com este comando é encontrado na saída do anterior  `volume show` comando.
 
 . Verifique se os LIFs foram movidos para as portas corretas e têm um status de `up`. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
 +
-`network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _node_name_ -status-admin up`
+`network interface modify -vserver <vserver_name> -lif <LIF_name> -home-node <node_name> -status-admin up`
 
 . Se as portas que atualmente hospedam LIFs de dados não existirem no novo hardware, remova-as do domínio de broadcast:
 +

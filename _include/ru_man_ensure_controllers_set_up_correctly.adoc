@@ -7,7 +7,7 @@ Para confirmar a configuração correta, ative o par de HA. Você também verifi
 .Passos
 . Ative o failover de storage inserindo o seguinte comando em um dos nós:
 +
-`storage failover modify -enabled true -node _node3_`
+`storage failover modify -enabled true -node <node3>`
 
 . Verifique se o failover de armazenamento está ativado:
 +
@@ -55,21 +55,21 @@ Se o node3 ou o node4 possuírem LIFs de dados de propriedade própria de outros
 
 . Verifique se o node3 possui os agregados do node1 e se o node4 possui os agregados do node2:
 +
-`storage aggregate show -owner-name _node3_`
-`storage aggregate show -owner-name _node4_`
+`storage aggregate show -owner-name <node3>`
+`storage aggregate show -owner-name <node4>`
 
 . Determine se algum volume está offline:
 +
-`volume show -node _node3_ -state offline`
-`volume show -node _node4_ -state offline`
+`volume show -node <node3> -state offline`
+`volume show -node <node4> -state offline`
 
 . Se algum volume estiver off-line, compare-o com a lista de volumes off-line que você capturou link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step19["Passo 19 (d)"]em _Prepare os nós para upgrade_ e coloque online qualquer um dos volumes off-line, conforme necessário, inserindo o seguinte comando, uma vez para cada volume:
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Instale novas licenças para os novos nós inserindo o seguinte comando para cada nó:
 +
-`system license add -license-code _license_code,license_code,license_code..._`
+`system license add -license-code <license_code,license_code,license_code...>`
 
 +
 O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabéticos maiúsculas. Você pode adicionar uma licença de cada vez, ou você pode adicionar várias licenças de uma vez, cada chave de licença separada por uma vírgula.
@@ -81,7 +81,7 @@ O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabético
 . Para remover todas as licenças antigas dos nós originais, digite um dos seguintes comandos:
 +
 `system license clean-up -unused -expired`
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 ** Para eliminar todas as licenças expiradas, introduza:
@@ -94,8 +94,8 @@ O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabético
 
 ** Para excluir uma licença específica de um cluster, digite os seguintes comandos nos nós:
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 +
 É apresentada a seguinte saída:
@@ -121,7 +121,7 @@ Você pode comparar a saída com a saída que você capturou em link:prepare_nod
 
 . Configure o SPS executando o seguinte comando em ambos os nós:
 +
-`system service-processor network modify -node _node_name_`
+`system service-processor network modify -node <node_name>`
 
 +
 Vá para link:other_references.html["Referências"]o link para _Referência de Administração do sistema_ para obter informações sobre o SPS e os comandos _ONTAP 9: Referência de página manual_ para obter informações detalhadas sobre o `system service- processor network modify` comando.

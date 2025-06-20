@@ -34,7 +34,7 @@ Pode utilizar a seguinte folha de cálculo para registar as informações a util
 | Chaves de licença | Etapa 1: _Prepare os nós para a atualização_ | Etapa 6: _Confirme se os novos controladores estão configurados corretamente_ |  
 
 
-| Endereço IP para o servidor de gerenciamento de chaves externo | Etapa 1: _Discos de rechavear para criptografia de armazenamento_ | Etapa 6: _Configurar a criptografia de storage nos novos nós_ |  
+| Endereço IP para o servidor de gerenciamento de chaves externas | Etapa 1: _Discos de rechavear para criptografia de armazenamento_ | Etapa 6: _Configurar a criptografia de storage nos novos nós_ |  
 
 
 | Nome e caminho do diretório acessível pela Web onde você baixa arquivos para netboot dos nós | Etapa 1: _Prepare-se para netboot_ | Etapa 3: _Instalar e inicializar node3_ Etapa 5: _Instalar e inicializar node4_ |  

@@ -286,7 +286,7 @@ A instalação de um novo módulo de controladora altera os valores WWPN associa
 
 
 [[auto_install3_step27]]
-. Se você tiver unidades de criptografia de armazenamento NetApp (NSE) instaladas, execute as seguintes etapas.
+. Se você tiver unidades NetApp Storage Encryption (NSE) instaladas, execute as seguintes etapas:
 +
 
 NOTE: Se ainda não o tiver feito anteriormente no procedimento, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Como saber se uma unidade tem certificação FIPS"^] para determinar o tipo de unidades de encriptação automática que estão a ser utilizadas.

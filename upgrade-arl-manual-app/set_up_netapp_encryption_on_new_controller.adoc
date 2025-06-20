@@ -67,4 +67,4 @@ Para obter mais informações, consulte o artigo da base de dados de Conheciment
 
 
 .Depois de terminar
-Verifique se algum volume foi colocado offline porque as chaves de autenticação não estavam disponíveis ou os servidores de gerenciamento de chaves externas não puderam ser alcançados. Traga esses volumes de volta online usando o `volume online` comando.
+Verifique se algum volume foi colocado offline porque as chaves de autenticação não estavam disponíveis ou os servidores de Gerenciamento de chaves externas não puderam ser alcançados. Traga esses volumes de volta online usando o `volume online` comando.

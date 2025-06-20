@@ -54,25 +54,25 @@ Se nem o node3 ou o node4 possuírem LIFs de dados de propriedade própria de ou
 
 . Verifique se o node3 possui os agregados do node1 e se o node4 possui os agregados do node2:
 +
-`storage aggregate show -owner-name _node3_`
+`storage aggregate show -owner-name <node3>`
 
 +
-`storage aggregate show -owner-name _node4_`
+`storage aggregate show -owner-name <node4>`
 
 . Determine se algum volume está offline:
 +
-`volume show -node _node3_ -state offline`
+`volume show -node <node3> -state offline`
 
 +
-`volume show -node _node4_ -state offline`
+`volume show -node <node4> -state offline`
 
 . Se algum volume estiver offline, compare-o com a lista de volumes offline que você capturou link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]na seção e coloque online qualquer um dos volumes offline, conforme necessário, usando o seguinte comando, uma vez para cada volume:
 +
-`volume online -vserver _vserver_name_ -volume _volume_name_`
+`volume online -vserver <vserver_name> -volume <volume_name>`
 
 . Instale novas licenças para os novos nós usando o seguinte comando para cada nó:
 +
-`system license add -license-code _license_code,license_code,license_code…_`
+`system license add -license-code <license_code,license_code,license_code…>`
 
 +
 O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabéticos maiúsculas. Você pode adicionar uma licença de cada vez, ou pode adicionar várias licenças de uma vez, separando cada chave de licença por uma vírgula.
@@ -82,7 +82,7 @@ O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabético
 `system license clean-up -unused -expired`
 
 +
-`system license delete -serial-number _node_serial_number_ -package _licensable_package_`
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
 
 +
 --
@@ -96,10 +96,10 @@ O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabético
 
 ** Exclua uma licença específica de um cluster usando os seguintes comandos nos nós:
 +
-`system license delete -serial-number _node1_serial_number_ -package *`
+`system license delete -serial-number <node1_serial_number> -package *`
 
 +
-`system license delete -serial-number _node2_serial_number_ -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
 
 
 

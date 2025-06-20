@@ -29,13 +29,10 @@ Para concluir o procedimento de atualização movendo volumes, você deve config
 +
 `system node autosupport invoke -node node_name -type all -message "node_name successfully upgraded from platform_old to platform_new"`
 
-. Restaure a funcionalidade de armazenamento ou encriptação de volume utilizando o procedimento adequado no https://docs.netapp.com/us-en/ontap/encryption-at-rest/index.html["Gerencie a criptografia com a CLI"^]conteúdo.
+. Restaure a funcionalidade de armazenamento ou criptografia de volume usando um dos procedimentos a seguir, dependendo se você estiver usando o gerenciamento de chaves interno ou externo:
 +
-Use um dos procedimentos a seguir, dependendo se você estiver usando o gerenciamento de chaves externas ou integradas:
-
-+
-** "'restaurar chaves de criptografia integradas de gerenciamento de chaves'"
-** "Restaurar chaves de criptografia de gerenciamento de chaves externas"
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-onboard-key-management-encryption-keys-task.html["Restaurar chaves de criptografia integradas de gerenciamento de chaves"^]
+** link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["Restaurar chaves de criptografia de gerenciamento de chaves externas"^]
 
 
 . Se os novos nós tiverem portas FC (integradas ou em adaptadores FC), portas CNA integradas ou uma placa CNA, configure as portas FC ou CNA inserindo o seguinte comando no prompt do sistema de armazenamento:

@@ -284,13 +284,13 @@ A instalação de um novo módulo de controladora altera os valores WWPN associa
 . Se sua configuração usar zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
 
 
-. [[auto_install4_step27]]se você tiver unidades de criptografia de armazenamento NetApp (NSE) instaladas, execute as seguintes etapas.
+. [[auto_install4_step27]]Se você tiver unidades NetApp Storage Encryption (NSE) instaladas, execute as seguintes etapas:
 +
 
 NOTE: Se ainda não o tiver feito anteriormente no procedimento, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Como saber se uma unidade tem certificação FIPS"^] para determinar o tipo de unidades de encriptação automática que estão a ser utilizadas.
 
 +
-.. Defina `bootarg.storageencryption.support` como `true` ou `false`.
+.. Defina `bootarg.storageencryption.support` para `true` ou `false`:
 +
 [cols="35,65"]
 |===
