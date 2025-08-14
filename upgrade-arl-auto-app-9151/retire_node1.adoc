@@ -14,7 +14,7 @@ summary: 'Desative o par de HA com node2 e encerre o node1 ao atualizar controla
 
 
 [role="lead"]
-Para desativar o node1, você retoma a operação automatizada para desativar o par de HA com o node2 e encerrar o node1 corretamente. Posteriormente, no procedimento, você remove node1 do rack ou chassi.
+Para desativar o node1, retome a operação automatizada para desabilitar o par HA com o node2 e desligar o node1 corretamente.  Mais adiante no procedimento, você remove o node1 do rack ou chassi.
 
 .Passos
 . Retomar a operação:
@@ -28,4 +28,4 @@ Para desativar o node1, você retoma a operação automatizada para desativar o 
 
 
 .Depois de terminar
-Você pode desativar o node1 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+Após desativar o node1, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 1 neste estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node1 durantelink:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"] .

@@ -624,7 +624,6 @@
   <block id="3b70100fce1839004dba40191f90a2c9" category="list-text">Retomar a operação:</block>
   <block id="44d5329782b4f4acb8947c6cc4601de1" category="list-text">Verifique se o node1 foi interrompido:</block>
   <block id="d1e63174073b4ec3e4d49ef0ca235c5b" category="paragraph">Você pode desativar o node1 após a conclusão da atualização. <block ref="6e48b929ca0767f00c15eeb6d7e78755" category="inline-link-macro-rx"></block>Consulte .</block>
-  <block id="2bd4e3852eb146508337046be4d1707c" category="paragraph">Para desativar o node2, primeiro você desliga o node2 corretamente e o remove do rack ou chassi.</block>
   <block id="21d67404cbc8811a82f375c6eb59ce82" category="paragraph">O nó pára automaticamente.</block>
   <block id="815c0aa063df3c53b17744c860357708" category="paragraph">Você pode desativar o node2 após a conclusão da atualização. <block ref="6e48b929ca0767f00c15eeb6d7e78755" category="inline-link-macro-rx"></block>Consulte .</block>
   <block id="6ef697f11922be2e4de0971f7d70997f" category="list-title">Opções</block>
@@ -3559,7 +3558,6 @@
   <block id="e31eb1c2cddca02e41412f1b6cd2b302" category="list-text">Atualizado node1 é o proprietário da casa e atual proprietário dos agregados que originalmente pertenciam a node1.</block>
   <block id="bc594bc91cd11d472f20e22d31df3f8a" category="list-text">Atualizado node2 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node2.</block>
   <block id="74b38fc0176f87b24ddc1621aaae7baa" category="inline-link-macro">Fase 6: Arranque node2 com os módulos do sistema de substituição</block>
-  <block id="b93e89e00a33c9eaa3657a6d6718aa61" category="paragraph">Durante a fase 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Você também relocaliza node1 agregados não-raiz e LIFs de dados nas do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.</block>
   <block id="52a370bfb3df9d6787958443a448c014" category="inline-link-macro">Etapa 7: Concluir a atualização</block>
   <block id="fb13f8b167e25a81b898b43d42165d58" category="paragraph">Durante a fase 7, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.</block>
   <block id="23f6a04a70ae620e179c4bb34a6520dc" category="summary">Prepare os nós e execute uma série de pré-verificações ao usar o ARL para atualizar modelos de controladora no mesmo chassi.</block>
@@ -5283,4 +5281,25 @@
   <block id="ee003f27b169d76d97322f42ff3b1684" category="paragraph"><block ref="fa9973ef8cb7c81f6e65cb1c4e0c12f2" prefix="" category="inline-code"></block></block>
   <block id="4dfbd3112f049daa92b3b9620a0a23b4" category="list-text">Se você tiver unidades NetApp Storage Encryption (NSE) instaladas, execute as seguintes etapas:</block>
   <block id="780d3ce82c06a7096f3d7b6381f35cf4" category="list-text">[[man_install3_step16]]Se você tiver unidades NetApp Storage Encryption (NSE) instaladas, execute as seguintes etapas:</block>
+  <block id="4a1df957cbcb3df9aa2205d817cf2109" category="paragraph">Para descontinuar o node2, desligue-o corretamente e remova-o do rack ou chassi.</block>
+  <block id="8e0b63c33baeb6a190715db3ff6a5639" category="paragraph">Durante o Estágio 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado.  Se estiver usando o NVE, restaure a configuração do gerenciador de chaves.  Se você estiver atualizando uma configuração com clusters conectados por switch, precisará validar a configuração do switch para os novos controladores.  Você também realoca agregados não raiz do node1 e LIFs de dados NAS do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.</block>
+  <block id="10cace0e3d344387153f687e87f1b288" category="summary">Verifique se o RCF do switch de cluster oferece suporte às portas de cluster/HA compartilhadas para os novos controladores para atualizações de clusters conectados ao switch.</block>
+  <block id="2b1a7f7ae64997f151dc4070b5a3339f" category="doc">Verifique a configuração RCF nos switches do cluster</block>
+  <block id="4288bdefdf72b476458de2ae320fd290" category="paragraph">Nesta fase do procedimento de atualização, todos os agregados de dados devem estar no nó 1.  Se estiver atualizando uma configuração com clusters conectados ao switch, você precisará validar se o arquivo de configuração de referência do switch do cluster (RCF) oferece suporte às portas de cluster/HA compartilhadas para os novos controladores.</block>
+  <block id="7afaed380dc70cadd383153cb0df172c" category="paragraph">Se você estiver atualizando para uma configuração de cluster sem switch de dois nós, pode pular esta seção e ir para<block ref="0d500821bdc96d479f52180017fd421c" category="inline-link-macro-rx"></block> .</block>
+  <block id="752f235818174972b18e5041fa403146" category="list-text">Verifique o status do "IC RDMA":</block>
+  <block id="bc74de8a7baa3f875dd8466d0ec80380" category="paragraph"><block ref="ca4c8649efc0f8c4ac08dd65a4755aae" prefix="" category="inline-code"></block></block>
+  <block id="0e71712a7a686f1ca50aeb1713ddb27d" category="paragraph">Na saída, a "Conexão IC RDMA" deve ter o status<block ref="258f49887ef8d14ac268c92b02503aaa" prefix=" " category="inline-code"></block> .</block>
+  <block id="9fc1e13723b1860e3d608f537f403108" category="cell">Se o status "Conexão IC RDMA" for ...</block>
+  <block id="f7950b792336917e5134073bda363898" category="cell"><block ref="258f49887ef8d14ac268c92b02503aaa" prefix="" category="inline-code"></block></block>
+  <block id="61decb38566b6125e910fda107613c86" category="cell">Vá para<block ref="0d500821bdc96d479f52180017fd421c" category="inline-link-macro-rx"></block> .</block>
+  <block id="2b23c6643a7989ea797dcc7318e69941" category="cell"><block ref="08a38277b0309070706f6652eeae9a53" prefix="" category="inline-code"></block></block>
+  <block id="42eed74bc7449c06a58949763bc19a72" category="cell">Vá para<block ref="5b8028286d92c73a97e17186fd614dd6" category="inline-xref-macro-rx"></block> .</block>
+  <block id="b124461fc46687d506b67d1ab775e491" category="list-text">Verifique as portas do cluster e o RCF do switch.</block>
+  <block id="e2ee618006d829a530b146576cce509a" category="list-text">Verifique se o status "Conexão IC RDMA" mudou para<block ref="258f49887ef8d14ac268c92b02503aaa" prefix=" " category="inline-code"></block> :</block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">O que vem a seguir</block>
+  <block id="0d500821bdc96d479f52180017fd421c" category="paragraph"><block ref="0d500821bdc96d479f52180017fd421c" category="inline-link-macro-rx"></block></block>
+  <block id="48b45c4448ac737e7cd5110c5c5ab986" category="paragraph">Para desativar o node1, retome a operação automatizada para desabilitar o par HA com o node2 e desligar o node1 corretamente.  Mais adiante no procedimento, você remove o node1 do rack ou chassi.</block>
+  <block id="fdece49a53b4d22867330bbf853edcbb" category="paragraph">Após desativar o node1, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 1 neste estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node1 durante<block ref="0f82d37b39d321fc9b25cdd372b37e32" category="inline-link-macro-rx"></block> .</block>
+  <block id="9385d14007f76e744745739d94bc306a" category="paragraph">Após desativar o node2, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 2 nesse estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node2 durante<block ref="0f82d37b39d321fc9b25cdd372b37e32" category="inline-link-macro-rx"></block> .</block>
 </blocks>

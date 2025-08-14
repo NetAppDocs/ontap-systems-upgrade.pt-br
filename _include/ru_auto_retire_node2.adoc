@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Para desativar o node2, primeiro você desliga o node2 corretamente e o remove do rack ou chassi.
+Para descontinuar o node2, desligue-o corretamente e remova-o do rack ou chassi.
 
 .Passos
 . Retomar a operação:

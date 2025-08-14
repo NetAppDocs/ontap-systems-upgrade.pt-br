@@ -14,7 +14,7 @@ summary: 'Encerre o node2 e remova-o do rack ou do chassi ao atualizar os contro
 
 
 [role="lead"]
-Para desativar o node2, primeiro você desliga o node2 corretamente e o remove do rack ou chassi.
+Para descontinuar o node2, desligue-o corretamente e remova-o do rack ou chassi.
 
 .Passos
 . Retomar a operação:
@@ -27,4 +27,4 @@ O nó pára automaticamente.
 
 
 .Depois de terminar
-Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+Após desativar o node2, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 2 nesse estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node2 durantelink:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"] .

@@ -93,7 +93,7 @@ Propriedade agregada no final da fase 5:
 
 
 | link:boot_node2_with_a900_controller_and_nvs.html["Fase 6: Arranque node2 com os módulos do sistema de substituição"]  a| 
-Durante a fase 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Você também relocaliza node1 agregados não-raiz e LIFs de dados nas do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.
+Durante o Estágio 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado.  Se estiver usando o NVE, restaure a configuração do gerenciador de chaves.  Se você estiver atualizando uma configuração com clusters conectados por switch, precisará validar a configuração do switch para os novos controladores.  Você também realoca agregados não raiz do node1 e LIFs de dados NAS do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.
 
 
 
