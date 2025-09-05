@@ -22,19 +22,19 @@ Instale o módulo do controlador de substituição que recebeu para a atualizaç
 
 NOTE: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
 
-. Cable as portas de gerenciamento e console para o módulo do controlador node1.
+. Cable as portas de gerenciamento e console para o módulo do controlador node2.
 +
 
-NOTE: Como o chassi já está ligado, o node1 inicia a inicialização do BIOS seguida do AUTOBOOT assim que ele estiver totalmente assentado. Para interromper a inicialização do node1, antes de inserir completamente o módulo do controlador no slot, é recomendável conetar o console serial e os cabos de gerenciamento ao módulo do controlador node1.
+NOTE: Como o chassi já está LIGADO, o node2 inicia a inicialização do BIOS seguida pelo AUTOBOOT assim que estiver totalmente encaixado.  Para interromper a inicialização do node2, antes de inserir completamente o módulo controlador no slot, é recomendável conectar os cabos do console serial e de gerenciamento ao módulo controlador node2.
 
 . Com a alavanca do came na posição aberta, empurre firmemente o módulo do controlador até que ele atenda ao plano médio e esteja totalmente assentado. O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente. Feche o manípulo do excêntrico para a posição de bloqueio.
 +
 
 NOTE: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para o chassis.
 
-. Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
-. Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
-. No prompt Loader> de node1, defina as variáveis de ambiente padrão:
+. Conecte o console serial assim que o módulo estiver encaixado e esteja pronto para interromper o AUTOBOOT do node2.
+. Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+. No prompt Loader> de node2, defina as variáveis de ambiente padrão:
 +
 `set-defaults`
 

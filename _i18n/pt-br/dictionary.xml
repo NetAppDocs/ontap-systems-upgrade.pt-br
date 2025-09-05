@@ -3412,7 +3412,6 @@
   <block id="1cb0cfe1b06273ad55b3f7189d138bb6" category="paragraph">Este procedimento fornece as etapas para o procedimento automatizado, que usa atribuição automática de disco e verificações de acessibilidade de porta de rede para simplificar a experiência de atualização do controlador.</block>
   <block id="038a1f98f287c3e58631ad2264c784b5" category="summary">Instale os módulos de sistema de substituição no node2 durante uma atualização ARL dos modelos de controladores no mesmo chassi.</block>
   <block id="a06d68e350c79a17b1b36fae9ee9106c" category="doc">Instale o módulo AFF A90 ou AFF A70 no node2</block>
-  <block id="be3affc900cfc23554c8c8d7e7fb9b42" category="paragraph">Instale o módulo do controlador AFF A90 ou AFF A70 que recebeu para a atualização em node2. O Node2 é o controlador B localizado no lado direito do chassi quando se olha para os controladores da parte traseira do sistema.</block>
   <block id="0dc0820d363c65f7e12beec6160b793f" category="list-text">Alinhe a extremidade do módulo do controlador com a abertura no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.</block>
   <block id="011359cc38c137752e931fd997e519a7" category="image-alt">Instale um AFF A90 ou AFF A70</block>
   <block id="85b0e5132d3bec02fcda8eb6f24b6062" category="list-text">Cable as portas de gerenciamento e console para o módulo do controlador node1.</block>
@@ -3686,7 +3685,6 @@
   <block id="5fb9af22ffedd74df1492c91f96b8d7a" category="list-text">Vire o módulo do controlador ao contrário e coloque-o numa superfície plana e estável.</block>
   <block id="23025a0dc68c759874f99e85d38e7ede" category="section-title">Instale o módulo do controlador ASA A150, AFF A150 ou FAS2820</block>
   <block id="3b59a6e4feb61a49bd8e07d1dc5ed44d" category="paragraph">Instale, faça o cabo e conete o módulo do controlador ASA A150, AFF A150 ou FAS2820 em node1.</block>
-  <block id="3cf0b39ddc0b0c6fbe705a62aacc7d3c" category="list-text">Na parte frontal do chassis, utilize os polegares para empurrar firmemente cada unidade até sentir um batente positivo. Isso garante que as unidades estejam firmemente assentadas contra o plano médio do chassi.</block>
   <block id="73ee2bd7f33c26664f94c379c6ab36d2" category="image-alt">Empurre a transmissão para assentar firmemente contra o plano médio do chassis</block>
   <block id="9bedcc9650ba1fe86ed7720eb975429e" category="list-text">Vá para a parte traseira do chassis.</block>
   <block id="f138b6c2f3e77b4a7b2b9693f7102662" category="list-text">Desconete as fontes de alimentação do módulo do controlador node1 da fonte.</block>
@@ -5302,4 +5300,10 @@
   <block id="48b45c4448ac737e7cd5110c5c5ab986" category="paragraph">Para desativar o node1, retome a operação automatizada para desabilitar o par HA com o node2 e desligar o node1 corretamente.  Mais adiante no procedimento, você remove o node1 do rack ou chassi.</block>
   <block id="fdece49a53b4d22867330bbf853edcbb" category="paragraph">Após desativar o node1, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 1 neste estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node1 durante<block ref="0f82d37b39d321fc9b25cdd372b37e32" category="inline-link-macro-rx"></block> .</block>
   <block id="9385d14007f76e744745739d94bc306a" category="paragraph">Após desativar o node2, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 2 nesse estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node2 durante<block ref="0f82d37b39d321fc9b25cdd372b37e32" category="inline-link-macro-rx"></block> .</block>
+  <block id="3df2e25dd62a653c7cb81686296e66ad" category="admonition">Como o chassi já está LIGADO, o node2 inicia a inicialização do BIOS seguida pelo AUTOBOOT assim que estiver totalmente encaixado.  Para interromper a inicialização do node2, antes de inserir completamente o módulo controlador no slot, é recomendável conectar os cabos do console serial e de gerenciamento ao módulo controlador node2.</block>
+  <block id="0c1a4b73743825276f6a94f00753ae1c" category="list-text">Conecte o console serial assim que o módulo estiver encaixado e esteja pronto para interromper o AUTOBOOT do node2.</block>
+  <block id="b83800b3bdc2a5eef7a8fe97664b1121" category="paragraph">Instale o módulo controlador AFF A90 ou AFF A70 que você recebeu para a atualização no nó 2.  O nó 2 é o controlador B localizado no compartimento inferior do chassi quando se olha para os controladores na parte traseira do sistema.</block>
+  <block id="4e0d7c1abfb8de7fd56ae6e56c1b7b4b" category="list-text">Na parte frontal do chassi, use os polegares para empurrar firmemente cada unidade nos compartimentos de disco superior e inferior até sentir um travamento positivo.  Isso garante que as unidades estejam firmemente assentadas no plano médio do chassi.</block>
+  <block id="a3fa441608c8038d19e72ef43c8108bc" category="section-title">Retomar a operação de substituição do controlador do sistema</block>
+  <block id="20d8255eb490088576c2cdeea2fb6e2a" category="list-text">Desconecte as fontes de alimentação do módulo controlador node2 da fonte.</block>
 </blocks>
