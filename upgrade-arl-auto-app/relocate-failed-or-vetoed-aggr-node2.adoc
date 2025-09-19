@@ -1,7 +1,19 @@
-= 
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-app/relocate-failed-or-vetoed-aggr-node2.html 
+keywords: relocating, failed, vetoed, aggregates, relocation, operation 
+summary: 'Realoque manualmente agregados com falha ou vetados para o node2 ao atualizar controladores executando ONTAP 9.8 ou posterior usando `system controller replace` comandos.' 
+---
+= Realocar agregados com falha ou vetados para o nó 2
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
+[role="lead"]
 Se algum agregado não for realocado ou for vetado, você precisará realocá-lo manualmente para o nó 2 ou, se necessário, substituir os vetos ou as verificações de destino.
 
 .Sobre esta tarefa

@@ -17,7 +17,7 @@ summary: 'Relocate manualmente agregados com falha ou vetado ao atualizar contro
 Se algum agregado não for reposicionado ou for vetado, você deve reposicionar manualmente os agregados ou substituir os vetos ou as verificações de destino, se necessário.
 
 .Sobre esta tarefa
-A operação de realocação terá sido interrompida devido ao erro.
+O sistema pausa a operação de realocação devido ao erro.
 
 .Passos
 . Verifique os logs do EMS para determinar por que o agregado não conseguiu se realocar ou foi vetado.

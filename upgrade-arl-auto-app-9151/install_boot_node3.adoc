@@ -271,7 +271,16 @@ Introduza a frase-passe e as informações de cópia de segurança que registou 
 +
 `boot_ontap menu`
 
-. No node3, vá para o menu de inicialização e, usando 22/7, selecione a opção oculta `boot_after_controller_replacement` . No prompt, digite node1 para reatribuir os discos de node1 a node3, conforme o exemplo a seguir.
+. Quando o node3 parar no menu de inicialização, reatribua os discos do node1 ao node3 executando o seguinte comando no node3:
++
+`boot_after_controller_replacement`
+
++
+Após um curto atraso, você será solicitado a digitar o nome do nó que está sendo substituído. Se houver discos compartilhados (também chamados de Advanced Disk Partitioning (ADP) ou Partitioned Disks), você será solicitado a digitar o nome do nó do parceiro HA.
+
++
+Esses prompts podem ser enterrados nas mensagens do console. Se não introduzir um nome de nó ou introduzir um nome incorreto, ser-lhe-á pedido que introduza o nome novamente.
+
 +
 .Expanda o exemplo de saída do console
 [%collapsible]
@@ -340,6 +349,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 <output truncated>
 .
 Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node1 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063

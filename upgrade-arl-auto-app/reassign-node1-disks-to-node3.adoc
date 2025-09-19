@@ -16,11 +16,17 @@ summary: 'Você precisa reatribuir os discos que pertenciam ao node1 ao node3 ao
 [role="lead"]
 Você precisa reatribuir os discos que pertenciam ao node1 ao node3 antes de verificar a instalação do node3.
 
-.Sobre esta tarefa
-Execute as etapas nesta seção em node3.
-
 .Passos
-. [[reassign-node1-node3-app-step1]]vá para o menu de inicialização e, usando 22/7, selecione a opção oculta `boot_after_controller_replacement` . No prompt, digite node1 para reatribuir os discos de node1 a node3, conforme o exemplo a seguir.
+. [[reassign-node1-node3-app-step1]]Verifique se o node1 parou no menu de inicialização.  Reatribuir os discos do nó1 ao nó3:
++
+`boot_after_controller_replacement`
+
++
+Após um curto atraso, você será solicitado a digitar o nome do nó que está sendo substituído. Se houver discos compartilhados (também chamados de Advanced Disk Partitioning (ADP) ou Partitioned Disks), você será solicitado a digitar o nome do nó do parceiro HA.
+
++
+Esses prompts podem ser enterrados nas mensagens do console. Se não introduzir um nome de nó ou introduzir um nome incorreto, ser-lhe-á pedido que introduza o nome novamente.
+
 +
 .Expanda o exemplo de saída do console
 [%collapsible]
@@ -89,6 +95,7 @@ This will replace all flash-based configuration with the last backup to disks. A
 <output truncated>
 .
 Controller Replacement: Provide name of the node you would like to replace:<nodename of the node being replaced>
+Controller Replacement: Provide High Availability partner of node1: <nodename of the partner of the node being replaced>
 Changing sysid of node node1 disks.
 Fetched sanown old_owner_sysid = 536940063 and calculated old sys id = 536940063
 Partner sysid = 4294967295, owner sysid = 536940063
@@ -125,7 +132,12 @@ Login:
 
 NOTE: No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).
 
-. Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found`, isso indica que o sistema redefiniu as portas FC ou UTA/UTA2 de volta ao modo de destino e, portanto, não consegue ver nenhum disco. Para resolver isso, continue com <<reassign-node1-node3-app-step3,Passo 3>> para <<reassign-node1-node3-app-step8,Passo 8>>ou vá para a seção link:verify_node3_installation.html["Verifique a instalação do node3"].
+. Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found` , indica que o sistema redefiniu as portas FC ou UTA/UTA2 de volta ao modo de destino e, portanto, não consegue ver nenhum disco.  Selecione uma das seguintes tarefas para resolver este problema:
++
+** Executar<<reassign-node1-node3-app-step3,Passo 3>> para<<reassign-node1-node3-app-step8,Passo 8>> no nó 3
+** Ir para a seçãolink:verify_node3_installation.html["Verifique a instalação do node3"]
+
+
 . [[reassign-node1-node3-app-step3]]pressione Ctrl-C durante o AUTOBOOT para parar o nó no prompt Loader>.
 . No prompt Loader, entre no modo de manutenção:
 +

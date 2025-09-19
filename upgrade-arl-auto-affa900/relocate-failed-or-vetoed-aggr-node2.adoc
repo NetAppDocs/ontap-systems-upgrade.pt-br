@@ -1,7 +1,19 @@
-= 
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-affa900/relocate-failed-or-vetoed-aggr-node2.html 
+keywords: relocate, failed, vetoed, aggregates, relocation, operation 
+summary: Realoque agregados com falha ou vetados para o node2 ao usar o ARL para atualizar modelos de controlador no mesmo chassi. 
+---
+= Realocar agregados com falha ou vetados para o nó 2
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
+[role="lead"]
 Se algum agregado não for realocado ou for vetado, você precisará realocá-lo manualmente para o nó 2 ou, se necessário, substituir os vetos ou as verificações de destino.
 
 .Sobre esta tarefa

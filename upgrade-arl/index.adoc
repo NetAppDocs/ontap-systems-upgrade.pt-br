@@ -194,8 +194,53 @@ Se o cenário de atualização estiver listado na seguinte matriz de sistemas su
 
 Se o cenário de atualização não for suportado usando "comandos do sistema", você pode executar uma atualização ARL usando comandos manuais.
 
-Escolha o procedimento para a sua versão do ONTAP para iniciar a atualização:
+.Mostrar sistemas suportados
+[%collapsible]
+====
+[role="tabbed-block"]
+=====
+.ONTAP 9.8 ou posterior
+--
+As atualizações manuais do ARL são suportadas pelos seguintes sistemas que executam o ONTAP 9.8 e versões posteriores:
 
-* link:../upgrade-arl-manual-app/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.8 ou posterior"]
-* link:../upgrade-arl-manual/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.7 ou anterior"]
+* Sistema FAS para sistema FAS
+* Sistema AFF para sistema AFF
++
+Só pode atualizar para um sistema de substituição na mesma série:
 
++
+** Sistema AFF A-Series para sistema AFF A-Series
+** Sistema AFF C-Series para sistema AFF C-Series
+
+
+* Sistema ASA para sistema ASA
++
+
+NOTE: As atualizações ASA para um sistema de substituição ASA R2 não são suportadas. Para obter informações sobre como migrar dados do ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
+
++
+Só pode atualizar para um sistema de substituição na mesma série:
+
++
+** Sistema ASA A-Series para sistema ASA A-Series
+** Sistema ASA C-Series para sistema ASA C-Series
+
+
+
+
+link:../upgrade-arl-manual-app/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.8 ou posterior"]
+
+--
+.ONTAP 9.7 ou anterior
+--
+As atualizações manuais do ARL são suportadas pelos seguintes sistemas que executam o ONTAP 9.7 e versões anteriores:
+
+* Sistema FAS para sistema FAS
+* Sistema AFF para sistema AFF
+
+
+link:../upgrade-arl-manual/index.html["Atualize manualmente o hardware da controladora executando o ONTAP 9.7 ou anterior"]
+
+--
+=====
+====
