@@ -48,6 +48,8 @@ A atualização com a movimentação de volumes não causa interrupções.
 Se você estiver atualizando uma configuração do MetroCluster, https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["Atualize, atualize ou expanda a configuração do MetroCluster"^] consulte .
 
 .Informações relacionadas
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Converter AFF A250 para prateleira de acionamento e atualizar para AFF A400"](procedimento não disruptivo)
+* link:convert-fas2820-to-drive-shelf.html["Atualização do FAS2820 convertendo para uma prateleira de unidade"](procedimento não disruptivo)
 * link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]
 * link:../choose_controller_upgrade_procedure.html["Escolha métodos para atualizar o hardware do controlador"]
 * https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["Onde encontrar procedimentos para tarefas de manutenção do MetroCluster"^]

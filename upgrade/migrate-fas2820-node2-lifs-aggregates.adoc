@@ -1,0 +1,147 @@
+---
+permalink: upgrade/migrate-fas2820-node2-lifs-aggregates.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migre as interfaces lógicas (LIFs) e os agregados de dados no FAS2820 node2 para node1 antes de converter o node2 em uma prateleira de unidade.' 
+---
+= Migrar LIFs e agregados de dados do nó FAS2820 node2 para node1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Migre as interfaces lógicas (LIFs) e os agregados de dados no FAS2820 node2 para node1 antes de converter o node2 em uma prateleira de unidade.
+
+.Antes de começar
+Verifique se você atende aos seguintes requisitos:
+
+* Os controladores FAS2820 e de substituição têm a mesma versão de lançamento e patch do ONTAP , quando possível.  Consulte o https://hwu.netapp.com["NetApp Hardware Universe"^] para versões ONTAP suportadas.
+
+
+[NOTE]
+====
+* Você precisa inicializar pela rede e instalar a versão do ONTAP no node3 e node4 para corresponder à versão do ONTAP nos sistemas FAS2820 .  Node3 e node4 são os controladores de substituição.
+* Tanto a imagem de inicialização primária quanto a de backup dos controladores node3 e node4 devem ter a mesma versão do ONTAP .
+* Você precisa limpar qualquer configuração de cluster residual no nó 3 e no nó 4 executando uma `wipeconfig` no menu de inicialização.
+
+
+====
+* Ambos os controladores de substituição estão em espera no prompt LOADER.
+* Todo o cabeamento necessário está disponível.
+
+
+.Sobre esta tarefa
+As etapas a seguir são executadas no nó FAS2820 node1.
+
+.Passos
+. Aceder ao nível de privilégio avançado:
++
+[source, cli]
+----
+set -privilege advanced
+----
+. Desativar o failover de armazenamento automático giveback:
++
+[source, cli]
+----
+storage failover modify -node node1 -auto-giveback false
+----
+. Desative a reversão automática das LIFs em ambos os nós do par de HA:
++
+[source, cli]
+----
+network interface modify -lif * -auto-revert false
+----
+. Apresentar o estado de todas as LIFs da rede de dados:
++
+[source, cli]
+----
+network interface show -role data
+----
+. Exibir o status das LIFs de gerenciamento de cluster:
++
+[source, cli]
+----
+network interface show -role cluster-mgmt
+----
+. Migre todas as LIFs de dados das máquinas virtuais de storage hospedadas no node2:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver_name> -lif <lif_name> -destination-node <node1> -destination-port <port_name>
+----
++
+
+NOTE: Este comando migra apenas LIFs não-SAN. Você não pode usá-lo para migrar iSCSI e FCP LIFs.
+
+. Apresentar o estado de todas as LIFs de dados no cluster:
++
+[source, cli]
+----
+network interface show -role data
+----
+. Se algum LIF estiver inativo, defina seu status administrativo como `up` inserindo o seguinte comando uma vez para cada LIF:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -status-admin up
+----
+. Exibir o status de todos os agregados de dados no cluster:
++
+[source, cli]
+----
+storage aggregate show
+----
+. Elegibilidade para failover de exibição:
++
+[source, cli]
+----
+storage failover show
+----
+. Migre os agregados de dados em node2 para node1:
++
+[source, cli]
+----
+storage aggregate relocation start -aggregate <aggregate_name> -node <node2> -destination <node1>
+----
+. Exibir o status de todos os agregados de dados no cluster:
++
+[source, cli]
+----
+storage aggregate show
+----
+. Exibir o status de todos os volumes de dados no cluster:
++
+[source, cli]
+----
+volume show
+----
+. Apresentar o `ha` estado e a propriedade do epsilon:
++
+[source, cli]
+----
+cluster show
+----
+. Desabilitar cluster ha:
++
+[source, cli]
+----
+cluster ha modify -configured false
+----
+. Apresentar o `ha` estado e a propriedade do epsilon:
++
+[source, cli]
+----
+cluster show
+----
+. Paragem node2:
++
+[source, cli]
+----
+halt -node <node2> -inhibit-takeover true -ignore-quorum-warnings true
+----
+
+
+.O que se segue?
+link:convert-fas2820-node2-drive-shelf.html["Converter node2 em um compartimento de unidades e conectá-lo ao node4"]

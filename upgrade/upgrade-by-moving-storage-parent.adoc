@@ -69,5 +69,6 @@ Você restaura as informações de configuração do volume raiz para os disposi
 Conclua a atualização no ONTAP 9.8 ou posterior, ou no ONTAP 9.7 ou anterior.
 
 .Informações relacionadas
-* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Atualize o AFF A250 para o AFF A400 convertendo para um compartimento de unidade"] (um procedimento sem interrupções).
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Atualize o AFF A250 para o AFF A400 convertendo para um compartimento de unidade"](procedimento não disruptivo)
+* link:convert-fas2820-to-drive-shelf.html["Atualização do FAS2820 convertendo para uma prateleira de unidade"](procedimento não disruptivo)
 

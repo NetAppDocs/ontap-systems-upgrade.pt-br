@@ -69,10 +69,9 @@ entries:
     url: "/upgrade/upgrade-unjoin-original-nodes-move-volumes.html"
   - title: Atualização completa
     url: "/upgrade/upgrade-complete-move-volumes.html"
-- title: Atualize o AFF A250 para o AFF A400 convertendo para um compartimento de
-    unidade
+- title: Atualizar AFF A250 para AFF A400
   entries:
-  - title: Fluxo de trabalho
+  - title: Saiba mais sobre como atualizar o AFF A250 para o AFF A400
     url: "/upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html"
   - title: Migrar LIFs e agregados de dados em node2 para node1
     url: "/upgrade/upgrade_migrate_lifs_aggregates_node2_to_node1.html"
@@ -88,3 +87,21 @@ entries:
     url: "/upgrade/upgrade_reassign_drives_node1_to_node3.html"
   - title: Migrar LIFs e agregados de dados em node4 para node3
     url: "/upgrade/upgrade_migrate_lIFs_aggregates_node4_node3.html"
+- title: Atualização do FAS2820
+  entries:
+  - title: Saiba mais sobre a atualização do FAS2820
+    url: "/upgrade/convert-fas2820-to-drive-shelf.html"
+  - title: Migrar LIFs e agregados de dados em node2 para node1
+    url: "/upgrade/migrate-fas2820-node2-lifs-aggregates.html"
+  - title: Converter node2 em um compartimento de unidades e conectá-lo ao node4
+    url: "/upgrade/convert-fas2820-node2-drive-shelf.html"
+  - title: Reatribuir unidades de node2 a node4
+    url: "/upgrade/reassign-fas2820-node2-drives.html"
+  - title: Migrar agregados de dados, epsilon e LIFs em node1 para node4
+    url: "/upgrade/migrate-fas2820-aggregates-epsilon-lifs.html"
+  - title: Converter node1 em um compartimento de unidades e conectá-lo ao node3
+    url: "/upgrade/convert-fas2820-node1-drive-shelf.html"
+  - title: Reatribuir unidades de node1 a node3
+    url: "/upgrade/reassign-fas2820-node1-drives.html"
+  - title: Migrar LIFs e agregados de dados em node4 para node3
+    url: "/upgrade/migrate-fas2820-node4-lIfs-aggregates.html"

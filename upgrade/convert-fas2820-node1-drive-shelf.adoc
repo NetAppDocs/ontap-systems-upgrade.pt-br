@@ -1,0 +1,29 @@
+---
+permalink: upgrade/convert-fas2820-node1-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Converta o nó FAS2820 node1 em uma prateleira de unidade DS212C e então conecte ao node3 antes de reatribuir unidades do node1 para o node3. 
+---
+= Converter o FAS2820 node1 em uma prateleira de unidade e conectar ao node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Converta o nó FAS2820 node1 em uma prateleira de unidade DS212C.  Conecte-se ao nó 3 antes de reatribuir unidades do nó 1 para o nó 3.
+
+.Passos
+. Desconete todos os cabos de rede do node1.
+. Remova o node1 do chassi FAS2820 .
+. Insira o módulo IOM12 ou IOM12B no compartimento do nó1.
+. Conecte a porta SAS node3 a uma porta disponível no módulo IOM12 ou IOM12B.  Veja olink:https://hwu.netapp.com["Hardware Universe"^] para verificar as portas SAS do seu sistema.  Veja olink:https://hwu.netapp.com["Hardware Universe"^] para verificar as portas SAS do seu sistema.
+. Crie conexões de cluster temporárias conectando as portas do cluster node4 a quaisquer portas do cluster no node3.
++
+
+NOTE: Se o node3 suportar apenas conexões de cluster de 10 GbE, você deverá ter cabeamento de 10 GbE para criar conexões de cluster temporárias.
+
+
+
+.O que se segue?
+link:reassign-fas2820-node1-drives.html["Reatribuir unidades de node1 a node3"]

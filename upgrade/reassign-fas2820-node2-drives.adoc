@@ -1,0 +1,87 @@
+---
+permalink: upgrade/reassign-fas2820-node2-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: Após converter o FAS2820 node2 em uma prateleira de unidade DS212C e conectar-se ao node4, você reatribui as unidades que pertenciam anteriormente ao node2 ao node4. 
+---
+= Reatribuir unidades do nó FAS2820 node2 para o nó4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Reatribua as unidades que pertenciam anteriormente ao FAS2820 node2 para node4.
+
+.Antes de começar
+Verifique se o node3 e o node4 estão no modo de espera no prompt DO Loader.
+
+.Sobre esta tarefa
+Execute as seguintes etapas no nó4.
+
+.Passos
+. No prompt DO Loader, inicialize o node4 no modo de manutenção:
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+O prompt do Modo de Manutenção é exibido.
+
+. Apresentar todas as unidades anexadas:
++
+[source, cli]
+----
+disk show -v
+----
+. Registe o valor de ID do sistema local; esta é a ID do sistema de node4. Registre também as IDs do sistema de node1 e node2 da coluna "PROPRIETÁRIO".
+. Reatribuir todas as unidades do nó 2 para o nó 4.
++
+[role="tabbed-block"]
+====
+.Se você estiver usando discos inteiros
+--
+Execute o seguinte comando:
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID>
+----
+--
+.Se você estiver usando discos particionados
+--
+Execute o seguinte comando:
+
+[source, cli]
+----
+disk reassign -s <node2_system_ID> -d <node4_system_ID> -p <node1_system_ID>
+----
+--
+====
+. Verifique se todas as unidades reatribuídas são visíveis para a nova ID do sistema:
++
+[source, cli]
+----
+disk show -s <node4_System_ID>
+----
++
+
+CAUTION: Se as unidades não estiverem visíveis, *pare* e entre em contato com o suporte técnico para obter assistência.
+
+. Verifique se o agregado raiz de node2 é relatado na saída e o agregado está on-line:
++
+[source, cli]
+----
+aggr status
+----
+. Sair do modo de manutenção:
++
+[source, cli]
+----
+halt
+----
+
+
+.O que se segue?
+link:migrate-fas2820-aggregates-epsilon-lifs.html["Migrar agregados de dados, epsilon e LIFs em node1 para node4"]

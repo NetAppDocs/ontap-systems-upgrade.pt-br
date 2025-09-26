@@ -108,7 +108,6 @@ Transferir o armazenamento interno é uma tarefa opcional no fluxo de trabalho p
 
 == Situações em que você pode precisar de etapas adicionais
 
-* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Você está atualizando de um AFF A250 para um AFF A400"] (um procedimento sem interrupções).
 * Se o novo sistema tiver menos slots do que o sistema original, ou se tiver menos ou diferentes tipos de portas, talvez seja necessário adicionar um adaptador ao novo sistema. Consulte https://hwu.netapp.com["NetApp Hardware Universe"^] .
 * Se os nós originais ou novos nós usarem o software de virtualização FlexArray, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/V_Series/What_are_the_specific_steps_involved_in_FlexArray_for_NetApp_controller_upgrades%2F%2Freplacements%3F["Quais são as etapas específicas envolvidas nas atualizações e substituições do controlador FlexArray para NetApp"^] .
 * Se o cluster tiver hosts SAN, talvez seja necessário tomar medidas para resolver problemas com alterações no número de série LUN. Consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FlexPod_with_Infrastructure_Automation/resolve_issues_during_storage_controller_motherboard_replacement_and_head_upgrades_with_iSCSI_and_FCP["Como resolver problemas durante a substituição da motherboard do controlador de armazenamento e atualizações de cabeça com iSCSI e FCP"^] .
@@ -116,6 +115,8 @@ Transferir o armazenamento interno é uma tarefa opcional no fluxo de trabalho p
 
 
 .Informações relacionadas
+* link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Converter AFF A250 para prateleira de acionamento e atualizar para AFF A400"](procedimento não disruptivo)
+* link:convert-fas2820-to-drive-shelf.html["Atualização do FAS2820 convertendo para uma prateleira de unidade"](procedimento não disruptivo)
 * link:../choose_controller_upgrade_procedure.html["Escolha métodos para atualizar o hardware do controlador"]
 * link:upgrade-by-moving-storage-parent.html["Atualize o hardware do controlador movendo o armazenamento"]
 * link:upgrade-by-moving-volumes-parent.html["Atualize o hardware da controladora movendo volumes"]

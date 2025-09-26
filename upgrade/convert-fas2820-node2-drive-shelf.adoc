@@ -1,0 +1,29 @@
+---
+permalink: upgrade/convert-fas2820-node2-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas8280, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
+summary: 'Converta o nó 2 (FAS2820) em uma prateleira de unidade DS212C e então conecte ao nó 4.' 
+---
+= Converta o FAS2820 node2 em uma prateleira de unidade e conecte-o ao node4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Converta o FAS2820 node2 em uma prateleira de unidade DS212C.  Conecte-se ao nó 4 antes de reatribuir unidades do nó 2 para o nó 4.  Node1 e node2 são os controladores dentro da prateleira DS212C.
+
+.Passos
+. Desligue todos os cabos de rede do node2.
+. Remova o node2 do chassi FAS2820 .
+. Insira o módulo IOM12 ou IOM12B no compartimento do nó2.
+. Conecte a porta SCSI serial anexada (SAS) do node4 a uma porta disponível no módulo IOM12 ou IOM12B.  Veja olink:https://hwu.netapp.com["Hardware Universe"^] para verificar as portas SAS do seu sistema.
+. Crie conexões de cluster temporárias conectando as portas e0a e e0b do node1 a quaisquer duas portas de 25GbE no node4.
++
+
+NOTE: Se o node4 suportar apenas conexões de cluster de 10 GbE, você deverá ter cabeamento de 10 GbE para criar conexões de cluster temporárias.
+
+
+
+.O que se segue?
+link:reassign-fas2820-node2-drives.html["Reatribuir unidades de node2 a node4"]

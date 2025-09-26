@@ -1,0 +1,78 @@
+---
+permalink: upgrade/reassign-fas2820-node1-drives.html 
+sidebar: sidebar 
+keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Após converter o FAS2820 node1 em uma unidade DS212C e conectar-se ao node3, você reatribui as unidades que pertenciam anteriormente ao node1 ao node3. 
+---
+= Reatribuir unidades do nó FAS2820 node1 para node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Reatribua as unidades que foram atribuídas anteriormente ao FAS2820 node1 para node3.
+
+.Sobre esta tarefa
+Execute as seguintes etapas no nó3.
+
+.Passos
+. No prompt DO Loader, inicialize o node3 no modo de manutenção:
++
+[source, cli]
+----
+boot_ontap maint
+----
++
+O prompt do Modo de Manutenção é exibido.
+
+. Apresentar todas as unidades anexadas:
++
+[source, cli]
+----
+disk show -v
+----
+. Registre o valor do ID do sistema local; este é o ID do sistema do nó3.  Registre também os IDs do sistema node1 e node4 da coluna "OWNER".
+. Reatribuir todas as unidades de node1 TB a node3 TB:
++
+[role="tabbed-block"]
+====
+.Se você estiver usando discos inteiros
+--
+Execute o seguinte comando:
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID>
+----
+--
+.Se você estiver usando discos particionados
+--
+Execute o seguinte comando:
+
+[source, cli]
+----
+disk reassign -s <node1_system_ID> -d <node3_system_ID> -p <node4_system_ID>
+----
+--
+====
+. Verifique se todas as unidades reatribuídas são visíveis para a nova ID do sistema:
++
+[source, cli]
+----
+disk show -s <node3_system_ID>
+----
++
+
+CAUTION: Se as unidades não estiverem visíveis, *pare* e entre em contato com o suporte técnico para obter assistência.
+
+. Sair do modo de manutenção:
++
+[source, cli]
+----
+halt
+----
+
+
+.O que se segue?
+link:migrate-fas2820-node4-lIfs-aggregates.html["Migrar LIFs e agregados de dados em node4 para node3"]
