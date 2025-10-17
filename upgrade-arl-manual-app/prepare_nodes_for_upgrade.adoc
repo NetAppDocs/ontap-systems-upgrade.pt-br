@@ -49,7 +49,7 @@ Você deve verificar fisicamente node3 e node4 para ver se as baterias NVMEM ou 
 
 +
 
-WARNING: *Atenção* não tente limpar o conteúdo do NVRAM. Se houver necessidade de limpar o conteúdo do NVRAM, entre em Contato com o suporte técnico da NetApp.
+WARNING: Não tente limpar o conteúdo da NVRAM .  Se for necessário limpar o conteúdo da NVRAM, entre em contato com o suporte técnico da NetApp .
 
 . Verifique a versão do ONTAP em node3 e node4.
 +
@@ -360,7 +360,7 @@ NOTE: Você usará as informações para reatribuir discos e desativar os nós o
 
 +
 
-NOTE: Você pode usar as informações para identificar peças ou acessórios que você pode querer transferir para node3 ou node4. Se você não sabe se os nós são sistemas V-Series ou têm software de virtualização FlexArray, você pode aprender isso também com a saída.
+NOTE: Você pode usar as informações para identificar peças ou acessórios que você deseja transferir para o nó 3 ou nó 4.
 
 .. Digite o seguinte comando em node1 e node2 e Registre os agregados que estão on-line em ambos os nós:
 +
@@ -591,32 +591,7 @@ node2   0d      fc      initiator -       -         online
 +
 Você pode usar as informações após a atualização para definir a configuração de portas FC nos novos nós.
 
-. Se você estiver atualizando um sistema da série V ou um sistema com o software de virtualização FlexArray, capture informações sobre a topologia dos nós originais inserindo o seguinte comando e registrando a saída:
-+
-`storage array config show -switch`
-
-+
-O sistema exibe informações de topologia, como mostra no exemplo a seguir:
-
-+
-....
-cluster::> storage array config show -switch
-
-      LUN LUN                                  Target Side Initiator Side Initi-
-Node  Grp Cnt Array Name    Array Target Port  Switch Port Switch Port    ator
------ --- --- ------------- ------------------ ----------- -------------- ------
-node1 0   50  I_1818FAStT_1
-                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:3  0d
-                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:4  2b
-                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:1  0c
-node2 0   50  I_1818FAStT_1
-                            205700a0b84772da   vgbr6510a:5  vgbr6510s164:1  0d
-                            206700a0b84772da   vgbr6510a:6  vgbr6510s164:2  2b
-                            207600a0b84772da   vgbr6510b:6  vgbr6510s163:3  0c
-                            208600a0b84772da   vgbr6510b:5  vgbr6510s163:4  2a
-7 entries were displayed.
-....
-. [[man_prepare_nodes_step29]]conclua as seguintes subetapas:
+. [[man_prepare_nodes_step28]]Conclua as seguintes subetapas:
 +
 .. Digite o seguinte comando em um dos nós originais e Registre a saída:
 +
@@ -633,7 +608,7 @@ Talvez você queira reutilizar os parâmetros de rede dos dispositivos de gerenc
 
 
 
-. [[man_prepare_nodes_step30]]se você quiser que os novos nós tenham a mesma funcionalidade licenciada que os nós originais, digite o seguinte comando para ver as licenças de cluster no sistema original:
+. [[man_prepare_nodes_step29]]Se você quiser que os novos nós tenham a mesma funcionalidade licenciada que os nós originais, insira o seguinte comando para ver as licenças do cluster no sistema original:
 +
 `system license show -owner *`
 

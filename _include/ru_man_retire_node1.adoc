@@ -187,7 +187,7 @@ O valor deste comando deve corresponder ao estado físico do sistema.
 
 +
 
-WARNING: *Atenção*: Se node1 estiver no mesmo chassi que node2, não desligue o chassi usando o interrutor de alimentação ou puxando o cabo de alimentação. Se você fizer isso, o node2, que está fornecendo dados, será desativado.
+WARNING: Se o nó 1 estiver no mesmo chassi que o nó 2, não desligue o chassi usando o interruptor de energia ou puxando o cabo de alimentação.  Se você fizer isso, o node2, que está servindo dados, ficará inativo.
 
 . Quando o sistema solicitar que você confirme que deseja interromper o sistema, digite `y`.
 +

@@ -29,10 +29,10 @@ Se o node4 estiver em um chassi separado do node2, você pode colocar o node4 no
 . Instale o node4 no rack, seguindo as instruções em _instruções de instalação e configuração_ para o modelo do nó.
 . Cabo node4, movendo as conexões de node2 para node4.
 +
-Faça o cabeamento das seguintes conexões, usando as instruções em _instruções de instalação e configuração_ ou os _requisitos de instalação de virtualização FlexArray e Referência_ para a plataforma node4, o documento apropriado de compartimento de disco e _gerenciamento de pares HA_.
+Conecte os cabos das seguintes conexões, usando as instruções nas _Instruções de instalação e configuração_ para a plataforma node4, o documento apropriado da prateleira de disco e o _Gerenciamento de pares de HA_.
 
 +
-Consulte o link:other_references.html["Referências"]link para o _FlexArray requisitos de instalação de virtualização e Referência_ e _gerenciamento de pares HA_.
+Consultelink:other_references.html["Referências"] para vincular ao _gerenciamento de pares HA_.
 
 +
 ** Console (porta de gerenciamento remoto)
@@ -71,7 +71,7 @@ WARNING: The battery is unfit to retain data during a power outage. This is like
 .. Deixe a bateria carregar e o processo de arranque terminar.
 +
 
-WARNING: *Atenção: Não sobreponha o atraso; a falha em permitir que a bateria carregue pode resultar em perda de dados.*
+WARNING: *Não ignore o atraso; não permitir que a bateria carregue pode resultar em perda de dados.*
 
 +
 

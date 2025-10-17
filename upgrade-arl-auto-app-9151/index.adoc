@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/index.html 
-keywords: aggregate, relocation, controller, hardware, aggregates, flexarray, metrocluster, terminology 
+keywords: aggregate, relocation, controller, hardware, aggregates, metrocluster, terminology 
 summary: 'Você pode atualizar o hardware da controladora executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos, relocando a propriedade de agregados que não sejam raiz.' 
 ---
 = Saiba mais sobre este procedimento de atualização do ARL

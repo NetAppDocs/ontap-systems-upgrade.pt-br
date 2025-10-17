@@ -40,12 +40,6 @@ O conteúdo específico para esta atualização está listado na tabela abaixo.
 | link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gerenciamento de disco e agregado com a CLI"^] | Descreve como gerenciar o storage físico do ONTAP usando a CLI. Ele mostra como criar, expandir e gerenciar agregados, como trabalhar com agregados Flash Pool, como gerenciar discos e como gerenciar políticas de RAID. 
 
 
-| link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Instalação e configuração do MetroCluster conectado à malha"^] | Descreve como instalar e configurar os componentes de hardware e software do MetroCluster em uma configuração de malha. 
-
-
-| link:https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Referência e requisitos de instalação da virtualização FlexArray"^] | Contém instruções de cabeamento e outras informações para sistemas de virtualização FlexArray. 
-
-
 | link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gerenciamento de par HA"^] | Descreve como instalar e gerenciar configurações em cluster de alta disponibilidade, incluindo failover de storage e takeover/giveback. 
 
 

@@ -38,7 +38,7 @@ Se a configuração for diferente para o node4, poderá ocorrer uma interrupçã
 . Verifique se o controlador substituído está configurado corretamente para a configuração do MetroCluster e não no modo de comutação.
 +
 
-CAUTION: *Atenção:* neste estágio a configuração do MetroCluster não estará em um estado normal e você poderá ter erros para resolver. link:verify_health_of_metrocluster_config.html["Verifique a integridade da configuração do MetroCluster"]Consulte .
+CAUTION: Nesta fase, a configuração do MetroCluster não estará em um estado normal e você poderá ter erros para resolver. Verlink:verify_health_of_metrocluster_config.html["Verifique a integridade da configuração do MetroCluster"] .
 
 
 

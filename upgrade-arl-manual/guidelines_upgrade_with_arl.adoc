@@ -27,10 +27,7 @@ Você pode atualizar um par de nós usando ARL nas seguintes circunstâncias:
 * Você pode atualizar o seguinte tipo de sistemas:
 +
 ** Um sistema FAS para um sistema FAS.
-** Um sistema FAS para um sistema com software de virtualização FlexArray ou um sistema da série V.
 ** Um sistema AFF para um sistema AFF.
-** Um sistema com software de virtualização FlexArray ou um sistema da série V para um sistema FAS, desde que o sistema com software de virtualização FlexArray ou sistema da série V não tenha LUNs de matriz.
-** Um sistema V-Series para um sistema com software de virtualização FlexArray ou um sistema V-Series.
 
 
 
@@ -86,12 +83,12 @@ Este documento é escrito com as seguintes premissas:
 * O hardware do controlador de substituição é novo e não foi utilizado.
 +
 
-WARNING: *Atenção*: Como este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi usado, as etapas necessárias para preparar controladores usados com o `wipeconfig` comando não são incluídas neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o Data ONTAP no modo 7.
+WARNING: Como este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi usado, as etapas necessárias para preparar os controladores usados ​​com o `wipeconfig` comando não estão incluídos neste procedimento.  Você deve entrar em contato com o suporte técnico se o hardware do controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o Data ONTAP no Modo 7.
 
 * Você lê e entende as diretrizes para atualizar o par de nós.
 +
 
-WARNING: *Atenção*: Não tente limpar o conteúdo do NVRAM. Se você precisar limpar o conteúdo do NVRAM, entre em Contato com o suporte técnico da NetApp.
+WARNING: Não tente limpar o conteúdo da NVRAM .  Se precisar limpar o conteúdo da NVRAM, entre em contato com o suporte técnico da NetApp .
 
 * Você está executando o comando apropriado antes e depois dos `modify` comandos e comparando a saída de ambos os comandos `show` para verificar se o `modify` comando foi bem-sucedido.
 * Se você tiver uma configuração de SAN, terá LIFs locais e parceiros para cada máquina virtual de storage (SVM) no par de HA. Se você não tiver LIFs locais e de parceiros para cada SVM, adicione o LIF de dados SAN nos nós local e remoto para esse SVM antes de iniciar a atualização.

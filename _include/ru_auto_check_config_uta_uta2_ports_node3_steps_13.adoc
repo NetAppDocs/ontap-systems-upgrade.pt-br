@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-. [[auto_check3_step13]]Sair do modo de manutenção:
+. Sair do modo de manutenção:
 +
 `halt`
 

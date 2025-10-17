@@ -37,7 +37,7 @@ Você deve verificar fisicamente node3 e node4 para ver se as baterias NVMEM ou 
 
 +
 
-WARNING: *Atenção* não tente limpar o conteúdo do NVRAM. Se houver necessidade de limpar o conteúdo do NVRAM, entre em Contato com o suporte técnico da NetApp.
+WARNING: Não tente limpar o conteúdo da NVRAM .  Se for necessário limpar o conteúdo da NVRAM, entre em contato com o suporte técnico da NetApp .
 
 . Verifique a versão do ONTAP em node3 e node4.
 +

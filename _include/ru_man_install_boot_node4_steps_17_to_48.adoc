@@ -13,12 +13,12 @@
 | Se o sistema que você está atualizando... | Então... 
 
 
-| Não tem a versão ONTAP correta ou atual no node4 | Vá para <<man_install4_Step20,Passo 20>>. 
+| Não tem a versão ONTAP correta ou atual no node4 | Vá para<<man_install4_Step13,Passo 13>> . 
 
 
-| Tem a versão correta ou atual do ONTAP no node4 | Vá para <<man_install4_Step25,Passo 25>>. 
+| Tem a versão correta ou atual do ONTAP no node4 | Vá para<<man_install4_Step18,Passo 18>> . 
 |===
-. [[man_install4_Step20]]Configure a conexão netboot escolhendo uma das seguintes ações.
+. [[man_install4_Step13]]Configure a conexão netboot escolhendo uma das seguintes ações.
 +
 
 NOTE: Você deve usar a porta de gerenciamento e o endereço IP como conexão netboot. Não use um endereço IP de LIF de dados ou uma interrupção de dados pode ocorrer enquanto a atualização está sendo realizada.
@@ -109,8 +109,8 @@ O módulo do controlador reinicializa, mas pára no menu de inicialização porq
 
 
 
-. [[man_install4_Step25]]Selecione o modo de manutenção `5` no menu de inicialização e entre `y` quando você for solicitado a continuar com a inicialização.
-. [[man_install4_Step26]]antes de continuar, vá para para link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"]fazer quaisquer alterações necessárias às portas FC ou UTA/UTA2 no nó. Faça as alterações recomendadas nessas seções, reinicie o nó e entre no modo Manutenção.
+. [[man_install4_Step18]]Selecione o modo de manutenção `5` no menu de inicialização e digite `y` quando você for solicitado a continuar com a inicialização.
+. [[man_install4_Step19]]Antes de continuar, vá paralink:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"] para fazer quaisquer alterações necessárias nas portas FC ou UTA/UTA2 no nó.  Faça as alterações recomendadas nessas seções, reinicie o nó e entre no modo de manutenção.
 . Digite o seguinte comando e examine a saída para encontrar a ID do sistema de node4:
 +
 `disk show -a`
@@ -294,7 +294,7 @@ O sistema pára no prompt do ambiente de inicialização.
 +
 `set time _hh:mm:ss_`
 
-. Verifique se o ID do sistema do parceiro está definido corretamente, conforme indicado em <<man_install4_Step26,Passo 26>>opção.
+. Verifique se o ID do sistema do parceiro está definido corretamente, conforme observado em<<man_install4_Step19,Passo 19>> sob opção.
 +
 `printenv partner-sysid`
 

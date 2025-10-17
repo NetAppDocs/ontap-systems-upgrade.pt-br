@@ -59,7 +59,6 @@ Você não pode usar este procedimento ARL para atualizar um par de nós nas seg
 +
 Para realizar a atualização listada na tabela acima, link:other_references.html["Referências"]consulte para vincular a comandos _use "System controller replace" para atualizar modelos de controladora no mesmo chassi_.
 
-* Você está atualizando um sistema V-Series ou um sistema de armazenamento de virtualização FlexArray usando um array externo para armazenamento de back-end. Contacte o suporte técnico para obter opções para atualizar um sistema da série V ou FlexArray.
 * Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
 
 

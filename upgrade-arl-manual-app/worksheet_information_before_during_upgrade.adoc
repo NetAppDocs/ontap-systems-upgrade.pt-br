@@ -37,9 +37,6 @@ Pode utilizar a seguinte folha de cálculo para registar as informações a util
 | (Somente AMBIENTES SAN) configuração padrão de portas FC | Etapa 1: _Prepare os nós para a atualização_ | Ao configurar portas FC nos novos nós |  
 
 
-| (Sistemas ou sistemas da série V apenas com software de virtualização FlexArray) topologia para sistemas da série V ou sistemas com software de virtualização FlexArray | Etapa 1: _Prepare os nós para a atualização_ | Etapa 3: _Instalar e inicializar node3_ Etapa 5: _Instalar e inicializar node4_ |  
-
-
 | Endereço IP do SPS | Etapa 1: _Prepare os nós para a atualização_ | Etapa 6: _Confirme se os novos controladores estão configurados corretamente_ |  
 
 

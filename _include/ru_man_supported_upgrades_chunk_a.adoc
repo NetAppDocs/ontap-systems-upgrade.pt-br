@@ -6,10 +6,7 @@
 * Você pode atualizar o seguinte tipo de sistemas:
 +
 ** Um sistema FAS para um sistema FAS.
-** Um sistema FAS para um sistema com software de virtualização FlexArray ou um sistema da série V.
 ** Um sistema AFF para um sistema AFF.
-** Um sistema com software de virtualização FlexArray ou um sistema da série V para um sistema FAS, desde que o sistema com software de virtualização FlexArray ou sistema da série V não tenha LUNs de matriz.
-** Um sistema V-Series para um sistema com software de virtualização FlexArray ou um sistema V-Series.
 
 
 

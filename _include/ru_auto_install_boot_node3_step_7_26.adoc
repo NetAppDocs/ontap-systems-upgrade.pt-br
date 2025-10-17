@@ -135,36 +135,4 @@ Para node3, `partner-sysid` deve ser o de node2.
 +
 `printenv partner-sysid`
 
-. [[step22]]Faça uma das seguintes ações:
-+
-[cols="30,70"]
-|===
-| Se o seu sistema... | Descrição 
-
-
-| Tem discos e nenhum armazenamento de back-end | Vá para <<auto_install3_step27,Passo 27>> 
-
-
-| É um sistema da série V ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento  a| 
-.. Vá para a seção link:set_fc_or_uta_uta2_config_on_node3.html["Definir a configuração FC ou UTA/UTA2 em node3"] e preencha as subseções nesta seção.
-.. Retorne a esta seção e conclua as etapas restantes, começando com <<auto_install3_step23,Passo 23>>.
-
-
-
-IMPORTANT: É necessário reconfigurar portas integradas FC, portas integradas CNA e placas CNA antes de inicializar o ONTAP no sistema ou série V com o software de virtualização FlexArray.
-
-|===
-. [[auto_install3_step23]]Adicione as portas do iniciador FC do novo nó às zonas do switch.
-+
-Se o seu sistema tiver uma SAN de fita, você precisará de zoneamento para os iniciadores. Se necessário, modifique as portas integradas para o iniciador consultando o link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configuração de portas FC no node3"]. Consulte a documentação do storage array e zoneamento para obter mais instruções sobre zoneamento.
-
-. [[step24]]Adicione as portas do iniciador FC ao storage array como novos hosts, mapeando os LUNs do array para os novos hosts.
-+
-Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
-
-. [[step25]]modifique os valores WWPN (nome da porta mundial) no host ou grupos de volume associados aos LUNs de array no storage array.
-+
-A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
-
-. [[step26]]se sua configuração usa zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
 

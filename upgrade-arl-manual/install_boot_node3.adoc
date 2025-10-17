@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-manual/install_boot_node3.html 
-keywords: install, boot, node3, rack, transfer connections, v-series, flexarray, storage disks 
+keywords: install, boot, node3, rack, transfer connections, v-series, storage disks 
 summary: Instale e inicialize o node3 e instale o software ONTAP durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior. 
 ---
 = Instale e inicialize node3
@@ -24,7 +24,6 @@ No entanto, você não precisa inicializar o node3 pela rede se ele tiver a mesm
 [IMPORTANT]
 ====
 * Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
-* Se você estiver atualizando um sistema da série V conetado a storages de armazenamento ou a um sistema com software de virtualização FlexArray conetado a storages de armazenamento, você deve concluir <<man_install3_step1,Passo 1>> o <<man_install3_step5,Passo 5>>, deixe esta seção em <<man_install3_step6,Passo 6>> e siga as instruções no link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"]conforme necessário, inserindo comandos no modo de manutenção. Em seguida, você deve retornar a esta seção e retomar com <<man_install3_step7,Passo 7>>.
 * Se você estiver atualizando um sistema com discos de armazenamento, deverá concluir toda esta seção e então ir para link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"] , inserindo comandos no prompt do cluster.
 
 
@@ -44,7 +43,7 @@ NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo ch
 As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para link:other_references.html["Referências"]o link para eles.
 
 +
-** _Instruções de Instalação e Configuração_ ou _requisitos de Instalação de virtualização FlexArray e Referência_ para a plataforma node3
+** _Instruções de instalação e configuração_ para a plataforma node3
 ** O procedimento apropriado do compartimento de disco
 ** A documentação _HA PAIR Management_
 
@@ -86,65 +85,25 @@ To override this delay, press 'c' followed by 'Enter'
 .. Deixe a bateria carregar e o processo de arranque terminar.
 +
 
-NOTE: *Atenção*: Não sobreponha o atraso; a falha em permitir que a bateria carregue pode resultar em perda de dados.
+WARNING: *Não ignore o atraso; não permitir que a bateria carregue pode resultar em perda de dados.*
 
 
 
-. [[man_install3_step6]]execute uma das seguintes ações:
-+
-[cols="35,65"]
-|===
-| Se o seu sistema... | Então... 
-
-
-| Tem discos e nenhum armazenamento de back-end | Pule a Etapa 7 até a Etapa 12 e vá para <<man_install3_step13,Passo 13>>. 
-
-
-| É um sistema da série V ou um sistema com software de virtualização FlexArray conetado a matrizes de armazenamento  a| 
-.. Vá para link:set_fc_uta_uta2_config_node3.html["Defina a configuração FC ou UTA/UTA2 em node3"] e complete as subseções link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"], conforme apropriado para o seu sistema.
-.. Retorne a esta seção e conclua as etapas restantes, começando com <<man_install3_step7,Passo 7>>.
-
-
-
-IMPORTANT: É necessário reconfigurar portas integradas FC, portas integradas CNA e placas CNA antes de inicializar o ONTAP no sistema ou série V com o software de virtualização FlexArray.
-
-|===
-. [[man_install3_step7]]Adicione as portas do iniciador FC do novo nó às zonas do switch.
-+
-Se o seu sistema tiver uma SAN de fita, você precisará de zoneamento para os iniciadores. Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
-
-. [[man_install3_step8]]Adicione as portas do iniciador FC ao storage array como novos hosts, mapeando os LUNs do array para os novos hosts.
-+
-Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
-
-. [[man_install3_step9]] modifique os valores WWPN (World Wide Port Name) no host ou grupos de volume associados aos LUNs de array no storage array.
-+
-A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
-
-. [[man_install3_step10]]se sua configuração usa zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
-. [[man_install3_step11]]Verifique se os LUNs de array estão agora visíveis para node3:
-+
-`sysconfig -v`
-
-+
-O sistema exibe todos os LUNs do array visíveis para cada uma das portas do iniciador de FC. Se os LUNs da matriz não estiverem visíveis, você não poderá reatribuir discos de node1 para node3 posteriormente nesta seção.
-
-. [[man_install3_step12]]pressione Ctrl-C para exibir o menu de inicialização e selecionar o modo de manutenção.
-. [[man_install3_step13]]no prompt do modo de manutenção, digite o seguinte comando:
+. No prompt do modo de manutenção, digite o seguinte comando:
 +
 `halt`
 
 +
 O sistema pára no prompt do ambiente de inicialização.
 
-. [[man_install3_step14]]execute uma das seguintes ações:
+. Execute uma das seguintes ações:
 +
 [cols="35,65"]
 |===
 | Se o sistema para o qual você está atualizando está em um... | Então... 
 
 
-| Configuração de chassi duplo (com controladores em chassi diferente) | Vá para <<man_install3_step15,Passo 15>>. 
+| Configuração de chassi duplo (com controladores em chassi diferente) | Vá para<<man_install3_step8,Passo 8>> . 
 
 
 | Configuração de chassi único (com controladores no mesmo chassi)  a| 
@@ -159,11 +118,11 @@ NOTE: Deixe node4 no prompt do ambiente de inicialização; você retornará par
 
 .. Se vir a mensagem de aviso apresentada em <<man_install3_step4,Passo 4>>, siga as instruções em <<man_install3_step5,Passo 5>>
 .. Volte a ligar o cabo da consola de node4 para node3.
-.. Vá para <<man_install3_step15,Passo 15>>.
+.. Vá para<<man_install3_step8,Passo 8>> .
 
 
 |===
-. [[man_install3_step15]]Configurar node3 para ONTAP:
+. [[man_install3_step8]]Configurar node3 para ONTAP:
 +
 `set-defaults`
 
@@ -204,7 +163,7 @@ Não é possível combinar unidades FIPS com outros tipos de unidades no mesmo n
 
 WARNING: Se esse novo nó já tiver sido usado em qualquer outro cluster ou par de HA, será necessário executar `wipeconfig` antes de prosseguir. Caso contrário, pode resultar em interrupções de serviço ou perda de dados. Entre em Contato com o suporte técnico se o controlador de substituição foi usado anteriormente, especialmente se os controladores estavam executando o ONTAP em execução no modo 7.
 
-. [[man_install3_step18]]pressione CTRL-C para exibir o menu de inicialização.
+. Pressione CTRL-C para exibir o menu de inicialização.
 . [[man_install3_step19]]execute uma das seguintes ações:
 +
 [cols="35,65"]
@@ -212,12 +171,12 @@ WARNING: Se esse novo nó já tiver sido usado em qualquer outro cluster ou par 
 | Se o sistema que você está atualizando... | Então... 
 
 
-| _Não_ tem a versão correta ou atual do ONTAP no node3 | Vá para <<man_install3_step20,Passo 20>>. 
+| _Não_ tem a versão correta ou atual do ONTAP no node3 | Vá para<<man_install3_step13,Passo 13>> . 
 
 
-| Tem a versão correta ou atual do ONTAP no node3 | Vá para <<man_install3_step25,Passo 25>>. 
+| Tem a versão correta ou atual do ONTAP no node3 | Vá para<<man_install3_step18,Passo 18>> . 
 |===
-. [[man_install3_step20]]Configure a conexão netboot escolhendo uma das seguintes ações.
+. [[man_install3_step13]]Configure a conexão netboot escolhendo uma das seguintes ações.
 +
 
 NOTE: Você deve usar a porta de gerenciamento e o IP como conexão netboot. Não use um IP de LIF de dados ou então uma interrupção de dados pode ocorrer enquanto a atualização está sendo realizada.
@@ -246,7 +205,7 @@ Configure manualmente a conexão inserindo o seguinte comando no prompt do ambie
 NOTE: Outros parâmetros podem ser necessários para sua interface. Insira `help ifconfig` no prompt do firmware para obter detalhes.
 
 |===
-. [[man_install3_step21]]execute netboot no node3:
+. Execute netboot no node3:
 +
 [cols="35,65"]
 |===
@@ -265,7 +224,7 @@ Os `<path_to_the_web-accessible_directory>` leads para onde você baixou o `<ont
 
 NOTE: Não interrompa a inicialização.
 
-. [[man_install3_step22]]no menu de inicialização, selecione a opção *(7) instale o novo software* primeiro.
+. No menu de inicialização, selecione a opção *(7) Instalar novo software* primeiro.
 +
 Esta opção de menu transfere e instala a nova imagem ONTAP no dispositivo de arranque.
 
@@ -282,11 +241,11 @@ A observação se aplica a atualizações sem interrupções do ONTAP e não a a
 
 NOTE: Sempre use netboot para atualizar o novo nó para a imagem desejada. Se você usar outro método para instalar a imagem no novo controlador, a imagem errada pode ser instalada. Este problema aplica-se a todas as versões do ONTAP. O procedimento netboot combinado com opção `(7) Install new software` limpa a Mídia de inicialização e coloca a mesma versão do ONTAP ONTAP em ambas as partições de imagem.
 
-. [[man_install3_step23]]se você for solicitado a continuar o procedimento, digite `y` e, quando solicitado para o pacote, digite o seguinte URL:
+. Se você for solicitado a continuar o procedimento, digite `y` , e quando solicitado o pacote, insira o seguinte URL:
 +
 `\http://<web_server_ip>/<path_to_web-accessible_directory>/<ontap_version_image>.tgz`
 
-. [[man_install3_step24]]conclua as seguintes subetapas:
+. Conclua as seguintes subetapas:
 +
 .. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
 +
@@ -305,12 +264,12 @@ O módulo do controlador reinicializa, mas pára no menu de inicialização porq
 
 
 
-. [[man_install3_step25]]Selecione *(5) Inicialização do modo de manutenção* inserindo `5` e digite `y` quando solicitado a continuar com a inicialização.
+. [[man_install3_step18]]Selecione *(5) Modo de manutenção de inicialização* inserindo `5` , e então digite `y` quando solicitado a continuar com a inicialização.
 . [[man_install3_step26]]antes de continuar, vá para para link:set_fc_uta_uta2_config_node3.html["Defina a configuração FC ou UTA/UTA2 em node3"]fazer quaisquer alterações necessárias às portas FC ou UTA/UTA2 no nó.
 +
 Faça as alterações recomendadas nessas seções, reinicie o nó e entre no modo de manutenção.
 
-. [[man_install3_step27]]Encontre a ID do sistema de node3:
+. Encontre o ID do sistema do nó3:
 +
 `disk show -a`
 
@@ -336,7 +295,7 @@ O sistema exibe a ID do sistema do nó e informações sobre seus discos, como m
 
 NOTE: Você pode ver a mensagem `disk show: No disks match option -a.` depois de digitar o comando. Esta não é uma mensagem de erro para que possa continuar com o procedimento.
 
-. [[man_install3_step28]]Reatribuir as peças sobressalentes do node1, quaisquer discos pertencentes à raiz e quaisquer agregados não-raiz que não foram transferidos para o node2 anteriormente em link:relocate_non_root_aggr_node1_node2.html["Realocar agregados não-raiz de node1 para node2"].
+. [[man_install3_step21]]Reatribuir os discos sobressalentes do node1, quaisquer discos pertencentes à raiz e quaisquer agregados não raiz que não foram realocados para o node2 anteriormente emlink:relocate_non_root_aggr_node1_node2.html["Realocar agregados não-raiz de node1 para node2"] .
 +
 Digite a forma apropriada `disk reassign` do comando com base se o sistema tem discos compartilhados:
 
@@ -525,7 +484,7 @@ O sistema pára no prompt do ambiente de inicialização.
 +
 `set time _hh:mm:ss_`
 
-. [[man_install3_step42]]Verifique se a ID do sistema do parceiro está definida corretamente, como observado em <<man_install3_step28,Passo 28>> sob o interrutor -p:
+. [[man_install3_step42]]Verifique se o ID do sistema do parceiro está definido corretamente, conforme observado em<<man_install3_step21,Passo 21>> sob a opção -p:
 +
 `printenv partner-sysid`
 

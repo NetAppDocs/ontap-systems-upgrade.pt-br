@@ -12,7 +12,6 @@ No entanto, você não precisa inicializar via rede o node4 se ele tiver a mesma
 [IMPORTANT]
 ====
 * Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 2. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
-* Se você estiver atualizando um sistema V-Series ou um sistema com FlexArray Virtualization Software conectado a matrizes de armazenamento, será necessário concluir <<man_install4_Step1,Passo 1>> através <<man_install4_Step7,Passo 7>> , deixe esta seção em <<man_install4_Step8,Passo 8>> e siga as instruções em link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"] conforme necessário, inserindo os comandos no modo de manutenção. Em seguida, deve voltar a esta secção e retomar o procedimento em <<man_install4_Step9,Passo 9>>.
 * Se você estiver atualizando um sistema com discos de armazenamento, deverá concluir toda esta seção e, em seguida, prosseguir para a seção link:set_fc_uta_uta2_config_node4.html["Defina a configuração FC ou UTA/UTA2 em node4"] , inserindo comandos no prompt do cluster.
 
 
@@ -40,7 +39,7 @@ Se o node4 estiver em um chassi separado do node3, você pode colocar o node4 no
 As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para link:other_references.html["Referências"]o link para eles.
 
 +
-** _Instruções de Instalação e Configuração_ ou _requisitos de Instalação de virtualização FlexArray e Referência_ para a plataforma node4
+** _Instruções de instalação e configuração_ para a plataforma node4
 ** O procedimento apropriado do compartimento de disco
 ** A documentação _HA PAIR Management_
 +
@@ -92,51 +91,11 @@ WARNING: The battery is unfit to retain data during a power
 .. Deixe a bateria carregar e o processo de arranque terminar.
 +
 
-WARNING: *Aviso: Não sobreponha o atraso. A falha em permitir que a bateria carregue pode resultar em perda de dados.*
+WARNING: *Não anule o atraso.  Não permitir que a bateria carregue pode resultar em perda de dados.*
 
 
 
-. [[man_install4_Step8]]execute uma das seguintes ações:
-+
-[cols="35,65"]
-|===
-| Se o seu sistema... | Então... 
-
-
-| Tem discos e nenhum armazenamento de back-end | Pule a Etapa 9 até a Etapa 14 e vá para <<man_install4_Step15,Passo 15>>. 
-
-
-| É um sistema da série V ou tem software de virtualização FlexArray e está conetado a matrizes de armazenamento  a| 
-.. Vá para a seção _defina a configuração FC ou UTA/UTA2 em node4_ e complete as seções link:set_fc_uta_uta2_config_node4.html#configure-fc-ports-on-node4["Configurar portas FC no node4"] e link:set_fc_uta_uta2_config_node4.html#check-and-configure-utauta2-ports-on-node4["Verifique e configure as portas UTA/UTA2 no node4"], conforme apropriado para o seu sistema.
-.. Retorne a esta seção e conclua as etapas restantes, começando com <<man_install4_Step9,Passo 9>>.
-
-
-
-IMPORTANT: Você precisa reconfigurar as portas integradas FC, as portas integradas UTA/UTA2 e as placas UTA/UTA2 antes de inicializar o ONTAP no sistema V-Series.
-
-|===
-. [[man_install4_Step9]]Adicione as portas do iniciador FC do novo nó às zonas do switch.
-+
-Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
-
-. Adicione as portas do iniciador de FC ao storage array como novos hosts, mapeando as LUNs do array para os novos hosts.
-+
-Consulte a documentação de matriz de armazenamento e zoneamento para obter instruções.
-
-. Modifique os valores WWPN (World Wide Port Name) no host ou nos grupos de volume associados aos LUNs da matriz de armazenamento.
-+
-A instalação de um novo módulo de controladora altera os valores WWPN associados a cada porta FC integrada.
-
-. Se sua configuração usar zoneamento baseado em switch, ajuste o zoneamento para refletir os novos valores WWPN.
-. Verifique se os LUNs do array estão agora visíveis para node4 inserindo o seguinte comando e examinando sua saída:
-+
-`sysconfig -v`
-
-+
-O sistema exibe todas as LUNs do array visíveis para cada uma das portas do iniciador de FC. Se os LUNs da matriz não estiverem visíveis, você não poderá reatribuir discos do node2 para o node4 posteriormente nesta seção.
-
-. Pressione Ctrl-C para exibir o menu de inicialização e selecione modo de manutenção.
-. [[man_install4_Step15]]no prompt do modo de manutenção, digite o seguinte comando:
+. [[man_install4_Step8]]No prompt do modo de manutenção, digite o seguinte comando:
 +
 `halt`
 

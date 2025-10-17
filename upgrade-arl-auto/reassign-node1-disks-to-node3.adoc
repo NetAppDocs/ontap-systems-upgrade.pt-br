@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto/reassign-node1-disks-to-node3.html 
-keywords: FC, UTA, UTA2, configure, node3, CNA adapters, onboard ports, FlexArray Virtualization 
+keywords: FC, UTA, UTA2, configure, node3, CNA adapters, onboard ports 
 summary: 'Configure node3 portas FC integradas, portas UTA/UTA2 ou a placa UTA/UTA2 ao atualizar as controladoras executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
 ---
 = Reatribuir discos node1 a node3
