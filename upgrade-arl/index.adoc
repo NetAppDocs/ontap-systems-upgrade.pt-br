@@ -63,7 +63,7 @@ Se o cenário de atualização estiver listado na seguinte matriz de sistemas su
 
 == Atualize os modelos de controladora no mesmo chassi
 
-Se o cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá para para link:../upgrade-arl-auto-affa900/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"] para iniciar o procedimento de atualização.
+Se o seu cenário de atualização estiver listado na seguinte matriz de sistemas suportados, vá paralink:../upgrade-arl-auto-in-chassis/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"] para iniciar o procedimento de atualização.
 
 .Mostrar sistemas suportados
 [%collapsible]

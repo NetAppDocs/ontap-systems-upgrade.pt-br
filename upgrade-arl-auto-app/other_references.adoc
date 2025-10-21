@@ -103,7 +103,7 @@ O conteúdo específico para esta atualização está listado na tabela abaixo.
 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app-9151/index.html["Use os comandos "System controller replace" para atualizar o hardware do controlador introduzido no ONTAP 9.15.1 e posterior"^] | Descreve os procedimentos de realocação agregada necessários para atualizar controladores introduzidos no ONTAP 9.15.1 e posteriores sem interrupções usando os comandos "System controller replace". 
 
 
-| link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"^] | Descreve os procedimentos de realocação agregada necessários para atualizar um sistema sem interrupções, mantendo os discos e o chassi do sistema antigo. 
+| link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-in-chassis/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"^] | Descreve os procedimentos de realocação agregada necessários para atualizar um sistema sem interrupções, mantendo os discos e o chassi do sistema antigo. 
 
 
 | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Use os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9.8 ou posterior"^] | Descreve os procedimentos de realocação agregada necessários para atualizar controladores executando o ONTAP 9.8 sem interrupções usando os comandos "System controller replace". 

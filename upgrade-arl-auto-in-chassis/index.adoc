@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/index.html 
+keywords: aggregate, relocation, controller, hardware, aggregates, metrocluster, terminology, old, system, chassis, disk, disks 
+summary: Você pode atualizar o hardware do controlador convertendo um sistema antigo em um sistema de substituição, mantendo o chassi e os discos antigos do sistema. 
+---
+= Saiba mais sobre este procedimento de atualização do ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar controladores de armazenamento em um par de HA, convertendo o sistema existente para o sistema de substituição, mantendo o chassi e os discos do sistema existente.
+
+O ARL aproveita a configuração de HA e a comunicação de interconexão de cluster. Isso permite que você mova a propriedade de agregados que não sejam raiz de um nó para outro, se eles compartilharem storage no mesmo cluster.
+
+Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, relocando a propriedade de agregados que não sejam raiz. Você migra os agregados que não são raiz entre os nós de controladora antigos. Depois de instalar os nós de substituição, você migra os agregados que não são raiz dos nós antigos do controlador para os nós de controladora de substituição. Os dados hospedados nos nós que você está atualizando estão acessíveis durante o procedimento de atualização. Você também migra LIFs de dados entre nós no cluster à medida que avança.
+
+O hardware da controladora que você substitui depende do tipo de modelo de sistema existente:
+
+[cols="30,70"]
+|===
+| Se o seu sistema existente for... | Então... 
+
+
+| AFF A250, AFF C250 | Troque os dois controladores AFF A250 ou AFF C250 com os novos controladores e módulos de e/S. 
+
+
+| AFF A800, AFF C800 | Troque os dois controladores AFF A800 ou AFF C800 com os novos controladores e módulos de e/S. 
+
+
+| AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 | Troque o módulo do controlador em cada nó do controlador antigo pelo novo módulo. 
+
+
+| AFF A700 ou FAS9000 | Troque o controlador e os módulos NVRAM em cada nó no controlador antigo pelos novos módulos. *Nota*: Não é necessário mover, desconetar ou reconetar as placas de e/S, cabos de dados, compartimentos de disco e discos. 
+|===
+
+NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes de nós neste documento. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós.
+
+
+
+== Requisitos e limitações
+
+Você precisa considerar fatores importantes antes de iniciar seu procedimento de atualização.
+
+
+NOTE: Você deve revisar todas as informações importantes a seguir antes de iniciar o procedimento de atualização.
+
+* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores"] e link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
+* Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado noutro sistema. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware da controladora de substituição tiver sido usado anteriormente como parte de outro cluster ONTAP ou como um sistema autônomo de nó único.
+* Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
+* Se você tiver um switch que não é suportado pela versão do ONTAP e pelo sistema de substituição para o qual você está atualizando, consulte link:other_references.html["Referências"]o link para o _Hardware Universe_.
+* Os sistemas AFF A250 e AFF C250 utilizam portas onboard 10/25 GbE para interconexão de clusters. Para atualizar clusters sem switch de dois nós de um sistema AFF A250 ou AFF C250 para um sistema AFF A50, AFF A30, AFF C60 ou AFF C30, é necessário usar uma placa X60132A de 4 portas 10/25 GbE no slot 1 em ambos os nós. Isso fornece interconexão de cluster para LIFs de cluster a uma porta temporária na plataforma de destino.
+* Os sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 e FAS90 compartilham 100GbE portas de rede para conexões de cluster e HA. Esses sistemas podem oferecer suporte a conexões de cluster 10GbE ou 25GbE a switches de cluster legados. No entanto, a NetApp recomenda a atualização para velocidades de cluster 100GbE quando os switches 10GbE e 25GbE não forem mais necessários. Para obter mais informações, consulte os seguintes artigos da base de dados de Conhecimento:
++
+--
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_configure_10G_or_25G_cluster_ports_on_a_new_cluster_setup["Como configurar portas de cluster 10G ou 25G em uma nova configuração de cluster"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/How_to_convert_existing_10G_or_25G_cluster_ports_to_40G_or_100G_cluster_ports["Como converter portas de cluster 10G ou 25G existentes para portas de cluster 40G ou 100g"^]
+
+
+--
++
+Se você não puder vincular portas de cluster e0a ou e0b no nó existente às portas de cluster no novo nó, consulte o seguinte para obter mais informações:
+
++
+** link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["NetApp Bugs Online ID de erro CONTAP-166978"^]
+** https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1127315["NetApp Bugs Online Bug ID 1127315"^]
+
+
+* Os sistemas ASA A900, AFF A900 e FAS9500 suportam apenas energia de alta linha (200V a 240V). Se o seu sistema AFF A700 ou FAS9000 estiver em execução com alimentação de linha baixa (100V a 120V W), deverá converter a alimentação de entrada AFF A700 ou FAS9000 antes de utilizar este procedimento.
+* Se estiver a atualizar a partir de um sistema existente com tempo de inatividade incluído <<supported-systems-in-chassis,matriz de sistemas suportados>>no , pode atualizar o hardware da controladora movendo o armazenamento ou contactar o suporte técnico. Consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+
+
+
+
+== Automatize o processo de atualização do controlador
+
+Este procedimento fornece as etapas para o procedimento automatizado, que usa atribuição automática de disco e verificações de acessibilidade de porta de rede para simplificar a experiência de atualização do controlador.

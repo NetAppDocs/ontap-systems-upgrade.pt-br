@@ -1,0 +1,141 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/ensure-new-controllers-are-set-up-correctly.html 
+keywords: ensure, controllers, new, setup, ha, pair, node1, node2, lif, cluster, high, availability 
+summary: Verifique se o par de HA está ativado, verifique o acesso ao storage node1 e node2 e o LIF e confirme a propriedade agregada após a atualização dos modelos de controladora no mesmo chassi. 
+---
+= Confirme se os novos controladores estão configurados corretamente
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para confirmar a configuração correta, verifique se o par de HA está ativado. Você também verifica se o node1 e o node2 podem acessar o storage um do outro e se nenhum deles possui LIFs de dados pertencentes a outros nós no cluster. Além disso, você verifica se todos os agregados de dados estão nos nós iniciais corretos e se os volumes para ambos os nós estão online. Se um dos novos nós tiver um adaptador de destino unificado, será necessário restaurar as configurações de porta e talvez seja necessário alterar o uso do adaptador.
+
+.Passos
+. Após as verificações posteriores do node2, o failover de storage e o par de HA de cluster para o cluster node2 são ativados. Quando a operação é concluída, ambos os nós mostram como concluído e o sistema executa algumas operações de limpeza.
+. Verifique se o failover de armazenamento está ativado:
++
+`storage failover show`
+
++
+O exemplo a seguir mostra a saída do comando quando o failover de armazenamento está ativado:
+
++
+[listing]
+----
+cluster::> storage failover show
+                          Takeover
+Node	    Partner       Possible      State Description
+----------  -----------   ------------  ------------------
+node1	    node2         true	        Connected to node2
+node2	    node1         true	        Connected to node1
+----
+. Verifique se node1 e node2 pertencem ao mesmo cluster usando o seguinte comando e examinando a saída:
++
+`cluster show`
+
+. Verifique se node1 e node2 podem acessar o armazenamento um do outro usando o seguinte comando e examinando a saída:
++
+`storage failover show -fields local-missing-disks,partner-missing-disks`
+
+. Verifique se nem o node1 nem o node2 possuem LIFs de dados de propriedade própria por outros nós no cluster usando o seguinte comando e examinando a saída:
++
+`network interface show`
+
++
+Se nem o node1 ou o node2 possuírem LIFs de dados de propriedade própria de outros nós no cluster, reverta os LIFs de dados para o proprietário de sua casa:
+
++
+`network interface revert`
+
+. Verifique se os agregados são de propriedade de seus respetivos nós iniciais.
++
+`storage aggregate show -owner-name <node1>`
+
++
+`storage aggregate show -owner-name <node2>`
+
+. Determine se algum volume está offline:
++
+`volume show -node <node1> -state offline`
+
++
+`volume show -node <node2> -state offline`
+
+. Se algum volume estiver offline, compare-o com a lista de volumes offline que você capturou link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]na seção e coloque online qualquer um dos volumes offline, conforme necessário, usando o seguinte comando, uma vez para cada volume:
++
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
+. Instale novas licenças para os novos nós usando o seguinte comando para cada nó:
++
+`system license add -license-code <license_code,license_code,license_code...>`
+
++
+O parâmetro license-code aceita uma lista de 28 teclas de carateres alfabéticos maiúsculas. Você pode adicionar uma licença de cada vez, ou pode adicionar várias licenças de uma vez, separando cada chave de licença por uma vírgula.
+
+. Remova todas as licenças antigas dos nós originais usando um dos seguintes comandos:
++
+`system license clean-up -unused -expired`
+
++
+`system license delete -serial-number <node_serial_number> -package <licensable_package>`
+
++
+--
+** Eliminar todas as licenças expiradas:
++
+`system license clean-up -expired`
+
+** Eliminar todas as licenças não utilizadas:
++
+`system license clean-up -unused`
+
+** Exclua uma licença específica de um cluster usando os seguintes comandos nos nós:
++
+`system license delete -serial-number <node1_serial_number> -package *`
+`system license delete -serial-number <node2_serial_number> -package *`
+
+
+
+--
++
+É apresentada a seguinte saída:
+
++
+[listing]
+----
+Warning: The following licenses will be removed:
+<list of each installed package>
+Do you want to continue? {y|n}: y
+----
++
+Digite `y` para remover todos os pacotes.
+
+. Verifique se as licenças estão corretamente instaladas usando o seguinte comando e examinando sua saída:
++
+`system license show`
+
++
+Você pode comparar a saída com a saída que você capturou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] seção.
+
+. [[unset_maxwait]] se as unidades de criptografia automática estiverem sendo usadas na configuração e você tiver definido a `kmip.init.maxwait` variável como `off` (por exemplo, em _Boot node2 com os módulos de sistema de substituição_, link:boot_node2_with_a900_controller_and_nvs.html#boot_node2_step1["Passo 1"]), você deve desmarcar a variável:
++
+`set diag; systemshell -node <node_name> -command sudo kenv -u -p kmip.init.maxwait`
+
+. Configure o SPS usando o seguinte comando em ambos os nós:
++
+`system service-processor network modify -node <node_name>`
+
++
+Consulte o link:other_references.html["Referências"]link para o _Referência de Administração do sistema_ para obter informações sobre o SPS e os comandos _ONTAP 9: Referência de página manual_ para obter informações detalhadas sobre o comando do sistema `service-processor network modify`.
+
+. Se você quiser configurar um cluster sem switch nos novos nós, link:other_references.html["Referências"]consulte vincular ao site de suporte _NetApp_ e siga as instruções em _transitioning to a two-node cluster sem switch_.
+
+
+.Depois de terminar
+Se a criptografia de armazenamento estiver ativada no node1 e no node2, conclua a link:set_up_storage_encryption_new_module.html["Configure a criptografia de armazenamento no novo módulo do controlador"]seção . Caso contrário, completar a link:decommission_old_system.html["Desativar o sistema antigo"]secção .

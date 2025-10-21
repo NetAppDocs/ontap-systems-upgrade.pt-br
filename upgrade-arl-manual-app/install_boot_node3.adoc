@@ -23,7 +23,7 @@ No entanto, você não precisa inicializar o node3 pela rede se ele tiver a mesm
 
 [IMPORTANT]
 ====
-* Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
+* Para uma atualização do controlador AFF A800 ou AFF C800 , você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para mais informações, consulte link:../upgrade-arl-auto-in-chassis/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"].
 * Se você estiver atualizando um sistema com discos de armazenamento, deverá concluir toda esta seção e então ir para link:set_fc_uta_uta2_config_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"] e link:set_fc_uta_uta2_config_node3.html#uta-ports-node3["Verifique e configure as portas UTA/UTA2 no node3"] , inserindo comandos no prompt do cluster.
 
 

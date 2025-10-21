@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/overview-of-the-arl-upgrade.html 
+keywords: overview, arl, upgrade, owner, controller, hardware, old, system, chassis, disk, disks 
+summary: Entenda como funciona o procedimento ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Saiba mais sobre a sequência de atualização do ARL
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de atualizar os nós usando ARL, você deve entender como o procedimento funciona. Neste conteúdo, o procedimento é dividido em várias etapas.
+
+
+
+== Atualize o par de nós
+
+Para atualizar o par de nós, você precisa preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.
+
+
+
+== Visão geral da sequência de atualização ARL
+
+Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, uma controladora de cada vez, aproveitando a configuração do par de HA para realocar a propriedade de agregados que não sejam raiz. Todos os agregados não-raiz devem passar por duas relocalizações para alcançar seu destino final, que é o nó atualizado correto.
+
+Cada agregado tem um proprietário de casa e proprietário atual. O proprietário da casa é o proprietário real do agregado, e o proprietário atual é o proprietário temporário.
+
+A tabela a seguir descreve as tarefas de alto nível executadas durante cada etapa e o estado de propriedade agregada no final da etapa. Etapas detalhadas são fornecidas posteriormente no procedimento:
+
+[cols="35,65"]
+|===
+| Fase | Passos 
+
+
+| link:verify_upgrade_hardware.html["Etapa 1: Prepare-se para a atualização"]  a| 
+Durante a fase 1, você verifica se tem o hardware correto para a atualização, executa pré-verificações e, se necessário, corrige a propriedade agregada. Você deve Registrar certas informações se estiver gerenciando a criptografia de armazenamento usando o Gerenciador de chaves integrado e você pode optar por silenciar as relações do SnapMirror.
+
+Propriedade agregada no final da fase 1:
+
+* node1 é o proprietário da casa e atual proprietário dos agregados node1
+* Node2 é o proprietário da casa e atual proprietário dos agregados node2
+
+
+
+
+| link:relocate_non_root_aggr_and_nas_data_lifs_node1_node2.html["Etapa 2: Realocar recursos e aposentar-se node1"]  a| 
+Durante a fase 2, você realocar node1 agregados não-raiz e LIFs de dados nas de node1 para node2. Esse processo é amplamente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Se necessário, você realocar agregados com falha ou vetado. Você grava informações node1 para uso mais tarde no procedimento antes de se aposentar node1. Você também pode se preparar para netboot node1 posteriormente no procedimento.
+
+Propriedade agregada no final da fase 2:
+
+* Node2 é o atual proprietário de node1 agregados
+* Node2 é o proprietário da casa e atual proprietário de node2 agregados
+
+
+
+
+| link:cable-node1-for-shared-cluster-HA-storage.html["Fase 3: Arranque node1 com os módulos do sistema de substituição"]  a| 
+Durante a fase 3, você inicializa o node1 com módulos de sistema atualizados e verifica a instalação do node1 atualizado. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Você também relocaliza node1 agregados não-raiz e LIFs de dados nas do node2 para o node1 atualizado e verifica se os LIFs SAN existem no node1.
+
+Propriedade agregada no final da fase 3:
+
+* Atualizado node1 é o proprietário da casa e atual proprietário de node1 agregados
+* Node2 é o proprietário da casa e atual proprietário de node2 agregados
+
+
+
+
+| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node1.html["Etapa 4: Realocar recursos e aposentar-se node2"]  a| 
+Durante a fase 4, você realocar agregados não-raiz e LIFs de dados nas de node2 para o node1 atualizado e desativar o node2.
+
+Propriedade agregada no final da fase 4:
+
+* Atualizado node1 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node1
+* Atualizado node1 é o atual proprietário de node2 agregados
+
+
+
+
+| link:install-aff-a30-a50-c30-c50-node2.html["Etapa 5: Instale os módulos de sistema de substituição no node2"]  a| 
+Durante a fase 5, você instala os novos módulos de sistema que você recebeu para o node2 atualizado e, em seguida, netboot node2.
+
+Propriedade agregada no final da fase 5:
+
+* Atualizado node1 é o proprietário da casa e atual proprietário dos agregados que originalmente pertenciam a node1.
+* Atualizado node2 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node2.
+
+
+
+
+| link:boot_node2_with_a900_controller_and_nvs.html["Fase 6: Arranque node2 com os módulos do sistema de substituição"]  a| 
+Durante o Estágio 6, você inicializa o node2 com módulos de sistema atualizados e verifica a instalação do node2 atualizado. Se estiver usando o NVE, restaure a configuração do gerenciador de chaves. Para atualizações de cluster conectado ao switch, você precisa validar se o arquivo de configuração de referência do switch do cluster (RCF) oferece suporte às portas de cluster/HA compartilhadas. Você também realoca agregados não raiz do node1 e LIFs de dados NAS do node1 para o node2 atualizado e verifica se os LIFs SAN existem no node2.
+
+
+
+| link:manage-authentication-using-kmip-servers.html["Etapa 7: Concluir a atualização"]  a| 
+Durante a fase 7, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
+
+|===

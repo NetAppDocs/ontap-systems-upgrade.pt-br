@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/cable-node2-for-shared-cluster-HA-storage.html 
+keywords: cluster, ha, aff, a800, shared, storage, data, management 
+summary: Conecte o cluster, o HA, o armazenamento e as conexões de dados que estavam conectados anteriormente ao nó 2 do AFF A800 ao nó 1 do AFF A90 ou AFF A70 recém-instalado. 
+---
+= Cabo node2 para cluster-HA e armazenamento compartilhados
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se estiver executando uma das seguintes atualizações, você precisará conectar o cluster, o HA, o armazenamento, os dados e as conexões de gerenciamento que estavam conectados anteriormente ao node2 no sistema existente ao node2 recém-instalado no sistema de substituição.
+
+[cols="35,65"]
+|===
+| Sistema existente | Sistema de substituição 
+
+
+| AFF A250 | AFF A30, AFF A50 
+
+
+| AFF C250 | AFF C30, AFF C60 
+
+
+| AFF A800 | AFF A70, AFF A90 
+
+
+| AFF C800 | AFF C80 
+|===
+
+
+== Ligue as portas e0M e BMC
+
+Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench" no sistema de substituição. Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no sistema existente antes de se conetar ao sistema de substituição.
+
+[cols="35,65"]
+|===
+| Se o... | Então... 
+
+
+| Os endereços IP e0M e BMC estão na mesma sub-rede IP | Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição. 
+
+
+| Os endereços IP e0M e BMC estão em sub-redes diferentes  a| 
+. Mesclar os endereços IP e0M e BMC em uma sub-rede IP.
+. Conete a porta e0M ou BMC no sistema existente à porta "chave" no sistema de substituição.
+
+
+|===
+
+
+== Conecte-se a um cluster sem switch de dois nós
+
+As tabelas a seguir mostram o uso da porta do switch para configurações de cluster sem switch de dois nós.
+
+|===
+| Tipo de porta | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
+
+
+| Cluster | e0a | e1a | e1a 
+
+
+| Cluster | e1a | e7a (use e1b se não houver e7a) | e1b 
+
+
+| HA | e0b | Não conecte | Não conecte 
+
+
+| HA | e1b | Não conecte | Não conecte 
+
+
+| Portas de armazenamento SAS (se presentes e usadas) | Qualquer porta disponível | Qualquer porta disponível | Qualquer porta disponível 
+
+
+| Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
+|===
+|===
+| Tipo de porta | AFF A250, AFF C250 | AFF A30, AFF C60 | AFF A50 
+
+
+| Cluster | e0c | e1a (Use e1a para interconexão temporária de cluster) | e1a (Use e1a para interconexão temporária de cluster) 
+
+
+| Cluster | e0d | e1b (Use e1b para interconexão temporária de cluster) | e1b (Use e1b para interconexão temporária de cluster) 
+
+
+| HA | A porta e0c HA é compartilhada com a porta do Cluster | e4a no nó 1 está conectado diretamente ao e4a no nó 2 usando um cabo 100 GbE | e4a no nó 1 está conectado diretamente ao e4a no nó 2 usando um cabo 100 GbE 
+
+
+| HA | A porta HA do e0d é compartilhada com a porta do Cluster | e2a no nó 1 é conectado diretamente a e2a no nó 2 usando um cabo de 100 GbE. Se e2a não estiver presente ou não suportar 100 GbE, conecte diretamente e4b no nó 1 a e4b no nó 2 usando um cabo de 100 GbE. | e2a no nó 1 conectado diretamente a e2a no nó 2 usando um cabo de 100 GbE. Se e2a não estiver presente ou não suportar 100 GbE, conecte diretamente e4b no nó 1 a e4b no nó 2 usando um cabo de 100 GbE. 
+
+
+| Porta de armazenamento Ethernet | Qualquer porta disponível | e3a, e3b | e3a, e3b 
+
+
+| Porta de armazenamento SAS | Qualquer porta disponível | 3a, 3b | 3a, 3b 
+|===
+
+
+== Conete-se a um cluster conetado a switch
+
+Para um cluster conectado a um switch, verifique se você atende aos seguintes requisitos para o nó AFF A30, AFF A50, AFF A70, AFF A90, AFF C30, AFF C60 ou AFF C80 (substituição):
+
+* As portas de cluster idênticas no nó de substituição estão no mesmo switch. Por exemplo, após a conclusão da atualização, e1a em node1 e e1a em node2 devem ser conetados a um switch de cluster. Da mesma forma, a segunda porta de cluster de ambos os nós deve ser conetada ao segundo switch de cluster. A conexão cruzada de portas de cluster-HA compartilhadas, onde e1a de node1 é conetada ao switchA e e1a de node2 é conetada ao switchB, resulta em falhas de comunicação HA.
+* O nó de substituição usa portas Ethernet de cluster-HA compartilhadas.
+* Verifique se os switches de cluster estão instalados com um arquivo de configuração de referência (RCF) que suporte portas de cluster-HA compartilhadas:
++
+.. Remova a configuração existente no switch:
++
+[cols="30,70"]
+|===
+| Se o seu modelo de interrutor é... | Ir para... 
+
+
+| Cisco Nexus | O artigo da base de dados de Conhecimento link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["Como limpar a configuração em um switch de interconexão Cisco, mantendo a conetividade remota"^] 
+
+
+| Broadcom BES-53248 | O artigo da base de dados de Conhecimento link:https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["Como limpar a configuração em um switch de interconexão Broadcom, mantendo a conetividade remota"^] 
+|===
+.. Configure e verifique a configuração do switch:
++
+[cols="30,70"]
+|===
+| Se o seu modelo de interrutor é... | Ir para... 
+
+
+| Cisco Nexus 9336C-FX2 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html["Atualizar o seu ficheiro de configuração de referência (RCF)"^] 
+
+
+| Broadcom BES-53248 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/upgrade-rcf.html["Atualizar o ficheiro de configuração de referência (RCF)"^] 
+
+
+| NVIDIA SN2100 | link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html["Instale ou atualize o script RCF (Reference Configuration File)"^] 
+|===
+
+
+
+
+
+NOTE: Se o switch do cluster suportar apenas velocidades de 10/25 GbE, você deverá usar uma placa X60130A de 4 portas 10/25 GbE no slot 1 ou slot 2 no sistema de substituição para interconexão do cluster.

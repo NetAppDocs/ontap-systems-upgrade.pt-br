@@ -1,0 +1,243 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/netboot-node2.html 
+keywords: preparing, prepare, netboot, ontap, node2 
+summary: Depois de trocar os módulos de sistema node2 de substituição correspondentes ao usar o ARL para atualizar modelos de controladora no mesmo chassi, talvez seja necessário iniciá-los na rede. 
+---
+= Netboot node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de trocar os módulos de sistema node2 de substituição correspondentes, você pode precisar netboot-los. O termo netboot significa que você está inicializando a partir de uma imagem ONTAP armazenada em um servidor remoto. Ao se preparar para netboot, você coloca uma cópia da imagem de inicialização do ONTAP 9 em um servidor da Web que o sistema pode acessar.
+
+Não é possível verificar a versão do ONTAP instalada na mídia de inicialização do módulo controlador de substituição, a menos que ele esteja instalado em um chassi e ligado. A versão do ONTAP na Mídia de inicialização do sistema de substituição deve ser a mesma que a versão do ONTAP em execução no sistema antigo que você está atualizando e as imagens de inicialização principal e de backup devem corresponder. Você pode configurar as imagens executando um netboot seguido do `wipeconfig` comando no menu de inicialização. Se o módulo do controlador foi usado anteriormente em outro cluster, o `wipeconfig` comando limpa qualquer configuração residual na Mídia de inicialização.
+
+Você também pode usar a opção de inicialização USB para executar o netboot. Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Como usar o comando boot_recovery Loader para instalar o ONTAP para a configuração inicial de um sistema"^].
+
+.Antes de começar
+* Verifique se você pode acessar um servidor HTTP com o sistema.
+* Baixe os arquivos de sistema necessários para o seu sistema e a versão correta do ONTAP a partir do site de suporte _NetApp_. Consulte o link:other_references.html["Referências"]link para o _Site de suporte da NetApp_.
+
+
+.Sobre esta tarefa
+Você deve netboot os novos controladores se eles não tiverem a mesma versão do ONTAP 9 instalada neles que está instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.
+
+.Passos
+. link:other_references.html["Referências"]Consulte o link para o _Site de suporte NetApp_ para fazer o download dos arquivos usados para executar o netboot do sistema.
+. [[netboot_node2_step2]]Baixe o software ONTAP apropriado na seção de download do software do site de suporte da NetApp e armazene o `<ontap_version>_image.tgz` arquivo em um diretório acessível pela Web.
+. Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
+. Sua lista de diretórios deve conter `<ontap_version>_image.tgz`.
+. Configure a conexão netboot escolhendo uma das seguintes ações.
++
+
+NOTE: Você deve usar a porta de gerenciamento e o IP como conexão netboot. Não use um IP de LIF de dados ou uma interrupção de dados pode ocorrer enquanto a atualização está sendo realizada.
+
++
+[cols="35,65"]
+|===
+| Se o DHCP (Dynamic Host Configuration Protocol) for... | Então... 
+
+
+| Em execução | Configure a conexão automaticamente usando o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -auto` 
+
+
+| Não está a funcionar  a| 
+Configure manualmente a conexão usando o seguinte comando no prompt do ambiente de inicialização:
+`ifconfig e0M -addr=_filer_addr_ -mask=_netmask_ -gw=_gateway_ -dns=_dns_addr_ -domain=_dns_domain_`
+
+`_filer_addr_` É o endereço IP do sistema de armazenamento (obrigatório).
+`_netmask_` é a máscara de rede do sistema de armazenamento (obrigatório).
+`_gateway_` é o gateway para o sistema de armazenamento (obrigatório).
+`_dns_addr_` É o endereço IP de um servidor de nomes em sua rede (opcional).
+`_dns_domain_` É o nome de domínio do serviço de nomes de domínio (DNS) (opcional).
+
+
+NOTE: Outros parâmetros podem ser necessários para sua interface. Insira `help ifconfig` no prompt do firmware para obter detalhes.
+
+|===
+. Execute netboot no node2:
++
+`netboot \http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`
+
++
+
+NOTE: Não interrompa a inicialização.
+
+. Aguarde que o node2 esteja sendo executado no módulo do controlador de substituição para inicializar e exibir as opções do menu de inicialização, conforme mostrado na seguinte saída:
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)?
+----
+. No menu de inicialização, selecione a opção `(7) Install new software first`.
++
+Esta opção de menu transfere e instala a nova imagem ONTAP no dispositivo de arranque.
+
++
+Ignore a seguinte mensagem:
+
++
+`This procedure is not supported for Non-Disruptive Upgrade on an HA pair`
+
++
+Esta nota aplica-se a atualizações de software ONTAP sem interrupções e não atualizações de controladora.
+
++
+
+NOTE: Sempre use netboot para atualizar o novo nó para a imagem desejada. Se você usar outro método para instalar a imagem no novo controlador, a imagem incorreta pode ser instalada. Este problema aplica-se a todas as versões do ONTAP. O procedimento netboot combinado com opção `(7) Install new software` limpa a Mídia de inicialização e coloca a mesma versão do ONTAP em ambas as partições de imagem.
+
+. Se você for solicitado a continuar o procedimento, digite `y` e, quando solicitado, digite o URL:
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
++
+O `<path_to_the_web-accessible_directory>` deve levar ao local onde você baixou o `<ontap_version>_image.tgz` em <<netboot_node2_step2,Passo 2>>.
+
+. Conclua as seguintes subetapas para reinicializar o módulo do controlador:
++
+.. Introduza `n` para ignorar a recuperação da cópia de segurança quando vir o seguinte aviso:
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n}
+----
+.. Digite `y` para reiniciar quando você vir o seguinte prompt:
++
+[listing]
+----
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+----
++
+O módulo do controlador reinicializa, mas pára no menu de inicialização porque o dispositivo de inicialização foi reformatado e os dados de configuração devem ser restaurados.
+
+
+
+. Limpe qualquer configuração anterior na mídia de inicialização.
++
+.. No prompt a seguir, execute o  `wipeconfig` comando e pressione a tecla Enter:
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? wipeconfig
+----
+.. Quando vir a mensagem abaixo, responda `yes`:
++
+[listing]
+----
+This will delete critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?:
+----
+.. O nó reinicializa para terminar o `wipeconfig` e, em seguida, pára no menu de inicialização.
++
+
+NOTE: Aguarde até que o nó pare no menu de inicialização após concluir o  `wipeconfig` operação.
+
+
+
+. Selecione o modo de manutenção `5` no menu de inicialização e entre `y` quando você for solicitado a continuar com a inicialização.
+. Verifique se o controlador e o chassis estão configurados como `ha`:
++
+`ha-config show`
+
++
+O exemplo a seguir mostra a saída do `ha-config show` comando:
+
++
+[listing]
+----
+Chassis HA configuration: ha
+Controller HA configuration: ha
+----
+. Se o controlador e o chassi não estiverem configurados como `ha`, use os seguintes comandos para corrigir a configuração:
++
+`ha-config modify controller ha`
+
++
+`ha-config modify chassis ha`
+
+. Paragem node2:
++
+`halt`
+
++
+Node2 deve parar no prompt Loader>.
+
+. No node1, verifique a data, a hora e o fuso horário do sistema:
++
+`date`
+
+. Em node2, verifique a data usando o seguinte comando no prompt do ambiente de inicialização:
++
+`show date`
+
+. Se necessário, defina a data em node2:
++
+`set date _mm/dd/yyyy_`
+
++
+
+NOTE: Defina a data UTC correspondente em node2.
+
+. No node2, verifique a hora usando o seguinte comando no prompt do ambiente de inicialização:
++
+`show time`
+
+. Se necessário, defina a hora em node2:
++
+`set time _hh:mm:ss_`
+
++
+
+NOTE: Defina a hora UTC correspondente em node2.
+
+. Defina a ID do sistema do parceiro em node2:
++
+`setenv partner-sysid _node1_sysid_`
+
++
+Para o node2, o `partner-sysid` deve ser o node1 que você está atualizando.
+
++
+.. Guarde as definições:
++
+`saveenv`
+
+
+
+. No node2, no prompt Loader, verifique o `partner-sysid` para node2:
++
+`printenv partner-sysid`
+
+

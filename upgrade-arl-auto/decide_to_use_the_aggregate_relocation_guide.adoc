@@ -27,9 +27,9 @@ Para ajudar você a decidir se este procedimento ARL é adequado para a atualiza
 
 [NOTE]
 ====
-* Se você estiver atualizando um sistema trocando módulos de controlador no mesmo chassi, como AFF A800 ou AFF C800, a NetApp recomenda fortemente usar o procedimento de atualização que link:../upgrade-arl-auto-affa900/index.html["atualiza modelos de controlador usando ARL, mantendo o chassi e os discos do sistema existentes"] . Este procedimento ARL inclui as etapas que garantem que os discos internos permaneçam seguros no chassi quando você remove e instala os controladores durante o procedimento de atualização.
+* Se você estiver atualizando um sistema trocando módulos de controlador no mesmo chassi, como AFF A800 ou AFF C800, a NetApp recomenda fortemente usar o procedimento de atualização quelink:../upgrade-arl-auto-in-chassis/index.html["atualiza modelos de controlador usando ARL, mantendo o chassi e os discos do sistema existentes"] .  Este procedimento ARL inclui as etapas que garantem que os discos internos permaneçam seguros no chassi quando você remove e instala os controladores durante o procedimento de atualização.
 +
-link:../upgrade-arl-auto-affa900/decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["Aprenda sobre as combinações de atualização de sistema suportadas usando ARL, mantendo o chassi e os discos do sistema existentes"].
+link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["Aprenda sobre as combinações de atualização de sistema suportadas usando ARL, mantendo o chassi e os discos do sistema existentes"].
 
 * Você pode usar criptografia de storage NetApp (NSE), criptografia de volume NetApp (NVE) e criptografia de agregado NetApp (NAE) com este procedimento.
 

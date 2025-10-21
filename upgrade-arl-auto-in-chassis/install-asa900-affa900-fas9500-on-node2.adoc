@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/install-asa900-affa900-fas9500-on-node2.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: Instale os módulos de sistema de substituição no node2 durante uma atualização ARL dos modelos de controladores no mesmo chassi. 
+---
+= Instale os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e do controlador no node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Instale os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e da controladora que você recebeu para a atualização no node2. O Node2 é o controlador B localizado no lado direito do chassi quando se olha para os controladores da parte traseira do sistema.
+
+Você deve observar o seguinte ao executar a instalação:
+
+* Mova todos os módulos de enchimento vazios nos slots 6-1 e 6-2 do módulo NVRAM antigo para o novo módulo NVRAM.
+* Não mova o dispositivo de coredump do módulo AFF A700 NVRAM para o módulo ASA A900 ou AFF A900 NVRAM.
+* Mova módulos de cache all flash instalados no módulo FAS9000 NVRAM para o módulo FAS9500 NVRAM.
+
+
+.Antes de começar
+Se você ainda não está aterrado, aterre-se corretamente.
+
+
+
+== Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
+
+Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no slot 6 de node2.
+
+.Passos
+. Alinhe o módulo NVRAM com as extremidades da abertura do chassis na ranhura 6.
+. Deslize cuidadosamente o módulo NVRAM para dentro da ranhura até que o trinco do came de e/S com letras e numerado comece a engatar com o pino do came de e/S e, em seguida, empurre o trinco do came de e/S totalmente para cima para bloquear o módulo NVRAM no lugar.
+
+
+
+
+== Instale o módulo do controlador ASA A900, AFF A900 ou FAS9500 no node2
+
+Instale, faça o cabo e conete o módulo do controlador ASA A900, AFF A900 ou FAS9500 em node2.
+
+.Passos
+. Alinhe a extremidade do módulo do controlador com o compartimento B no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
++
+
+TIP: A etiqueta do compartimento está localizada no chassi diretamente acima do módulo do controlador.
+
++
+
+NOTE: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
+
+. Cable as portas de gerenciamento e console para o módulo do controlador node2.
++
+
+NOTE: Como o chassi já está ligado, o node2 inicia a inicialização assim que estiver totalmente assentado. Para evitar a inicialização do node2, é recomendável conetar o console e os cabos de gerenciamento ao módulo controlador node2 antes de inserir completamente o módulo controlador no slot.
+
+. Empurre firmemente o módulo do controlador para dentro do chassi até que ele atenda ao plano médio e esteja totalmente assentado.
++
+O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente.
+
++
+
+WARNING: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para o chassis.
+
+. Conecte o console serial assim que o módulo estiver encaixado e esteja pronto para interromper o AUTOBOOT do node2.
+. Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+. No prompt Loader> de node2, defina as variáveis de ambiente padrão:
++
+`set-defaults`
+
+. Salve as configurações de variáveis de ambiente padrão:
++
+`saveenv`
+
+

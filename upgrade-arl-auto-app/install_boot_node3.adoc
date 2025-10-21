@@ -23,7 +23,7 @@ Você precisa netboot node3 se ele não tiver a mesma versão do ONTAP 9 instala
 
 [IMPORTANT]
 ====
-* Para uma atualização do controlador AFF A800 ou AFF C800, você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para obter mais informações, link:../upgrade-arl-auto-affa900/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"]consulte .
+* Para uma atualização do controlador AFF A800 ou AFF C800 , você deve garantir que todas as unidades no chassi estejam firmemente encaixadas no plano médio antes de remover o nó 1. Para mais informações, consulte link:../upgrade-arl-auto-in-chassis/replace-node1-affa800.html["Substitua os módulos do controlador AFF A800 ou AFF C800"].
 * Se você estiver atualizando um sistema com discos de armazenamento, será necessário concluir toda esta seção e, em seguida, ir para as link:set_fc_or_uta_uta2_config_on_node3.html#configure-fc-ports-on-node3["Configurar portas FC no node3"]seções elink:set_fc_or_uta_uta2_config_on_node3.html#check-and-configure-utauta2-ports-on-node3["Verifique e configure as portas UTA/UTA2 no node3"], digitando comandos no prompt do cluster.
 
 

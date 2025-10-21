@@ -73,7 +73,7 @@ O conteúdo específico para esta atualização está listado na tabela abaixo.
 | Descreve como atualizar rapidamente o hardware do controlador em um cluster movendo armazenamento ou volumes. Também descreve como converter um modelo suportado em um compartimento de disco. | link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Atualize ONTAP"^] 
 
 
-| Contém instruções para baixar e atualizar o ONTAP. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"^] 
+| Contém instruções para baixar e atualizar o ONTAP. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-in-chassis/index.html["Use os comandos "System controller replace" para atualizar os modelos de controladora no mesmo chassi"^] 
 
 
 | Descreve os procedimentos de realocação agregada necessários para atualizar um sistema sem interrupções, mantendo os discos e o chassi do sistema antigo. | link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["Use os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9.8 ou posterior"^] 

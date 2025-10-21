@@ -1,0 +1,120 @@
+---
+section: upgrade-arl-auto-in-chassis
+title: Use os comandos "System controller replace" para atualizar os modelos de controladora
+  no mesmo chassi
+entries:
+- title: Saiba mais sobre este procedimento ARL
+  url: "/upgrade-arl-auto-in-chassis/index.html"
+- title: Decida se deve usar este procedimento ARL
+  url: "/upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide.html"
+- title: Ferramentas e documentação necessárias
+  url: "/upgrade-arl-auto-in-chassis/required-tools-and-documentation.html"
+- title: Diretrizes para atualização de controladores
+  url: "/upgrade-arl-auto-in-chassis/guidelines-for-upgrading-controllers-with-arl.html"
+- title: Saiba mais sobre a sequência de atualização do ARL
+  url: "/upgrade-arl-auto-in-chassis/overview-of-the-arl-upgrade.html"
+- title: Fase 1. Prepare-se para a atualização
+  pdf-filename: Fase 1. Preparar a atualização (atualizar para AFF A900 ou FAS9500)
+  entries:
+  - title: Verifique o hardware de atualização
+    url: "/upgrade-arl-auto-in-chassis/verify-upgrade-hardware.html"
+  - title: Prepare os nós para atualização
+    url: "/upgrade-arl-auto-in-chassis/prepare-nodes-for-upgrade.html"
+  - title: Gerencie a criptografia de armazenamento usando o Gerenciador de chaves
+      integrado
+    url: "/upgrade-arl-auto-in-chassis/manage-storage-encryption-using-okm.html"
+- title: Fase 2. Transferir recursos e aposentar-se node1
+  entries:
+  - title: Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1
+      para o node2
+    url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html"
+  - title: Realocar agregados com falha ou vetado
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
+  - title: Aposentar-se node1
+    url: "/upgrade-arl-auto-in-chassis/retire-node1.html"
+  - title: Substitua os node1 módulos do sistema
+    entries:
+    - title: Substitua o AFF A250 ou o AFF C250
+      url: "/upgrade-arl-auto-in-chassis/replace-node1-affa250-affc250.html"
+    - title: Substitua o AFF A800 ou o AFF C800
+      url: "/upgrade-arl-auto-in-chassis/replace-node1-affa800.html"
+    - title: Substitua AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+      url: "/upgrade-arl-auto-in-chassis/replace-node1-affa220-affa200-affc190-fas2620-fas2720.html"
+    - title: Substitua o AFF A700 ou o FAS9000
+      url: "/upgrade-arl-auto-in-chassis/replace-node1-aff700-fas900.html"
+  - title: Netboot node1
+    url: "/upgrade-arl-auto-in-chassis/netboot-node1.html"
+- title: Fase 3. Arranque node1 com os módulos do sistema de substituição
+  entries:
+  - title: Cabo node1 para storage compartilhado de cluster-HA
+    url: "/upgrade-arl-auto-in-chassis/cable-node1-for-shared-cluster-HA-storage.html"
+  - title: Arranque node1 com os módulos do sistema de substituição
+    url: "/upgrade-arl-auto-in-chassis/boot-node1-with-a900-controller-and-nvs.html"
+  - title: Verifique a instalação do node1
+    url: "/upgrade-arl-auto-in-chassis/verify-node1-installation.html"
+  - title: Restaure a configuração do gerenciador de chaves no node1 atualizado
+    url: "/upgrade-arl-auto-in-chassis/restore-key-manager-config-upgraded-node1.html"
+  - title: Migre node1 agregados não-raiz e LIFs de dados nas de node2 para o node1
+      atualizado
+    url: "/upgrade-arl-auto-in-chassis/move-non-root-aggr-nas-lifs-node1-from-node2-to-upgraded-node1.html"
+- title: Fase 4. Transferir recursos e aposentar-se node2
+  entries:
+  - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node1
+    url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html"
+  - title: Aposentar-se node2
+    url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
+- title: Fase 5. Instale os módulos do sistema de substituição no node2
+  entries:
+  - title: Instale os módulos do sistema de substituição no node2
+    entries:
+    - title: Instale o AFF A30, AFF A50, AFF C30 ou AFF C60
+      url: "/upgrade-arl-auto-in-chassis/install-aff-a30-a50-c30-c50-node2.html"
+    - title: Instale o AFF A90 ou o AFF A70
+      url: "/upgrade-arl-auto-in-chassis/install-affa90-affa70-on-node2.html"
+    - title: Instale o ASA A150, o AFF A150 ou o FAS2820
+      url: "/upgrade-arl-auto-in-chassis/install-asa150-affa150-fas2820-on-node2.html"
+    - title: Instale o ASA A900, o AFF A900 ou o FAS9500
+      url: "/upgrade-arl-auto-in-chassis/install-asa900-affa900-fas9500-on-node2.html"
+  - title: Netboot node2
+    url: "/upgrade-arl-auto-in-chassis/netboot-node2.html"
+- title: Fase 6. Arranque node2 com os módulos do sistema de substituição
+  entries:
+  - title: Cabo node2 para storage compartilhado de cluster-HA
+    url: "/upgrade-arl-auto-in-chassis/cable-node2-for-shared-cluster-HA-storage.html"
+  - title: Arranque node2 com os módulos do sistema de substituição
+    url: "/upgrade-arl-auto-in-chassis/boot-node2-with-a900-controller-and-nvs.html"
+  - title: Verifique a instalação do node2
+    url: "/upgrade-arl-auto-in-chassis/verify-node2-installation.html"
+  - title: Restaure a configuração do gerenciador de chaves no node2
+    url: "/upgrade-arl-auto-in-chassis/restore-key-manager-config-node2.html"
+  - title: Verifique a configuração RCF nos switches do cluster
+    url: "/upgrade-arl-auto-in-chassis/verify-rcf-configuration.html"
+  - title: Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2
+    url: "/upgrade-arl-auto-in-chassis/move-non-root-aggr-and-nas-data-lifs-back-to-node2.html"
+- title: Fase 7. Conclua a atualização
+  entries:
+  - title: Gerenciar a autenticação usando servidores KMIP
+    url: "/upgrade-arl-auto-in-chassis/manage-authentication-using-kmip-servers.html"
+  - title: Confirme se os novos controladores estão configurados corretamente
+    url: "/upgrade-arl-auto-in-chassis/ensure-new-controllers-are-set-up-correctly.html"
+  - title: Configure a criptografia de armazenamento no novo módulo do controlador
+    url: "/upgrade-arl-auto-in-chassis/set-up-storage-encryption-new-module.html"
+  - title: Configure o volume NetApp ou a encriptação agregada no novo módulo do controlador
+    url: "/upgrade-arl-auto-in-chassis/set-up-netapp-volum-encryption-new-module.html"
+  - title: Desativar o sistema antigo
+    url: "/upgrade-arl-auto-in-chassis/decommission-old-system.html"
+  - title: Retomar as operações do SnapMirror
+    url: "/upgrade-arl-auto-in-chassis/resume-snapmirror-operations.html"
+- title: Solucionar problemas
+  pdf-filename: Solucionar problemas (atualizar para AFF A900 ou FAS9500)
+  entries:
+  - title: Falhas de realocação de agregados
+    url: "/upgrade-arl-auto-in-chassis/aggregate-relocation-failures.html"
+  - title: Reinicializa, pânicos ou ciclos de energia
+    url: "/upgrade-arl-auto-in-chassis/reboots-panics-or-power-cycles.html"
+  - title: Problemas que podem surgir em várias etapas do procedimento
+    url: "/upgrade-arl-auto-in-chassis/issues-in-multiple-stages-of-procedure.html"
+  - title: Falha de migração de LIF
+    url: "/upgrade-arl-auto-in-chassis/lif-migration-failure.html"
+- title: Referências
+  url: "/upgrade-arl-auto-in-chassis/other-references.html"

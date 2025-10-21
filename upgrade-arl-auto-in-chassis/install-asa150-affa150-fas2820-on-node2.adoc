@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/install-asa150-affa150-fas2820-on-node2.html 
+keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
+summary: Instale os módulos de sistema de substituição no node2 durante uma atualização ARL dos modelos de controladores no mesmo chassi. 
+---
+= Instale o módulo do controlador ASA A150, AFF A150 ou FAS2820 no node2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Instale o módulo de controlador ASA A150, AFF A150 ou FAS2820 que recebeu para a atualização em node2. O Node2 é o controlador B localizado no lado direito do chassi quando se olha para os controladores da parte traseira do sistema.
+
+.Antes de começar
+* Se você ainda não está aterrado, aterre-se corretamente.
+* Desconete todos os cabos, incluindo console, gerenciamento, armazenamento SAS e cabos de rede de dados, do controlador que está sendo removido.
+
+
+.Passos
+. Alinhe a extremidade do módulo do controlador com o compartimento B no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
++
+
+TIP: O compartimento B está localizado no lado direito do chassi.
+
++
+
+WARNING: Não introduza completamente o módulo do controlador no chassis até ser instruído a fazê-lo mais tarde no procedimento.
+
+. Cable as portas de gerenciamento e console para o módulo do controlador node2.
++
+
+NOTE: Como o chassi já está LIGADO, o node2 inicia a inicialização assim que estiver totalmente encaixado. Para evitar que o node2 inicialize, conecte os cabos do console e de gerenciamento antes de inserir completamente o módulo do controlador.
+
+. Empurre firmemente o módulo do controlador para dentro do chassi até que ele atenda ao plano médio e esteja totalmente assentado.
++
+O trinco de bloqueio sobe quando o módulo do controlador está totalmente assente.
+
++
+
+NOTE: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para o chassis.
+
+. Conecte o console serial assim que o módulo estiver encaixado e esteja pronto para interromper o AUTOBOOT do node2.
+. Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+

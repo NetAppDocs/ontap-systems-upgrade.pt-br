@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/resume-snapmirror-operations.html 
+keywords: resuming, snapmirror, operations, transfer, relationship, updates, schedule, complete 
+summary: Retome as transferências e relacionamentos do SnapMirror ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Retomar as operações do SnapMirror
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode retomar as transferências SnapMirror que foram silenciadas antes da atualização e retomar as relações SnapMirror. As atualizações estão programadas após a conclusão da atualização.
+
+.Passos
+. Verifique o status do SnapMirror no destino:
++
+`snapmirror show`
+
+. Retomar a relação SnapMirror:
++
+`snapmirror resume -destination–vserver _vserver_name_`
+
+
