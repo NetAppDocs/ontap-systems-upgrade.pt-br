@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-affa900/relocate-failed-or-vetoed-aggr-node1.html 
+permalink: upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html 
 keywords: relocating, failed, vetoed, aggregates, relocation, operation 
 summary: 'Realoque manualmente agregados com falha ou vetados para o nó 1 ao atualizar controladores executando ONTAP 9.15.1 ou posterior usando `system controller replace` comandos.' 
 ---

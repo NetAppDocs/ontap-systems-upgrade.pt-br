@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-in-chassis/ensure-new-controllers-are-set-up-correctly.html 
+permalink: upgrade-arl-auto-in-chassis/confirm-new-controllers-are-set-up-correctly.html 
 keywords: ensure, controllers, new, setup, ha, pair, node1, node2, lif, cluster, high, availability 
 summary: Verifique se o par de HA está ativado, verifique o acesso ao storage node1 e node2 e o LIF e confirme a propriedade agregada após a atualização dos modelos de controladora no mesmo chassi. 
 ---

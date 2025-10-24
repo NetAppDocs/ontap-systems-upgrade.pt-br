@@ -61,6 +61,8 @@ entries:
   entries:
   - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node1
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html"
+  - title: Realocar agregados com falha ou vetado
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Aposentar-se node2
     url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
 - title: Fase 5. Instale os módulos do sistema de substituição no node2
@@ -96,7 +98,7 @@ entries:
   - title: Gerenciar a autenticação usando servidores KMIP
     url: "/upgrade-arl-auto-in-chassis/manage-authentication-using-kmip-servers.html"
   - title: Confirme se os novos controladores estão configurados corretamente
-    url: "/upgrade-arl-auto-in-chassis/ensure-new-controllers-are-set-up-correctly.html"
+    url: "/upgrade-arl-auto-in-chassis/confirm-new-controllers-are-set-up-correctly.html"
   - title: Configure a criptografia de armazenamento no novo módulo do controlador
     url: "/upgrade-arl-auto-in-chassis/set-up-storage-encryption-new-module.html"
   - title: Configure o volume NetApp ou a encriptação agregada no novo módulo do controlador
