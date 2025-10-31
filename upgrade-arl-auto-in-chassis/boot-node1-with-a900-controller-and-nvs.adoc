@@ -14,7 +14,7 @@ summary: Inicialize node1 com os módulos de controlador de substituição ao us
 
 
 [role="lead"]
-node1 com os módulos de substituição está agora pronto para arrancar. Os módulos de substituição suportados estão listados no link:index.html#supported-systems,["matriz de sistemas suportados"].
+O Node1 com os módulos de substituição já está pronto para inicializar.  Os módulos de substituição suportados estão listados emlink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matriz de sistemas suportados"] .
 
 [NOTE]
 ====

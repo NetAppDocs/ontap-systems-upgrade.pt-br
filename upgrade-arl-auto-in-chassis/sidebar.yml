@@ -29,7 +29,7 @@ entries:
       para o node2
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html"
   - title: Realocar agregados com falha ou vetado
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
   - title: Aposentar-se node1
     url: "/upgrade-arl-auto-in-chassis/retire-node1.html"
   - title: Substitua os node1 módulos do sistema
@@ -62,7 +62,7 @@ entries:
   - title: Realocar agregados não-raiz e LIFs de dados nas de node2 para node1
     url: "/upgrade-arl-auto-in-chassis/relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html"
   - title: Realocar agregados com falha ou vetado
-    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node2.html"
+    url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
   - title: Aposentar-se node2
     url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
 - title: Fase 5. Instale os módulos do sistema de substituição no node2

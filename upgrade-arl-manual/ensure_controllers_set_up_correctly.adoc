@@ -129,7 +129,7 @@ Digite `y` para remover todos os pacotes.
 `system license show`
 
 +
-Você pode comparar a saída com a saída que você capturou em link:prepare_nodes_for_upgrade.html#man_prepare_nodes_step30["Passo 30"]_prepare os nós para upgrade_.
+Você pode comparar a saída com a saída que você capturou emlink:prepare_nodes_for_upgrade.html#man_prepare_nodes_step29["Passo 29"] de _Prepare os nós para atualização_.
 
 . Configure o SPS executando o seguinte comando em ambos os nós:
 +

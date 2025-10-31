@@ -4,10 +4,6 @@
 
 Ao executar os procedimentos neste conteúdo, você pode precisar consultar o conteúdo de referência ou ir para sites de referência.
 
-* <<Conteúdo de referência>>
-* <<Locais de referência>>
-
-
 
 
 == Conteúdo de referência

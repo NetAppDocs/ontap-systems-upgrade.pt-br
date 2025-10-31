@@ -72,6 +72,6 @@ Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os
 
 Consulte a tabela que descreve as diferentes fases do procedimento na seção Visão geral da atualização do ARL. As informações sobre as falhas que podem ocorrer são listadas pela fase do procedimento.
 
-Caso ocorra algum problema durante a atualização dos controladores, consulte o link:aggregate_relocation_failures.html["Solucionar problemas"] seção. As informações sobre falhas que podem ocorrer são listadas por fase do procedimento no link:arl_upgrade_workflow.html["Sequência de atualização do ARL"] .
+Se ocorrerem problemas durante a atualização dos controladores, consulte olink:aggregate_relocation_failures.html["Solucionar problemas"] seção.  As informações sobre as falhas que podem ocorrer são listadas por fase do procedimento nolink:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] .
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.

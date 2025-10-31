@@ -34,7 +34,7 @@ WARNING: Não introduza completamente o módulo do controlador no chassis até s
 . Cable as portas de gerenciamento e console para o módulo do controlador node2.
 +
 
-NOTE: Como o chassi já está LIGADO, o node2 inicia a inicialização assim que estiver totalmente encaixado. Para evitar que o node2 inicialize, conecte os cabos do console e de gerenciamento antes de inserir completamente o módulo do controlador.
+NOTE: Como o chassi já está ligado, o nó 2 inicia a inicialização assim que estiver totalmente encaixado.  Para evitar que o nó 2 seja inicializado, conecte os cabos de console e de gerenciamento antes de inserir completamente o módulo controlador.
 
 . Empurre firmemente o módulo do controlador para dentro do chassi até que ele atenda ao plano médio e esteja totalmente assentado.
 +

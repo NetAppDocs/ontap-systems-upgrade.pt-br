@@ -17,7 +17,7 @@ summary: Mova os agregados não-raiz de node1 para node2 e verifique a realocaç
 Antes de substituir o node1 por node3, é necessário mover os agregados que não são raiz de node1 para node2 usando o comando de realocação de agregados de storage e, em seguida, verificar a realocação.
 
 .Passos
-. [[step1]]reposicione os agregados não-raiz executando as seguintes subetapas:
+. [[relocate-step1]]Realoque os agregados não raiz concluindo as seguintes subetapas:
 +
 .. Defina o nível de privilégio como avançado:
 +

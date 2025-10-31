@@ -59,7 +59,10 @@ Se os agregados ficaram offline ou se tornaram estrangeiros no node3, coloque-os
 Se algum volume estiver offline no node3, coloque-o online usando o seguinte comando no node3, uma vez para cada volume:
 
 +
-`volume online -vserver <vserver_name> -volume <volume_name>` < O  `vserver_name` para usar com este comando é encontrado na saída do anterior  `volume show` comando.
+`volume online -vserver <vserver_name> -volume <volume_name>`
+
++
+O `vserver_name` a usar com este comando é encontrado na saída do comando anterior `volume show`.
 
 . Verifique se os LIFs foram movidos para as portas corretas e têm um status de `up`. Se algum LIFs estiver inativo, defina o status administrativo dos LIFs para `up` digitando o seguinte comando, uma vez para cada LIF:
 +

@@ -80,7 +80,12 @@ Por exemplo: `ucadmin modify -m fc -t initator 2b`
 . Selecione a opção `5` no menu de arranque para o modo de manutenção.
 
 
-. [[step8]]Pule esta seção e vá paralink:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"] se o node4 não tiver uma placa UTA/UTA2 ou portas UTA/UTA2 integradas.
+. [[step8]]Faça uma das seguintes ações:
++
+** Vá para <<Verifique e configure as portas UTA/UTA2 no node4>> se o node4 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
+** Se o node4 não tiver uma placa UTA/UTA2 ou portas UTA/UTA2 integradas, pule _Verificar e configurar portas UTA/UTA2 no node4_ e vá paralink:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"] .
+
+
 
 
 

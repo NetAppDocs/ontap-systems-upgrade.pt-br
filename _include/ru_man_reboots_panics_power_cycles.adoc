@@ -34,7 +34,7 @@ Alguns ou todos os agregados foram realocados de node1 para node2, e a HA ainda 
 A propriedade de agregados que foram realocados parece a mesma que a propriedade de agregados não-raiz que foram assumidos porque o proprietário do lar não mudou. Quando o node1 entra no `waiting for giveback state`, o node2 devolve todos os node1 agregados não-raiz.
 
 .Passos
-. Complete link:relocate_non_root_aggr_node1_node2.html#step1["Passo 1"]na seção _relocate agregados não-raiz de node1 para node2_ novamente.
+. Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Passo 1"] na seção _Relocar agregados não raiz do nó 1 para o nó 2_ novamente.
 . Continue com o procedimento de atualização do par de nós.
 
 
@@ -62,7 +62,7 @@ A node1 mudou parte ou todos os seus agregados para node2. O HA está ativado.
 A node1 assumirá todos os agregados da node2, bem como qualquer dos seus agregados que tenha transferido para node2. Quando node2 entra no `Waiting for Giveback` estado, node1 devolve todos os agregados do node2.
 
 .Passos
-. Complete link:relocate_non_root_aggr_node1_node2.html#step1["Passo 1"]na seção _relocate agregados não-raiz de node1 para node2_ novamente.
+. Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Passo 1"] na seção _Relocar agregados não raiz do nó 1 para o nó 2_ novamente.
 . Continue com o procedimento de atualização do par de nós.
 
 
@@ -111,7 +111,7 @@ Haverá uma interrupção do cliente para agregados que não foram realocados.
 
 .Passos
 . Abra node2.
-. Relocate os agregados restantes completando-link:relocate_non_root_aggr_node2_node3.html#step3["Passo 3"]os link:relocate_non_root_aggr_node2_node3.html#step1["Passo 1"]na seção _relocate agregados não-raiz de node2 para node3_.
+. Realoque os agregados restantes completando o processo.link:relocate_non_root_aggr_node2_node3.html#verify-partner-sys-id["Passo 1"] atravéslink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Passo 5"] na seção _Relocar agregados não raiz do nó 2 para o nó 3_.
 . Continue com o procedimento de atualização do par de nós.
 
 
@@ -137,7 +137,7 @@ O Node2 continua a servir os agregados restantes, mas os agregados que já foram
 
 .Passos
 . Abra node3.
-. Complete link:relocate_non_root_aggr_node2_node3.html#step3["Passo 3"] novamente na seção _relocate agregados não-root de node2 para node3_.
+. Completolink:relocate_non_root_aggr_node2_node3.html#relocate-step5["Passo 5"] novamente na seção _Relocar agregados não raiz do nó 2 para o nó 3_.
 . Continue com o procedimento de atualização do par de nós.
 
 
@@ -208,6 +208,6 @@ Há uma interrupção para agregados não-raiz que já foram relocados até que 
 
 .Passos
 . Abra node4.
-. Relocate os agregados restantes que pertenciam a node2, completando novamente link:relocate_node2_non_root_aggr_node3_node4.html#Step1["Passo 1"] link:relocate_node2_non_root_aggr_node3_node4.html#step3["Passo 3"]em _relocate os agregados não-raiz node2 de node3 para node4_.
+. Realoque os agregados restantes que pertenciam ao nó 2, concluindo novamente o processo.link:relocate_node2_non_root_aggr_node3_node4.html#man_relocate_3_4_Step1["Passo 1"] atravéslink:relocate_node2_non_root_aggr_node3_node4.html#step3["Passo 3"] em _Relocar agregados não-raiz do nó 2 do nó 3 para o nó 4_.
 . Continue com o procedimento de atualização do par de nós.
 

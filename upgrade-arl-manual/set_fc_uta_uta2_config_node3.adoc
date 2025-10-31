@@ -22,9 +22,7 @@ Você pode precisar completar<<Configurar portas FC no node3>> ou<<Verifique e c
 
 NOTE: Os materiais de marketing da NetApp podem usar o termo "UTA2" para se referir a adaptadores e portas CNA. No entanto, a CLI usa o termo "CNA".
 
-* Se o node3 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2 e você estiver atualizando um sistema com discos de armazenamento, você pode pular paralink:map_ports_node1_node3.html["Portas de mapa de node1 a node3"] .
-* No entanto, se você tiver um sistema V-Series ou um sistema com software de virtualização FlexArray com storage arrays, e o node3 não tiver portas FC integradas, portas UTA/UTA integradas ou uma placa UTA/UTA2, retorne a _Instalar e inicialize node3_ e continue em link:install_boot_node3.html#man_install3_step22["Passo 22"].
-
+Se o node3 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma placa UTA/UTA2 e você estiver atualizando um sistema com discos de armazenamento, você pode pular paralink:map_ports_node1_node3.html["Portas de mapa de node1 a node3"] .
 
 
 

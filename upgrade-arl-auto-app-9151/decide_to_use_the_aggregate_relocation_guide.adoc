@@ -81,6 +81,9 @@ A tabela a seguir mostra as combinações de atualização de controlador suport
 | AFF A220, AFF A150 | AFF A20 2 | 9.16.1 1 
 
 
+| AFF C400 | AFF C60, AFF C80 | 9.16.1 
+
+
 | FAS8200, FAS8300, FAS9000 | FAS70, FAS90, FAS50 | 9.15.1P3 para FAS70, FAS90 9.16.1P2 para FAS50 
 
 

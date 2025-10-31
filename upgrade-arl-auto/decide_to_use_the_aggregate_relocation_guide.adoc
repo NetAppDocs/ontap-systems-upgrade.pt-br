@@ -62,7 +62,7 @@ NOTE: Se a combinação do modelo de atualização da controladora não estiver 
 
 1 a atualização automática ARL para o sistema AFF A700 é suportada a partir do ONTAP 9.7P2.
 
-2 se você estiver atualizando para um AFF A800 ou um sistema compatível com discos internos e externos, siga instruções específicas para o agregado raiz em discos NVMe internos. link:set_fc_or_uta_uta2_config_on_node3.html#step14["Verifique e configure as portas UTA/UTA2 no node3, passo 14"]Consulte e link:set_fc_or_uta_uta2_config_node4.html#step14["Verifique e configure as portas UTA/UTA2 no node4, passo 14"].
+^2^Se você estiver atualizando para um AFF A800 ou um sistema que suporte discos internos e externos, você deve seguir as instruções específicas para o agregado raiz em discos NVMe internos.  Consultelink:reassign-node1-disks-to-node3.html#auto_check3_step9["Reatribuir discos node1 a node3, passo 9"] elink:reassign-node2-disks-to-node4.html#auto_check_4_step9["Reatribuir discos node2 a node4, passo 9"] .
 
 3 a atualização automática ARL de um sistema AFF A300 para um sistema AFF A800 é suportada a partir do ONTAP 9.7P5.
 

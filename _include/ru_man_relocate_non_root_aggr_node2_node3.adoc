@@ -9,7 +9,7 @@ CAUTION: Durante este procedimento, não relocate agregados de node3 para node2.
 
 [[verify-partner-sys-id]]
 .Passos
-. Verifique se a ID do sistema do parceiro está definida corretamente em node3 :
+. Verifique se o ID do sistema parceiro está configurado corretamente no nó 3:
 +
 .. Introduza o nível de privilégio avançado:
 +
@@ -78,7 +78,7 @@ O node3 "Partner-sysid" é a ID do sistema de node2, que você pode encontrar na
 +
 Os campos "último assunto enviado:" e "último tempo enviado:"" contêm o título da mensagem da última mensagem que foi enviada e a hora em que a mensagem foi enviada.
 
-. Realocar os agregados não-raiz:
+. [[relocate-step5]]Relocar os agregados não raiz:
 +
 .. Defina o nível de privilégio como avançado:
 +

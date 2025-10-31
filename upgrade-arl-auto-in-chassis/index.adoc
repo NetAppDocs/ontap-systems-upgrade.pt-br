@@ -72,7 +72,7 @@ Se você não puder vincular portas de cluster e0a ou e0b no nó existente às p
 
 
 * Os sistemas ASA A900, AFF A900 e FAS9500 suportam apenas energia de alta linha (200V a 240V). Se o seu sistema AFF A700 ou FAS9000 estiver em execução com alimentação de linha baixa (100V a 120V W), deverá converter a alimentação de entrada AFF A700 ou FAS9000 antes de utilizar este procedimento.
-* Se estiver a atualizar a partir de um sistema existente com tempo de inatividade incluído <<supported-systems-in-chassis,matriz de sistemas suportados>>no , pode atualizar o hardware da controladora movendo o armazenamento ou contactar o suporte técnico. Consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+* Se você estiver atualizando de um sistema existente com tempo de inatividade incluído nolink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matriz de sistemas suportados"] Você pode atualizar o hardware do controlador movendo o armazenamento ou entrando em contato com o suporte técnico.  Consultelink:other_references.html["Referências"] para criar um link para _Atualizar movendo volumes ou armazenamento_.
 
 
 

@@ -185,7 +185,7 @@ NOTE: Tem de ter obtido a frase-passe e os dados de cópia de segurança na link
 .. Depois de o sistema reiniciar para o menu de inicialização especial, execute a opção *(1) normal Boot*
 +
 
-NOTE: Você pode encontrar um erro nesta fase. Se ocorrer um erro, repita as subetapas em <<auto_check_4_step22,Passo 22>> até que o sistema inicialize normalmente.
+NOTE: Você poderá encontrar um erro nesta etapa.  Se ocorrer um erro, repita as subetapas em<<auto_check_4_step8,Passo 8>> até que o sistema inicialize normalmente.
 
 
 
