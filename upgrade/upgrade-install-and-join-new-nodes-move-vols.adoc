@@ -38,3 +38,6 @@ http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30
 
 |===
 
+
+.O que se segue?
+link:upgrade_move_linux_iscsi_hosts_to_new_nodes.html["Mova hosts iSCSI Linux para novos nós"]

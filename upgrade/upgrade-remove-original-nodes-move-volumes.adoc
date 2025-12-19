@@ -1,0 +1,143 @@
+---
+permalink: upgrade/upgrade-remove-original-nodes.html 
+sidebar: sidebar 
+keywords: volume, move, node, remove, original, cluster, configuration, disk, initialize, remove the original nodes from the cluster 
+summary: Após os volumes serem movidos para os novos nós, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados. 
+---
+= Remova os nós originais do cluster.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após mover os volumes dos nós originais para os novos nós e mover ou excluir as LIFs de dados, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados.
+
+.Passos
+. [[disable-ha]]Desativar a configuração de alta disponibilidade (HA) nos nós originais:
++
+`storage failover modify -node <original_node_name> -enabled false`
+
+. Aceder ao nível de privilégio avançado:
++
+`set -privilege advanced`
+
+. Identifique o nó que tem epsilon:
++
+`cluster show`
+
++
+No exemplo a seguir, "node0" atualmente contém epsilon:
+
++
+[listing]
+----
+cluster::*>
+Node                 Health  Eligibility  Epsilon
+-------------------- ------- ------------ ------------
+node0                true    true         true
+node1                true    true         false
+node2                true    true         false
+node3                true    true         false
+----
+. [[epsilon-true]]Se um dos nós originais contiver epsilon, mova epsilon para um nó que você não esteja removendo do cluster:
++
+.. Remova o épsilon do nó original:
++
+`cluster modify -node <original_node_name> -epsilon false`
+
+.. Atribua epsilon a um nó diferente:
++
+`cluster modify -node <new_node_name> -epsilon true`
+
+
+
+. Identifique o nó mestre atual:
++
+`cluster ring show`
+
++
+O nó mestre é o nó que hospeda processos como... `mgmt`, `vldb`, `vifmgr`, `bcomd`, e `crs`.
+
+. Se o nó que você está removendo for o nó mestre atual, habilite um dos nós restantes no cluster para ser eleito como nó mestre:
++
+.. Torne o nó mestre atual inelegível para participar do cluster:
++
+`cluster modify -node <original_node_name> -eligibility false`
+
++
+O nó é marcado como não saudável até que a elegibilidade seja restaurada. Quando o nó mestre se torna inelegível, um dos nós restantes é eleito pelo quórum do cluster como o novo mestre.
+
++
+[NOTE]
+====
+Se você estiver executando esta etapa no primeiro nó de um par HA, deverá marcar apenas esse nó como inelegível. Não altere o status do parceiro HA.
+
+Se o nó parceiro for selecionado como o novo mestre, você precisa verificar se ele possui o valor epsilon. Se o nó parceiro possuir o valor epsilon, você precisará mover o valor epsilon para um nó diferente que ainda esteja no cluster antes de torná-lo inelegível. Você faz isso ao repetir esses passos para remover o nó parceiro.
+
+====
+.. Torne o nó mestre anterior elegível para participar do cluster novamente:
++
+`cluster modify -node <node_name> -eligibility true`
+
+
+
+. Faça login na LIF de gerenciamento de nó remoto ou na LIF de gerenciamento de cluster em um nó que ainda esteja no cluster e remova cada nó original do cluster (nível de privilégio avançado):
++
+Com o nome do nó:
+
++
+[source, cli]
+----
+cluster remove-node -node <original_node_name>
+----
++
+Com o endereço IP do nó:
+
++
+[source, cli]
+----
+cluster remove-node -cluster_ip <original_node_ip>
+----
++
+Se você tiver um cluster com versões mistas e estiver removendo o último nó com versão inferior, use o `-skip-last-low-version-node-check` parâmetro com esses comandos.
+
++
+O sistema informa o seguinte:
+
++
+** Você também deve remover o parceiro de failover do nó do cluster.
+** Após o nó ser removido e antes que ele possa se juntar novamente a um cluster, você deve usar a opção de menu de inicialização *(4) Limpar configuração e inicializar todos os discos* ou a opção *(9) Configurar particionamento avançado de unidade* para apagar a configuração do nó e inicializar todos os discos.
++
+Uma mensagem de falha é gerada se houver condições que você precise resolver antes de remover o nó. Por exemplo, a mensagem pode indicar que o nó possui recursos compartilhados que você deve remover ou que o nó está em uma configuração de alta disponibilidade (HA) de cluster ou em uma configuração de failover de armazenamento que você deve desativar.
+
++
+Se o nó for o mestre de quorum, o cluster perde brevemente o quorum e depois retorna ao estado de quorum. Essa perda de quórum é temporária e não afeta nenhuma operação de dados.
+
+
+
+. Se uma mensagem de falha indicar condições de erro, corrija essas condições e execute o programa novamente. `cluster remove-node` ou `cluster unjoin` comando.
++
+Após um nó ser removido com sucesso do cluster, ele reinicia automaticamente.
+
+. Se você estiver reutilizando o nó, apague a configuração do nó e inicialize todos os discos:
++
+.. Durante o processo de inicialização, pressione Ctrl+C para exibir o menu de inicialização quando solicitado.
+.. Selecione a opção do menu de inicialização *(4) Limpar configuração e inicializar todos os discos*.
+
+
+. [[return-admin]]Retorne ao nível de privilégio de administrador em um dos novos nós do cluster:
++
+[source, cli]
+----
+set -privilege admin
+----
+. Repita os passos <<disable-ha,1>> para <<return-admin,10>> Para remover o parceiro de failover do cluster.
+. Se o cluster tiver apenas dois nós restantes, configure a alta disponibilidade para o cluster de dois nós:
++
+`cluster ha modify -configured true`
+
+
+
+.O que se segue?
+link:upgrade-complete-move-volumes.html["Concluir a atualização dos volumes de movimentação"]

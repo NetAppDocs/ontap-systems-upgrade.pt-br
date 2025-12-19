@@ -17,7 +17,7 @@ Atualizar o hardware da controladora movendo volumes é um procedimento sem inte
 * link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]
 
 
-Para atualizar movendo volumes, você prepara os nós originais e une os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster.
+Para atualizar movendo volumes, você prepara os nós originais e adiciona os novos nós ao cluster. Você move os volumes para os novos nós, configura as LIFs e remove os nós originais do cluster.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:upgrade-prepare-when-moving-volumes.html["Prepare-se para a atualização ao mover volumes"]
 [role="quick-margin-para"]
@@ -43,9 +43,9 @@ Depois de mover os volumes dos nós originais, você migra os LIFs de dados que 
 [role="quick-margin-para"]
 Dependendo do conteúdo do cluster e do ambiente de cluster, você move, exclui ou cria SAN LIFs ou cria novamente SAN LIFs excluídas.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]link:upgrade-unjoin-original-nodes-move-volumes.html["Desassociar os nós originais do cluster"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]link:upgrade-remove-original-nodes.html["Remova os nós originais do cluster."]
 [role="quick-margin-para"]
-Depois que os volumes tiverem sido movidos para os novos nós, você desunirá os nós originais do cluster. Quando você desassocia um nó, a configuração do nó é apagada e todos os discos são inicializados.
+Após os volumes serem movidos para os novos nós, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Oito"]link:upgrade-complete-move-volumes.html["Conclua a atualização"]
 [role="quick-margin-para"]

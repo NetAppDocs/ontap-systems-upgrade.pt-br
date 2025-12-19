@@ -38,7 +38,7 @@ Atualize utilizando um dos seguintes métodos:
 
 * link:upgrade/upgrade-decide-to-use-this-guide.html["Mover volumes"]
 +
-Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para os novos nós e a remoção dos nós que você deseja retirar do cluster.  Se você estiver atualizando um cluster sem switch de dois nós, converta-o em um cluster com switch usando um par de switches de cluster antes de adicionar novos nós.
+Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para os novos nós e a remoção dos nós que você deseja retirar do cluster. Se você estiver atualizando um cluster sem switch de dois nós, converta-o em um cluster com switch usando um par de switches de cluster antes de adicionar novos nós.
 
 * link:upgrade-arl/index.html["Utilize a realocação agregada."]
 +

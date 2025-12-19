@@ -112,3 +112,6 @@ Forçar a operação de movimentação de volume a terminar pode interromper o a
 `volume show -vserver _svm_name_`
 
 
+
+.O que se segue?
+link:upgrade-move-lifs-to-new-nodes.html["Mova LIFs de dados que não são SAN e LIFs de gerenciamento de cluster para os novos nós"]

@@ -1740,7 +1740,6 @@
   <block id="6a3104dd603be761e5020da6f96a9944" category="inline-link-macro">Atualize o AFF A250 para o AFF A400 convertendo para um compartimento de unidade</block>
   <block id="5b3de670b2de55fec257c6f89ab421bc" category="summary">Se você estiver atualizando movendo volumes, prepare os nós originais e junte os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster. A atualização ao mover volumes é um procedimento sem interrupções.</block>
   <block id="ffaf71c89815c9497697e87f8d77a27d" category="paragraph">Atualizar o hardware da controladora movendo volumes é um procedimento sem interrupções. Antes de iniciar a atualização, reveja os cenários gerais de atualização e considerações de atualização:</block>
-  <block id="cf41c84e5298fdad396a8a0dd7eaf0f3" category="paragraph">Para atualizar movendo volumes, você prepara os nós originais e une os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster.</block>
   <block id="65ef2ef8754850d3945f71f106c239bf" category="inline-link-macro">Prepare-se para a atualização ao mover volumes</block>
   <block id="f63c237677c2c2f5bdf2eaff278a8f15" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="b4da832a26951a011118018d4f3f9a8e" category="inline-link-macro-rx"></block></block>
   <block id="dda3bdc300127980e1b61912d179329b" category="paragraph">Você executa algumas etapas de preparação antes de atualizar o hardware do controlador movendo volumes.</block>
@@ -1759,9 +1758,6 @@
   <block id="8093d580d9cc0468991044c64c97b174" category="inline-link-macro">Mover, excluir ou criar SAN LIFS</block>
   <block id="66686106038dcdf0e7037a2679e6be2b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="a931a68d44bca92701e3cc2575cb8e58" category="inline-link-macro-rx"></block></block>
   <block id="2431d8b533362d8472db79a8849836be" category="paragraph">Dependendo do conteúdo do cluster e do ambiente de cluster, você move, exclui ou cria SAN LIFs ou cria novamente SAN LIFs excluídas.</block>
-  <block id="cf9dafa4aad7081e3241e5bc4acb350f" category="inline-link-macro">Desassociar os nós originais do cluster</block>
-  <block id="3c49f3e0113334d7428d508b5d1dba98" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="a6976dfe70e597796c77b019f33f6b95" category="inline-link-macro-rx"></block></block>
-  <block id="f61d9690213fcb44fc551adab505eb85" category="paragraph">Depois que os volumes tiverem sido movidos para os novos nós, você desunirá os nós originais do cluster. Quando você desassocia um nó, a configuração do nó é apagada e todos os discos são inicializados.</block>
   <block id="266c2a634fcfab43713325017c0d1fc1" category="paragraph-title"><block ref="430057c670c01688e904ed2ba129a0b5" category="inline-image-macro-rx" type="image"></block><block ref="25f018c3ca0d5083cf0a96e5a5daf8b3" category="inline-link-macro-rx"></block></block>
   <block id="55388932978c50267bc31e99b8d1d4d9" category="paragraph">Para concluir o procedimento de atualização movendo volumes, configure o processador de serviço (SP), instale novas licenças e configure o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.</block>
   <block id="3f1179e7186b307a8709f115c39b6447" category="summary">Antes de devolver o nó de substituição ao serviço, você deve verificar se os LIFs estão em suas portas iniciais e Registrar o número de série do nó de substituição se o AutoSupport estiver ativado e redefinir a giveback automática.</block>
@@ -1925,7 +1921,6 @@
   <block id="56089842bd614396cfba7cdf9bb6601f" category="list-text">Você planeja converter um nó de um modelo compatível em um compartimento de disco e anexá-lo aos novos nós.</block>
   <block id="4888a1163bab7e13f5a9de829f599dba" category="inline-link">Onde encontrar procedimentos para tarefas de manutenção do MetroCluster</block>
   <block id="effb241d20cc6c1913b072368a57f470" category="list-text"><block ref="effb241d20cc6c1913b072368a57f470" category="inline-link-rx"></block></block>
-  <block id="94e9d0bee98aefbd97c04b1401f6c790" category="paragraph">Se o cluster estiver em um ambiente SAN, você deverá excluir quaisquer LIFs SAN que você não precisar mais dos nós originais antes de poder desassociar os nós originais do cluster.</block>
   <block id="94a76ebba8e86706797afe6001140741" category="list-text">Se tiver iniciadores iSCSI, execute as seguintes etapas:</block>
   <block id="d8a3e002e1fe8c2f25656a36ddbfbeba" category="list-text">Exibir uma lista de iniciadores ativos atualmente conetados a um SVM nos nós originais, uma vez para cada um dos LIFs antigos<block ref="e3b82ab0dd1a8daf0e10586e7dcbd3a9" prefix=" " category="inline-code"></block></block>
   <block id="9882b7407728c4a51f28a203651b752e" category="paragraph">O exemplo a seguir mostra a saída do comando com um iniciador ativo conetado ao SVM VS1:</block>
@@ -2301,19 +2296,9 @@
   <block id="e3c00d0f293a58871853ed866dc020a2" category="list-text">Desligue a alimentação para node1 e node2 e, em seguida, desconete-os da fonte de alimentação.</block>
   <block id="250a399ca40ceae22935ccb2c65facb5" category="list-text">Identifique e remova todos os cabos do node1 e do node2.</block>
   <block id="ee6adde8f8004d94fe449a931d889e98" category="list-text">Retire o chassis que contém node1 e node2.</block>
-  <block id="be560856af220999f45b0e64a842465a" category="summary">Depois que os volumes tiverem sido movidos para os novos nós, você desunirá os nós originais do cluster. Quando você desassocia um nó, a configuração do nó é apagada e todos os discos são inicializados.</block>
-  <block id="59e7cb89beb0d9c0f35ba87b5c4549e3" category="list-text">Desative a configuração de alta disponibilidade nos nós originais:<block ref="f539b9f8648f5ff69608de63350373ce" prefix=" " category="inline-code"></block></block>
   <block id="72992cc1c16f1dbbbcb7cc77a55977d9" category="list-text">Aceder ao nível de privilégio avançado:</block>
   <block id="dc4a67b269dfaba9479198e3f11a2a68" category="list-text">Identifique o nó que tem epsilon:</block>
   <block id="9f964a34bab4b3112781e0b28258f5bb" category="paragraph">No exemplo a seguir, "node0" atualmente contém epsilon:</block>
-  <block id="c66d0d8c1fe1605513edaaeec7a73d16" category="list-text">Se um dos nós originais tiver o epsilon, mova o epsilon para um nó diferente:</block>
-  <block id="787149e64a0bc37710b15cd205977d92" category="list-text">Remova o epsilon do nó original<block ref="35cf8faa9e6e7d3108a26b5e7ed20f31" prefix=" " category="inline-code"></block></block>
-  <block id="cbb7de31a52f2a91eb5415ac80ca9da6" category="list-text">Atribuir epsilon a um nó diferente<block ref="555a9ad5c66d2c298b70afba796395ef" prefix=" " category="inline-code"></block></block>
-  <block id="91ab806eca55f1234d360a9bf96615a0" category="list-text">A partir de um nó que permanecerá no cluster, desmarque cada nó original do cluster (nível de privilégio avançado):</block>
-  <block id="01d317947cf0fa7c03a1243dac797c57" category="paragraph"><block ref="2dd02e1a799ef2ee9fc64b2c82df2222" prefix="" category="inline-code"></block></block>
-  <block id="a38cfcfcdebdf9c05a1cd632c11918b8" category="paragraph">O nó não associado é reinicializado automaticamente e pára no menu de inicialização.</block>
-  <block id="7ab0d0bb58501cb25dab62cdcffddfb5" category="list-text">No menu de inicialização do nó não Unido, selecione a opção *(4) Limpar configuração e inicialize todos os discos* para apagar a configuração do nó e inicializar todos os discos.</block>
-  <block id="35c0226d4e8a9cad1a873c648504d626" category="list-text">Introduza<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> em ambas as indicações.</block>
   <block id="7f1e916ec0aa6a4296149be58ba61a1b" category="list-text">Se o cluster tiver apenas dois nós restantes, configure a alta disponibilidade para o cluster de dois nós:</block>
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph"><block ref="acc3b99f812f210de5147296e269009d" prefix="" category="inline-code"></block></block>
   <block id="15cef8c52a9390a0d7fe3fdbd4c153c8" category="summary">Execute um NDU para sistemas NetApp AFF e FAS de nível básico sem ter que comprar switches de armazenamento e cluster adicionais.</block>
@@ -4320,7 +4305,6 @@
   <block id="181a3a0697aaadf877eed027e84ebe7f" category="sidebar">Execute as etapas finais no ONTAP 9.7 ou anterior</block>
   <block id="ff56b4f5944c3419d2cbe4a5a19eb150" category="sidebar">Instale e junte novos nós</block>
   <block id="f86f16f11e093ddd1a9acafc8ee58e6f" category="sidebar">Mova LIFs de dados que não são SAN e LIFs de gerenciamento de clusters</block>
-  <block id="d2e2f3320c4d610d0815b1405859a98b" category="sidebar">Anular a junção dos nós originais</block>
   <block id="d087c3faf4708dbb3c8dfcfefd9745e9" category="sidebar">Use os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9.5 a 9,7</block>
   <block id="74e4fa274dfb12601061dfed2bb17551" category="sidebar">Fase 1. Prepare-se para a atualização (atualize com a 'substituição do controlador do sistema' no ONTAP 9.5 a 9,7)</block>
   <block id="643d5d93057442ceeb2535e1257eced5" category="sidebar">Fase 2. Relocate e retire node1 (atualize com 'controlador do sistema Substituir' no ONTAP 9.5 para 9,7)</block>
@@ -5259,7 +5243,6 @@
   <block id="2f5546c2bb23945783cbdb6d6e128cdf" category="paragraph">Atualize utilizando um dos seguintes métodos:</block>
   <block id="0678555704a75d8c6ba937ca89e44347" category="inline-link-macro">Mover volumes</block>
   <block id="7a5d9d481746c5a733396a92b9fa9ad9" category="list-text"><block ref="7a5d9d481746c5a733396a92b9fa9ad9" category="inline-link-macro-rx"></block></block>
-  <block id="7c15b3f4f4497023a45b26abfbd34fa1" category="paragraph">Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para os novos nós e a remoção dos nós que você deseja retirar do cluster.  Se você estiver atualizando um cluster sem switch de dois nós, converta-o em um cluster com switch usando um par de switches de cluster antes de adicionar novos nós.</block>
   <block id="6de3b933715f67f0e1503dadf7be11b5" category="inline-link-macro">Utilize a realocação agregada.</block>
   <block id="1326c781e22221bcfee09723f0a2bfc2" category="list-text"><block ref="1326c781e22221bcfee09723f0a2bfc2" category="inline-link-macro-rx"></block></block>
   <block id="af07e0611bc43f9c7f0e394b682e76a9" category="paragraph">ARL é um procedimento de substituição.  Você não precisa expandir ou reduzir seu cluster com os novos nós, o que é vantajoso para clusters sem switch com dois nós.  Mover dados realocando agregados é mais rápido do que copiar dados entre agregados ao mover volumes.</block>
@@ -5307,4 +5290,56 @@
   <block id="b2cf47c2f8de48c91a2658d1bae42ab8" category="admonition">Como o chassi já está ligado, o nó 2 inicia a inicialização assim que estiver totalmente encaixado.  Para evitar que o nó 2 seja inicializado, conecte os cabos de console e de gerenciamento antes de inserir completamente o módulo controlador.</block>
   <block id="914a76ca2b7f6ddaae8d7322d8dfd459" category="paragraph">Não é possível verificar a versão do ONTAP instalada na mídia de inicialização do módulo controlador de substituição, a menos que ele esteja instalado em um chassi e ligado.  A versão do ONTAP na mídia de inicialização do sistema de substituição deve ser a mesma que a versão do ONTAP em execução no sistema antigo que você está atualizando, e as imagens de inicialização primária e de backup na mídia de inicialização devem ser idênticas.  Para verificar a versão mínima do ONTAP compatível com sua atualização, consulte o<block ref="f48bb6f7501a6484670164b41fb968ae" category="inline-link-macro-rx"></block> .</block>
   <block id="fa25f8cd417cf37165c34fcb9720ffe3" category="list-text">[[verify-rcf-step3]]Verifique as portas do cluster e o RCF do switch.</block>
+  <block id="2138fe46f5a4636fa20671bcd5e370b9" category="paragraph">Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para os novos nós e a remoção dos nós que você deseja retirar do cluster. Se você estiver atualizando um cluster sem switch de dois nós, converta-o em um cluster com switch usando um par de switches de cluster antes de adicionar novos nós.</block>
+  <block id="1e7b20b34e3e14bc87b5019115ef6319" category="paragraph">Para atualizar movendo volumes, você prepara os nós originais e adiciona os novos nós ao cluster. Você move os volumes para os novos nós, configura as LIFs e remove os nós originais do cluster.</block>
+  <block id="febd744aeea49809fb1302b73fa6bd8c" category="inline-link-macro">Remova os nós originais do cluster.</block>
+  <block id="5f9dcd9884f9526b20b37705a8075dc7" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="de2c8f88da32b208ab4a1bf0c1405c32" category="inline-link-macro-rx"></block></block>
+  <block id="04c0dc0ac08f266118ef312b94f34222" category="paragraph">Após os volumes serem movidos para os novos nós, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados.</block>
+  <block id="1411918bbf69ad4104cdc56864b603a3" category="paragraph"><block ref="1411918bbf69ad4104cdc56864b603a3" category="inline-link-macro-rx"></block></block>
+  <block id="cbbd4da8364a1dcf2593c3eec92abe27" category="paragraph"><block ref="cbbd4da8364a1dcf2593c3eec92abe27" category="inline-link-macro-rx"></block></block>
+  <block id="cf954e9acfd74a54fe766c2c130222c6" category="paragraph"><block ref="cf954e9acfd74a54fe766c2c130222c6" category="inline-link-macro-rx"></block></block>
+  <block id="638758de43a31bd2903f659581f78fa7" category="paragraph"><block ref="638758de43a31bd2903f659581f78fa7" category="inline-link-macro-rx"></block></block>
+  <block id="d350fa659f98e0153758612c202e6a04" category="summary">Após os volumes serem movidos para os novos nós, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados.</block>
+  <block id="174d5560f210e4b4b5a29f385b2c8035" category="paragraph">Após mover os volumes dos nós originais para os novos nós e mover ou excluir as LIFs de dados, você remove os nós originais do cluster. Ao remover um nó, a configuração desse nó é apagada e todos os discos são inicializados.</block>
+  <block id="fcd2352296590a0e2accae2dd13e31d6" category="list-text">[[disable-ha]]Desativar a configuração de alta disponibilidade (HA) nos nós originais:</block>
+  <block id="2c1e3c1177e032883dd8cedb7237369c" category="paragraph"><block ref="cfb56c7a6f1b3b0505ee17fb92209fba" prefix="" category="inline-code"></block></block>
+  <block id="bf80321073982fe86a71c1af9fac0650" category="list-text">[[epsilon-true]]Se um dos nós originais contiver epsilon, mova epsilon para um nó que você não esteja removendo do cluster:</block>
+  <block id="4b839279170b4ba0703853fb5c2cb9da" category="list-text">Remova o épsilon do nó original:</block>
+  <block id="222406298d9a2f2c033dca8a74afd55c" category="paragraph"><block ref="de7321e59bd990ec3ef09ca78116a7b0" prefix="" category="inline-code"></block></block>
+  <block id="7a788eb6946d9ba1aaad7df7bfb5f5b2" category="list-text">Atribua epsilon a um nó diferente:</block>
+  <block id="b0c1e0271345231f93266b65411815c2" category="paragraph"><block ref="45f47d97caec3e0967eb10311176b1bb" prefix="" category="inline-code"></block></block>
+  <block id="14f47a56746d8dd06d7152a27fa22219" category="list-text">Identifique o nó mestre atual:</block>
+  <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph"><block ref="484f24f8e4da80a1185aa63fa1d5fc08" prefix="" category="inline-code"></block></block>
+  <block id="f56d76980d50ef81b1a4f2246dbcf0da" category="paragraph">O nó mestre é o nó que hospeda processos como...<block ref="d724f231a9a7b89757c4394d6622bc47" prefix=" " category="inline-code"></block>,<block ref="7b588256fbdc51b849239cf8988219ff" prefix=" " category="inline-code"></block>,<block ref="4855d47f82dd3929173aadd191f2a0ee" prefix=" " category="inline-code"></block>,<block ref="1ed70af3fcff64fcd6c818d86b6e6150" prefix=" " category="inline-code"></block>, e<block ref="29fa19e764c47fa898f697bf7bb940db" prefix=" " category="inline-code"></block>.</block>
+  <block id="b799370e99c40124bdcc44e4ed7a5704" category="list-text">Se o nó que você está removendo for o nó mestre atual, habilite um dos nós restantes no cluster para ser eleito como nó mestre:</block>
+  <block id="ac13fc86d8d30a4abbb50425385fe453" category="list-text">Torne o nó mestre atual inelegível para participar do cluster:</block>
+  <block id="7021c105080628669b133405100efc63" category="paragraph"><block ref="f2b8f9d3d7fb27d37deaaf84ee69a072" prefix="" category="inline-code"></block></block>
+  <block id="84023f697c3d7f175eb48d9e7f81fe97" category="paragraph">O nó é marcado como não saudável até que a elegibilidade seja restaurada. Quando o nó mestre se torna inelegível, um dos nós restantes é eleito pelo quórum do cluster como o novo mestre.</block>
+  <block id="834ca6428bef51142e4d70a6c409829e" category="paragraph">Se você estiver executando esta etapa no primeiro nó de um par HA, deverá marcar apenas esse nó como inelegível. Não altere o status do parceiro HA.</block>
+  <block id="c45a4c98c59ca383859dc9ca2d7b3243" category="paragraph">Se o nó parceiro for selecionado como o novo mestre, você precisa verificar se ele possui o valor epsilon. Se o nó parceiro possuir o valor epsilon, você precisará mover o valor epsilon para um nó diferente que ainda esteja no cluster antes de torná-lo inelegível. Você faz isso ao repetir esses passos para remover o nó parceiro.</block>
+  <block id="fa46d2d3d8cfe760c5a42ee99c2bb479" category="list-text">Torne o nó mestre anterior elegível para participar do cluster novamente:</block>
+  <block id="c1f0c4bf4b8a0d924276f97311b2b56c" category="paragraph"><block ref="14dcae85a302a6e4089a3c2a5636ff04" prefix="" category="inline-code"></block></block>
+  <block id="342dbc3880ef101e1ed2b5b78347d7d3" category="list-text">Faça login na LIF de gerenciamento de nó remoto ou na LIF de gerenciamento de cluster em um nó que ainda esteja no cluster e remova cada nó original do cluster (nível de privilégio avançado):</block>
+  <block id="eb1f2131641f5195e8a8d9b93f797562" category="paragraph">Com o nome do nó:</block>
+  <block id="9900c92f7c4f327f3d129fcdb88c5a95" category="paragraph">Com o endereço IP do nó:</block>
+  <block id="e1b2dd8ee5d4a8767f514f7140d3b5b7" category="paragraph">Se você tiver um cluster com versões mistas e estiver removendo o último nó com versão inferior, use o<block ref="980f71817e3a06bee87bd061faeb423d" prefix=" " category="inline-code"></block> parâmetro com esses comandos.</block>
+  <block id="76732b147c5a72422d23da150a4c5434" category="paragraph">O sistema informa o seguinte:</block>
+  <block id="f80f10147ba45bd1fef6e3c0af2ad9b6" category="list-text">Você também deve remover o parceiro de failover do nó do cluster.</block>
+  <block id="f8794e0f00d445cfe92a1a1eeb5fdb7d" category="list-text">Após o nó ser removido e antes que ele possa se juntar novamente a um cluster, você deve usar a opção de menu de inicialização *(4) Limpar configuração e inicializar todos os discos* ou a opção *(9) Configurar particionamento avançado de unidade* para apagar a configuração do nó e inicializar todos os discos.</block>
+  <block id="4fcbf7b91c2fe0247f60ee2199672575" category="paragraph">Uma mensagem de falha é gerada se houver condições que você precise resolver antes de remover o nó. Por exemplo, a mensagem pode indicar que o nó possui recursos compartilhados que você deve remover ou que o nó está em uma configuração de alta disponibilidade (HA) de cluster ou em uma configuração de failover de armazenamento que você deve desativar.</block>
+  <block id="39e6f8500af6b07f2903990336145751" category="paragraph">Se o nó for o mestre de quorum, o cluster perde brevemente o quorum e depois retorna ao estado de quorum. Essa perda de quórum é temporária e não afeta nenhuma operação de dados.</block>
+  <block id="5b04742f17c701ff3b58fe32667cc471" category="list-text">Se uma mensagem de falha indicar condições de erro, corrija essas condições e execute o programa novamente.<block ref="b592ef8b0e17ac31ab55e93e7c1d10e1" prefix=" " category="inline-code"></block> ou<block ref="5d16191a3b7abaee7967de5fd82cd336" prefix=" " category="inline-code"></block> comando.</block>
+  <block id="bb73c71d58dba4f68bd9a8e3fa5709b6" category="paragraph">Após um nó ser removido com sucesso do cluster, ele reinicia automaticamente.</block>
+  <block id="b16b992bede9cd61adafd05ccfa8b5db" category="list-text">Se você estiver reutilizando o nó, apague a configuração do nó e inicialize todos os discos:</block>
+  <block id="f68297d08c23f1c81caf07d193fce59a" category="list-text">Durante o processo de inicialização, pressione Ctrl+C para exibir o menu de inicialização quando solicitado.</block>
+  <block id="5b43d3aa91abf75fd24c44f1341b2f06" category="list-text">Selecione a opção do menu de inicialização *(4) Limpar configuração e inicializar todos os discos*.</block>
+  <block id="82049266f76a1c9f2f0a3be4c999f4d2" category="list-text">[[return-admin]]Retorne ao nível de privilégio de administrador em um dos novos nós do cluster:</block>
+  <block id="c4ca4238a0b923820dcc509a6f75849b" category="inline-xref">1</block>
+  <block id="d3d9446802a44259755d38e6d163e820" category="inline-xref">10</block>
+  <block id="d189cecc16115f8a1464438558157df4" category="list-text">Repita os passos <block ref="ad03471bc3c3d3a60bb07d8e505cecf8" category="inline-xref-macro-rx"></block> para <block ref="0b50026eb51fd5abcc3f6c551ad9a731" category="inline-xref-macro-rx"></block> Para remover o parceiro de failover do cluster.</block>
+  <block id="168c92437cbc3465963cce1942e62338" category="paragraph"><block ref="168c92437cbc3465963cce1942e62338" category="inline-link-macro-rx"></block></block>
+  <block id="b442cda004fcb2b77f9a06066859253e" category="paragraph">Se o cluster estiver em um ambiente SAN, você deve excluir quaisquer LIFs SAN que não sejam mais necessárias dos nós originais antes de poder remover os nós originais do cluster.</block>
+  <block id="de2c8f88da32b208ab4a1bf0c1405c32" category="paragraph"><block ref="de2c8f88da32b208ab4a1bf0c1405c32" category="inline-link-macro-rx"></block></block>
+  <block id="0187590ed6627836f657d0d4157f4bd9" category="paragraph"><block ref="0187590ed6627836f657d0d4157f4bd9" category="inline-link-macro-rx"></block></block>
+  <block id="9cab58d086b1e90a5b2f49ae6b194edb" category="sidebar">Remover nós originais</block>
 </blocks>

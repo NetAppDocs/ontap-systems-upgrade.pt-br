@@ -49,3 +49,6 @@ https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migração para um
 `system node autosupport invoke -node _node_name_ -type all -message "Upgrading node_name from _platform_original_ to _platform_new_"`
 
 
+
+.O que se segue?
+link:upgrade-install-and-join-new-nodes-move-vols.html["Instale os novos nós e junte-os ao cluster"]
