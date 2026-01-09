@@ -27,30 +27,44 @@ Verifique os LIFs SAN em node3:
 +
 .. Modifique quaisquer LIFs SAN iSCSI que relatem um status de operação "inativo" para as novas portas de dados:
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <iscsi_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <iscsi_san_lif>
+----
 .. Modifique quaisquer LIFs FC e NVMe/FC SAN que estejam em casa da nova controladora e relatando um status operacional "inativo" para as portas FCP na nova controladora:
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> admin down`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> admin down
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif> port <new_port> node <node>
+----
 +
-`network interface modify -vserver <vserver> -lif <fc_san_lif>`
-
+[source, cli]
+----
+network interface modify -vserver <vserver> -lif <fc_san_lif>
+----
 
 
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema executa as seguintes tarefas:
 
@@ -67,8 +81,10 @@ A operação é interrompida nesta fase na verificação de acessibilidade da re
 
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações:
 
@@ -82,25 +98,58 @@ Depois de executar essas verificações, o sistema relocaliza os agregados não-
 
 . Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Se o procedimento de substituição do controlador estiver em pausa, verifique e corrija o erro, se houver, e então o problema `resume` para continuar a operação.
 
-. Se necessário, restaure e reverta quaisquer LIFs deslocados. Liste quaisquer LIFs deslocados:
+. Caso necessário, restaure e reverta as LIFs deslocadas ou migre e modifique manualmente as LIFs do nó 1 que não foram realocadas automaticamente para o nó 3.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurar e reverter LIFs deslocados
+--
+.. Liste quaisquer LIFs deslocados:
 +
-Se algum LIFs for deslocado, restaure o nó inicial de volta para node3:
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Se algum LIFs for deslocado, restaure o nó inicial de volta para node3:
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node3_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migrar e modificar LIFs manualmente
+--
+.. Migre os LIFs que não foram realocados automaticamente para o nó 3:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node3_nodename> -destination-port <port_on_node3>
+----
+.. Modifique o nó inicial e a porta inicial para as LIFs migradas:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node3_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Retome a operação para solicitar ao sistema que execute as verificações posteriores necessárias:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações posteriores:
 

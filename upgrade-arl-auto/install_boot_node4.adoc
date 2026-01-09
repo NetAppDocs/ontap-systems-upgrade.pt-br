@@ -19,7 +19,7 @@ Você deve instalar node4 no rack, transferir as conexões node2 para node4, ini
 .Sobre esta tarefa
 A operação de relocalização é interrompida no início desta fase. Este processo é principalmente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Além disso, você deve verificar se as LIFs de dados nas foram movidas com sucesso para node4.
 
-Você precisa netboot node4 se ele não tiver a mesma versão do ONTAP 9 instalada no node2. Depois de instalar o node4, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"].
+Você precisa executar o netboot no nó 4 se a versão do ONTAP no nó 4 for diferente da versão do ONTAP no nó 2. Após instalar o node4, inicialize-o a partir da imagem do ONTAP 9 armazenada no servidor web. Em seguida, você poderá baixar os arquivos corretos para o dispositivo de inicialização para inicializações subsequentes do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"].
 
 [IMPORTANT]
 ====

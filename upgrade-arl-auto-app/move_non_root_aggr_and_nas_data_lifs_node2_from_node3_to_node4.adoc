@@ -14,10 +14,12 @@ summary: 'Verifique se LIFs de dados nas do node2 que estão no node3 são reloc
 
 
 [role="lead"]
-Depois de verificar a configuração de rede no node4 e antes de realocar agregados de node3 para node4, você deve verificar se os LIFs de dados nas pertencentes ao node2 que estão atualmente no node3 são relocados de node3 para node4. Você também deve verificar se as SAN LIFs existem no node4.
+Após verificar a configuração de rede no nó 4, você precisa realocar as LIFs de dados NAS pertencentes ao nó 2 do nó 3 para o nó 4 e confirmar se as LIFs SAN existem no nó 4.
 
 .Sobre esta tarefa
-Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Você irá verificar se os LIFs estão saudáveis e localizados em portas apropriadas depois de colocar o node4 on-line.
+As LIFs remotas gerenciam o tráfego para as LUNs SAN durante o procedimento de atualização. A movimentação de LIFs SAN não é necessária para a integridade do cluster ou do serviço durante a atualização. As interfaces LIF da SAN não são movidas a menos que precisem ser mapeadas para novas portas.
+
+Você verifica se as LIFs estão íntegras e localizadas nas portas corretas depois de colocar o nó 4 online.
 
 
 NOTE: Se você estiver alterando a velocidade da porta das placas de interface de rede Ethernet baseadas em T6 ou das portas da placa-mãe, você pode observar pacotes mal formados sendo recebidos após a conversão de velocidade. Consulte https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["NetApp Bugs Online Bug ID 1570339"^] e o artigo da base de conhecimento https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erros de CRC em portas T6 após a conversão de 40GbE para 100GbE"^] para obter orientação.
@@ -25,8 +27,10 @@ NOTE: Se você estiver alterando a velocidade da porta das placas de interface d
 .Passos
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema executa as seguintes tarefas:
 
@@ -39,12 +43,14 @@ O sistema executa as seguintes tarefas:
 
 
 +
-A operação é interrompida nesta fase na verificação de acessibilidade da rede.
+O sistema interrompe a operação nesta etapa da verificação de acessibilidade da rede.
 
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações:
 
@@ -58,25 +64,58 @@ Depois de executar essas verificações, o sistema relocaliza os agregados não-
 
 . Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Se o procedimento de substituição do controlador estiver em pausa, verifique e corrija o erro, se houver, e então o problema `resume` para continuar a operação.
 
-. Se necessário, restaure e reverta quaisquer LIFs deslocados. Liste quaisquer LIFs deslocados:
+. Caso necessário, restaure e reverta as LIFs deslocadas ou migre e modifique manualmente as LIFs do nó 2 que não foram realocadas automaticamente para o nó 4.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurar e reverter LIFs deslocados
+--
+.. Liste quaisquer LIFs deslocados:
 +
-Se algum LIFs for deslocado, restaure o nó inicial de volta para node4:
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Se algum LIFs for deslocado, restaure o nó inicial de volta para node4:
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node4_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migrar e modificar LIFs manualmente
+--
+.. Migre os LIFs que não foram realocados automaticamente para o nó 4:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node4_nodename> -destination-port <port_on_node4>
+----
+.. Modifique o nó inicial e a porta inicial para as LIFs migradas:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node4_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Retome a operação para solicitar ao sistema que execute as verificações posteriores necessárias:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações posteriores:
 

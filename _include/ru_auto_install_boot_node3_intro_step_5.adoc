@@ -24,7 +24,7 @@ Se node1 e node2 estivessem em chassi separado, você pode colocar node3 no mesm
 . [[auto_install3_step2]]instale o node3 no rack, seguindo as _instruções de instalação e configuração_ para o modelo do seu nó.
 +
 
-NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale node4 no chassi e node3. Se você não fizer isso, ao inicializar o node3, o nó se comportará como se estivesse em uma configuração de chassi duplo e, ao inicializar o node4, a interconexão entre os nós não será ativada.
+NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo chassi, instale o nó 4 e o nó 3 no chassi. Se você não instalar os dois nós no mesmo chassi, ao inicializar o nó 3, ele se comportará como se estivesse em uma configuração de chassi duplo e, ao inicializar o nó 4, a interconexão entre os nós não será estabelecida.
 
 . [[auto_install3_step3]]Cabo node3, movendo as conexões de node1 para node3.
 +

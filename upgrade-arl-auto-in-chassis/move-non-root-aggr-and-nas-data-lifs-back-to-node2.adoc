@@ -14,16 +14,20 @@ summary: Verifique se as LIFs de dados nas do node2 no node1 foram relocadas de 
 
 
 [role="lead"]
-Depois de verificar a configuração de rede no node2 e antes de realocar agregados de node1 para node2, você verifica se os LIFs de dados nas pertencentes ao node2 que estão atualmente no node1 são relocados de node1 para node2. Você também deve verificar se as SAN LIFs existem no node2.
+Após verificar a configuração de rede no nó 2, você precisa realocar as LIFs de dados NAS pertencentes ao nó 2 do nó 1 para o nó 2 e confirmar se as LIFs SAN existem no nó 2.
 
 .Sobre esta tarefa
-Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Depois de colocar o node2 on-line, você deve verificar se os LIFs estão saudáveis e localizados nas portas apropriadas.
+As LIFs remotas gerenciam o tráfego para as LUNs SAN durante o procedimento de atualização. A movimentação de LIFs SAN não é necessária para a integridade do cluster ou do serviço durante a atualização. As interfaces LIF da SAN não são movidas a menos que precisem ser mapeadas para novas portas.
+
+Você verifica se as LIFs estão íntegras e localizadas nas portas corretas depois de colocar o nó 2 online.
 
 .Passos
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema executa as seguintes tarefas:
 
@@ -38,12 +42,14 @@ O sistema executa as seguintes tarefas:
 
 --
 +
-A operação é interrompida nesta fase na verificação de acessibilidade da rede.
+O sistema pausa a operação nesta etapa da verificação de acessibilidade da rede.
 
 . Retomar a operação de realocação:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações:
 
@@ -62,25 +68,58 @@ A operação de substituição do controlador é interrompida após a conclusão
 
 . Verifique o status das operações de transferência agregada e movimentação de LIF de dados nas:
 +
-`system controller replace show-details`
-
+[source, cli]
+----
+system controller replace show-details
+----
 +
 Se o procedimento de substituição do controlador estiver em pausa, verifique e corrija o erro, se houver, e então o problema `resume` para continuar a operação.
 
-. Se necessário, restaure e reverta quaisquer LIFs deslocados. Liste quaisquer LIFs deslocados:
+. Caso necessário, restaure e reverta as LIFs deslocadas ou migre e modifique manualmente as LIFs do nó 2 que não foram realocadas automaticamente para o nó 2.
 +
-`cluster controller-replacement network displaced-interface show`
-
+[role="tabbed-block"]
+====
+.Restaurar e reverter LIFs deslocados
+--
+.. Liste quaisquer LIFs deslocados:
 +
-Se algum LIFs for deslocado, restaure o nó inicial de volta para node2:
-
+[source, cli]
+----
+cluster controller-replacement network displaced-interface show
+----
+.. Se algum LIFs for deslocado, restaure o nó inicial de volta para node2:
 +
-`cluster controller-replacement network displaced-interface restore-home-node`
+[source, cli]
+----
+cluster controller-replacement network displaced-interface restore-home-node -node <node2_nodename> -vserver <vserver name> -lif-name <lif_name>
+----
 
+
+--
+.Migrar e modificar LIFs manualmente
+--
+.. Migre os LIFs que não foram realocados automaticamente para o nó 2:
++
+[source, cli]
+----
+network interface migrate -vserver <vserver name> -lif <lif_name> -destination-node <node2_nodename> -destination-port <port_on_node2>
+----
+.. Modifique o nó inicial e a porta inicial para as LIFs migradas:
++
+[source, cli]
+----
+network interface modify -vserver <vserver_name> -lif <data_lif_name> -home-node <node2_nodename> -home-port <home_port>
+----
+
+
+--
+====
 . Retome a operação para solicitar ao sistema que execute as verificações posteriores necessárias:
 +
-`system controller replace resume`
-
+[source, cli]
+----
+system controller replace resume
+----
 +
 O sistema efetua as seguintes verificações posteriores:
 

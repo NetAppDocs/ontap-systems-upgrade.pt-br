@@ -17,9 +17,9 @@ summary: Instale e inicialize o node4 e instale o software ONTAP durante uma atu
 Você deve instalar node4 no rack, transferir node2 conexões para node4 e inicializar node4. Você também precisa reatribuir quaisquer peças sobressalentes node2, todos os discos pertencentes à raiz e quaisquer agregados que não sejam raiz que não tenham sido relocados para o node3 anteriormente.
 
 .Sobre esta tarefa
-Você deve inicializar o node4 via rede se ele não tiver a mesma versão do ONTAP 9 instalada no node2. Depois de instalar o node4, inicialize-o a partir da imagem ONTAP 9 armazenada no servidor web. Você pode então baixar os arquivos corretos para o dispositivo de mídia de inicialização para inicializações subsequentes do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"] .
+Você deve executar o comando netboot no nó 4 se a versão do ONTAP no nó 4 for diferente da versão do ONTAP no nó 2. Após instalar o node4, inicialize-o a partir da imagem do ONTAP 9 armazenada no servidor web. Em seguida, você poderá baixar os arquivos corretos para o dispositivo de inicialização para inicializações subsequentes do sistema, seguindo as instruções em link:prepare_for_netboot.html["Prepare-se para netboot"]
 
-No entanto, você não precisa inicializar via rede o node4 se ele tiver a mesma versão ou uma versão posterior do ONTAP 9 instalada no node2.
+No entanto, não é necessário executar o netboot no nó 4 se a versão do ONTAP no nó 4 for igual ou posterior à versão do ONTAP no nó 2.
 
 [IMPORTANT]
 ====
