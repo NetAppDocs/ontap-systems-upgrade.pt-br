@@ -27,10 +27,10 @@ Para selecionar o procedimento de atualização adequado, revise todas as pergun
 | Pergunte a si mesmo… | Se a sua resposta for sim, você pode fazer isso… 
 
 
-| Estou executando uma versão de software diferente nos nós originais e nos novos? | Atualize a versão do ONTAP nos nós originais para a versão mais recente suportada.  Sempre que possível, os novos nós devem ser compatíveis com a versão do ONTAP em execução nos nós originais.  Se isso não for possível,link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Atualize a versão do ONTAP"^] nos nós originais para a versão mais recente suportada.  A diferença de versão entre os nós originais e os novos não pode ser superior a quatro.  Por exemplo, o ONTAP 9.8 e o 9.12.1 são suportados; no entanto, o ONTAP 9.8 e o 9.13.1 não são suportados. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Saiba mais sobre clusters ONTAP de versão mista"^]. 
+| Estou executando uma versão de software diferente nos nós originais e nos novos? | Atualize a versão do ONTAP nos nós originais para a versão mais recente suportada. Quando possível, os novos nós devem suportar a versão do ONTAP em execução nos nós originais. Caso isso não seja possível, link:https://docs.netapp.com/us-en/ontap/upgrade/prepare.html["Atualize a versão do ONTAP"^] nos nós originais para a versão mais recente suportada. A diferença de versão entre os nós originais e os novos não pode ser superior a quatro. Por exemplo, ONTAP 9.8 e 9.12.1 são suportados; no entanto, ONTAP 9.8 e 9.13.1 não são suportados. link:https://docs.netapp.com/us-en/ontap/upgrade/concept_mixed_version_requirements.html["Saiba mais sobre clusters ONTAP de versão mista"^]. 
 
 
-| Quero fazer uma atualização disruptiva? | link:upgrade/upgrade-decide-to-use-this-guide.html["Atualize movendo o armazenamento"]. Isso requer um novo sistema com armazenamento e prateleiras próprias para guardar os dados do sistema original.  A conversão de um painel de controle para outro é possível para determinadas atualizações. 
+| Quero fazer uma atualização disruptiva? | link:upgrade/upgrade-decide-to-use-this-guide.html["Atualize movendo o armazenamento"]. Isso requer um novo sistema com armazenamento e compartimentos próprios para guardar os dados do sistema original. É possível converter um compartimento de controlador para determinadas atualizações. 
 
 
 | Desejo realizar uma atualização sem interrupções?  a| 
@@ -44,11 +44,15 @@ Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para 
 +
 ARL é um procedimento de substituição.  Você não precisa expandir ou reduzir seu cluster com os novos nós, o que é vantajoso para clusters sem switch com dois nós.  Mover dados realocando agregados é mais rápido do que copiar dados entre agregados ao mover volumes.
 
+* link:upgrade/upgrade-decide-to-use-this-guide.html["Mover armazenamento"]
++
+Você pode atualizar sem interrupções de um AFF A250 para um AFF A400 ou de um FAS2820 para um sistema de substituição convertendo os nós originais em gavetas de unidades e, em seguida, conectando as gavetas de unidades aos nós de substituição para mover o armazenamento integrado.
 
 
 
 
-| Tenho um sistema modular?  *Nota*: Em um sistema modular, o controlador não possui discos internos e todo o armazenamento está em compartimentos externos. | link:upgrade-arl/index.html["Atualize usando realocação agregada"]. 
+
+| Tenho um sistema modular? *Nota*: Em um sistema modular, o controlador não possui discos internos; todo o armazenamento fica em gavetas externas. | link:upgrade-arl/index.html["Atualize usando realocação agregada"]. 
 
 
 | Tenho um sistema integrado e quero atualizá-lo movendo volumes?  *Nota*: Em um sistema integrado, o controlador possui discos internos e o armazenamento está contido dentro do chassi do controlador e em compartimentos externos.  Prateleiras externas servem para expandir o espaço de armazenamento e podem não estar incluídas em todas as configurações do sistema.  a| 
@@ -73,7 +77,7 @@ ARL é um procedimento de substituição.  Você não precisa expandir ou reduzi
 
 == Exemplo: atualização de FAS9500 para FAS90
 
-Este exemplo mostra as possíveis respostas para uma atualização do controlador FAS9500 para FAS90.
+Este exemplo fornece possíveis respostas para uma atualização do controlador FAS9500 para FAS90.
 
 [cols="30,70"]
 |===

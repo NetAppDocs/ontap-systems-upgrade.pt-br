@@ -32,11 +32,11 @@ Remova o dispositivo de gerenciamento de cabos do módulo existente e mova o con
 . Prepare-se para remover o módulo do controlador:
 +
 .. Na parte frontal do chassi, use os polegares para empurrar firmemente cada unidade nos compartimentos de disco superior e inferior até sentir um travamento positivo.  Isso garante que as unidades estejam firmemente assentadas no plano médio do chassi.
-+
+
+
+
+
 image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
-
-.. Vá para a parte traseira do chassis.
-
 
 . Desconete as fontes de alimentação do módulo do controlador node1 da fonte.
 . Solte os fixadores do cabo de alimentação e, em seguida, desconete os cabos das fontes de alimentação.
@@ -68,11 +68,7 @@ image:black_circle_two.png["Número dois"]
 |===
 
 
-
-
-== Instale o módulo do controlador AFF A90, AFF A70 ou AFF C80
-
-Instale, faça o cabo e conete o módulo do controlador AFF A90, AFF A70 ou AFF C80 em node1.
+Instale o módulo controlador AFF A90, AFF A70 ou AFF C80 Instale, conecte os cabos e ligue o módulo controlador AFF A90, AFF A70 ou AFF C80 no node1.
 
 .Passos
 . Alinhe a extremidade do módulo do controlador com a abertura no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.

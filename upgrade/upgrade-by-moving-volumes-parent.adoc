@@ -2,7 +2,7 @@
 permalink: upgrade/upgrade-by-moving-volumes-parent.html 
 sidebar: sidebar 
 keywords: upgrade by moving volumes 
-summary: Se você estiver atualizando movendo volumes, prepare os nós originais e junte os novos nós ao cluster. Mova volumes para os novos nós, configure LIFs e desmarque os nós originais do cluster. A atualização ao mover volumes é um procedimento sem interrupções. 
+summary: Se você estiver atualizando por meio da movimentação de volumes, você prepara os nós originais e adiciona os novos nós ao cluster. Você move os volumes para os novos nós, configura as LIFs e remove os nós originais do cluster. A atualização por meio da movimentação de volumes é um procedimento sem interrupções. 
 ---
 = Fluxo de trabalho de atualização por movimentação de volumes
 :allow-uri-read: 
