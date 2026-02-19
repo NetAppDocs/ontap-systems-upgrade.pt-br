@@ -14,6 +14,8 @@ summary: Substitua o node1 os módulos de sistema AFF A220, AFF A200, AFF C190, 
 
 
 [role="lead"]
+Substitua o módulo controlador node1 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 por um módulo controlador ASA A150, AFF A150 ou FAS2820.
+
 Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Tem de ter cuidado para remover apenas o módulo do controlador node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
 
 
@@ -24,9 +26,9 @@ Se você ainda não está aterrado, aterre-se corretamente.
 
 
 
-== Remova o módulo de controlador AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+== Etapa 1: remova o módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
 
-Para aceder aos componentes no interior do controlador, retire o módulo do controlador do sistema e, em seguida, retire a tampa do módulo do controlador.
+Para acessar os componentes dentro do controlador node1, remova o módulo do controlador do sistema e depois remova a tampa do módulo do controlador.
 
 .Passos
 . Solte o gancho e a alça de loop que prendem os cabos ao dispositivo de gerenciamento de cabos e, em seguida, desconete os cabos do sistema e os SFPs (se necessário) do módulo do controlador, mantendo o controle de onde os cabos estavam conetados.
@@ -70,10 +72,14 @@ NOTE: Para evitar danificar os conetores, não utilize força excessiva ao desli
 . Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node1, defina as variáveis de ambiente padrão:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Salve as configurações de variáveis de ambiente padrão:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

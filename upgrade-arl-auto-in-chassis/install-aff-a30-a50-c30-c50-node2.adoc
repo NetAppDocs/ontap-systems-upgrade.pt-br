@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/install-aff-a30-a50-c30-c50-node2.html
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
 summary: Instale os módulos de sistema de substituição no node2 durante uma atualização ARL dos modelos de controladores no mesmo chassi. 
 ---
-= Instale o módulo AFF A30, AFF A50, AFF C30 ou AFF C60 no node2
+= Instale AFF A30, AFF A50, AFF C30 ou AFF C60 no nó2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -36,11 +36,15 @@ NOTE: Para evitar danificar os conetores, não utilize força excessiva ao desli
 . Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node2, defina as variáveis de ambiente padrão:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Salve as configurações de variáveis de ambiente padrão:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 . Para configurações sem switch de dois nós, verifique se você possui uma placa X60132A de 4 portas 10/25 GbE no slot 1 do nó 2. A placa X60132A é necessária para a interconexão do cluster durante a atualização.
 

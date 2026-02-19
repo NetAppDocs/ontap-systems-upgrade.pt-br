@@ -16,19 +16,20 @@ summary: Instale os módulos de sistema de substituição no node2 durante uma a
 [role="lead"]
 Instale os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e da controladora que você recebeu para a atualização no node2. O Node2 é o controlador B localizado no lado direito do chassi quando se olha para os controladores da parte traseira do sistema.
 
-Você deve observar o seguinte ao executar a instalação:
-
+[NOTE]
+====
 * Mova todos os módulos de enchimento vazios nos slots 6-1 e 6-2 do módulo NVRAM antigo para o novo módulo NVRAM.
 * Não mova o dispositivo de coredump do módulo AFF A700 NVRAM para o módulo ASA A900 ou AFF A900 NVRAM.
 * Mova módulos de cache all flash instalados no módulo FAS9000 NVRAM para o módulo FAS9500 NVRAM.
 
 
+====
 .Antes de começar
 Se você ainda não está aterrado, aterre-se corretamente.
 
 
 
-== Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
+== Etapa 1: Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
 
 Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no slot 6 de node2.
 
@@ -39,7 +40,7 @@ Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no slot 6 de node2.
 
 
 
-== Instale o módulo do controlador ASA A900, AFF A900 ou FAS9500 no node2
+== Etapa 2: instale o módulo controlador ASA A900, AFF A900 ou FAS9500
 
 Instale, faça o cabo e conete o módulo do controlador ASA A900, AFF A900 ou FAS9500 em node2.
 
@@ -70,10 +71,14 @@ WARNING: Para evitar danificar os conetores, não utilize força excessiva ao de
 . Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node2, defina as variáveis de ambiente padrão:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Salve as configurações de variáveis de ambiente padrão:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

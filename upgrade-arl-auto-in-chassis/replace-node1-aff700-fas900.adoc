@@ -14,6 +14,8 @@ summary: Substitua os módulos de sistema AFF A700 ou FAS9000 node1 ao usar o AR
 
 
 [role="lead"]
+Substitua o controlador node1 AFF A700 ou FAS9000 e os módulos NVRAM pelos módulos do controlador e NVRAM ASA A900, AFF A900 ou FAS9500.
+
 Nesta fase, o node1 está inativo e todos os dados são fornecidos pelo node2. Tem de ter cuidado para remover apenas o módulo do controlador node1 e o módulo NVRAM node1. Normalmente, o node1 é o controlador A, localizado no lado esquerdo do chassi quando se olha para os controladores da parte traseira do sistema. A etiqueta do controlador está localizada no chassis diretamente acima do módulo do controlador.
 
 
@@ -24,9 +26,9 @@ Se você ainda não está aterrado, aterre-se corretamente.
 
 
 
-== Retire o módulo do controlador AFF A700 ou FAS9000
+== Etapa 1: Remover o módulo do controlador AFF A700 ou FAS9000
 
-Solte e retire o módulo do controlador AFF A700 ou FAS9000 do node1.
+Desconecte e remova o módulo controlador node1 AFF A700 ou FAS9000.
 
 .Passos
 . Retire o cabo da consola, se existir, e o cabo de gestão do módulo controlador node1.
@@ -64,9 +66,9 @@ Certifique-se de que suporta a parte inferior do módulo do controlador enquanto
 
 
 
-== Retire o módulo de ruído, vibração e aspereza (NVRAM) do AFF A700 ou FAS9000
+== Etapa 2: Remover o módulo AFF A700 ou FAS9000 NVRAM
 
-Desbloqueie e remova o módulo AFF A700 ou FAS9000 NVRAM do node1.
+Desbloqueie e remova o módulo NVRAM do node1 AFF A700 ou FAS9000.
 
 
 NOTE: O módulo AFF A700 ou FAS9000 NVRAM está no slot 6 e é o dobro da altura dos outros módulos no sistema.
@@ -106,26 +108,18 @@ image:black_circle_two.png["Número dois"]
 
 
 
-== Instale os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e do controlador
+== Etapa 3: Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
 
-Instale, faça o cabo e conete os módulos ASA A900, AFF A900 ou FAS9500 NVRAM e do controlador no node1.
+Instale, conecte os cabos e conecte o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no node1.
 
-Você deve observar o seguinte ao executar a instalação:
-
+[NOTE]
+====
 * Mova todos os módulos de enchimento vazios nos slots 6-1 e 6-2 do módulo NVRAM antigo para o novo módulo NVRAM.
 * Não mova o dispositivo de coredump do módulo AFF A700 NVRAM para o módulo ASA A900 ou AFF A900 NVRAM.
 * Mova módulos de cache all flash instalados no módulo FAS9000 NVRAM para o módulo FAS9500 NVRAM.
 
 
-.Antes de começar
-Se você ainda não está aterrado, aterre-se corretamente.
-
-
-
-=== Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM
-
-Instale o módulo ASA A900, AFF A900 ou FAS9500 NVRAM no slot 6 de node1.
-
+====
 .Passos
 . Alinhe o módulo NVRAM com as extremidades da abertura do chassis na ranhura 6.
 . Deslize cuidadosamente o módulo NVRAM para dentro da ranhura até que o trinco do came de e/S com letras e numerado comece a engatar com o pino do came de e/S e, em seguida, empurre o trinco do came de e/S totalmente para cima para bloquear o módulo NVRAM no lugar.
@@ -150,9 +144,9 @@ image:black_circle_two.png["Número dois"]
 
 
 
-=== Instale o módulo do controlador ASA A900, AFF A900 ou FAS9500 no node1.
+== Etapa 4: instale o módulo controlador ASA A900, AFF A900 ou FAS9500 no node1.
 
-Use o procedimento a seguir para instalar o módulo do controlador ASA A900, AFA A900 ou FAS9500 no node1.
+Instale, conecte os cabos e conecte o módulo controlador ASA A900, AFF A900 ou FAS9500 em node1.
 
 .Passos
 . Alinhe a extremidade do módulo do controlador com a abertura A no chassis e, em seguida, empurre cuidadosamente o módulo do controlador até meio do sistema.
@@ -194,10 +188,14 @@ image:black_circle_two.png["Número dois"]
 . Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node1, defina as variáveis de ambiente padrão:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Salve as configurações de variáveis de ambiente padrão:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 

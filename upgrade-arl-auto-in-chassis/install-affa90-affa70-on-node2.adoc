@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/install-affa90-affa70-on-node2.html 
 keywords: aff, fas, asa, install, NVRAM, node2, controller, module, modules, replacement 
-summary: Instale os módulos de sistema de substituição no node2 durante uma atualização ARL dos modelos de controladores no mesmo chassi. 
+summary: Instale os módulos do sistema de substituição no nó2 durante um upgrade ARL dos modelos de controlador no mesmo chassi. 
 ---
 = Instale o módulo AFF A90 ou AFF A70 no node2
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Instale os módulos de sistema de substituição no node2 durante uma a
 
 
 [role="lead"]
-Instale o módulo controlador AFF A90 ou AFF A70 que você recebeu para a atualização no nó 2.  O nó 2 é o controlador B localizado no compartimento inferior do chassi quando se olha para os controladores na parte traseira do sistema.
+Instale o módulo de controlador AFF A90 ou AFF A70 que você recebeu para o upgrade no node2. O node2 é o controlador B localizado na baia inferior do chassi quando se olha para os controladores pela parte traseira do sistema.
 
 .Passos
 . Na parte frontal do chassi, use os polegares para empurrar firmemente cada unidade nos compartimentos de disco superior e inferior até sentir um travamento positivo.  Isso garante que as unidades estejam firmemente assentadas no plano médio do chassi.
@@ -47,12 +47,16 @@ NOTE: Para evitar danificar os conetores, não utilize força excessiva ao desli
 . Depois de interromper o AUTOBOOT, o node2 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node2 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node2, defina as variáveis de ambiente padrão:
 +
-`set-defaults`
-
+[source, cli]
+----
+set-defaults
+----
 . Salve as configurações de variáveis de ambiente padrão:
 +
-`saveenv`
-
+[source, cli]
+----
+saveenv
+----
 . Na parte frontal do chassi, use os polegares para empurrar firmemente cada unidade nos compartimentos de disco superior e inferior até sentir um travamento positivo.  Isso garante que as unidades estejam firmemente assentadas no plano médio do chassi.
 +
 image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
