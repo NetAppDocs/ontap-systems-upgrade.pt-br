@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: upgrade 
 summary: Se você estiver atualizando movendo o storage, prepare os nós originais e configure os novos nós. Alguns modelos de plataforma suportam a transferência de storage interno para os novos nós. Reatribuir discos e restaurar a configuração do volume raiz para os novos nós e configurar portas de rede. A atualização ao mover o storage é um procedimento de interrupção. 
 ---
-= Fluxo de trabalho de atualização por movimentação de armazenamento
+= Saiba mais sobre a atualização movendo o armazenamento
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -70,5 +70,5 @@ Conclua a atualização no ONTAP 9.8 ou posterior, ou no ONTAP 9.7 ou anterior.
 
 .Informações relacionadas
 * link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Atualize o AFF A250 para o AFF A400 convertendo para um compartimento de unidade"](procedimento não disruptivo)
-* link:convert-fas2820-to-drive-shelf.html["Atualização do FAS2820 convertendo para uma prateleira de unidade"](procedimento não disruptivo)
+* link:convert-to-drive-shelf.html["Atualize de AFF A150, AFF A220 ou FAS2820 convertendo para um shelf de discos"] (procedimento não disruptivo)
 

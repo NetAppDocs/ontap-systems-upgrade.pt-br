@@ -1,22 +1,22 @@
 ---
-permalink: upgrade/migrate-fas2820-node2-lifs-aggregates.html 
+permalink: upgrade/migrate-node2-lifs-aggregates.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
-summary: 'Migre as interfaces lógicas (LIFs) e os agregados de dados no FAS2820 node2 para node1 antes de converter o node2 em uma prateleira de unidade.' 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node1, node2, migrate, aggregates, lifs 
+summary: 'Migre as interfaces lógicas (LIFs) e os agregados de dados do node2 para o node1 antes de converter o node2 em um drive shelf.' 
 ---
-= Migrar LIFs e agregados de dados do nó FAS2820 node2 para node1
+= Migrar LIFs e agregados de dados em node2 para node1
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Migre as interfaces lógicas (LIFs) e os agregados de dados no FAS2820 node2 para node1 antes de converter o node2 em uma prateleira de unidade.
+Migre as interfaces lógicas (LIFs) e os agregados de dados do node2 para o node1 antes de converter o node2 em um drive shelf.
 
 .Antes de começar
 Verifique se você atende aos seguintes requisitos:
 
-* Os controladores FAS2820 e de substituição têm a mesma versão de lançamento e patch do ONTAP , quando possível.  Consulte o https://hwu.netapp.com["NetApp Hardware Universe"^] para versões ONTAP suportadas.
+* Os controladores originais e de substituição têm a mesma versão do ONTAP e patch, quando possível. Consulte a  https://hwu.netapp.com["NetApp Hardware Universe"^] para versões do ONTAP compatíveis.
 
 
 [NOTE]
@@ -31,10 +31,9 @@ Verifique se você atende aos seguintes requisitos:
 * Todo o cabeamento necessário está disponível.
 
 
-.Sobre esta tarefa
-As etapas a seguir são executadas no nó FAS2820 node1.
-
 .Passos
+Execute estas etapas no node1.
+
 . Aceder ao nível de privilégio avançado:
 +
 [source, cli]
@@ -144,4 +143,4 @@ halt -node <node2> -inhibit-takeover true -ignore-quorum-warnings true
 
 
 .O que se segue?
-link:convert-fas2820-node2-drive-shelf.html["Converter node2 em um compartimento de unidades e conectá-lo ao node4"]
+link:convert-node2-to-drive-shelf.html["Converter node2 em um compartimento de unidades e conectá-lo ao node4"]

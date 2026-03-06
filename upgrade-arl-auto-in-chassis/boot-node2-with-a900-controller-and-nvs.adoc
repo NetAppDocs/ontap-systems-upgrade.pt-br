@@ -14,7 +14,7 @@ summary: Inicialize node2 com os módulos de controlador de substituição ao us
 
 
 [role="lead"]
-O Node2 com os módulos de substituição já está pronto para inicializar.  Os módulos de substituição suportados estão listados emlink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matriz de sistemas suportados"] .
+O Node2 com os módulos de substituição está agora pronto para inicializar. Os módulos de substituição suportados estão listados em link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas suportados"].
 
 
 NOTE: Você só move o console e as conexões de gerenciamento quando você atualiza trocando os módulos do sistema.

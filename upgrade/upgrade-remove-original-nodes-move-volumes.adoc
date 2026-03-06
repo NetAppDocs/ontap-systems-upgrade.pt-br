@@ -20,8 +20,6 @@ Após mover os volumes dos nós originais para os novos nós e mover ou excluir 
 ----
 storage failover modify -node <original_node_name> -enabled false
 ----
-
-
 . Altere o nível de privilégio para avançado:
 +
 [source, cli]
@@ -167,7 +165,7 @@ set -privilege admin
 ----
 
 
-. Repita os passos <<disable-ha,1>> para <<return-admin,10>> Para remover o parceiro de failover do cluster.
+. Repita os passos <<disable-ha,2>> a <<return-admin,11>> para remover o parceiro de failover do cluster.
 . Se o cluster tiver apenas dois nós restantes, configure a alta disponibilidade para o cluster de dois nós:
 +
 [source, cli]

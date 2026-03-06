@@ -48,7 +48,7 @@ image:drw_2240_x_opening_cam_latch.png["Abrir o manípulo do excêntrico"]
 
 
 
-== Instale o módulo do controlador ASA A150, AFF A150 ou FAS2820
+== Etapa 2: instale o módulo controlador ASA A150, AFF A150 ou FAS2820
 
 Instale, faça o cabo e conete o módulo do controlador ASA A150, AFF A150 ou FAS2820 em node1.
 

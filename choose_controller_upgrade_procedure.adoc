@@ -44,9 +44,11 @@ Isso requer a adição dos novos nós, a movimentação dos volumes e LIFs para 
 +
 ARL é um procedimento de substituição.  Você não precisa expandir ou reduzir seu cluster com os novos nós, o que é vantajoso para clusters sem switch com dois nós.  Mover dados realocando agregados é mais rápido do que copiar dados entre agregados ao mover volumes.
 
-* link:upgrade/upgrade-decide-to-use-this-guide.html["Mover armazenamento"]
+* Converta o sistema original em um shelf de discos e mova o armazenamento:
 +
-Você pode atualizar sem interrupções de um AFF A250 para um AFF A400 ou de um FAS2820 para um sistema de substituição convertendo os nós originais em gavetas de unidades e, em seguida, conectando as gavetas de unidades aos nós de substituição para mover o armazenamento integrado.
+** link:upgrade/upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Converta AFF A250 em uma shelf de discos e mova o armazenamento para AFF A400"]
+** link:upgrade/convert-to-drive-shelf.html["Converta AFF A150, AFF A220 ou FAS2820 em um shelf de unidades e mova o armazenamento para um sistema de substituição compatível"]
+
 
 
 
@@ -62,7 +64,7 @@ Você pode atualizar sem interrupções de um AFF A250 para um AFF A400 ou de um
 
 
 
-| Tenho um sistema integrado e quero atualizá-lo trocando apenas o módulo controlador, mantendo o chassi e os discos existentes? | link:upgrade-arl-auto-affa900/index.html["Atualize usando o ARL, mantendo o mesmo chassi e discos."]. 
+| Tenho um sistema integrado e quero atualizá-lo trocando apenas o módulo controlador, mantendo o chassi e os discos existentes? | link:upgrade-arl-auto-in-chassis/index.html["Atualize usando o ARL, mantendo o mesmo chassi e discos."]. 
 
 
 | Estou realocando uma SVM? | Consultelink:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html#svm-migration-workflow["Visão geral da mobilidade de dados SVM"^] . 

@@ -115,7 +115,7 @@ Transferir o armazenamento interno é uma tarefa opcional no fluxo de trabalho p
 
 .Informações relacionadas
 * link:upgrade_aff_a250_to_aff_a400_ndu_upgrade_workflow.html["Converter AFF A250 para prateleira de acionamento e atualizar para AFF A400"](procedimento não disruptivo)
-* link:convert-fas2820-to-drive-shelf.html["Atualização do FAS2820 convertendo para uma prateleira de unidade"](procedimento não disruptivo)
+* link:convert-to-drive-shelf.html["Atualize de AFF A150, AFF A220 ou FAS2820 convertendo para um shelf de discos"] (procedimento não disruptivo)
 * link:../choose_controller_upgrade_procedure.html["Escolha métodos para atualizar o hardware do controlador"]
 * link:upgrade-by-moving-storage-parent.html["Atualize o hardware do controlador movendo o armazenamento"]
 * link:upgrade-by-moving-volumes-parent.html["Atualize o hardware da controladora movendo volumes"]

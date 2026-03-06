@@ -1,0 +1,58 @@
+---
+permalink: upgrade/convert-to-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, FAS, systems, entry, level 
+summary: Realize uma atualização sem interrupções convertendo cada nó em um shelf de discos e conectando-o ao nó de substituição. 
+---
+= Saiba mais sobre como converter AFF A150, AFF A220 ou FAS2820 em um shelf de unidades e mover o armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Execute uma atualização sem interrupções de um AFF A150, AFF A220 ou FAS2820. Primeiro, converta cada nó do AFF A150, AFF A220 ou FAS2820 em um gabinete de unidades. Em seguida, conecte-os aos nós de substituição. Isso transfere o armazenamento integrado para o sistema de substituição.
+
+.Sobre esta tarefa
+Este procedimento suporta as seguintes conversões de sistema:
+
+* Convertendo um AFF A150 ou AFF A220 em um shelf de discos DS224C
+* Convertendo um FAS2820 em uma prateleira de discos DS212C
+
+
+Os controladores do par de HA são node1 e node2 e os controladores do par de HA de substituição são node3 e node4.
+
+.Antes de começar
+Analise os cenários gerais de atualização e as considerações para atualização movendo volumes ou armazenamento:
+
+* link:upgrade-decide-to-use-this-guide.html["Decida se deseja atualizar movendo volumes ou armazenamento"]
+* link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]xref:migrate-node2-lifs-aggregates.adoc[Migrar LIFs e agregados de dados em node2 para node1]
+[role="quick-margin-para"]
+Antes de converter o node2 em um shelf de discos, migre as interfaces lógicas (LIFs) e os agregados de dados do node2 para o node1.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]xref:convert-node2-to-drive-shelf.adoc[Converter node2 em um compartimento de unidades e conectá-lo ao node4]
+[role="quick-margin-para"]
+Converta o node2 em um shelf de discos e, em seguida, conecte ao node4 antes de reatribuir os discos do node2 para o node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]xref:reassign-node2-drives.adoc[Reatribuir unidades de node2 a node4]
+[role="quick-margin-para"]
+Após converter o node2 em um shelf de discos e conectá-lo ao node4, reatribua os discos que pertenciam anteriormente ao node2 ao node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"]xref:migrate-aggregates-epsilon-lifs.adoc[Migrar agregados de dados, epsilon e LIFs em node1 para node4]
+[role="quick-margin-para"]
+Antes de converter o node1 em um compartimento para discos, migre os agregados de dados, epsilon e LIFs do node1 para o node4.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]xref:convert-node1-to-drive-shelf.adoc[Converter node1 em um compartimento de unidades e conectá-lo ao node3]
+[role="quick-margin-para"]
+Converta o node1 em um shelf de discos e conecte ao node3 antes de reatribuir os discos do node1 para o node3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]xref:reassign-node1-drives.adoc[Reatribuir unidades de node1 a node3]
+[role="quick-margin-para"]
+Após converter o node1 em um shelf de discos e conectá-lo ao node3, reatribua os discos que pertenciam anteriormente ao node1 para o node3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]xref:migrate-node4-lIfs-aggregates.adoc[Migrar LIFs e agregados de dados em node4 para node3]
+[role="quick-margin-para"]
+Para concluir a atualização, conecte o node3 ao node4 e migre os LIFs de dados e os agregados de dados do node4 para o node3.

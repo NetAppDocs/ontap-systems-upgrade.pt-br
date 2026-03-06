@@ -1,0 +1,29 @@
+---
+permalink: upgrade/convert-node1-to-drive-shelf.html 
+sidebar: sidebar 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Converta o node1 em um shelf de discos e conecte ao node3 antes de reatribuir os discos do node1 para o node3. 
+---
+= Converter node1 em um compartimento de unidades e conectá-lo ao node3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Converta o node1 em um shelf de discos e conecte ao node3 antes de reatribuir os discos do node1 para o node3.
+
+.Passos
+. Desconete todos os cabos de rede do node1.
+. Remova o node1 do chassi AFF A150, AFF A220 ou FAS2820.
+. Insira o módulo IOM12 ou IOM12B no compartimento do nó1.
+. Conecte a porta SAS do node3 a uma porta disponível no módulo IOM12 ou IOM12B. Consulte o link:https://hwu.netapp.com["Hardware Universe"^] para verificar as portas SAS do seu sistema.
+. Crie conexões de cluster temporárias conectando as portas do cluster node4 a quaisquer portas do cluster no node3.
++
+
+NOTE: Se o node3 suportar apenas conexões de cluster de 10 GbE, você deverá ter cabeamento de 10 GbE para criar conexões de cluster temporárias.
+
+
+
+.O que se segue?
+link:reassign-node1-drives.html["Reatribuir unidades de node1 a node3"]

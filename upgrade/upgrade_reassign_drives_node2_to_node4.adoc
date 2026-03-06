@@ -16,10 +16,9 @@ Depois de converter o AFF A250 node2 em um compartimento de unidade de NS224 TB 
 .Antes de começar
 Verifique se o node3 e o node4 estão no modo de espera no prompt DO Loader.
 
-.Sobre esta tarefa
-Execute as etapas a seguir em node4.
-
 .Passos
+Execute estas etapas no AFF A400 node4.
+
 . No prompt DO Loader, inicialize o node4 no modo de manutenção:
 +
 `boot_ontap maint`

@@ -30,10 +30,9 @@ Verifique se você atende aos seguintes requisitos:
 * Você tem todo o cabeamento apropriado à mão.
 
 
-.Sobre esta tarefa
-As etapas a seguir são executadas no AFF A250 node1.
-
 .Passos
+Execute estas etapas no AFF A250 node1.
+
 . Aceder ao nível de privilégio avançado:
 +
 `set -privilege advanced`

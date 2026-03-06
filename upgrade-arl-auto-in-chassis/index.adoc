@@ -14,7 +14,7 @@ summary: Você pode atualizar o hardware do controlador convertendo um sistema a
 
 
 [role="lead"]
-Existem vários métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar controladores de armazenamento em um par de HA, convertendo o sistema existente para o sistema de substituição, mantendo o chassi e os discos do sistema existente.
+Existem diversos métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento descreve como atualizar controladores de armazenamento em um par de HA convertendo o sistema existente para o sistema de substituição, mantendo o chassi existente, os discos e os dados armazenados nos discos.
 
 O ARL aproveita a configuração de HA e a comunicação de interconexão de cluster. Isso permite que você mova a propriedade de agregados que não sejam raiz de um nó para outro, se eles compartilharem storage no mesmo cluster.
 
@@ -39,18 +39,18 @@ O hardware da controladora que você substitui depende do tipo de modelo de sist
 | AFF A700 ou FAS9000 | Troque o controlador e os módulos NVRAM em cada nó no controlador antigo pelos novos módulos. *Nota*: Não é necessário mover, desconetar ou reconetar as placas de e/S, cabos de dados, compartimentos de disco e discos. 
 |===
 
-NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes de nós neste documento. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós.
+NOTE: Os termos *node1* e *node2* são usados apenas como referência aos nomes dos nós neste documento. Ao seguir o procedimento, você deve usar os nomes reais dos seus nós.
 
 
 
 == Requisitos e limitações
 
-Você precisa considerar fatores importantes antes de iniciar seu procedimento de atualização.
+Você precisa considerar fatores importantes antes de iniciar a atualização.
 
 
-NOTE: Você deve revisar todas as informações importantes a seguir antes de iniciar o procedimento de atualização.
+NOTE: Você deve revisar todas as seguintes informações importantes.
 
-* Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores"] e link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
+* Este procedimento é complexo e pressupõe que você possua habilidades avançadas de administração do ONTAP. Você deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores"] e o link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado noutro sistema. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware da controladora de substituição tiver sido usado anteriormente como parte de outro cluster ONTAP ou como um sistema autônomo de nó único.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
 * Se você tiver um switch que não é suportado pela versão do ONTAP e pelo sistema de substituição para o qual você está atualizando, consulte link:other_references.html["Referências"]o link para o _Hardware Universe_.
@@ -72,7 +72,7 @@ Se você não puder vincular portas de cluster e0a ou e0b no nó existente às p
 
 
 * Os sistemas ASA A900, AFF A900 e FAS9500 suportam apenas energia de alta linha (200V a 240V). Se o seu sistema AFF A700 ou FAS9000 estiver em execução com alimentação de linha baixa (100V a 120V W), deverá converter a alimentação de entrada AFF A700 ou FAS9000 antes de utilizar este procedimento.
-* Se você estiver atualizando de um sistema existente com tempo de inatividade incluído nolink:decide_to_use_the_aggregate_relocation_guide.html#supported-systems-in-chassis["matriz de sistemas suportados"] Você pode atualizar o hardware do controlador movendo o armazenamento ou entrando em contato com o suporte técnico.  Consultelink:other_references.html["Referências"] para criar um link para _Atualizar movendo volumes ou armazenamento_.
+* Se você estiver atualizando de um sistema existente com tempo de inatividade incluído no link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas suportados"], você pode atualizar o hardware do controlador movendo o armazenamento ou entrando em contato com o suporte técnico. Consulte link:other_references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
 
 
 

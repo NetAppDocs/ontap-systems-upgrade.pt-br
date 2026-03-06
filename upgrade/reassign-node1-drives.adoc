@@ -1,22 +1,21 @@
 ---
-permalink: upgrade/reassign-fas2820-node1-drives.html 
+permalink: upgrade/reassign-node1-drives.html 
 sidebar: sidebar 
-keywords: fas2820, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
-summary: Após converter o FAS2820 node1 em uma unidade DS212C e conectar-se ao node3, você reatribui as unidades que pertenciam anteriormente ao node1 ao node3. 
+keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
+summary: Após converter o node1 em um shelf de discos e conectá-lo ao node3, você reatribui os discos que pertenciam anteriormente ao node1 para o node3. 
 ---
-= Reatribuir unidades do nó FAS2820 node1 para node3
+= Reatribuir unidades de node1 a node3
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Reatribua as unidades que foram atribuídas anteriormente ao FAS2820 node1 para node3.
-
-.Sobre esta tarefa
-Execute as seguintes etapas no nó3.
+Reatribua as unidades que estavam anteriormente atribuídas ao node1 ao node3.
 
 .Passos
+Execute estas etapas no node3.
+
 . No prompt DO Loader, inicialize o node3 no modo de manutenção:
 +
 [source, cli]
@@ -75,4 +74,4 @@ halt
 
 
 .O que se segue?
-link:migrate-fas2820-node4-lIfs-aggregates.html["Migrar LIFs e agregados de dados em node4 para node3"]
+link:migrate-node4-lifs-aggregates.html["Migrar LIFs e agregados de dados em node4 para node3"]
