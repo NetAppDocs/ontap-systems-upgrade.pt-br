@@ -24,14 +24,14 @@ Você também pode usar a opção de inicialização USB para executar o netboot
 
 .Antes de começar
 * Verifique se você pode acessar um servidor HTTP com o sistema.
-* Baixe os arquivos de sistema necessários para o seu sistema e a versão correta do ONTAP a partir do site de suporte _NetApp_. Consulte o link:other_references.html["Referências"]link para o _Site de suporte da NetApp_.
+* Faça o download dos arquivos de sistema necessários para o seu sistema e da versão correta do ONTAP no _NetApp Support Site_. Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_.
 
 
 .Sobre esta tarefa
 Você deve netboot os novos controladores se eles não tiverem a mesma versão do ONTAP 9 instalada neles que está instalada nos controladores originais. Depois de instalar cada novo controlador, inicialize o sistema a partir da imagem ONTAP 9 armazenada no servidor Web. Em seguida, pode transferir os ficheiros corretos para o dispositivo multimédia de arranque para as subsequentes inicializações do sistema.
 
 .Passos
-. link:other_references.html["Referências"]Consulte o link para o _Site de suporte NetApp_ para fazer o download dos arquivos usados para executar o netboot do sistema.
+. Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_ e baixar os arquivos usados para realizar o netboot do sistema.
 . [[netboot_node1_step2]]Baixe o software ONTAP apropriado na seção de download do software do site de suporte _NetApp_ e armazene o `<ontap_version>_image.tgz` arquivo em um diretório acessível pela Web.
 . Mude para o diretório acessível pela Web e verifique se os arquivos necessários estão disponíveis.
 . Sua lista de diretórios deve conter `<ontap_version>_image.tgz`.

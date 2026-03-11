@@ -50,7 +50,7 @@ Você não pode usar este procedimento ARL nas seguintes circunstâncias:
 * Você deseja adicionar as novas controladoras como um novo par de HA ao cluster e migrar os dados usando as movimentações de volume.
 * Você está atualizando uma configuração IP do MetroCluster.
 +
-Para atualizar uma configuração IP do MetroCluster, link:other_references.html["Referências"] consulte para vincular ao conteúdo _Atualização e expansão_ do MetroCluster.
+Para atualizar uma configuração de IP do MetroCluster, consulte link:other-references.html["Referências"] o conteúdo _MetroCluster Upgrade and Expansion_.
 
 
 
@@ -61,7 +61,7 @@ Para atualizar uma configuração IP do MetroCluster, link:other_references.html
 A tabela a seguir mostra a matriz de sistemas suportados para realizar uma atualização do controlador, convertendo o sistema existente para o sistema de substituição, mantendo o chassi existente, os discos existentes e os dados armazenados neles.
 
 
-CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para efetuar uma atualização entre quaisquer outras combinações do sistema. Para todos os outros modelos de controladora, consulte link:other_references.html["Referências"]o link para _usar comandos "System controller replace" para atualizar o hardware do controlador executando o ONTAP 9,8 ou posterior_ e _usando realocação agregada para atualizar manualmente o hardware do controlador executando o ONTAP 9,8 ou posterior_.
+CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para realizar uma atualização entre quaisquer outras combinações de sistemas. Para todos os outros modelos de controlador, consulte link:other-references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_ e _Using aggregate relocation to manually upgrade controller hardware running ONTAP 9.8 or later_.
 
 [cols="20,20,40"]
 |===

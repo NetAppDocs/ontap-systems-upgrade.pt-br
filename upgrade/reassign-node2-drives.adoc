@@ -2,7 +2,7 @@
 permalink: upgrade/reassign-node2-drives.html 
 sidebar: sidebar 
 keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node2, node4, reassign, drives 
-summary: Após converter o node2 em um shelf de discos e conectá-lo ao node4, você reatribui os discos que pertenciam anteriormente ao node2 para o node4. 
+summary: Após converter AFF A150, AFF A220 ou FAS2820 nó2 em um shelf de discos e conectá-lo ao nó4, você reatribui as unidades que pertenciam anteriormente ao nó2 para o nó4. 
 ---
 = Reatribuir unidades de node2 a node4
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Após converter o node2 em um shelf de discos e conectá-lo ao node4, v
 
 
 [role="lead"]
-Reatribua as unidades que pertenciam anteriormente ao node2 ao node4.
+Reatribua as unidades que pertenciam anteriormente ao AFF A150, AFF A220 ou FAS2820 nó2 ao nó4.
 
 .Antes de começar
 Verifique se o node3 e o node4 estão no modo de espera no prompt DO Loader.

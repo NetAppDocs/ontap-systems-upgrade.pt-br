@@ -16,7 +16,7 @@ summary: Verifique se o RCF do switch de cluster oferece suporte às portas de c
 [role="lead"]
 Nesta fase do procedimento de atualização, todos os agregados de dados devem estar no nó 1.  Se estiver atualizando uma configuração com clusters conectados ao switch, você precisará validar se o arquivo de configuração de referência do switch do cluster (RCF) oferece suporte às portas de cluster/HA compartilhadas para os novos controladores.
 
-Se você estiver atualizando para uma configuração de cluster sem switch de dois nós, pode pular esta seção e ir paralink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"] .
+Se você estiver atualizando para um cluster sem switch de dois nós, pode pular esta seção e ir para link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"].
 
 .Passos
 . Mudar para o modo de privilégio avançado:
@@ -36,7 +36,7 @@ Na saída, a "Conexão IC RDMA" deve ter o status `Up` .
 | Se o status "Conexão IC RDMA" for ... | Então... 
 
 
-| `Up` | Vá paralink:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"] . 
+| `Up` | Vá para link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"]. 
 
 
 | `Down` | Vá para<<verify-rcf-step3,Passo 3>> . 
@@ -52,4 +52,4 @@ Para obter mais informações, link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 .O que vem a seguir
-link:move_non_root_aggr_and_nas_data_lifs_back_to_node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"]
+link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"]

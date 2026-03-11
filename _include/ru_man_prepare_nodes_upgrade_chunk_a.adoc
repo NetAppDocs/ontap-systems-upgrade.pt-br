@@ -315,7 +315,7 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Para obter informações detalhadas sobre o `network interface revert` comando, link:other_references.html["Referências"]consulte a ligação para os comandos _ONTAP 9: Manual Page Reference_.
+Para obter informações detalhadas sobre o  `network interface revert` comando, consulte link:other_references.html["Referências"] para acessar a _ONTAP 9 Command reference_.
 
 . Verifique se o node1 ou o node2 possui quaisquer discos com falha:
 +

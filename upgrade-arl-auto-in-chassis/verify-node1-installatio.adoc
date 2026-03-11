@@ -122,7 +122,7 @@ NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broa
 Depois de confirmar que o node1 está no quórum e pode se comunicar com o node2, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node1 são vistos no node1. Além disso, verifique se todas as portas de rede node1 estão configuradas em seus domínios de broadcast corretos.
 
 .Sobre esta tarefa
-Para obter mais informações sobre como criar e recriar VLANs, grupos de interface e domínios de broadcast, link:other_references.html["Referências"]consulte para vincular ao conteúdo _Network Management_.
+Para obter mais informações sobre como criar e recriar VLANs, grupos de interfaces e domínios de broadcast, consulte link:other-references.html["Referências"] para acessar o conteúdo _Network Management_.
 
 .Passos
 . Liste todas as portas físicas que estão no node1 atualizado:

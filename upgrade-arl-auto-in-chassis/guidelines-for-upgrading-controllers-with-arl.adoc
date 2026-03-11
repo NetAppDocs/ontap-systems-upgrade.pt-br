@@ -20,9 +20,9 @@ Para entender se você pode usar o ARL (Aggregate Relocation), manter o chassi e
 
 == Atualizações suportadas para ARL
 
-Atualizações de controladora são suportadas para certas configurações de sistema. Consulte o link:decide_to_use_the_aggregate_relocation_guide.html#supported-systems["combinações de atualização de sistema suportadas"] para obter uma lista dos sistemas suportados e a versão mínima do ONTAP.
+As atualizações do controlador são suportadas para determinadas configurações de sistema. Consulte a link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems["combinações de atualização de sistema suportadas"] lista de sistemas suportados e a versão mínima do ONTAP.
 
-Se você recebeu um novo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 ou FAS9500 como um sistema completo, incluindo um novo chassi, consulte link:other_references.html["Referências"]o link para _usar os comandos "System controller replace" para atualizar o hardware da controladora executando o ONTAP 9,8 ou posterior_.
+Se você recebeu um novo AFF A30, AFF A50, AFF A70, AFF A90, AFF A150, AFF A900, AFF C30, AFF C60, AFF C80, FAS2820 ou FAS9500 como um sistema completo, incluindo um novo chassi, consulte link:other-references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_.
 
 A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
 
@@ -46,6 +46,6 @@ Para obter mais informações, link:cable-node1-for-shared-cluster-HA-storage.ht
 
 Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.
 
-Caso ocorra algum problema, consulte o link:aggregate_relocation_failures.html["Solucionar problemas"] seção no final do procedimento para mais informações e possíveis soluções. As informações sobre as falhas que podem ocorrer estão listadas por fase do procedimento na seção link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] .
+Caso ocorra algum problema, consulte a link:aggregate-relocation-failures.html["Solucionar problemas"] seção no final do procedimento para mais informações e possíveis soluções. As informações sobre as falhas que podem ocorrer estão listadas por fase do procedimento na link:overview-of-the-arl-upgrade.html["Sequência de atualização do ARL"].
 
 Se você não encontrar uma solução para o problema encontrado, entre em contato com o suporte técnico.

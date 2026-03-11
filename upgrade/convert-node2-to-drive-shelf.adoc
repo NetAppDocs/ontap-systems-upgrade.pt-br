@@ -11,7 +11,7 @@ summary: Converta o node2 em um shelf de discos e conecte ao node4 antes de reat
 
 
 [role="lead"]
-Converta o node2 em um shelf de discos e conecte-o ao node4 antes de reatribuir os discos do node2 para o node4. Node1 e node2 são os controladores dentro do shelf de discos.
+Converta o node2 do AFF A150, AFF A220 ou FAS2820 em um shelf de discos e conecte-o ao node4 antes de reatribuir os discos do node2 para o node4. Node1 e node2 são os controladores dentro do shelf de discos.
 
 .Passos
 . Desligue todos os cabos de rede do node2.

@@ -99,7 +99,7 @@ Durante a fase de pré-verificações, o sistema executa a seguinte lista de ver
 | Verificação do Quórum do cluster | Verifica se os nós que estão sendo substituídos estão no quórum. Se os nós não estiverem no quórum, a tarefa falhará. 
 
 
-| Verificação da versão da imagem | Verifica se os nós que estão sendo substituídos executam a mesma versão do ONTAP. Se as versões da imagem ONTAP forem diferentes, a tarefa falhará. Os novos nós devem ter a mesma versão do ONTAP 9.x instalada neles que está instalada nos nós originais. Se os novos nós tiverem uma versão diferente do ONTAP instalada, você precisará inicializar os novos controladores depois de instalá-los. Para obter instruções sobre como atualizar o ONTAP, consulte link:other_references.html["Referências"]o link para _Atualizar ONTAP_. 
+| Verificação da versão da imagem | Verifica se os nós que estão sendo substituídos executam a mesma versão do ONTAP. Se as versões da imagem do ONTAP forem diferentes, a tarefa falha. Os novos nós devem ter a mesma versão do ONTAP 9.x instalada neles que está instalada nos nós originais. Se os novos nós tiverem uma versão diferente do ONTAP instalada, você precisa inicializar os novos controladores via rede após instalá-los. Para instruções sobre como atualizar o ONTAP, consulte link:other-references.html["Referências"] para link para _Upgrade ONTAP_. 
 
 
 | Verificação do estado HA | Verifica se ambos os nós que estão sendo substituídos estão em uma configuração de par de alta disponibilidade (HA). Se o failover de armazenamento não estiver habilitado para os controladores, a tarefa falhará. 
@@ -108,7 +108,7 @@ Durante a fase de pré-verificações, o sistema executa a seguinte lista de ver
 | Verificação do estado do agregado | Se os nós que estão sendo substituídos possuem agregados para os quais eles não são o proprietário da casa, a tarefa falha. Os nós não devem possuir quaisquer agregados não locais. 
 
 
-| Verificação do estado do disco | Se algum nó a ser substituído tiver discos em falta ou com falha, a tarefa falhará. Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA. 
+| Verificação do estado do disco | Se algum dos nós que estão sendo substituídos tiver discos ausentes ou com falha, a tarefa falhará. Se algum disco estiver ausente, consulte link:other-references.html["Referências"] para acessar _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ e _HA pair management_ para configurar o armazenamento para o par de HA. 
 
 
 | Verificação do estado do LIF de dados | Verifica se algum dos nós que estão sendo substituídos tem LIFs de dados não locais. Os nós não devem conter quaisquer LIFs de dados para os quais eles não são o proprietário da casa. Se um dos nós contiver LIFs de dados não locais, a tarefa falhará. 
@@ -230,6 +230,6 @@ Cada nó no cluster deve ter seu próprio arquivo de licença NetApp (NLF).
 
 Se você não tiver um NLF, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o seu contrato de licença, portanto, você deve instalar o NLF para o novo controlador após a conclusão da atualização.
 
-Consulte o link:other_references.html["Referências"]link para o _Site de suporte da NetApp_, onde você pode obter seu NLF. Os NLFs estão disponíveis na seção _meu suporte_ em _licenças de software_. Se o local não tiver os NLFs de que você precisa, entre em Contato com seu representante de vendas da NetApp.
+Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_, onde você pode obter seu NLF. Os NLFs estão disponíveis na seção _My Support_ em _Software licenses_. Se o site não tiver os NLFs de que você precisa, entre em contato com seu representante de vendas da NetApp.
 
-Para obter informações detalhadas sobre licenciamento, link:other_references.html["Referências"]consulte o link para a _Referência de Administração do sistema_.
+Para obter informações detalhadas sobre licenciamento, consulte link:other-references.html["Referências"] para acessar o _System Administration Reference_.

@@ -2,7 +2,7 @@
 permalink: upgrade/reassign-node1-drives.html 
 sidebar: sidebar 
 keywords: fas2820, aff a150, aff a220, ndu, nondisruptive, upgrade, node3, node1, reassign, drives 
-summary: Após converter o node1 em um shelf de discos e conectá-lo ao node3, você reatribui os discos que pertenciam anteriormente ao node1 para o node3. 
+summary: Após converter AFF A150, AFF A220 ou FAS2820 nó1 em um shelf de discos e conectá-lo ao nó3, você reatribui as unidades que pertenciam anteriormente ao nó1 ao nó3. 
 ---
 = Reatribuir unidades de node1 a node3
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Após converter o node1 em um shelf de discos e conectá-lo ao node3, v
 
 
 [role="lead"]
-Reatribua as unidades que estavam anteriormente atribuídas ao node1 ao node3.
+Reatribua as unidades que estavam anteriormente atribuídas ao AFF A150, AFF A220 ou FAS2820 node1 para o node3.
 
 .Passos
 Execute estas etapas no node3.

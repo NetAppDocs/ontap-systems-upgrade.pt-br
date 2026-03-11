@@ -260,7 +260,7 @@ O sistema exibe informações detalhadas sobre o SP em ambos os nós.
 . Confirme se a rede SP está configurada.
 . Registre o endereço IP e outras informações sobre o SP.
 +
-Talvez você queira reutilizar os parâmetros de rede dos dispositivos de gerenciamento remoto, neste caso o SPS, do sistema original para o SPS nos novos nós. Para obter informações detalhadas sobre o SP, link:other_references.html["Referências"]consulte o link para o _Referência de Administração do sistema_ e os comandos _ONTAP 9: Referência de página manual_.
+Você pode querer reutilizar os parâmetros de rede dos dispositivos de gerenciamento remoto, neste caso os SPs, do sistema original para os SPs nos novos nós. Para obter informações detalhadas sobre o SP, consulte link:other_references.html["Referências"] o _System Administration Reference_ e o _ONTAP 9 Command reference_.
 
 +
 .. [[man_prepare_nodes_step29]]Se você quiser que os novos nós tenham a mesma funcionalidade licenciada que os nós originais, insira o seguinte comando para ver as licenças do cluster no sistema original:
@@ -331,7 +331,7 @@ Ative o AutoSupport seguindo as instruções em _Referência de administração 
 `system node autosupport show -node node_name -instance`
 
 +
-Para obter informações detalhadas sobre o AutoSupport, link:other_references.html["Referências"]consulte o link para o _Referência de Administração do sistema_ e os comandos _ONTAP 9: Referência de página manual_.
+Para obter informações detalhadas sobre AutoSupport, consulte link:other_references.html["Referências"] para acessar o _System Administration Reference_ e o _ONTAP 9 Command reference_.
 
 .. [[man_prepare_nodes_step35,Etapa 35]] Envie uma mensagem AutoSupport para o NetApp para node1 digitando o seguinte comando:
 +

@@ -50,10 +50,10 @@ Você precisa considerar fatores importantes antes de iniciar a atualização.
 
 NOTE: Você deve revisar todas as seguintes informações importantes.
 
-* Este procedimento é complexo e pressupõe que você possua habilidades avançadas de administração do ONTAP. Você deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores"] e o link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
+* Este procedimento é complexo e pressupõe que você possua habilidades avançadas de administração do ONTAP. Você deve ler e compreender o link:guidelines-for-upgrading-controllers-with-arl.html["diretrizes para atualização de controladores"] e o link:overview-of-the-arl-upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado noutro sistema. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware da controladora de substituição tiver sido usado anteriormente como parte de outro cluster ONTAP ou como um sistema autônomo de nó único.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
-* Se você tiver um switch que não é suportado pela versão do ONTAP e pelo sistema de substituição para o qual você está atualizando, consulte link:other_references.html["Referências"]o link para o _Hardware Universe_.
+* Se você tiver um switch que não seja compatível com a versão do ONTAP e com o sistema de substituição para o qual você está atualizando, consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_.
 * Os sistemas AFF A250 e AFF C250 utilizam portas onboard 10/25 GbE para interconexão de clusters. Para atualizar clusters sem switch de dois nós de um sistema AFF A250 ou AFF C250 para um sistema AFF A50, AFF A30, AFF C60 ou AFF C30, é necessário usar uma placa X60132A de 4 portas 10/25 GbE no slot 1 em ambos os nós. Isso fornece interconexão de cluster para LIFs de cluster a uma porta temporária na plataforma de destino.
 * Os sistemas AFF A30, AFF A50, AFF A70, AFF A90, AFF A1K, AFF C30, AFF C60, AFF C80, FAS70 e FAS90 compartilham 100GbE portas de rede para conexões de cluster e HA. Esses sistemas podem oferecer suporte a conexões de cluster 10GbE ou 25GbE a switches de cluster legados. No entanto, a NetApp recomenda a atualização para velocidades de cluster 100GbE quando os switches 10GbE e 25GbE não forem mais necessários. Para obter mais informações, consulte os seguintes artigos da base de dados de Conhecimento:
 +
@@ -72,7 +72,7 @@ Se você não puder vincular portas de cluster e0a ou e0b no nó existente às p
 
 
 * Os sistemas ASA A900, AFF A900 e FAS9500 suportam apenas energia de alta linha (200V a 240V). Se o seu sistema AFF A700 ou FAS9000 estiver em execução com alimentação de linha baixa (100V a 120V W), deverá converter a alimentação de entrada AFF A700 ou FAS9000 antes de utilizar este procedimento.
-* Se você estiver atualizando de um sistema existente com tempo de inatividade incluído no link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas suportados"], você pode atualizar o hardware do controlador movendo o armazenamento ou entrando em contato com o suporte técnico. Consulte link:other_references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
+* Se você estiver atualizando de um sistema existente com tempo de inatividade incluído no link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems-in-chassis["matriz de sistemas suportados"], você pode atualizar o hardware do controlador movendo o armazenamento ou entrando em contato com o suporte técnico. Consulte link:other-references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
 
 
 

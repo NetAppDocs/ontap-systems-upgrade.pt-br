@@ -146,7 +146,7 @@ Não é possível combinar unidades FIPS com outros tipos de unidades no mesmo n
 ====
 .. Vá para o menu de inicialização especial e selecione opção `(10) Set Onboard Key Manager recovery secrets`.
 +
-Introduza a frase-passe e as informações de cópia de segurança que registou o procedimento anterior. link:manage_authentication_okm.html["Gerencie chaves de autenticação usando o Gerenciador de chaves integrado"]Consulte .
+Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte link:manage_authentication_okm.html["Gerencie chaves de autenticação usando o Gerenciador de chaves integrado"].
 
 
 

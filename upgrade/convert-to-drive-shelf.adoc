@@ -16,14 +16,19 @@ Execute uma atualização sem interrupções de um AFF A150, AFF A220 ou FAS2820
 .Sobre esta tarefa
 Este procedimento suporta as seguintes conversões de sistema:
 
-* Convertendo um AFF A150 ou AFF A220 em um shelf de discos DS224C
-* Convertendo um FAS2820 em uma prateleira de discos DS212C
+|===
+| Converter este sistema... | Para esta prateleira de unidades... 
 
 
+| AFF A150 ou AFF A220 | DS224C 
+
+
+| FAS2820 | DS212C 
+|===
 Os controladores do par de HA são node1 e node2 e os controladores do par de HA de substituição são node3 e node4.
 
 .Antes de começar
-Analise os cenários gerais de atualização e as considerações para atualização movendo volumes ou armazenamento:
+Analise todas as considerações para a atualização movendo volumes ou storage:
 
 * link:upgrade-decide-to-use-this-guide.html["Decida se deseja atualizar movendo volumes ou armazenamento"]
 * link:upgrade-considerations.html["Considerações para atualizar o hardware do controlador"]

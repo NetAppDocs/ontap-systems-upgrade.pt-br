@@ -18,4 +18,4 @@ Você deve ter uma pulseira de aterramento para executar a atualização e você
 
 Para uma atualização do AFF A800 para um AFF A90 ou AFF A70, verifique se os cabos 100GbE têm, no mínimo, um metro de comprimento.
 
-link:other_references.html["Referências"]Consulte para aceder à lista de documentos de referência e sites de referência necessários para esta atualização.
+Consulte link:other-references.html["Referências"] para acessar a lista de documentos e sites de referência necessários para esta atualização.

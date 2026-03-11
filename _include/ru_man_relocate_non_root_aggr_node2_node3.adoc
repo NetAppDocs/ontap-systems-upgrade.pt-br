@@ -167,7 +167,7 @@ Se necessário, você pode forçar a realocação usando um dos seguintes métod
 
 
 
-Para obter mais informações sobre os comandos de realocação de agregados de armazenamento, vá para link:other_references.html["Referências"]vincular a _Disk e gerenciamento de agregados com a CLI_ e os comandos _ONTAP 9: Manual Page Reference_.
+Para obter mais informações sobre os comandos de realocação de agregados de armazenamento, acesse link:other_references.html["Referências"] para acessar _Gerenciamento de disco e agregado com a CLI_ e a _Referência de comandos do ONTAP 9_.
 
 |===
 . [[man_relocate_2_3_step8]]Verifique se todos os agregados não-root estão online no node3:

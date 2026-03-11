@@ -218,7 +218,7 @@ O comando a seguir define a política de failover para `broadcast-domain-wide` e
 `network interface modify -vserver node4 -lif data1 failover-policy broadcast-domain-wide -failover-group fg1`
 
 +
-Para obter mais informações, link:other_references.html["Referências"]consulte o link para _Gerenciamento de rede_ ou os comandos _ONTAP 9: Referência de página manual_ e vá para _Configuração de configurações de failover em um LIF_.
+Para obter mais informações, consulte link:other_references.html["Referências"] para link para _Gerenciamento de Rede_ ou o _ONTAP 9 Command reference_, e acesse _Configuring failover settings on a LIF_.
 
 . Verifique as alterações em node4:
 +

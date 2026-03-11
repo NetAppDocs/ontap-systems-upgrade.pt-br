@@ -38,7 +38,7 @@ O `storage aggregate relocation show` comando mostra quais agregados foram realo
 
 
 +
-Para obter informações detalhadas sobre as `storage aggregate relocation start` opções , `override-vetoes` e `override-destination-checks` , link:other_references.html["Referências"]consulte para vincular aos comandos _ONTAP 9: Manual Página de Referência_.
+Para obter informações detalhadas sobre as  `storage aggregate relocation start`, `override-vetoes`, e  `override-destination-checks` opções, consulte link:other-references.html["Referências"] para o link para a _ONTAP 9 Command reference_.
 
 
 
@@ -69,9 +69,9 @@ Você pode corrigir o problema de propriedade incorreta após a fase 6, depois d
 `storage aggregate show -nodes _node2_ -is-home true`
 
 +
-Para identificar agregados que não foram corretamente realocados, consulte a lista de agregados com o proprietário da casa de node1 que você obteve na seção link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] e compare-os com a saída do comando acima.
+Para identificar os agregados que não foram realocados corretamente, consulte a lista de agregados com o proprietário do node1 que você obteve na seção link:prepare-nodes-for-upgrade.html["Prepare os nós para atualização"] e compare-a com a saída do comando acima.
 
-. Compare a saída do passo 1 com a saída que você capturou para node1 na seção link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"] e observe quaisquer agregados que não foram relocados corretamente.
+. Compare o resultado da Etapa 1 com o resultado que você capturou para node1 na seção link:prepare-nodes-for-upgrade.html["Prepare os nós para atualização"] e observe quaisquer agregados que não foram realocados corretamente.
 . Relocate os agregados deixados para trás na node2:
 +
 `storage aggregate relocation start -node _node2_ -aggr _aggr_node_1_ -destination _node1_`

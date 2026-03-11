@@ -11,7 +11,7 @@ summary: Converta o node1 em um shelf de discos e conecte ao node3 antes de reat
 
 
 [role="lead"]
-Converta o node1 em um shelf de discos e conecte ao node3 antes de reatribuir os discos do node1 para o node3.
+Converta AFF A150, AFF A220 ou FAS2820 nó1 em uma gaveta de unidades e conecte ao nó3 antes de reatribuir as unidades do nó1 ao nó3.
 
 .Passos
 . Desconete todos os cabos de rede do node1.

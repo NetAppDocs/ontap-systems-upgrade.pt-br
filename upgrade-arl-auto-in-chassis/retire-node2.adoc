@@ -63,4 +63,4 @@ O módulo do controlador desloca-se ligeiramente para fora do chassis.
 
 
 .Depois de terminar
-Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+Você pode desativar o node2 após a conclusão da atualização. Consulte link:decommission-old-system.html["Desativar o sistema antigo"].

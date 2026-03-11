@@ -63,7 +63,7 @@ NOTE: Aguarde até que todos os agregados não-raiz pertencentes ao node1 tenham
 
 
 
-link:other_references.html["Referências"]Consulte o link para o _Disk e gerenciamento de agregados com o conteúdo CLI_ e os comandos _ONTAP 9: Manual Page Reference_ para obter mais informações sobre os comandos de realocação de agregados de armazenamento.
+Consulte link:other_references.html["Referências"] para acessar o conteúdo _Gerenciamento de disco e agregados com a CLI_ e a _Referência de comandos do ONTAP 9_ para obter mais informações sobre os comandos de realocação de agregados de armazenamento.
 
 |===
 . [[man_relocate_1_2_step4]] Verifique se todos os agregados não-root estão online e seu estado em node2:
