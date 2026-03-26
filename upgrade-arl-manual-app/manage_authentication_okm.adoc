@@ -21,5 +21,19 @@ Você pode usar o OKM (Onboard Key Manager) para gerenciar chaves de autenticaç
 +
 Esta é a senha que foi inserida quando o OKM foi configurado ou atualizado usando a CLI ou API REST.
 
-. Faça backup das informações do gerenciador de chaves executando o `security key-manager onboard show-backup` comando.
+. Verifique a senha e a operação do key-manager:
++
+`security key-manager onboard sync`
+
++
+Quando solicitado, insira a senha OKM de todo o cluster que você registrou na etapa anterior.
+
+. Verifique se cc-mode está ativado consultando a saída do seguinte comando:
++
+`security key-manager config show`
+
+. Faça backup das informações do key-manager:
++
+`security key-manager onboard show-backup`
+
 

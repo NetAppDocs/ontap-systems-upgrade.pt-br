@@ -369,7 +369,6 @@
   <block id="2f3067e385c13bed8c91d99a529e1f6c" category="paragraph">Você pode usar o Onboard Key Manager (OKM) para gerenciar chaves de criptografia. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.</block>
   <block id="b57235dcd9249f0e9bf6001eecd99ce5" category="list-text">Grave a frase-passe de todo o cluster.</block>
   <block id="f97bf876165b297d6e8425acab009019" category="paragraph">Esta é a senha que foi inserida quando o OKM foi configurado ou atualizado usando a CLI ou API REST.</block>
-  <block id="8cada82213a4eb50c1f0cba46389bd44" category="list-text">Faça backup das informações do gerenciador de chaves executando o<block ref="32ba7af89b7557f6e3e6d80a922080ce" prefix=" " category="inline-code"></block> comando.</block>
   <block id="15577d2c813239ab53fdc6f35d8a1dc5" category="doc">Atualize o par de nós</block>
   <block id="ef3d7350487977f271f56e19fff958fa" category="paragraph">Antes de atualizar os nós usando ARL, você deve entender como o procedimento funciona. Neste conteúdo, o procedimento é dividido em várias etapas.</block>
   <block id="5634325c9c7a1ed8bb239cc0f0ecea96" category="paragraph">Para atualizar o par de nós, você precisa preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.</block>
@@ -5353,4 +5352,9 @@
   <block id="49e4f8e3ed6f9b425b3302443b88af26" category="paragraph">Vá para <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> para acessar o link para _Gerenciamento de Rede_ ou o _ONTAP 9 Command reference_ para mais informações.</block>
   <block id="79ed614e57a84cb3ea78a7ec6a71e230" category="paragraph">Para obter mais informações, consulte <block ref="3352feee8874655040be7cccb077b0f9" category="inline-link-macro-rx"></block> para link para _Gerenciamento de Rede_ ou o _ONTAP 9 Command reference_, e acesse _Configuring failover settings on a LIF_.</block>
   <block id="bf4898b462ec44974d0fd35d857406f4" category="paragraph">Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte <block ref="67f80d13cf548292184bc05f4b74227a" category="inline-link-macro-rx"></block>.</block>
+  <block id="160d9607adcb68efced47d6deb7493eb" category="list-text">Verifique a senha e a operação do key-manager:</block>
+  <block id="35e13cf28e19f82138f24d5704edb686" category="paragraph">Quando solicitado, insira a senha OKM de todo o cluster que você registrou na etapa anterior.</block>
+  <block id="86e557f58bf6d6ffc84353711ad398d6" category="list-text">Verifique se cc-mode está ativado consultando a saída do seguinte comando:</block>
+  <block id="c1c5360be7e00706ec4adf74606262d2" category="paragraph"><block ref="8bb1a67a3cdda2dcc6e451017bb9da4d" prefix="" category="inline-code"></block></block>
+  <block id="66a6e497892fb616eb108dd90d697bfb" category="list-text">Faça backup das informações do key-manager:</block>
 </blocks>
