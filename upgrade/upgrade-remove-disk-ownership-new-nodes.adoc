@@ -41,9 +41,9 @@ Se o seu sistema não estiver listado acima, consulte https://hwu.netapp.com["Ne
 +
 `boot_ontap menu`
 
-. No prompt do menu de inicialização, digite `9a` e pressione Enter.
+. No prompt do menu de inicialização, digite  `9a` e selecione Enter.
 +
-A tela a seguir mostra o prompt do menu de inicialização.
+Você vê a seguinte saída:
 
 +
 [listing]

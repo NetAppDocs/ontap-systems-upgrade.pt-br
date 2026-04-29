@@ -130,3 +130,6 @@ O sistema efetua as seguintes verificações posteriores:
 
 
 
+
+.O que se segue?
+Após mover agregados não raiz e LIFs de dados NAS pertencentes ao nó 2 do nó 3 para o nó 4, link:manage-authentication-using-kmip-servers.html["Gerenciar autenticação usando servidores KMIP"].

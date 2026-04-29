@@ -14,7 +14,7 @@ summary: Verifique se as portas físicas no node2 são mapeadas corretamente par
 
 
 [role="lead"]
-Você deve garantir que as portas físicas no node2 sejam mapeadas corretamente para as portas físicas no node4, o que permitirá que o node4 se comunique com outros nós no cluster e com a rede após a atualização.
+As portas físicas no nó 2 devem ser mapeadas corretamente para as portas físicas no nó 4. Isso permite que o nó 4 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Antes de começar
 Você já deve ter informações sobre as portas nos novos nós, para acessar essas informações, link:other_references.html["Referências"]consulte o link para o _Hardware Universe_. Você usa as informações mais adiante nesta seção.
@@ -22,9 +22,9 @@ Você já deve ter informações sobre as portas nos novos nós, para acessar es
 A configuração de software do node4 deve corresponder à conetividade física do node4 e a conetividade IP deve ser restaurada antes de continuar com a atualização.
 
 .Sobre esta tarefa
-As configurações de porta podem variar, dependendo do modelo dos nós. Você deve tornar a porta e a configuração de LIF do nó original compatíveis com a configuração do novo nó. Isso ocorre porque o novo nó replays a mesma configuração quando ele é inicializado, ou seja, quando você inicializar o node4, o Data ONTAP tentará hospedar LIFs nas mesmas portas que foram usadas no node2.
+As configurações de porta podem variar dependendo do modelo dos nós. Você deve garantir que a configuração de porta e LIF do nó original seja compatível com a configuração planejada para o novo nó. Isso ocorre porque o novo nó reproduz a mesma configuração ao inicializar, ou seja, ao inicializar o nó4, Data ONTAP tenta hospedar as LIFs nas mesmas portas que eram usadas no nó2.
 
-Portanto, se as portas físicas no node2 não forem mapeadas diretamente para as portas físicas no node4, as alterações de configuração de software serão necessárias para restaurar a conetividade de cluster, gerenciamento e rede após a inicialização. Além disso, se as portas de cluster no node2 não forem mapeadas diretamente para as portas de cluster no node4, o node4 poderá não reingressar automaticamente no quórum quando for reinicializado até que uma alteração de configuração de software seja feita para hospedar as LIFs de cluster nas portas físicas corretas.
+Portanto, se as portas físicas no node2 não corresponderem diretamente às portas físicas no node4, serão necessárias alterações na configuração do software para restaurar a conectividade do cluster, do gerenciamento e da rede após a inicialização. Além disso, se as portas do cluster no node2 não corresponderem diretamente às portas do cluster no node4, o node4 poderá não se reintegrar automaticamente ao quorum ao ser reinicializado, até que seja feita uma alteração na configuração do software para hospedar as LIFs do cluster nas portas físicas corretas.
 
 .Passos
 . Registre todas as informações de cabeamento node2 para node2, as portas, domínios de broadcast e IPspaces, nesta tabela:

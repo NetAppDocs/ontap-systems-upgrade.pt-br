@@ -29,7 +29,7 @@ Antes de substituir o node1 por node3, é necessário mover os agregados que nã
 
 .. Quando solicitado, digite `y`.
 +
-A realocação ocorrerá em segundo plano. Pode levar de alguns segundos a alguns minutos para realocar um agregado. O tempo inclui as partes de interrupção do cliente e não-interrupção. O comando não relocaliza nenhum agregado off-line ou restrito.
+A realocação ocorre em segundo plano. Pode levar de alguns segundos a alguns minutos para realocar um agregado. O tempo inclui as partes de interrupção do cliente e não-interrupção. O comando não relocaliza nenhum agregado off-line ou restrito.
 
 .. Retorne ao nível de administrador inserindo o seguinte comando:
 +
@@ -42,7 +42,7 @@ A realocação ocorrerá em segundo plano. Pode levar de alguns segundos a algun
 `storage aggregate relocation show -node _node1_`
 
 +
-A saída será exibida `Done` para um agregado depois de ter sido relocado.
+A saída exibe  `Done` para um agregado após ele ter sido realocado.
 
 +
 
@@ -137,3 +137,6 @@ Node owns partner's aggregates as part of the nondisruptive controller upgrade p
 A saída não deve exibir nenhum agregado on-line não-root, que já tenha sido transferido para node2.
 
 
+
+.O que se segue?
+Após realocar agregados não raiz do node1 para o node2, link:move_nas_lifs_node1_node2.html["mover LIFs de dados NAS pertencentes ao node1 para o node2"].

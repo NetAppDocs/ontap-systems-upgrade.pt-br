@@ -51,5 +51,5 @@ Para obter mais informações, link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 
-.O que vem a seguir
-link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Migre agregados que não sejam raiz e LIFs de dados nas de volta para node2"]
+.O que se segue?
+Após verificar a configuração do RCF link:move-non-root-aggr-and-nas-data-lifs-back-to-node2.html["Mova os agregados não raiz e os LIFs de dados NAS de volta para o node2"].

@@ -22,7 +22,7 @@ entries:
     url: "/upgrade-arl-auto-in-chassis/prepare-nodes-for-upgrade.html"
   - title: Gerencie a criptografia de armazenamento usando o Gerenciador de chaves
       integrado
-    url: "/upgrade-arl-auto-in-chassis/manage-storage-encryption-using-okm.html"
+    url: "/upgrade-arl-auto-in-chassis/complete-preparation-for-upgrade.html"
 - title: Fase 2. Transferir recursos e aposentar-se node1
   entries:
   - title: Realocar agregados não-raiz e LIFs de dados nas de propriedade do node1
@@ -65,18 +65,18 @@ entries:
     url: "/upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html"
   - title: Aposentar-se node2
     url: "/upgrade-arl-auto-in-chassis/retire-node2.html"
-- title: Fase 5. Instale os módulos do sistema de substituição no node2
+- title: Etapa 5. Instale os módulos do sistema de substituição do node2
   entries:
-  - title: Instale os módulos do sistema de substituição no node2
+  - title: Substitua os módulos do sistema node2
     entries:
-    - title: Instale o AFF A30, AFF A50, AFF C30 ou AFF C60
-      url: "/upgrade-arl-auto-in-chassis/install-aff-a30-a50-c30-c50-node2.html"
-    - title: Instale o AFF A90 ou o AFF A70
-      url: "/upgrade-arl-auto-in-chassis/install-affa90-affa70-on-node2.html"
-    - title: Instale o ASA A150, o AFF A150 ou o FAS2820
-      url: "/upgrade-arl-auto-in-chassis/install-asa150-affa150-fas2820-on-node2.html"
-    - title: Instale o ASA A900, o AFF A900 ou o FAS9500
-      url: "/upgrade-arl-auto-in-chassis/install-asa900-affa900-fas9500-on-node2.html"
+    - title: Substitua o AFF A250 ou o AFF C250
+      url: "/upgrade-arl-auto-in-chassis/replace-node2-affa250-affc250.html"
+    - title: Substitua o AFF A800 ou o AFF C800
+      url: "/upgrade-arl-auto-in-chassis/replace-node2-affa800-affc800.html"
+    - title: Substitua AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+      url: "/upgrade-arl-auto-in-chassis/replace-node2-affa220-affa200-affc190-fas2620-fas2720.html"
+    - title: Substitua o AFF A700 ou o FAS9000
+      url: "/upgrade-arl-auto-in-chassis/replace-node2-aff700-fas900.html"
   - title: Netboot node2
     url: "/upgrade-arl-auto-in-chassis/netboot-node2.html"
 - title: Fase 6. Arranque node2 com os módulos do sistema de substituição

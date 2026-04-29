@@ -46,7 +46,7 @@ Não é possível combinar unidades FIPS com outros tipos de unidades no mesmo n
 ====
 .. Vá para o menu de inicialização especial e selecione opção `(10) Set Onboard Key Manager recovery secrets`.
 +
-Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte link:manage-storage-encryption-using-okm.html["Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado"].
+Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte link:complete-preparation-for-upgrade.html#manage-storage-encryption-using-okm["Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado"].
 
 
 
@@ -219,3 +219,6 @@ Entre inserir nomes de nós no prompt e no prompt de login, o nó reinicializa a
 
 ====
 
+
+.O que se segue?
+Após inicializar o nó2 com os módulos de sistema de substituição, link:verify-node2-installation.html["Verifique a instalação do nó2"].

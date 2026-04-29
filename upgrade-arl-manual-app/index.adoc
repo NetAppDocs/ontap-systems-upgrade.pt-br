@@ -60,3 +60,6 @@ NOTE: Neste documento, os nós originais são chamados de _node1_ e _node2_, e o
 
 
 
+
+.O que se segue?
+Após tomar conhecimento deste procedimento ARL, link:decide_to_use_arl_guide.html["decida se deve usar este procedimento ARL"].

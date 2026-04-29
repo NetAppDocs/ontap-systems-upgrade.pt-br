@@ -314,3 +314,6 @@ NOTE: É necessário mover SAN LIFs para uma porta que tenha a mesma velocidade 
 `network interface modify -vserver _vserver_name_ -lif _lif_name_ -status-admin up`
 
 
+
+.O que se segue?
+Após mover os LIFs de dados NAS pertencentes ao nó 2 do nó 3 para o nó 4 e verificar os LIFs SAN no nó 4, .

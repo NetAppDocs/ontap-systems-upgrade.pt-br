@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa800.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: Substitua os módulos de sistema AFF A800 ou AFF C800 node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
 ---
-= Substitua o módulo do controlador node1 AFF A800 ou AFF C800
+= Substitua o módulo controlador node1 AFF A800 ou AFF C800
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -141,7 +141,7 @@ NOTE: Para evitar danificar os conetores, não utilize força excessiva ao desli
 . Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
 . Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader.
 +
-Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+Se você não interromper o AUTOBOOT a tempo e o nó 1 começar a inicializar, aguarde o prompt e pressione Ctrl+C para entrar no menu de inicialização. Depois que o nó parar no menu de inicialização, use a opção  `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
 
 . No prompt Loader> de node1, defina as variáveis de ambiente padrão:
 +
@@ -156,3 +156,6 @@ set-defaults
 saveenv
 ----
 
+
+.O que se segue?
+Após instalar o módulo controlador AFF A90, AFF A70 ou AFF C80, link:netboot-node1.html["netboot node1"].

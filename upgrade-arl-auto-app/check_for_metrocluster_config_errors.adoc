@@ -27,3 +27,6 @@ NOTE: O suporte para Config Advisor é limitado e está disponível apenas onlin
 . Faça o download link:https://mysupport.netapp.com/site/tools["Active IQ Config Advisor"]da ferramenta.
 . Execute o Active IQ Config Advisor, revisando a saída e seguindo suas recomendações para resolver quaisquer problemas.
 
+
+.O que se segue?
+Após verificar se há erros de configuração do MetroCluster, link:verify_switchover_healing_switchback.html["verificar switchover, healing e switchback"].

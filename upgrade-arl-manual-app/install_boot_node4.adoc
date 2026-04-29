@@ -306,7 +306,7 @@ Para o `<node2_sysid>` valor, use as informações capturadas na link:record_nod
 NOTE: A `-p` opção só é necessária no modo de manutenção quando os discos compartilhados estão presentes.
 
 +
-O `disk reassign` comando reatribuirá apenas os discos para os quais `_node2_sysid_` é o proprietário atual.
+O  `disk reassign`comando reatribui apenas os discos para os quais  `_node2_sysid_`é o proprietário atual.
 
 +
 O sistema exibe a seguinte mensagem:
@@ -481,3 +481,6 @@ NOTE: O sistema pode reiniciar duas vezes antes de apresentar o aviso de incompa
 . Confirme a incompatibilidade. O nó pode completar uma rodada de reinicialização antes de inicializar normalmente.
 . Inicie sessão em node4.
 
+
+.O que se segue?
+Após instalar e inicializar o node4, link:set_fc_uta_uta2_config_node4.html["defina a configuração FC ou UTA/UTA2 no node4"].

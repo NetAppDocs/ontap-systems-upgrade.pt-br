@@ -56,3 +56,6 @@ Sua lista de diretórios deve conter uma pasta netboot com um arquivo do kernel:
 Você usará as informações nos diretórios do link:install_boot_node3.html["Fase 3"].
 
 
+
+.O que se segue?
+Após preparar para inicialização pela rede, link:relocate_non_root_aggr_node1_node2.html["realocar agregados não raiz do node1 para o node2"].

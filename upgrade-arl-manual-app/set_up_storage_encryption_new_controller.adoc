@@ -60,3 +60,6 @@ Você deve instalar os mesmos servidores de gerenciamento de chaves que estão i
 `security key-manager restore -node _new_controller_name_`
 
 
+
+.O que se segue?
+Após configurar a criptografia de armazenamento no novo módulo controlador, link:set_up_netapp_encryption_on_new_controller.html["Configurar a criptografia de Volume ou Aggregate da NetApp no novo módulo de controlador"].

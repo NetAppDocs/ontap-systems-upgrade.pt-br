@@ -152,7 +152,7 @@ Login:
 ====
 +
 
-NOTE: No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).
+NOTE: No exemplo de saída do console acima, ONTAP solicita o nome do nó parceiro se o sistema usar discos com Particionamento Avançado de Disco (ADP).
 
 . Se o sistema entrar em um loop de reinicialização com a mensagem `no disks found` , indica que o sistema redefiniu as portas FC ou UTA/UTA2 de volta ao modo de destino e, portanto, não consegue ver nenhum disco.  Selecione uma das seguintes tarefas para resolver este problema:
 +
@@ -305,3 +305,6 @@ aggr0 offline                    raid_dp, aggr        diskroot
 ---------------------------------------------------------------------
 ....
 
+
+.O que se segue?
+Após reatribuir os discos do nó 2 ao nó 4, link:verify_node4_installation.html["Verifique a instalação do node4"].

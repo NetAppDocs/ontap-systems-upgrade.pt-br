@@ -96,8 +96,10 @@ Propriedade agregada no final da fase 5:
 Durante a fase 6, você confirma que os novos nós estão configurados corretamente e configuram criptografia de armazenamento ou criptografia de volume NetApp se os novos nós estiverem habilitados para criptografia. Você também deve desativar os nós antigos retomam as operações do SnapMirror.
 
 
-NOTE: As atualizações de recuperação de desastres da máquina virtual de storage (SVM) não serão interrompidas de acordo com as programações atribuídas.
+NOTE: As atualizações de recuperação de desastres da máquina virtual de armazenamento (SVM) não são interrompidas conforme os cronogramas definidos.
 
 Nenhuma alteração ocorre na propriedade agregada.
 
 |===
+.O que se segue?
+Após revisar o fluxo de trabalho de atualização do ARL, link:guidelines_upgrade_with_arl.html["Revise as diretrizes para atualização de controladores com ARL"].

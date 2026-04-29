@@ -49,7 +49,7 @@ A realocação ocorre em segundo plano. Pode levar de alguns segundos a alguns m
 `storage aggregate relocation show -node _node3_`
 
 +
-A saída será exibida `Done` para um agregado depois de ter sido relocado.
+A saída exibe  `Done` para um agregado após ele ter sido realocado.
 
 +
 
@@ -125,3 +125,6 @@ Os agregados node2 foram listados na saída do comando em <<man_relocate_3_4_Ste
 `system node autosupport invoke -node _node4_ -type all -message "_node2_ successfully upgraded from _platform_old_ to _platform_new_"`
 
 
+
+.O que se segue?
+Após realocar os agregados não raiz do nó 2 do nó 3 para o nó 4, link:manage_authentication_kmip.html["Gerenciar autenticação usando servidores KMIP"].

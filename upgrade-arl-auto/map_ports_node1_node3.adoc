@@ -14,14 +14,14 @@ summary: 'Verifique se as portas físicas no node1 são mapeadas corretamente pa
 
 
 [role="lead"]
-Você deve verificar se as portas físicas no node1 são mapeadas corretamente para as portas físicas no node3, o que permitirá que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
+Você deve verificar se as portas físicas no nó1 estão mapeadas corretamente para as portas físicas no nó3. Isso permite que o nó3 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Sobre esta tarefa
 Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
 
-As configurações de porta podem variar, dependendo do modelo dos nós. Você deve tornar a configuração de porta e LIF no nó original compatível com o uso planejado e a configuração do novo nó. Isso ocorre porque o novo nó replays a mesma configuração quando ele é inicializado, o que significa que quando você inicializar node3, o ONTAP tentará hospedar LIFs nas mesmas portas que foram usadas no node1.
+As configurações de porta podem variar dependendo do modelo dos nós. Você deve tornar a configuração de porta e LIF no nó original compatível com o uso e a configuração planejados para o novo nó. Isso ocorre porque o novo nó reproduz a mesma configuração ao inicializar, o que significa que, ao inicializar o node3, ONTAP tenta hospedar LIFs nas mesmas portas que eram usadas no node1.
 
-Portanto, se as portas físicas no node1 não forem mapeadas diretamente para as portas físicas no node3, as alterações de configuração de software serão necessárias para restaurar a conetividade de cluster, gerenciamento e rede após a inicialização. Além disso, se as portas de cluster no node1 não forem mapeadas diretamente para as portas de cluster no node3, o node3 pode não reingressar automaticamente no quórum quando for reiniciado até que você altere a configuração de software para hospedar as LIFs de cluster nas portas físicas corretas.
+Portanto, se as portas físicas no node1 não corresponderem diretamente às portas físicas no node3, serão necessárias alterações na configuração do software para restaurar a conectividade do cluster, do gerenciamento e da rede após o boot. Além disso, se as portas do cluster no node1 não corresponderem diretamente às portas do cluster no node3, o node3 poderá não se reintegrar automaticamente ao quorum ao ser reinicializado, até que você altere a configuração do software para hospedar as LIFs do cluster nas portas físicas corretas.
 
 .Passos
 . Registre todas as informações de cabeamento node1 para node1, as portas, domínios de broadcast e IPspaces na tabela:

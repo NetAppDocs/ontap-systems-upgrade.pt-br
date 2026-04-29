@@ -78,3 +78,5 @@ Pode utilizar a seguinte folha de cálculo para registar as informações a util
 
 | Certificados SSL privados e públicos para o sistema de armazenamento e certificados SSL privados para cada servidor de gerenciamento de chaves | Etapa 6: _Configurar a criptografia de storage nos novos nós_ | Mais tarde na seção |  
 |===
+.O que se segue?
+Após registrar as informações originais do nó, link:determine_aggregates_on_internal_drives.html["determine se o controlador possui agregados em unidades de disco internas"].

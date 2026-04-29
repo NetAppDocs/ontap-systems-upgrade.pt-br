@@ -23,3 +23,6 @@ Você precisa das seguintes ferramentas para executar a atualização:
 
 
 Aceda à link:other_references.html["Referências"] secção para aceder à lista de documentos de referência e sites de referência necessários para esta atualização
+
+.O que se segue?
+Após analisar as ferramentas e a documentação necessárias, link:guidelines_for_upgrading_controllers_with_arl.html["Saiba mais sobre as diretrizes para atualização de controladores com ARL"].

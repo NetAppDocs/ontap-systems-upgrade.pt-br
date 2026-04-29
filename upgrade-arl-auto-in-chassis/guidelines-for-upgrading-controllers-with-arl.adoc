@@ -49,3 +49,6 @@ Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os
 Caso ocorra algum problema, consulte a link:aggregate-relocation-failures.html["Solucionar problemas"] seção no final do procedimento para mais informações e possíveis soluções. As informações sobre as falhas que podem ocorrer estão listadas por fase do procedimento na link:overview-of-the-arl-upgrade.html["Sequência de atualização do ARL"].
 
 Se você não encontrar uma solução para o problema encontrado, entre em contato com o suporte técnico.
+
+.O que se segue?
+Após revisar as diretrizes para atualização de controladores, link:overview-of-the-arl-upgrade.html["Saiba mais sobre a sequência de atualização do ARL"].

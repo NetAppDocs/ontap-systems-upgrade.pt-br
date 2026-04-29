@@ -29,7 +29,7 @@ node2
 ----
 +
 
-NOTE: Seu sistema pode não ter LIFs entre clusters. Você terá um LIF de gerenciamento de cluster apenas em um nó de um par de nós. Um LIF de gerenciamento de cluster é exibido no exemplo de saída link:record_node1_information.html#step1["Passo 1"]em _Record node1 port information_.
+NOTE: Seu sistema pode não ter LIFs intercluster. Você tem uma LIF de gerenciamento de cluster apenas em um nó de um par de nós. Uma LIF de gerenciamento de cluster é exibida na saída de exemplo de link:record_node1_information.html#step1["Passo 1"] em _Record node1 port information_.
 
 . Capture as informações na saída a ser usada na link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"]seção .
 +
@@ -63,7 +63,7 @@ node2
 ----
 . Registre as portas e seus domínios de broadcast.
 +
-Os domínios de broadcast precisarão ser mapeados para as portas no novo controlador mais tarde no procedimento.
+Os domínios de broadcast precisam ser mapeados para as portas do novo controlador posteriormente no procedimento.
 
 . Determine as portas FC no node2:
 +

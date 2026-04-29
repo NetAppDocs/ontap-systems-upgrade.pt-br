@@ -17,3 +17,6 @@ summary: 'Verifique as operações de comutação, recuperação e switchback de
 Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster.
 
 link:other_references.html["Referências"]Consulte o link para o conteúdo _Gerenciamento de MetroCluster e recuperação de desastres_ e use os procedimentos mencionados para comutação negociada, cura e switchback.
+
+.O que se segue?
+Após verificar switchover, healing e switchback, link:overview_of_the_arl_upgrade.html["Saiba mais sobre a sequência de atualização do ARL"].

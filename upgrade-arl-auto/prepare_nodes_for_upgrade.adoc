@@ -27,7 +27,7 @@ NOTE: Você só pode executar este comando no nível de privilégio avançado:
 `set -privilege advanced`
 
 +
-Você verá a seguinte saída:
+Você vê a seguinte saída:
 
 +
 ....
@@ -43,7 +43,7 @@ Attention: Do not try to clear the NVRAM contents. If there is a need to clear t
 
 Do you want to continue? {y|n}: y
 ....
-. Pressione `y`, você verá a seguinte saída:
+. Selecione  `y`, você verá a seguinte saída:
 +
 ....
 Controller replacement operation: Prechecks in progress.
@@ -150,7 +150,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
-== Corrija a propriedade agregada se uma pré-verificação ARL falhar
+== Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
 
@@ -179,19 +179,14 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Reinicie o processo de substituição do controlador:
 
-
-
-
-=== Depois de terminar
-
-Tem de reiniciar o processo de substituição do controlador:
 
 `system controller replace start -nodes _node_names_`
 
 
 
-== Licença
+== Saiba mais sobre o licenciamento ONTAP
 
 Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.
 
@@ -199,4 +194,4 @@ Se você não tiver novas chaves de licença, os recursos atualmente licenciados
 
 Consulte o link:other_references.html["Referências"]link para o _Site de suporte NetApp_, onde você pode obter novas chaves de licença de 28 carateres para o ONTAP. As chaves estão disponíveis na seção _meu suporte_ em _licenças de software_. Se o site não tiver as chaves de licença necessárias, entre em Contato com o representante de vendas da NetApp.
 
-Para obter informações detalhadas sobre licenciamento, link:other_references.html["Referências"]consulte o link para a _Referência de Administração do sistema_.
+Para obter informações detalhadas sobre o licenciamento do ONTAP, consulte link:other_references.html["Referências"] para acessar o _System Administration Reference_.

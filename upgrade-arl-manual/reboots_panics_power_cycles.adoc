@@ -40,10 +40,10 @@ A aquisição e a giveback podem prosseguir normalmente.
 
 === node1 falha durante ou logo após a fase 2 com HA ainda ativada
 
-Alguns ou todos os agregados foram realocados de node1 para node2, e a HA ainda está habilitada. O Node2 assumirá o volume raiz do node1 e quaisquer agregados não-raiz que não foram realocados.
+Alguns ou todos os agregados foram realocados do node1 para o node2, e a HA ainda está ativada. O node2 assume o volume raiz do node1 e quaisquer agregados não raiz que não foram realocados.
 
 .Sobre esta tarefa
-A propriedade de agregados que foram realocados parece a mesma que a propriedade de agregados não-raiz que foram assumidos porque o proprietário do lar não mudou. Quando o node1 entra no `waiting for giveback state`, o node2 devolve todos os node1 agregados não-raiz.
+A propriedade dos agregados que foram realocados parece ser a mesma que a propriedade dos agregados não-raiz que foram assumidos, pois o proprietário original não mudou. Quando o nó1 entra no `waiting for giveback state`, o nó2 devolve todos os agregados não-raiz do nó1.
 
 .Passos
 . Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Passo 1"] na seção _Relocar agregados não raiz do nó 1 para o nó 2_ novamente.
@@ -54,7 +54,7 @@ A propriedade de agregados que foram realocados parece a mesma que a propriedade
 
 === O node1 falha após a fase 2 enquanto o HA está desativado
 
-O Node2 não assumirá o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
+O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
 
 .Passos
 . Abra node1.
@@ -71,7 +71,7 @@ Você pode ver algumas alterações na saída `storage failover show` do comando
 A node1 mudou parte ou todos os seus agregados para node2. O HA está ativado.
 
 .Sobre esta tarefa
-A node1 assumirá todos os agregados da node2, bem como qualquer dos seus agregados que tenha transferido para node2. Quando node2 entra no `Waiting for Giveback` estado, node1 devolve todos os agregados do node2.
+O nó 1 assume o controle de todos os agregados do nó 2, bem como de quaisquer agregados próprios que tenha realocado para o nó 2. Quando o nó 2 entra no `Waiting for Giveback` estado, o nó 1 devolve todos os agregados do nó 2.
 
 .Passos
 . Completolink:relocate_non_root_aggr_node1_node2.html#relocate-step1["Passo 1"] na seção _Relocar agregados não raiz do nó 1 para o nó 2_ novamente.
@@ -82,12 +82,12 @@ A node1 assumirá todos os agregados da node2, bem como qualquer dos seus agrega
 
 === Node2 falha após a fase 2 e após HA é desativado
 
-node1 não tomará conta.
+node1 não assume o controle.
 
 .Passos
 . Abra node2.
 +
-Uma interrupção de cliente ocorrerá para todos os agregados enquanto o node2 estiver inicializando.
+Ocorre uma interrupção de cliente para todos os agregados enquanto o node2 está sendo inicializado.
 
 . Continue com o restante procedimento de atualização do par de nós.
 
@@ -102,12 +102,12 @@ As falhas podem ocorrer durante ou imediatamente após a fase 3, durante a qual 
 
 === Node2 falha durante a fase 3 com HA desativada e antes de relocalizar quaisquer agregados
 
-O Node3 não assumirá o controlo após uma falha de node2, uma vez que o HA já está desativado.
+O Node3 não assume o controle após uma falha do Node2, pois o HA já está desativado.
 
 .Passos
 . Abra node2.
 +
-Uma interrupção de cliente ocorrerá para todos os agregados enquanto o node2 estiver inicializando.
+Ocorre uma interrupção de cliente para todos os agregados enquanto o node2 está sendo inicializado.
 
 . Continue com o procedimento de atualização do par de nós.
 
@@ -116,10 +116,10 @@ Uma interrupção de cliente ocorrerá para todos os agregados enquanto o node2 
 
 === Node2 falha durante a fase 3 após a realocação de alguns ou todos os agregados
 
-A Node2 realocou alguns ou todos os seus agregados para a node3, que servirá dados de agregados que foram realocados. HA está desativada.
+O nó 2 realocou alguns ou todos os seus agregados para o nó 3, que fornece dados dos agregados que foram realocados. HA está desativado.
 
 .Sobre esta tarefa
-Haverá uma interrupção do cliente para agregados que não foram realocados.
+Há uma interrupção do cliente para agregados que não foram realocados.
 
 .Passos
 . Abra node2.
@@ -142,7 +142,7 @@ O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agr
 
 === Node3 falha durante a fase 3 durante a realocação de agregados
 
-Se o node3 falhar enquanto o node2 estiver realocando agregados para node3, o node2 cancelará a realocação de quaisquer agregados restantes.
+Se o node3 falhar enquanto o node2 estiver realocando agregados para o node3, o node2 aborta a realocação de quaisquer agregados restantes.
 
 .Sobre esta tarefa
 O Node2 continua a servir os agregados restantes, mas os agregados que já foram transferidos para a interrupção do cliente do node3 encontram enquanto o node3 está inicializando.
@@ -183,7 +183,7 @@ Node3 falha após a fase 3, mas antes da fase 5. O par de HA está desativado.
 .Passos
 . Abra node3.
 +
-Haverá uma interrupção do cliente para todos os agregados.
+Há uma interrupção do cliente para todos os agregados.
 
 . Continue com o procedimento de atualização do par de nós.
 

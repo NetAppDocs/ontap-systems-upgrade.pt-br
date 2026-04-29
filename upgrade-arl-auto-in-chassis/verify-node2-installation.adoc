@@ -21,6 +21,12 @@ Depois de inicializar o node1 com o módulo de sistema de substituição, você 
 
 Neste ponto do procedimento, a operação pára enquanto node2 se junta ao quórum.
 
+
+
+== Passo 1: verifique se o nó2 está em quórum
+
+Verifique se o nó2 está em quorum. Em seguida, retome a operação de substituição do controlador.
+
 .Passos
 . Verifique se o quórum de node2 aderiu:
 +
@@ -141,12 +147,12 @@ To complete the Network Reachability task, the ONTAP network configuration must 
 
 NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broadcast_ foi renomeada como _Restaurar configuração de rede em node2_.
 
-. Com a substituição do controlador em estado de pausa, avance para <<Restaure a configuração de rede no node2>>.
+. Com a substituição do controlador em estado pausado, prossiga para <<restore_network_configuration_on_node2,Restaure a configuração de rede no node2>>.
 
 
 
 
-== Restaure a configuração de rede no node2
+== Etapa 2: restaure a configuração de rede no nó 2
 
 Depois de confirmar que o node2 está no quórum e pode se comunicar com o node1, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node1 são vistos no node2. Além disso, verifique se todas as portas de rede node2 estão configuradas em seus domínios de broadcast corretos.
 
@@ -239,7 +245,7 @@ Verifique se todas as portas físicas têm sua acessibilidade esperada:
 `network port reachability show`
 
 +
-À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não pertencer a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas.
+À medida que o reparo de acessibilidade é realizado, ONTAP tenta alocar as portas nos domínios de broadcast corretos. No entanto, se ONTAP não conseguir determinar a acessibilidade de uma porta e a porta não pertencer a nenhum dos domínios de broadcast existentes, ONTAP cria novos domínios de broadcast para essas portas.
 
 . Verificar acessibilidade da porta:
 +
@@ -273,3 +279,6 @@ Quando todas as portas estão corretamente configuradas e adicionadas aos domín
 `network interface show -fields home-port,status-admin`
 
 
+
+.O que se segue?
+Após verificar a instalação do node2, link:restore-key-manager-config-node2.html["restaurar a configuração do gerenciador de chaves no node2"].

@@ -70,3 +70,6 @@ Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os
 Caso ocorra algum problema, consulte o link:aggregate_relocation_failures.html["Solucionar problemas"] seção no final do procedimento para mais informações e possíveis soluções. As informações sobre as falhas que podem ocorrer estão listadas por fase do procedimento na seção link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] .
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.
+
+.O que se segue?
+Após revisar as diretrizes para atualização de controladores com ARL, link:verify_health_of_metrocluster_config.html["verificar a integridade da configuração MetroCluster"].

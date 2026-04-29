@@ -1,10 +1,10 @@
-= Corrija a propriedade agregada se uma pré-verificação ARL falhar
+= Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 :allow-uri-read: 
 
 
 
 
-== Corrija a propriedade agregada se uma pré-verificação ARL falhar
+== Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
 
@@ -33,12 +33,7 @@ aggr4       node1      node1       online
 
 4 entries were displayed.
 ----
+. Reinicie o processo de substituição do controlador:
 
-
-
-
-=== Depois de terminar
-
-Tem de reiniciar o processo de substituição do controlador:
 
 `system controller replace start -nodes _node_names_`

@@ -37,7 +37,7 @@ A realocação ocorre em segundo plano. Pode levar de alguns segundos a alguns m
 `storage aggregate relocation show -node _node3_`
 
 +
-A saída será exibida `Done` para um agregado depois de ter sido relocado.
+A saída exibe  `Done` para um agregado após ele ter sido realocado.
 
 +
 

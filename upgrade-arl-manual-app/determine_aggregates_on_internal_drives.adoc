@@ -157,3 +157,6 @@ NOTE: Antes de continuar, você deve mover os volumes para um compartimento de d
 | Conter volumes não-raiz nas unidades internas e não é possível mover os volumes para armazenamento externo | Não prossiga com este procedimento. Você pode atualizar os controladores usando o procedimento _Atualizando o hardware do controlador em um par de nós executando o cluster Data ONTAP movendo volumes_. link:other_references.html["Referências"]Consulte o link para o _Site de suporte da NetApp_, onde você pode acessar este procedimento. 
 |===
 
+
+.O que se segue?
+Após determinar se o controlador possui agregados em unidades de disco internas, link:prepare_nodes_for_upgrade.html["prepare os nós para atualização"].

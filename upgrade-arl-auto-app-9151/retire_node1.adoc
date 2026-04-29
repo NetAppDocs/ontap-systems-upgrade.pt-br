@@ -29,3 +29,6 @@ Para desativar o node1, retome a operação automatizada para desabilitar o par 
 
 .Depois de terminar
 Após desativar o node1, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 1 neste estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node1 durantelink:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"] .
+
+.O que se segue?
+Após a desativação do node1, link:prepare_for_netboot.html["Preparar para inicialização de rede"].

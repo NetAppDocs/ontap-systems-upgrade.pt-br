@@ -58,3 +58,6 @@ NOTE: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arqu
 Você usará as informações nos diretórios do link:install_boot_node3.html["Fase 3"].
 
 
+
+.O que se segue?
+Após preparar para inicialização pela rede, link:install_boot_node3.html["instale e inicialize o node3"].

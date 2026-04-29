@@ -109,5 +109,9 @@ O valor deste comando deve corresponder ao estado físico do sistema.
 
 . Interrompa o node2 inserindo o seguinte comando em qualquer um dos controladores:
 `system node halt -node _node2_`
-. Depois que o node2 desligar completamente, remova-o do chassi ou do rack. Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+. Após o nó2 ser completamente desligado, remova-o do chassi ou do rack.
+. Opcionalmente, desative o node2 após a conclusão da atualização. Consulte link:decommission_old_system.html["Desativar o sistema antigo"].
 
+
+.O que se segue?
+Após a desativação do node2, link:install_boot_node4.html["instale e inicialize o node4"].

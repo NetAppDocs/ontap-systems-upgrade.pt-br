@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: upgrade-arl-auto-app-9151/manage_storage_encryption_using_okm.html 
+permalink: upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html 
 keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
 summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves de autenticação e silencie as relações SnapMirror ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` o comando.' 
 ---
-= Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+= Conclua a preparação para a atualização
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,22 @@ summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves 
 
 
 [role="lead"]
-Você pode usar o Onboard Key Manager (OKM) para gerenciar chaves de criptografia. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.
+Saiba mais sobre licenciamento ONTAP e gerenciamento de criptografia de armazenamento usando o Onboard Key Manager (OKM). Opcionalmente, suspenda os relacionamentos SnapMirror.
+
+
+
+== Saiba mais sobre o licenciamento ONTAP
+
+Para obter informações detalhadas sobre o licenciamento do ONTAP, https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Gerenciamento de licenças"^] consulte .
+
+
+NOTE: O uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com seu contrato de licença.
+
+
+
+== Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+
+Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
 
 .Passos
 . Grave a frase-passe de todo o cluster.
@@ -40,7 +55,7 @@ Quando solicitado, insira a senha OKM de todo o cluster que você registrou na e
 
 
 
-== Quiesce as relações SnapMirror (opcional)
+== Opcionalmente, suspenda os SnapMirror relacionamentos
 
 Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.
 
@@ -64,3 +79,6 @@ A interrupção falha se a relação SnapMirror não estiver no estado "transfer
 `snapmirror quiesce -destination-vserver *`
 
 
+
+.O que se segue?
+Após a preparação para a atualização, link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Realocar agregados não raiz e LIFs de dados NAS pertencentes ao node1 para o node2"].

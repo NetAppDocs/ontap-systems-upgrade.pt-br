@@ -17,7 +17,7 @@ summary: 'Verifique se o node4 se junta ao quórum, recrie as VLANs do node1, gr
 Depois de instalar e inicializar o node4, você deve verificar se ele está instalado corretamente, se ele faz parte do cluster e se ele pode se comunicar com o node3.
 
 .Sobre esta tarefa
-Neste ponto do procedimento, a operação terá pausado como node4 junta quórum.
+Neste ponto do procedimento, a operação é pausada enquanto o node4 entra no quórum.
 
 .Passos
 . Verifique se o quórum de node4 aderiu:
@@ -38,7 +38,7 @@ Se a configuração for diferente para o node4, poderá ocorrer uma interrupçã
 . Verifique se o controlador substituído está configurado corretamente para a configuração do MetroCluster e não no modo de comutação.
 +
 
-CAUTION: Nesta fase, a configuração do MetroCluster não estará em um estado normal e você poderá ter erros para resolver. Verlink:verify_health_of_metrocluster_config.html["Verifique a integridade da configuração do MetroCluster"] .
+CAUTION: Nesta fase, a configuração MetroCluster não está em estado normal e você pode ter erros a resolver. Consulte link:verify_health_of_metrocluster_config.html["Verifique a integridade da configuração do MetroCluster"].
 
 
 
@@ -74,7 +74,7 @@ Para obter mais informações sobre como criar e recriar VLANs, grupos de interf
 
 == Restaure a configuração do gerenciador de chaves no node4
 
-Se você estiver usando a criptografia agregada do NetApp (NAE) ou a criptografia de volume do NetApp (NVE) para criptografar volumes no sistema que você está atualizando, a configuração de criptografia deve ser sincronizada com os novos nós. Se você não restaurar o gerenciador de chaves, quando você realocar os agregados node2 de node3 para node4 usando ARL, os volumes criptografados serão desconetados.
+Se você estiver usando NetApp Aggregate Encryption (NAE) ou NetApp Volume Encryption (NVE) para criptografar volumes no sistema que está atualizando, a configuração de criptografia deve ser sincronizada com os novos nós. Se você não restaurar key-manager, ao realocar os agregados do node2 do node3 para o node4 usando ARL, os volumes criptografados serão colocados offline.
 
 .Passos
 . Para sincronizar a configuração de criptografia para o Gerenciador de chaves integrado, execute o seguinte comando no prompt do cluster:

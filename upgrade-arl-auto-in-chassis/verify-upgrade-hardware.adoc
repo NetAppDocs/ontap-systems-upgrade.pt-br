@@ -50,3 +50,5 @@ Se você estiver convertendo o sistema existente em um compartimento de armazena
 
 | Dois controladores e dois módulos NVRAM 
 |===
+.O que se segue?
+Após verificar o hardware de upgrade, link:prepare-nodes-for-upgrade.html["prepare os nós para atualização"].

@@ -1,8 +1,12 @@
-= 
+= Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
 :allow-uri-read: 
 
 
-Você pode usar o Onboard Key Manager (OKM) para gerenciar chaves de criptografia. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.
+
+
+== Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+
+Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
 
 .Passos
 . Grave a frase-passe de todo o cluster.

@@ -29,3 +29,12 @@ Para desativar o node1, você retoma a operação automatizada para desativar o 
 Depois de o node1 ter sido completamente interrompido, o node1 deve estar no prompt Loader>. Para ver o prompt Loader>, conete-se ao console serial do node1.
 
 
+
+.O que se segue?
+Após desativar o node1, escolha um dos seguintes procedimentos de substituição do controlador com base na sua configuração de upgrade:
+
+* link:replace-node1-affa250-affc250.html["Substitua o módulo do controlador node1 AFF A250 ou AFF C250"]
+* link:replace-node1-affa800.html["Substitua o módulo do controlador node1 AFF A800 ou AFF C800"]
+* link:replace-node1-affa220-affa200-affc190-fas2620-fas2720.html["Substitua o módulo controlador node1 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720"]
+* link:replace-node1-aff700-fas900.html["Substitua o controlador node1 AFF A700 ou FAS9000 e os módulos NVRAM"]
+

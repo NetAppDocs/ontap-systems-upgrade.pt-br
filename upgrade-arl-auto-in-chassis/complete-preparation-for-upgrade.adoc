@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: upgrade-arl-auto-in-chassis/complete-preparation-for-upgrade.html 
+keywords: storage, encryption, authentication, key, manager, external 
+summary: Configure e gerencie criptografia de armazenamento, gerencie chaves de autenticação e quiesce as relações SnapMirror ao usar ARL para atualizar modelos de controladora no mesmo chassi. 
+---
+= Conclua a preparação para a atualização
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre licenciamento ONTAP e gerenciamento de criptografia de armazenamento usando o Onboard Key Manager (OKM). Opcionalmente, suspenda os relacionamentos SnapMirror.
+
+
+
+== Saiba mais sobre o licenciamento ONTAP
+
+Cada nó no cluster deve ter seu próprio arquivo de licença NetApp (NLF).
+
+Se você não tiver um NLF, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o seu contrato de licença, portanto, você deve instalar o NLF para o novo controlador após a conclusão da atualização.
+
+Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_, onde você pode obter seu NLF. Os NLFs estão disponíveis na seção _My Support_ em _Software licenses_. Se o site não tiver os NLFs de que você precisa, entre em contato com seu representante de vendas da NetApp.
+
+Para obter informações detalhadas sobre o licenciamento do ONTAP, consulte link:other-references.html["Referências"] para acessar o _System Administration Reference_.
+
+
+
+== Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+
+Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
+
+.Passos
+. Grave a frase-passe de todo o cluster.
++
+Esta é a senha que foi inserida quando o OKM foi configurado ou atualizado usando a CLI ou API REST.
+
+. Verifique a senha e a operação do key-manager:
++
+`security key-manager onboard sync`
+
++
+Quando solicitado, insira a senha OKM de todo o cluster que você registrou na etapa anterior.
+
+. Verifique se cc-mode está ativado consultando a saída do seguinte comando:
++
+`security key-manager config show`
+
+. Faça backup das informações do key-manager:
++
+`security key-manager onboard show-backup`
+
+
+
+
+
+== Opcionalmente, suspenda os SnapMirror relacionamentos
+
+Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.
+
+.Passos
+. Verifique o status da relação do SnapMirror no cluster de destino:
++
+`snapmirror show`
+
++
+[NOTE]
+====
+Se o status for "transferência", você deve cancelar essas transferências:
+`snapmirror abort -destination-vserver _vserver_name_`
+
+====
++
+A interrupção falha se a relação SnapMirror não estiver no estado "transferindo".
+
+. Quiesce todas as relações entre o cluster:
++
+`snapmirror quiesce -destination-vserver *`
+
+
+
+.O que se segue?
+Após a preparação para a atualização, link:relocate-non-root-aggr-and-nas-data-lifs-node1-node2.html["Realocar agregados não raiz e LIFs de dados NAS pertencentes ao node1 para o node2"].

@@ -268,7 +268,7 @@ NOTE: Se ainda não o tiver feito anteriormente no procedimento, consulte o arti
 |===
 .. Vá para o menu de inicialização especial e selecione opção `(10) Set Onboard Key Manager recovery secrets`.
 +
-Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte link:manage_storage_encryption_using_okm.html["Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado"].
+Insira a senha e as informações de backup que você anotou anteriormente no procedimento. Consulte link:complete-preparation-for-upgrade.html#manage_storage_encryption_using_okm["Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado"].
 
 
 
@@ -411,9 +411,9 @@ Login:
 ====
 +
 
-NOTE: No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).
+NOTE: No exemplo de saída do console acima, ONTAP solicita o nome do nó parceiro se o sistema usar discos com Particionamento Avançado de Disco (ADP).
 
-. [[auto_check_4_step27]]no prompt DO Loader, inicialize:
+. [[auto_check_4_step27]]No prompt do LOADER, inicialize o nó:
 +
 `boot_ontap menu`
 
@@ -466,3 +466,6 @@ NOTE: Você pode encontrar um erro nesta fase. Se ocorrer um erro, repita as sub
 
 
 
+
+.O que se segue?
+Após instalar e inicializar o node4, link:verify_node4_installation.html["Verifique a instalação do node4"].

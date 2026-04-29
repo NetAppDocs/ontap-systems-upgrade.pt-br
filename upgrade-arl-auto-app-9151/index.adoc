@@ -26,7 +26,7 @@ Nesta informação, os nós originais são chamados "node1" e "node2", e os novo
 
 Os termos "node1", "node2", "node3" e "node4" são usados apenas para distinguir entre os nós originais e novos. Ao seguir o procedimento, você deve substituir os nomes reais de seus nós originais e novos. No entanto, na realidade, os nomes dos nós não mudam: node3 tem o nome node1 e node4 tem o nome node2 após o hardware do controlador ser atualizado.
 
-.Informações importantes:
+.Informações importantes
 * Este procedimento é complexo e assume que você tem habilidades avançadas de administração do ONTAP. Você também deve ler e compreender o link:guidelines_for_upgrading_controllers_with_arl.html["diretrizes para atualização de controladores com ARL"] e o link:overview_of_the_arl_upgrade.html["Sequência de atualização do ARL"] antes de iniciar a atualização.
 * Este procedimento pressupõe que o hardware do controlador de substituição é novo e não foi utilizado. Os passos necessários para preparar controladores usados com o `wipeconfig` comando não estão incluídos neste procedimento. Você deve entrar em Contato com o suporte técnico se o hardware do controlador de substituição tiver sido usado anteriormente.
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de alta disponibilidade (HA) no cluster.
@@ -54,3 +54,9 @@ O sistema AFF A20 compartilha portas de rede 10GbE e 25GbE para conexões de clu
 Se não for possível vincular portas de cluster e0a ou e0b no nó existente às portas de cluster no novo nó, link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/JiraNgage/CONTAP-166978["NetApp Bugs Online ID de erro CONTAP-166978"^]consulte .
 
 
+
+.Processo automatizado de atualização do controlador
+Durante uma atualização de controlador, o controlador existente é substituído por outro que executa uma plataforma mais recente ou mais poderosa. Este conteúdo descreve os passos para o procedimento parcialmente automatizado, que utiliza verificações automáticas de acessibilidade da porta de rede para simplificar ainda mais a experiência de atualização do controlador.
+
+.O que se segue?
+Após tomar conhecimento deste procedimento de atualização do ARL, link:decide_to_use_the_aggregate_relocation_guide.html["decidir se deve usar este procedimento"].

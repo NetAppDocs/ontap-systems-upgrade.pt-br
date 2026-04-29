@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-aff700-fas900.html
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: Substitua os módulos de sistema AFF A700 ou FAS9000 node1 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
 ---
-= Substitua o controlador AFF A700 ou FAS9000 e os módulos NVRAM
+= Substitua o controlador node1 AFF A700 ou FAS9000 e os módulos NVRAM
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -185,7 +185,7 @@ image:black_circle_two.png["Número dois"]
 | Alavanca do came na posição desbloqueada 
 |===
 . Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
-. Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+. Após interromper o AUTOBOOT, o node1 para no prompt do LOADER. Se você não interromper o AUTOBOOT a tempo e o node1 começar a inicializar, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Depois que o node parar no menu de inicialização, use a opção `8` para reinicializar o node e interrompa o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node1, defina as variáveis de ambiente padrão:
 +
 [source, cli]
@@ -199,3 +199,6 @@ set-defaults
 saveenv
 ----
 
+
+.O que se segue?
+Após instalar os módulos do controlador ASA A900, AFF A900 ou FAS9500 e NVRAM, link:netboot-node1.html["netboot node1"].

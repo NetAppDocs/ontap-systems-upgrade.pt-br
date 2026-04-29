@@ -24,7 +24,8 @@ Para descontinuar o node2, desligue-o corretamente e remova-o do rack ou chassi.
 +
 O nó pára automaticamente.
 
++
+.. Opcionalmente, desative o node2 após a conclusão da atualização. Consulte link:decommission_old_system.html["Desativar o sistema antigo"].
 
 
-.Depois de terminar
-Você pode desativar o node2 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
+

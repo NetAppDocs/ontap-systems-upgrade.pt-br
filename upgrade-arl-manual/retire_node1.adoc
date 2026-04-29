@@ -206,7 +206,5 @@ WARNING: Se o nó 1 estiver no mesmo chassi que o nó 2, não desligue o chassi 
 O nó pára no prompt do ambiente de inicialização.
 
 . Quando o node1 exibir o prompt do ambiente de inicialização, remova-o do chassi ou do rack.
-+
-Você pode desativar o node1 após a conclusão da atualização. link:decommission_old_system.html["Desativar o sistema antigo"]Consulte .
-
+. Opcionalmente, desative o node1 após a conclusão da atualização. Consulte link:decommission_old_system.html["Desativar o sistema antigo"].
 

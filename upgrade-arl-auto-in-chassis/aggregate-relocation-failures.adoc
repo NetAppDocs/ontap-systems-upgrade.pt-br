@@ -57,7 +57,7 @@ Alguns dos agregados que estão sendo realocados têm o node1 como seu nó inici
 
 * Após a fase 4, quando o node2 é substituído pelos novos módulos do sistema.
 +
-Quando o node2 é substituído, o aggr_node_1 estará online com o node1 como seu nó inicial em vez de node2.
+Quando o node2 é substituído, o aggr_node_1 entra em funcionamento com o node1 como seu nó principal, em vez do node2.
 
 
 

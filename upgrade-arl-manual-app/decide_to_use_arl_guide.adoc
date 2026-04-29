@@ -49,3 +49,6 @@ Consulte o link:other_references.html["Referências"]link para o _Centro de Docu
 
 .Informações relacionadas
 Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
+
+.O que se segue?
+Após decidir se deve usar este procedimento ARL, link:arl_upgrade_workflow.html["revisar o fluxo de trabalho de atualização do ARL"].

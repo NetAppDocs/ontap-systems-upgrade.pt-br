@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto-in-chassis/replace-node1-affa220-affa200-affc190-fas
 keywords: aff, asa, fas, replace, node1, system, modules 
 summary: Substitua o node1 os módulos de sistema AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720 ao usar o ARL para atualizar modelos de controladora no mesmo chassi. 
 ---
-= Substitua o módulo do controlador AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
+= Substitua o módulo controlador node1 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -69,7 +69,7 @@ NOTE: Como o chassi já está ligado, o node1 inicia a inicialização do BIOS s
 NOTE: Para evitar danificar os conetores, não utilize força excessiva ao deslizar o módulo do controlador para o chassis.
 
 . Conete o console serial assim que o módulo estiver assentado e esteja pronto para interromper o AUTOBOOT de node1.
-. Depois de interromper o AUTOBOOT, o node1 pára no prompt DO Loader. Se você não interromper o AUTOBOOT a tempo e o node1 iniciar a inicialização, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Após o nó parar no menu de inicialização, use a opção `8` para reinicializar o nó e interromper o AUTOBOOT durante a reinicialização.
+. Após interromper o AUTOBOOT, o node1 para no prompt do LOADER. Se você não interromper o AUTOBOOT a tempo e o node1 começar a inicializar, aguarde o prompt e pressione Ctrl-C para entrar no menu de inicialização. Depois que o node parar no menu de inicialização, use a opção `8` para reinicializar o node e interrompa o AUTOBOOT durante a reinicialização.
 . No prompt Loader> de node1, defina as variáveis de ambiente padrão:
 +
 [source, cli]
@@ -83,3 +83,6 @@ set-defaults
 saveenv
 ----
 
+
+.O que se segue?
+Após instalar o módulo controlador ASA A150, AFF A150 ou FAS2820, link:netboot-node1.html["netboot node1"].

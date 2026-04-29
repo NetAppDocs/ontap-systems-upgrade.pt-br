@@ -17,7 +17,7 @@ summary: 'Configure node4 portas FC integradas, portas UTA/UTA2 ou a placa UTA/U
 Se o node4 tiver portas FC integradas, portas de adaptador unificado de destino integrado (UTA/UTA2) ou uma placa UTA/UTA2, você deverá configurar as configurações antes de concluir o restante do procedimento.
 
 .Sobre esta tarefa
-Você pode precisar completar<<Configurar portas FC no node4>> ou<<Verifique e configure as portas UTA/UTA2 no node4>> , ou ambas as seções.
+Você poderá precisar preencher <<configure-fc-ports-on-node4,Configurar portas FC no node4>>, ou <<check-config-uta-uta2-node4,Verifique e configure as portas UTA/UTA2 no node4>>, ou ambas as seções.
 
 [NOTE]
 ====
@@ -28,7 +28,7 @@ Certifique-se de que o node4 tem espaço suficiente no rack. Se o node4 estiver 
 ====
 
 
-== Configurar portas FC no node4
+== Etapa 1: configurar as portas FC no nó4
 
 Se o node4 tiver portas FC, integradas ou em um adaptador FC adicional, você deverá definir as configurações de porta no nó antes de colocá-lo em serviço, porque as portas não são pré-configuradas quando os sistemas são enviados.  Se você não configurar as portas conforme necessário, poderá ocorrer uma interrupção no serviço.
 
@@ -36,7 +36,7 @@ Se o node4 tiver portas FC, integradas ou em um adaptador FC adicional, você de
 Você deve ter os valores das configurações de porta FC de node2 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
 
 .Sobre esta tarefa
-Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node4>>.
+Você pode pular esta seção se o seu sistema não tiver configurações FC. Se o seu sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, você as configura em <<check-config-uta-uta2-node4,Verifique e configure as portas UTA/UTA2 no node4>>.
 
 
 IMPORTANT: Insira os comandos desta seção no prompt do shell do modo de manutenção.
@@ -82,7 +82,7 @@ Por exemplo: `ucadmin modify -m fc -t initator 2b`
 
 . [[step8]]Faça uma das seguintes ações:
 +
-** Vá para <<Verifique e configure as portas UTA/UTA2 no node4>> se o node4 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2.
+** Vá para <<check-config-uta-uta2-node4,Verifique e configure as portas UTA/UTA2 no node4>> se o nó 4 possui uma placa UTA/UTA2 ou portas UTA/UTA2 integradas.
 ** Se o node4 não tiver uma placa UTA/UTA2 ou portas UTA/UTA2 integradas, pule _Verificar e configurar portas UTA/UTA2 no node4_ e vá paralink:reassign-node2-disks-to-node4.html["Reatribuir discos node2 a node4"] .
 
 
@@ -90,7 +90,7 @@ Por exemplo: `ucadmin modify -m fc -t initator 2b`
 
 
 
-== Verifique e configure as portas UTA/UTA2 no node4
+== Etapa 2: verifique e configure as portas UTA/UTA2 no nó 4
 
 Se o node4 tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2A, você deve verificar a configuração das portas e configurá-las, dependendo de como você deseja usar o sistema atualizado.
 

@@ -14,7 +14,7 @@ summary: Verifique se as portas físicas no node1 são mapeadas corretamente par
 
 
 [role="lead"]
-Você deve garantir que as portas físicas no node1 sejam mapeadas corretamente para as portas físicas no node3, o que permitirá que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
+Você deve garantir que as portas físicas no nó1 estejam mapeadas corretamente para as portas físicas no nó3. Isso permite que o nó3 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Antes de começar
 Você já deve ter informações sobre as portas nos novos nós a partir do _Hardware Universe_. (Vá para link:other_references.html["Referências"]o link para o _Hardware Universe_). Use as informações posteriormente nesta seção e no link:map_ports_node2_node4.html["Portas de mapa de node2 a node4"].
@@ -148,7 +148,7 @@ WARNING: Repairing port "node_name:port" might cause it to move into a different
 +
 `network port broadcast-domain show`
 
-.. À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não corresponder a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas. Conforme necessário, você pode excluir os domínios de broadcast recém-criados se todas as portas membros se tornarem portas membros dos grupos de interface. Excluir domínios de broadcast:
+.. À medida que o reparo de acessibilidade é realizado, ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se ONTAP não conseguir determinar a acessibilidade de uma porta e a porta não corresponder a nenhum dos domínios de broadcast existentes, ONTAP tenta criar novos domínios de broadcast para essas portas. Se necessário, você pode excluir os domínios de broadcast recém-criados se todas as suas portas membro se tornarem portas membro dos grupos de interfaces. Excluir domínios de broadcast:
 +
 `broadcast-domain delete -broadcast-domain _broadcast_domain_`
 
@@ -201,7 +201,7 @@ NOTE: Dependendo da complexidade da configuração de rede do sistema sendo atua
 
 
 
-. [[man_map_1_step5]]começando com o ONTAP 9.8, o ONTAP modificará automaticamente as portas iniciais dos LIFs se as portas forem movidas entre domínios de broadcast durante o procedimento de reparo de acessibilidade da porta de rede. Se a porta inicial de um LIF foi movida para outro nó, ou não é atribuída, esse LIF será apresentado como um LIF deslocado. Restaure as portas residenciais dos LIFs deslocados cujas portas residenciais não existem mais ou foram relocadas para outro nó.
+. [[man_map_1_step5]]A partir do ONTAP 9.8, o ONTAP modifica automaticamente as portas iniciais das LIFs se as portas forem movidas entre domínios de broadcast durante o procedimento de reparo de acessibilidade da porta de rede. Se a porta inicial de uma LIF foi movida para outro nó ou não está atribuída, essa LIF é apresentada como uma LIF deslocada. Restaure as portas iniciais das LIFs deslocadas cujas portas iniciais não existem mais ou foram realocadas para outro nó.
 +
 .. Exiba os LIFs cujas portas iniciais podem ter sido movidas para outro nó ou não existir mais:
 +
@@ -245,3 +245,6 @@ NOTE: Para iSCSI LIFs, a modificação da porta inicial requer que o LIF seja ad
 
 
 
+
+.O que se segue?
+Após mapear as portas do nó 1 para o nó 3, link:move_nas_lifs_node1_from_node2_node3_verify_san_lifs_node3.html["Mova os LIFs de dados NAS pertencentes ao node1 do node2 para o node3 e verifique os LIFs SAN no node3"].

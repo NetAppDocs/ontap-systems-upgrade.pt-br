@@ -37,3 +37,6 @@ Quando solicitado, insira a senha OKM de todo o cluster que você registrou na e
 `security key-manager onboard show-backup`
 
 
+
+.O que se segue?
+Após gerenciar as chaves de autenticação usando o Gerenciador de Chaves Integrado, link:quiesce_snapmirror_relationships.html["acalmar os relacionamentos SnapMirror"].

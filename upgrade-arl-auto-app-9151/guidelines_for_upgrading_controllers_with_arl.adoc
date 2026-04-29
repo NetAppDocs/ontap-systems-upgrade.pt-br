@@ -62,3 +62,6 @@ Se você quiser atualizar controladores de nível de entrada com unidades intern
 Se ocorrer algum problema durante a atualização dos controladores, consultelink:aggregate_relocation_failures.html["Solucionar problemas"] Para obter mais informações e possíveis soluções.
 
 Se você não encontrar uma solução para o problema que encontrou, entre em Contato com o suporte técnico.
+
+.O que se segue?
+Após revisar as diretrizes para atualização de controladores com ARL, link:overview_of_the_arl_upgrade.html["Saiba mais sobre a sequência de atualização do ARL"].

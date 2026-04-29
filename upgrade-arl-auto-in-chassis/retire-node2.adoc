@@ -16,10 +16,6 @@ summary: Desligue o node2 e remova-o do rack ou chassi ao usar o ARL para atuali
 [role="lead"]
 Para descontinuar o node2, desligue-o corretamente e remova-o do rack ou chassi.
 
-
-
-== Retomar a operação de substituição do controlador do sistema
-
 .Passos
 . Retomar a operação:
 +
@@ -30,37 +26,11 @@ O nó pára automaticamente.
 
 
 
+.O que se segue?
+Após desativar o node2, escolha um dos seguintes procedimentos de substituição do controlador com base na sua configuração de atualização:
 
+* link:replace-node2-affa250-affc250.html["Substitua o módulo do controlador node2 AFF A250 ou AFF C250"]
+* link:replace-node2-affa800-affc800.html["Substitua o módulo do controlador node2 AFF A800 ou AFF C800"]
+* link:replace-node2-affa220-affa200-affc190-fas2620-fas2720.html["Substitua o módulo controlador node2 AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720"]
+* link:replace-node2-aff700-fas900.html["Substitua o controlador node2 AFF A700 ou FAS9000 e os módulos NVRAM"]
 
-== Retire o módulo do controlador AFF A800 ou AFF C800
-
-Remova o dispositivo de gerenciamento de cabos do módulo existente e mova o controlador ligeiramente para fora do chassi.
-
-.Antes de começar
-Se você ainda não está aterrado, aterre-se corretamente.
-
-.Passos
-. Prepare-se para remover o módulo do controlador:
-+
-.. Na parte frontal do chassi, use os polegares para empurrar firmemente cada unidade nos compartimentos de disco superior e inferior até sentir um travamento positivo.  Isso garante que as unidades estejam firmemente assentadas no plano médio do chassi.
-+
-image:drw_a800_drive_seated_IEOPS-960.png["Empurre a transmissão para assentar firmemente contra o plano médio do chassis"]
-
-.. Vá para a parte traseira do chassis.
-
-
-. Desconecte as fontes de alimentação do módulo controlador node2 da fonte.
-. Solte os fixadores do cabo de alimentação e, em seguida, desconete os cabos das fontes de alimentação.
-. Solte o gancho e a alça de loop que prendem os cabos ao dispositivo de gerenciamento de cabos e, em seguida, desconete os cabos do sistema e os módulos SFP e QSFP (se necessário) do módulo do controlador, mantendo o controle de onde os cabos foram conetados.
-+
-Deixe os cabos no dispositivo de gerenciamento de cabos para que, ao reinstalar o dispositivo de gerenciamento de cabos, os cabos sejam organizados.
-
-. Retire o dispositivo de gestão de cabos do módulo do controlador e coloque-o de lado.
-. Prima ambos os trincos de bloqueio para baixo e, em seguida, rode ambos os trincos para baixo ao mesmo tempo.
-+
-O módulo do controlador desloca-se ligeiramente para fora do chassis.
-
-
-
-.Depois de terminar
-Você pode desativar o node2 após a conclusão da atualização. Consulte link:decommission-old-system.html["Desativar o sistema antigo"].

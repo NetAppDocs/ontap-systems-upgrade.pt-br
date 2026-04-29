@@ -17,7 +17,7 @@ summary: 'Configure node3 portas FC integradas, portas UTA/UTA2 ou a placa UTA/U
 Se o node3 tiver portas FC integradas, portas de adaptador unificado de destino integrado (UTA/UTA2) ou uma placa UTA/UTA2, você deverá configurar as configurações antes de concluir o restante do procedimento.
 
 .Sobre esta tarefa
-Talvez seja necessário preencher a <<Configurar portas FC no node3>>seção , a <<Verifique e configure as portas UTA/UTA2 no node3>>seção ou ambas as seções.
+Você poderá precisar preencher <<configure-fc-ports-on-node3,Configurar portas FC no node3>>, ou <<check-config-uta-uta2-node3,Verifique e configure as portas UTA/UTA2 no node3>>, ou ambas as seções.
 
 
 NOTE: Os materiais de marketing da NetApp podem usar o termo UTA2 para se referir a adaptadores e portas de adaptador de rede convergente (CNA). No entanto, a CLI usa o termo CNA.
@@ -26,7 +26,7 @@ Se o node3 não tiver portas FC integradas, portas UTA/UTA2 integradas ou uma pl
 
 
 
-== Configurar portas FC no node3
+== Etapa 1: Configurar as portas FC no nó3
 
 Se o node3 tiver portas FC, integradas ou em um adaptador FC adicional, você deverá definir as configurações de porta no nó antes de colocá-lo em serviço, porque as portas não são pré-configuradas quando os sistemas são enviados.  Se você não configurar as portas, poderá ocorrer uma interrupção no serviço.
 
@@ -34,7 +34,7 @@ Se o node3 tiver portas FC, integradas ou em um adaptador FC adicional, você de
 Você deve ter os valores das configurações de porta FC de node1 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
 
 .Sobre esta tarefa
-Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node3>>.
+Você pode pular esta seção se o seu sistema não tiver configurações FC. Se o seu sistema tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você as configura em <<check-config-uta-uta2-node3,Verifique e configure as portas UTA/UTA2 no node3>>.
 
 
 IMPORTANT: Insira os comandos desta seção no prompt do shell do modo de manutenção.
@@ -80,15 +80,15 @@ Por exemplo: `ucadmin modify -m fc -t initator 2b`
 
 . Execute uma das seguintes ações:
 +
-** Se o node3 tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, vá para <<Verifique e configure as portas UTA/UTA2 no node3>>.
-** Se o node3 não tiver uma placa UTA/UTA2 ou portas integradas UTA/UTA2, pule <<Verifique e configure as portas UTA/UTA2 no node3>> e vá para link:reassign-node1-disks-to-node3.html["Reatribuir discos node1 a node3"].
+** Se o nó 3 tiver uma placa UTA/UTA2 ou portas UTA/UTA2 integradas, acesse <<check-config-uta-uta2-node3,Verifique e configure as portas UTA/UTA2 no node3>>.
+** Se o node3 não tiver uma placa UTA/UTA2 ou portas UTA/UTA2 integradas, ignore <<check-config-uta-uta2-node3,Verifique e configure as portas UTA/UTA2 no node3>> e vá para link:reassign-node1-disks-to-node3.html["Reatribuir discos node1 a node3"].
 
 
 
 
 
 
-== Verifique e configure as portas UTA/UTA2 no node3
+== Etapa 2: Verifique e configure as portas UTA/UTA2 no nó 3
 
 Se o node3 tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você deve verificar a configuração das portas e, possivelmente, reconfigurá-las, dependendo de como você deseja usar o sistema atualizado.
 

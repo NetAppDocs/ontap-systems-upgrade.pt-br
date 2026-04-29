@@ -21,9 +21,8 @@ entries:
   entries:
   - title: Prepare os nós para atualização
     url: "/upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html"
-  - title: Gerencie a criptografia de armazenamento usando o Gerenciador de chaves
-      integrado
-    url: "/upgrade-arl-auto-app-9151/manage_storage_encryption_using_okm.html"
+  - title: Conclua a preparação para a atualização
+    url: "/upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html"
 - title: Fase 2. Transferir e retirar node1
   pdf-filename: Fase 2. Relocate e retire o node1 (atualize com o 'controlador do
     sistema de retenção' no ONTAP 9.15,1 ou posterior)

@@ -123,7 +123,7 @@ O sistema exibe as portas físicas no nó, conforme mostrado no exemplo a seguir
 ----
 . Registre as portas e seus domínios de broadcast.
 +
-Os domínios de broadcast precisarão ser mapeados para as novas portas no novo controlador posteriormente no procedimento.
+Os domínios de broadcast precisam ser mapeados para as novas portas no novo controlador posteriormente no procedimento.
 
 . Introduza o seguinte comando em node1:
 +
@@ -201,3 +201,6 @@ O sistema exibe informações sobre node1, conforme mostrado no exemplo a seguir
 ----
 . [[man_record_node1_step12]]grave o número de ID do sistema NVRAM a ser usado na link:install_boot_node3.html["Instale e inicialize node3"]seção .
 
+
+.O que se segue?
+Após registrar as informações do node1, link:retire_node1.html["desativar node1"].

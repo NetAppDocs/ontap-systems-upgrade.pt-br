@@ -71,3 +71,6 @@ O `_vserver-name_` a usar com este comando é encontrado na saída do comando an
 `network interface show -curr-node _node2_ -role data`
 
 
+
+.O que se segue?
+Após realocar agregados não raiz e LIFs de dados NAS do nó 2 para o nó 1, link:relocate-failed-or-vetoed-aggr-node1.html["realocar agregados com falha ou vetados para o node1"].

@@ -41,3 +41,6 @@ O sistema pausa a operação de realocação devido ao erro.
 `storage aggregate relocation start -node node2 -destination node3 -aggregate-list <aggregate_list> -ndo-controller-upgrade true -override-vetoes true -override-destination-checks true` 
 |===
 
+
+.O que se segue?
+Após realocar agregados com falha ou vetados para o nó 3, link:retire_node2.html["desativar node2"].

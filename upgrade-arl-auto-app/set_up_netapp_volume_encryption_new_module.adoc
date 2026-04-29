@@ -83,3 +83,6 @@ Para obter mais informações, consulte o artigo da base de dados de Conheciment
 ====
 .Depois de terminar
 Verifique se algum volume foi colocado offline porque as chaves de autenticação não estavam disponíveis ou os servidores EKM não puderam ser alcançados. Traga esses volumes de volta online usando o `volume online` comando.
+
+.O que se segue?
+Após configurar a NetApp Volume ou Aggregate Encryption no novo módulo controlador, link:decommission_old_system.html["desativar o sistema antigo"].

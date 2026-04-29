@@ -219,3 +219,6 @@ f-a    2b      fc       target    cna      -          online
 
 . [[man_check_4_Step13]]Faça o cabo da porta.
 
+
+.O que se segue?
+Após configurar o FC ou UTA/UTA2 no nó 4, link:map_ports_node2_node4.html["mapear portas do nó 2 para o nó 4"].

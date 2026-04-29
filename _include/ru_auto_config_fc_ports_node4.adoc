@@ -1,10 +1,10 @@
-= Configurar portas FC no node4
+= Etapa 1: configurar as portas FC no nó4
 :allow-uri-read: 
 
 
 
 
-== Configurar portas FC no node4
+== Etapa 1: configurar as portas FC no nó4
 
 Se o node4 tiver portas FC, integradas ou em um adaptador FC adicional, você deverá definir as configurações de porta no nó antes de colocá-lo em serviço, porque as portas não são pré-configuradas quando os sistemas são enviados.  Se você não configurar as portas conforme necessário, poderá ocorrer uma interrupção no serviço.
 
@@ -12,7 +12,7 @@ Se o node4 tiver portas FC, integradas ou em um adaptador FC adicional, você de
 Você deve ter os valores das configurações de porta FC de node2 que você salvou na link:prepare_nodes_for_upgrade.html["Prepare os nós para atualização"]seção .
 
 .Sobre esta tarefa
-Você pode ignorar esta seção se o sistema não tiver configurações FC. Se o sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, configure-as no <<Verifique e configure as portas UTA/UTA2 no node4>>.
+Você pode pular esta seção se o seu sistema não tiver configurações FC. Se o seu sistema tiver portas UTA/UTA2 integradas ou um adaptador UTA/UTA2, você as configura em <<check-config-uta-uta2-node4,Verifique e configure as portas UTA/UTA2 no node4>>.
 
 
 IMPORTANT: Insira os comandos desta seção no prompt do shell do modo de manutenção.

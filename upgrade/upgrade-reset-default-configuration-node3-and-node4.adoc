@@ -20,9 +20,9 @@ Você deve executar as seguintes etapas em node3 e node4. Você pode executar as
 +
 `boot_ontap menu`
 
-. No prompt do menu de inicialização, digite `wipeconfig` e pressione Enter.
+. No menu de inicialização, digite  `wipeconfig` e pressione Enter.
 +
-A tela a seguir mostra o prompt do menu de inicialização
+Você vê a seguinte saída:
 
 +
 [listing]
@@ -50,7 +50,7 @@ Are you sure you want to continue?: yes
 Rebooting to finish wipeconfig request.
 ----
 +
-O sistema iniciará o `wipeconfig` procedimento e reiniciará. Quando o procedimento estiver concluído, o sistema regressa ao menu de arranque.
+O sistema inicia o `wipeconfig` procedimento e reinicializa. Quando o procedimento estiver concluído, o sistema retorna ao menu de inicialização.
 
-. No menu de inicialização, digite 8 para reinicializar o nó e pressione Ctrl-C durante o AUTOBOOT para parar o nó no prompt Loader.
+. No menu de inicialização, digite 8 para reinicializar o nó e pressione Ctrl-C durante AUTOBOOT para interromper o nó no prompt LOADER.
 

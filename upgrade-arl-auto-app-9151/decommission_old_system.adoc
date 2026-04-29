@@ -34,3 +34,6 @@ Uma tabela exibe informações do cluster, incluindo os números de série.
 
 . Localize o cluster na tabela e selecione *Decommission this system* no menu suspenso Product Tool Set (conjunto de ferramentas do produto).
 
+
+.O que se segue?
+Após a desativação do sistema antigo, link:resume_snapmirror_operations.html["retomar SnapMirror operações"].

@@ -17,7 +17,7 @@ summary: Deixe a NetApp saber que o sistema antigo não está mais em operação
 Após a atualização, você pode desativar o sistema antigo por meio do site de suporte da NetApp. Desativação o sistema informa ao NetApp que o sistema não está mais em operação e o remove de bancos de dados de suporte.
 
 .Passos
-. link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e faça login.
+. Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_ e faça login.
 . Selecione *Produtos > Meus Produtos* no menu.
 . Na página *Exibir sistemas instalados*, escolha quais os *critérios de seleção* que você deseja usar para exibir informações sobre seu sistema.
 +
@@ -34,3 +34,6 @@ Uma tabela exibe informações do cluster, incluindo os números de série.
 
 . Localize o cluster na tabela e selecione *Decommission this system* no menu suspenso Product Tool Set (conjunto de ferramentas do produto).
 
+
+.O que se segue?
+Após a desativação do sistema antigo, link:resume-snapmirror-operations.html["retomar SnapMirror operações"].

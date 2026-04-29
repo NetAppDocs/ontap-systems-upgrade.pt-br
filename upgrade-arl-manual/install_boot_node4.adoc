@@ -303,7 +303,7 @@ Para o `<node2_sysid>` valor, use as informações capturadas na link:record_nod
 NOTE: A `-p` opção só é necessária no modo de manutenção quando os discos compartilhados estão presentes.
 
 +
-O `disk reassign` comando reatribuirá apenas os discos para os quais `_node2_sysid_` é o proprietário atual.
+O  `disk reassign`comando reatribui apenas os discos para os quais  `_node2_sysid_`é o proprietário atual.
 
 +
 O sistema exibe a seguinte mensagem:

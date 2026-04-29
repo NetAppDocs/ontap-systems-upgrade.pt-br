@@ -58,6 +58,6 @@ Converta o node1 em um shelf de discos e conecte ao node3 antes de reatribuir os
 [role="quick-margin-para"]
 Após converter o node1 em um shelf de discos e conectá-lo ao node3, reatribua os discos que pertenciam anteriormente ao node1 para o node3.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]xref:migrate-node4-lIfs-aggregates.adoc[Migrar LIFs e agregados de dados em node4 para node3]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sete"]xref:migrate-node4-lifs-aggregates.adoc[Migrar LIFs e agregados de dados em node4 para node3]
 [role="quick-margin-para"]
 Para concluir a atualização, conecte o node3 ao node4 e migre os LIFs de dados e os agregados de dados do node4 para o node3.

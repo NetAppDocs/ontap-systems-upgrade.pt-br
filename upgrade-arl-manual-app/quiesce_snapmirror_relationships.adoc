@@ -34,3 +34,6 @@ A interrupção falha se a relação SnapMirror não estiver no `Transferring` e
 `snapmirror quiesce -destination-vserver *`
 
 
+
+.O que se segue?
+Após a suspensão dos relacionamentos SnapMirror, link:prepare_for_netboot.html["Preparar para inicialização de rede"].

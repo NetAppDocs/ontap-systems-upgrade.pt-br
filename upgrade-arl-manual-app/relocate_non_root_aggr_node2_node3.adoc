@@ -210,3 +210,6 @@ Se algum volume estiver offline no node3, você deve colocá-lo online, uma vez 
 O comando output não deve exibir agregados on-line não-root porque todos os agregados on-line não-root já foram relocados para node3.
 
 
+
+.O que se segue?
+Após realocar agregados não raiz do nó 2 para o nó 3, link:move_nas_lifs_node2_node3.html["mover LIFs de dados NAS pertencentes ao node2 para o node3"].

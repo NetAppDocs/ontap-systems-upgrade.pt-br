@@ -138,7 +138,7 @@ vsa_1 iscsi_lf__n4_p1_ 1 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02
 .Resultado
 No final desta tarefa, o host pode ver todas as interfaces iSCSI (nos nós antigos e novos) e é conetado a todas essas interfaces.
 
-LUNs e volumes ainda estão fisicamente hospedados nos nós antigos. Como os LUNs são relatados apenas nas interfaces de nó antigas, o host mostrará apenas caminhos sobre os nós antigos. Para ver isso, execute os `sanlun lun show -p` comandos e `multipath -ll -d` no host e examine as saídas de comando.
+Os LUNs e volumes ainda estão fisicamente hospedados nos nós antigos. Como os LUNs são relatados apenas nas interfaces dos nós antigos, o host mostra apenas os caminhos sobre os nós antigos. Para verificar isso, execute os comandos  `sanlun lun show -p` e  `multipath -ll -d` no host e examine as saídas dos comandos.
 
 [listing]
 ----

@@ -534,3 +534,6 @@ O nó pode passar por uma rodada de reinicialização antes de inicializar norma
 
 . [[man_install3_step48]]Faça login no node3.
 
+
+.O que se segue?
+Após instalar e inicializar o node3, link:set_fc_uta_uta2_config_node3.html["defina a configuração FC ou UTA/UTA2 no node3"].

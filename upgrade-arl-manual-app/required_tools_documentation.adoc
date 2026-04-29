@@ -23,3 +23,6 @@ Você precisa das seguintes ferramentas para executar a atualização:
 
 
 Aceda à link:other_references.html["Referências"] secção para aceder à lista de documentos de referência necessários para esta atualização.
+
+.O que se segue?
+Após analisar as ferramentas e a documentação necessárias, link:worksheet_information_before_during_upgrade.html["Registre as informações originais do nó para uso durante a atualização"].

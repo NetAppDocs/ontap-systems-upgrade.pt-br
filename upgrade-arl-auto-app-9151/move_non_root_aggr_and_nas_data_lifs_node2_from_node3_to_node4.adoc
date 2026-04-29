@@ -17,7 +17,7 @@ summary: 'Verifique se LIFs de dados nas do node2 que estão no node3 são reloc
 Depois de verificar a configuração de rede no node4 e antes de realocar agregados de node3 para node4, você deve verificar se os LIFs de dados nas pertencentes ao node2 que estão atualmente no node3 são relocados de node3 para node4. Você também deve verificar se as SAN LIFs existem no node4.
 
 .Sobre esta tarefa
-Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Você irá verificar se os LIFs estão saudáveis e localizados em portas apropriadas depois de colocar o node4 on-line.
+Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Você verifica se os LIFs estão saudáveis e localizados nas portas apropriadas depois de colocar o node4 on-line.
 
 .Passos
 . Os iSCSI LIFs encontram automaticamente as portas iniciais corretas usando a digitalização de acessibilidade. Os LIFs FC e NVMe/FC SAN não são movidos automaticamente. Eles continuam a mostrar a porta de casa em que estavam antes de atualizar.
@@ -164,3 +164,6 @@ O sistema efetua as seguintes verificações posteriores:
 
 
 
+
+.O que se segue?
+Após mover agregados não raiz e LIFs de dados NAS pertencentes ao nó 2 do nó 3 para o nó 4, link:manage-authentication-using-kmip-servers.html["Gerenciar autenticação usando servidores KMIP"].

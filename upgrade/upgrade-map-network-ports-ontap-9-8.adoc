@@ -125,7 +125,7 @@ from the port. Are you sure you want to continue? {y|n}:
 +
 `network port broadcast-domain show`
 
-.. À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não corresponder a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas. Conforme necessário, você pode excluir os domínios de broadcast recém-criados se todas as portas membros se tornarem portas membros dos grupos de interface. Excluir domínios de broadcast:
+.. À medida que o reparo de acessibilidade é realizado, ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se ONTAP não conseguir determinar a acessibilidade de uma porta e a porta não corresponder a nenhum dos domínios de broadcast existentes, ONTAP cria novos domínios de broadcast para essas portas. Conforme necessário, você pode excluir os domínios de broadcast recém-criados se todas as suas portas membro se tornarem portas membro dos grupos de interfaces. Excluir domínios de broadcast:
 +
 `broadcast-domain delete -broadcast-domain _broadcast_domain_`
 
@@ -175,7 +175,7 @@ NOTE: Dependendo da complexidade da configuração de rede do sistema sendo atua
 
 
 
-. [[map_98_7]]começando com ONTAP 9.8, o ONTAP modificará automaticamente as portas iniciais dos LIFs se as portas forem movidas entre domínios de broadcast durante o procedimento de reparo de acessibilidade da porta de rede. Se a porta inicial de um LIF foi movida para outro nó, ou não é atribuída, esse LIF será apresentado como um LIF deslocado. Restaure as portas residenciais dos LIFs deslocados cujas portas residenciais não existem mais ou foram relocadas para outro nó.
+. [[map_98_7]]A partir do ONTAP 9.8, ONTAP modifica automaticamente as portas iniciais das LIFs se as portas forem movidas entre domínios de broadcast durante o procedimento de reparo de acessibilidade da porta de rede. Se a porta inicial de uma LIF foi movida para outro nó ou não está atribuída, essa LIF é apresentada como uma LIF deslocada. Restaure as portas iniciais das LIFs deslocadas cujas portas iniciais não existem mais ou foram realocadas para outro nó.
 +
 .. Exiba os LIFs cujas portas iniciais podem ter sido movidas para outro nó ou não existir mais:
 +

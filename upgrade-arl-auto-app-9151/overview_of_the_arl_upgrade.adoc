@@ -97,3 +97,5 @@ Propriedade agregada no final da fase 5:
 Durante a fase 6, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
 
 |===
+.O que se segue?
+Após tomar conhecimento da sequência de atualização do ARL, link:prepare_nodes_for_upgrade.html["prepare os nós para atualização"].

@@ -51,8 +51,8 @@ No final do procedimento de atualização, o node3 deve ser o novo nó inicial d
 .Sobre esta tarefa
 Os agregados podem não se realocar corretamente, tendo node1 como seu nó inicial em vez de node3 nas seguintes circunstâncias:
 
-* Durante a fase 3, quando os agregados são relocados de node2 para node3. Alguns dos agregados que estão sendo realocados têm o node1 como seu nó inicial. Por exemplo, esse agregado poderia ser chamado aggr_node_1. Se a realocação de aggr_node_1 falhar durante a Etapa 3 e a realocação não puder ser forçada, o agregado será deixado para trás em node2.
-* Após a fase 4, quando o node2 é substituído por node4. Quando o node2 é substituído, o aggr_node_1 estará online com o node4 como seu nó inicial em vez de node3.
+* Durante a Etapa 3, os agregados são realocados do nó2 para o nó3. Alguns dos agregados que estão sendo realocados têm o nó1 como seu nó inicial. Por exemplo, um agregado desse tipo poderia ser chamado aggr_node_1. Se a realocação de aggr_node_1 falhar durante a Etapa 3 e a realocação não puder ser forçada, o agregado permanecerá no nó2.
+* Após o Estágio 4, quando o nó2 é substituído pelo nó4. Quando o nó2 é substituído, aggr_node_1 entra em operação com o nó4 como sua porta inicial em vez do nó3.
 
 
 Você pode corrigir o problema de propriedade incorreta após a fase 6, uma vez que o failover de armazenamento tenha sido ativado, executando as seguintes etapas:

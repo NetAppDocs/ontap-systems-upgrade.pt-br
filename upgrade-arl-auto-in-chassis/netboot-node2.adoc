@@ -132,7 +132,7 @@ O módulo do controlador reinicializa, mas pára no menu de inicialização porq
 
 . Limpe qualquer configuração anterior na mídia de inicialização.
 +
-.. No prompt a seguir, execute o  `wipeconfig` comando e pressione a tecla Enter:
+.. Na mensagem seguinte, execute o comando  `wipeconfig`. Em seguida, selecione Enter:
 +
 [listing]
 ----
@@ -241,3 +241,6 @@ Para o node2, o `partner-sysid` deve ser o node1 que você está atualizando.
 `printenv partner-sysid`
 
 
+
+.O que se segue?
+Após inicializar o nó2 pela rede, link:cable-node2-for-shared-cluster-HA-storage.html["cabo do nó2 para cluster-HA compartilhado e armazenamento"].

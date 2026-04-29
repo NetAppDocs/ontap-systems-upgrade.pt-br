@@ -157,7 +157,7 @@ Se qualquer nó estiver em parcial giveback, use o `storage failover giveback` c
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Se nem node1 nem node2 possuírem agregados para os quais é o proprietário atual (mas não o proprietário da casa), o sistema retornará uma mensagem semelhante ao seguinte exemplo:
+Se nem o nó 1 nem o nó 2 possuírem agregados dos quais sejam os proprietários atuais (mas não os proprietários da porta inicial), o sistema retornará uma mensagem semelhante ao exemplo a seguir:
 
 +
 ....

@@ -169,7 +169,7 @@ Se qualquer nó estiver em parcial giveback, use o `storage failover giveback` c
 `storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
 
 +
-Se nem node1 nem node2 possuírem agregados para os quais é o proprietário atual (mas não o proprietário da casa), o sistema retornará uma mensagem semelhante ao seguinte exemplo:
+Se nem o nó 1 nem o nó 2 possuírem agregados dos quais sejam os proprietários atuais (mas não os proprietários da porta inicial), o sistema retornará uma mensagem semelhante ao exemplo a seguir:
 
 +
 ....
@@ -419,7 +419,7 @@ fg_6210_e0c         Default           node1:e0c, node1:e0d
 `network port vlan show -node _node_name_`
 
 +
-As VLANs são configuradas em portas físicas. Se as portas físicas mudarem, as VLANs precisarão ser recriadas posteriormente no procedimento.
+As VLANs são configuradas em portas físicas. Se as portas físicas forem alteradas, as VLANs precisarão ser recriadas posteriormente no procedimento.
 
 +
 O sistema exibe VLANs configuradas no nó, como mostrado no exemplo a seguir:
@@ -453,7 +453,7 @@ node1   e1b-70    e1b     70      00:15:17:76:7b:69
 `network interface show -vserver _vserver_name_ -data-protocol iscsi|fcp`
 
 +
-Se nem iSCSI nem FC estiverem configurados para o SVM, o comando exibirá uma mensagem semelhante ao seguinte exemplo:
+Se nem iSCSI nem FC estiverem configurados para a SVM, o comando exibirá uma mensagem semelhante ao exemplo a seguir:
 
 +
 ....
@@ -464,7 +464,7 @@ There are no entries matching your query.
 Você pode confirmar que o nó está em um ambiente nas usando o `network interface show` comando com os `-data-protocol nfs|cifs` parâmetros.
 
 +
-Se iSCSI ou FC estiver configurado para o SVM, o comando exibirá uma mensagem semelhante ao seguinte exemplo:
+Se o iSCSI ou o FC estiverem configurados para a SVM, o comando exibirá uma mensagem semelhante ao exemplo a seguir:
 
 +
 ....

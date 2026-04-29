@@ -17,7 +17,7 @@ summary: 'Verifique se as LIFs de dados do nas node1 no node2 foram relocadas de
 Depois de verificar a configuração de rede no node3 e antes de realocar agregados de node2 para node3, você deve verificar se os LIFs de dados nas pertencentes ao node1 que estão atualmente no node2 são relocados de node2 para node3. Você também deve verificar se as SAN LIFs existem no node3.
 
 .Sobre esta tarefa
-Os LIFs remotos manipulam o tráfego para LUNs SAN durante o procedimento de atualização. A movimentação de SAN LIFs não é necessária para o cluster ou a integridade do serviço durante a atualização. Os LIFs DE SAN não são movidos a menos que precisem ser mapeados para novas portas. Você irá verificar se os LIFs estão saudáveis e localizados em portas apropriadas depois de colocar o node3 on-line.
+Durante o procedimento de atualização, as LIFs remotas gerenciam o tráfego para os LUNs SAN. A movimentação das LIFs SAN não é necessária para a integridade do cluster ou do serviço durante a atualização. As LIFs SAN não são movidas, a menos que precisem ser mapeadas para novas portas. Você verifica se as LIFs estão íntegras e localizadas nas portas apropriadas após colocar o node3 online.
 
 
 NOTE: Se você estiver alterando a velocidade da porta das placas de interface de rede Ethernet baseadas em T6 ou das portas da placa-mãe, você pode observar pacotes mal formados sendo recebidos após a conversão de velocidade. Consulte https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["NetApp Bugs Online Bug ID 1570339"^] e o artigo da base de conhecimento https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["Erros de CRC em portas T6 após a conversão de 40GbE para 100GbE"^] para obter orientação.
@@ -128,3 +128,6 @@ O sistema efetua as seguintes verificações posteriores:
 
 
 
+
+.O que se segue?
+Após mover agregados não raiz e LIFs de dados NAS pertencentes ao node1 do node2 para o node3, link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Realocar agregados não raiz e LIFs de dados NAS do nó2 para o nó3"].

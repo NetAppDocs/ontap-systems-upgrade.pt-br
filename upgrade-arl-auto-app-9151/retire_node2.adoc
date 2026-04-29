@@ -28,3 +28,6 @@ O nó pára automaticamente.
 
 .Depois de terminar
 Após desativar o node2, verifique se ele está desligado e não conectado à rede.  Deixe o hardware antigo do nó 2 nesse estado até concluir a atualização do nó 1 e do nó 2.  Você pode então desativar o node2 durantelink:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"] .
+
+.O que se segue?
+Após a desativação do node2, link:install_boot_node4.html["instale e inicialize o node4"].

@@ -143,3 +143,6 @@ Para um cluster conectado a um switch, verifique se você atende aos seguintes r
 
 
 NOTE: Se o switch do cluster suportar apenas velocidades de 10/25 GbE, você deverá usar uma placa X60130A de 4 portas 10/25 GbE no slot 1 ou slot 2 no sistema de substituição para interconexão do cluster.
+
+.O que se segue?
+Após a instalação dos cabos no nó2 para cluster-HA compartilhado e armazenamento, link:boot-node2-with-a900-controller-and-nvs.html["Inicialize o node2 com os módulos de sistema de substituição"].

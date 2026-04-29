@@ -141,3 +141,6 @@ Consulte link:other_references.html["Referências"]o _System Administration Refe
 
 .Depois de terminar
 Se a criptografia de armazenamento estiver ativada no node3 e no node4, conclua a link:set_up_storage_encryption_new_module.html["Configure a criptografia de armazenamento no novo módulo do controlador"]seção . Caso contrário, completar a link:decommission_old_system.html["Desativar o sistema antigo"]secção .
+
+.O que se segue?
+Após confirmar que os novos controladores estão configurados corretamente, link:set_up_storage_encryption_new_module.html["Configurar a criptografia de armazenamento no novo módulo controlador"].

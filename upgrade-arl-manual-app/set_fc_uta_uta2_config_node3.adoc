@@ -259,3 +259,6 @@ A saída nos exemplos a seguir mostra que o tipo FC4 de adaptador "1b" está mud
 
 . [[man_check_3_step14]]Cabeie a porta.
 
+
+.O que se segue?
+Após configurar o FC ou UTA/UTA2 no node3, link:map_ports_node1_node3.html["mapear portas do node1 para node3"].

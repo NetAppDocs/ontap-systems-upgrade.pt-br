@@ -19,7 +19,7 @@ Se a versão do ONTAP em execução nos novos nós for diferente da versão nos 
 Você também pode usar a opção de inicialização USB para executar um netboot. Consulte o artigo da base de dados de Conhecimento link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_use_the_boot_recovery_LOADER_command_for_installing_ONTAP_for_initial_setup_of_a_system["Como usar o comando boot_recovery Loader para instalar o ONTAP para a configuração inicial de um sistema"^].
 
 .Passos
-. Ligue a alimentação para node3 e pressione imediatamente Ctrl-C no terminal do console para acessar o prompt DO Loader.
+. Ligue a alimentação do node3 e, em seguida, pressione imediatamente Ctrl-C no terminal do console para acessar o prompt do LOADER.
 +
 Se node3 e node4 estiverem no mesmo chassis, avance para o passo 2. Caso contrário, avance para o passo 3.
 
@@ -82,7 +82,7 @@ Ignore a seguinte mensagem: `"This procedure is not supported for NonDisruptive 
 `/http://web_server_ip/path_to_web-accessible_directory/<ontap_version>_image.tgz`
 
 +
-Introduza o nome de utilizador/palavra-passe, se aplicável, ou prima Enter para continuar.
+Insira o nome de usuário/senha, se aplicável, ou selecione Enter para continuar.
 
 . Digite `n` para ignorar a recuperação de backup quando você vir um prompt semelhante ao seguinte:
 +

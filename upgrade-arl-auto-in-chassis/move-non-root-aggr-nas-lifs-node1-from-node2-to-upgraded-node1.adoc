@@ -203,3 +203,6 @@ O sistema efetua as seguintes verificações posteriores:
 
 
 
+
+.O que se segue?
+Após mover os agregados não raiz do nó 1 e os LIFs de dados NAS do nó 2 para o nó 1 atualizado, link:relocate-non-root-aggr-nas-lifs-from-node2-to-node1.html["Realocar agregados não raiz e LIFs de dados NAS do nó2 para o nó1"].

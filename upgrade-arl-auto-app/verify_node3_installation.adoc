@@ -14,18 +14,24 @@ summary: 'Verifique se as node1 portas físicas são mapeadas corretamente para 
 
 
 [role="lead"]
-Você deve verificar se as portas físicas do node1 são mapeadas corretamente para as portas físicas no node3. Isso permitirá que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
+Você deve verificar se as portas físicas do node1 estão mapeadas corretamente para as portas físicas do node3. Isso permite que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Sobre esta tarefa
 Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
 
-O layout físico da porta pode variar, dependendo do modelo dos nós. Quando o novo nó for inicializado, o ONTAP tentará determinar quais portas devem hospedar LIFs de cluster para entrar automaticamente no quórum.
+O layout físico das portas pode variar, dependendo do modelo dos nós. Quando o novo nó é inicializado, ONTAP tenta determinar quais portas devem hospedar as LIFs do cluster para que ele entre automaticamente em quorum.
 
-Se as portas físicas no node1 não forem mapeadas diretamente para as portas físicas no node3, a seção seguinte <<Restaure a configuração de rede no node3>>deve ser usada para reparar a conetividade de rede.
+Se as portas físicas no nó1 não corresponderem diretamente às portas físicas no nó3, a seção subsequente <<restore_network_configuration_on_node3,Restaure a configuração de rede no node3>> deve ser utilizada para reparar a conectividade da rede.
 
 Depois de instalar e inicializar o node3, você deve verificar se ele está instalado corretamente. Você deve esperar que node3 se junte ao quórum e, em seguida, retomar a operação de realocação.
 
-Neste ponto do procedimento, a operação terá pausado como node3 junta quórum.
+Neste ponto do procedimento, a operação é pausada enquanto o node3 entra no quórum.
+
+
+
+== Passo 1: Verifique se o nó3 está em quórum
+
+Verifique se o nó 3 está em quorum. Em seguida, retome a operação de substituição do controlador.
 
 .Passos
 . Verifique se o quórum de node3 aderiu:
@@ -101,7 +107,7 @@ Verifique o status do nó MetroCluster:
 +
 `system controller replace resume`
 
-. A substituição do controlador fará uma pausa para intervenção com a seguinte mensagem:
+. A substituição do controlador é interrompida para intervenção com a seguinte mensagem:
 +
 ....
 Cluster::*> system controller replace show
@@ -130,7 +136,7 @@ NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broa
 
 
 
-== Restaure a configuração de rede no node3
+== Etapa 2: restaure a configuração de rede no nó3
 
 Depois de confirmar que o node3 está no quórum e pode se comunicar com o node2, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node1 são vistos no node3. Além disso, verifique se todas as portas de rede node3 estão configuradas em seus domínios de broadcast corretos.
 
@@ -217,7 +223,7 @@ Verifique se todas as portas físicas têm sua acessibilidade esperada:
 `network port reachability show`
 
 +
-À medida que o reparo de acessibilidade é executado, o ONTAP tenta colocar as portas nos domínios de broadcast corretos. No entanto, se a acessibilidade de uma porta não puder ser determinada e não pertencer a nenhum dos domínios de broadcast existentes, o ONTAP criará novos domínios de broadcast para essas portas.
+À medida que o reparo de acessibilidade é realizado, ONTAP tenta alocar as portas nos domínios de broadcast corretos. No entanto, se ONTAP não conseguir determinar a acessibilidade de uma porta e ela não pertencer a nenhum dos domínios de broadcast existentes, ONTAP cria novos domínios de broadcast para essas portas.
 
 . [[step5]]se a configuração do grupo de interfaces não corresponder ao novo layout de porta física do controlador, modifique-o usando as etapas a seguir.
 +
@@ -356,3 +362,6 @@ Quando todas as portas estão corretamente configuradas e adicionadas aos domín
 `network interface show -fields home-port, status-admin`
 
 
+
+.O que se segue?
+Após verificar a instalação do node3, link:restore_key-manager_configuration_node3.html["restaure a configuração do gerenciador de chaves no nó 3"].

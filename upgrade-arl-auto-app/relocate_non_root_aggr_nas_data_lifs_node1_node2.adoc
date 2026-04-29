@@ -84,3 +84,6 @@ O `vserver_name` a usar com este comando é encontrado na saída do comando ante
 `network interface modify -vserver _vserver_name_ -lif _LIF_name_ -home-node _nodename_ -status-admin up`
 
 
+
+.O que se segue?
+Após realocar agregados não raiz e LIFs de dados NAS pertencentes ao node1 para o node2, link:relocate-failed-or-vetoed-aggr-node2.html["realocar agregados com falha ou vetados"].

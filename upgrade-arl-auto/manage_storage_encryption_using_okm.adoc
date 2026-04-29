@@ -4,7 +4,7 @@ permalink: upgrade-arl-auto/manage_storage_encryption_using_okm.html
 keywords: IP address, external, key management, server, storage encryption, kmip, onboard key management 
 summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves de autenticação e quiesce as relações do SnapMirror ao atualizar controladores executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
 ---
-= Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+= Conclua a preparação para a atualização
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -13,8 +13,11 @@ summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves 
 :imagesdir: ../media/
 
 
-[role="lead"]
-Você pode usar o Onboard Key Manager (OKM) para gerenciar chaves de criptografia. Se você tiver o OKM configurado, você deve Registrar a senha e o material de backup antes de iniciar a atualização.
+
+
+== Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
+
+Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
 
 .Passos
 . Grave a frase-passe de todo o cluster.
@@ -40,7 +43,7 @@ Quando solicitado, insira a senha OKM de todo o cluster que você registrou na e
 
 
 
-== Quiesce as relações SnapMirror (opcional)
+== Opcionalmente, suspenda os SnapMirror relacionamentos
 
 Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.
 

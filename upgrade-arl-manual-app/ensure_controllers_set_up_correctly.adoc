@@ -143,3 +143,6 @@ Acesse link:other_references.html["Referências"] para acessar o _System Adminis
 
 .Depois de terminar
 Se a criptografia de armazenamento estiver ativada no node3 e no node4, execute as etapas em link:set_up_storage_encryption_new_controller.html["Configure a criptografia de armazenamento no novo módulo do controlador"]. Caso contrário, execute as etapas em link:decommission_old_system.html["Desativar o sistema antigo"].
+
+.O que se segue?
+Após confirmar que os novos controladores estão configurados corretamente, link:set_up_storage_encryption_new_controller.html["Configurar a criptografia de armazenamento no novo módulo controlador"].
