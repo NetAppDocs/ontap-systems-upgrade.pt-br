@@ -68,6 +68,21 @@ CAUTION: Este procedimento aplica-se estritamente às seguintes configurações 
 | Sistema existente | Sistema de substituição | Versões de ONTAP compatíveis 
 
 
+| AFF A70 ^1^ | AFF A90 | 9.18.1 e versões posteriores 
+
+
+| AFF A30 ^1^ | AFF A50 | 9.18.1 e versões posteriores 
+
+
+| AFF A20 ^1^ | AFF A30 ^3^, AFF A50 | 9.18.1 e versões posteriores 
+
+
+| AFF C30 ^1^ | AFF C60 | 9.18.1 e versões posteriores 
+
+
+| FAS70 ^1^ | FAS90 | 9.18.1 e versões posteriores 
+
+
 | AFF C250 1 | AFF C30, AFF C60 | 9.16.1 
 
 
@@ -123,16 +138,22 @@ A NetApp recomenda vivamente, sempre que possível, que tenha a mesma versão do
 As versões mínimas do ONTAP na tabela anterior são obrigatórias. Essas versões do ONTAP têm a versão de firmware do processador de serviço ou do controlador de gerenciamento de placa base (BMC) necessária para suportar a mistura de tipos de controladora em um chassi durante uma atualização.
 
 ====
+^3^ Existem certos requisitos de conexão de porta para uma atualização de AFF A20 para AFF A30 em uma configuração de cluster sem switch de dois nós:
+
+* O AFF A20 suporta X60132A (4-port 10/25GbE CX7) e X60131A (2-port 10/25GbE CX6-LX) para interconexão de cluster.
+* O AFF A30 suporta apenas X60130A (2-port 100GbE CX6-DX) para interconexão de cluster.
+* Utilize uma placa 10/25GbE temporária para conectar temporariamente o AFF A20 ao AFF A30. Uma placa 10/25GbE de 4 ou 2 portas suporta clustering no AFF A20. Recomenda-se usar a mesma placa no AFF A20 e AFF A30. Se você não tiver uma placa nova, pode usar a placa do AFF A20 como interconexão de cluster temporária.
+* Quando o nó 3 do AFF A30 entra em operação, ele coloca as portas HA IC em 100GbE e tenta alocar os LIFs do cluster em portas de 10/25GbE. ONTAP detecta essas portas como conectadas ao AFF A20. Se o ONTAP não detectar essas portas automaticamente, você pode modificar manualmente as portas temporárias do cluster. Em seguida, se necessário, você pode mover os LIFs do cluster para as portas temporárias do cluster.
+* Após atualizar o AFF A20 node1 e o AFF A20 node2 ser desligado em preparação para a atualização, você precisa remover as conexões das portas temporárias de cluster de 10/25GbE e usar apenas as portas de cluster compartilhadas de 100GbE. Quando o AFF A30 node3 e o node4 estiverem conectados pelas portas de 100GbE, as conexões serão restabelecidas e você poderá concluir a atualização.
+
+
 
 
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
-* Se preferir um método diferente para atualizar o hardware do controlador e estiver disposto a mover volumes, consulte link:other-references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
+* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
 
 
 .Informações relacionadas
-Consulte link:other-references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
-
-.O que se segue?
-Após decidir utilizar este procedimento ARL, link:required-tools-and-documentation.html["Saiba mais sobre as ferramentas e a documentação necessárias"].
+Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.

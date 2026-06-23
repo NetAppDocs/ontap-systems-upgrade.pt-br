@@ -52,7 +52,7 @@ Você não pode executar as seguintes atualizações:
 +
 link:other_references.html["Referências"]Consulte o link para o _Hardware Universe_ para obter informações de suporte a disco.
 
-* Para controladores de nível de entrada com unidades internas, por exemplo: Um FAS 2500.
+* Para controladores de nível básico com acionamentos internos, por exemplo: um FAS2750.
 +
 Se você quiser atualizar controladores de nível de entrada com unidades internas, link:other_references.html["Referências"]consulte o link para _Atualizar movendo volumes ou armazenamento_ e vá para o procedimento _Atualizar um par de nós executando Data ONTAP em cluster movendo volumes_.
 
