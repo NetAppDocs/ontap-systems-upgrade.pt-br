@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/relocate-failed-or-vetoed-aggr-node3.html 
 keywords: relocating, failed, vetoed, aggregates, relocation, operation 
-summary: 'Realoque manualmente agregados com falha ou vetados para o node3 ao atualizar controladores executando ONTAP 9.15.1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Realoque manualmente os agregados com falha ou vetados para o nó 3 ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando os comandos  `system controller replace`.' 
 ---
 = Realocar agregados com falha ou vetados para o node3
 :hardbreaks:

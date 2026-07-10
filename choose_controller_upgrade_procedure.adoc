@@ -4,20 +4,21 @@ sidebar: sidebar
 keywords:  
 summary: 'Em geral, a forma como você atualiza o hardware do controlador depende dos modelos de plataforma dos nós originais. Faça a atualização movendo agregados ou volumes de storage (procedimentos sem interrupções) ou movendo o storage (um procedimento de interrupção).' 
 ---
-= Escolha o procedimento de atualização do hardware do controlador
+= Escolha um procedimento de atualização para o hardware do controlador AFF, ASA ou FAS
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-Em geral, a forma como você atualiza o hardware do controlador depende dos modelos de plataforma dos nós originais. Atualize agregados ou movendo volumes (procedimentos sem interrupções) ou movendo o storage (um procedimento de interrupção). Se você tiver versões diferentes do ONTAP em execução nos nós originais e novos, talvez seja necessário executar uma atualização de software antes de iniciar a atualização de hardware.
+Em geral, como você atualiza o hardware do controlador NetApp AFF, ASA ou FAS depende dos modelos de plataforma dos nós originais. Você pode atualizar realocando agregados ou movendo volumes (ambos procedimentos não disruptivos) ou movendo o storage (um procedimento disruptivo). Se você tiver versões diferentes do ONTAP em execução nos nós originais e nos novos, talvez seja necessário realizar uma atualização de software antes de iniciar a atualização de hardware.
 
 
 NOTE: As atualizações ASA para um sistema de substituição ASA R2 não são suportadas. Para obter informações sobre como migrar dados de um sistema ASA para o ASA R2, link:https://docs.netapp.com/us-en/asa-r2/install-setup/set-up-data-access.html["Habilite o acesso a dados de hosts SAN ao seu sistema de storage ASA R2"^]consulte .
 
 
 
+[[which-upgrade-procedure-should-i-use]]
 == Qual procedimento de atualização devo usar?
 
 Para selecionar o procedimento de atualização adequado, revise todas as perguntas listadas na tabela abaixo.
@@ -77,6 +78,7 @@ ARL é um procedimento de substituição.  Você não precisa expandir ou reduzi
 |===
 
 
+[[example-fas9500-to-fas90-upgrade]]
 == Exemplo: atualização de FAS9500 para FAS90
 
 Este exemplo fornece possíveis respostas para uma atualização do controlador FAS9500 para FAS90.

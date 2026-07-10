@@ -4,6 +4,7 @@
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Opcionalmente, suspenda os SnapMirror relacionamentos
 
 Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/set_up_storage_encryption_new_module.html 
 keywords: set up storage, encryption, controller, module, node 
-summary: 'Se necessário, configure a criptografia de armazenamento, instale certificados SSL e configure servidores de gerenciamento de chaves ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Caso necessário, configure a criptografia de armazenamento, instale certificados SSL e configure servidores de gerenciamento de chaves ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando os comandos  `system controller replace`.' 
 ---
 = Configure a criptografia de armazenamento no novo módulo do controlador
 :hardbreaks:

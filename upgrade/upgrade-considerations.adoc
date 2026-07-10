@@ -15,6 +15,7 @@ Para Planejar a atualização, você deve se familiarizar com as considerações
 
 
 
+[[requirements-and-limitations]]
 == Requisitos e limitações
 
 Dependendo do seu ambiente, você precisa considerar certos fatores antes de iniciar o upgrade. Comece revisando a tabela abaixo para ver os requisitos e limitações que você precisa considerar.
@@ -77,6 +78,7 @@ NOTE: Você pode atualizar um sistema integrado movendo dados para um novo stora
 
 
 
+[[systems-with-internal-storage]]
 == Sistemas com armazenamento interno
 
 Os seguintes sistemas têm armazenamento interno:
@@ -106,6 +108,7 @@ Transferir o armazenamento interno é uma tarefa opcional no fluxo de trabalho p
 
 
 
+[[situations-where-you-might-need-additional-steps]]
 == Situações em que você pode precisar de etapas adicionais
 
 * Se o novo sistema tiver menos slots do que o sistema original, ou se tiver menos ou diferentes tipos de portas, talvez seja necessário adicionar um adaptador ao novo sistema. Consulte https://hwu.netapp.com["NetApp Hardware Universe"^] .

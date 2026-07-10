@@ -26,6 +26,7 @@ Se você ainda não está aterrado, aterre-se corretamente.
 
 
 
+[[step-1-remove-the-aff-a800-or-aff-c800-controller-module]]
 == Etapa 1: Remova o módulo do controlador AFF A800 ou AFF C800
 
 Remova o dispositivo de gerenciamento de cabos do módulo node1 existente e mova o controlador ligeiramente para fora do chassi.
@@ -107,6 +108,7 @@ image:black_circle_two.png["Número dois"]
 
 
 
+[[step-2-install-the-aff-a90-aff-a70-or-aff-c80-controller-module]]
 == Etapa 2: instale o módulo controlador AFF A90, AFF A70 ou AFF C80
 
 Instale, conecte os cabos e conecte o módulo controlador AFF A90, AFF A70 ou AFF C80 no node1.

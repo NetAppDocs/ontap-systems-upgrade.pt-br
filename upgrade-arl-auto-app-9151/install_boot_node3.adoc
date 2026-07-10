@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/install_boot_node3.html 
 keywords: installing, booting, node3, ontap 
-summary: 'Instale e inicialize o node3 e instale o software ONTAP ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Instale e inicialize o node3 e instale o software ONTAP ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace` comandos.' 
 ---
 = Instale e inicialize node3
 :hardbreaks:

@@ -4,6 +4,7 @@
 
 
 
+[[connect-the-e0m-and-bmc-ports]]
 == Ligue as portas e0M e BMC
 
 Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC, as portas e0M e BMC são combinadas e acessadas através da porta "Wrench" no sistema de substituição. Você deve garantir que as portas e0M e BMC estejam conetadas ao mesmo switch e sub-rede no sistema existente antes de se conetar ao sistema de substituição.
@@ -24,6 +25,7 @@ Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC, a
 |===
 
 
+[[connect-to-a-two-node-switchless-cluster]]
 == Conecte-se a um cluster sem switch de dois nós
 
 As tabelas a seguir mostram o uso da porta do switch para configurações de cluster sem switch de dois nós.

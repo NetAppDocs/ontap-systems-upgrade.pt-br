@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/decide_to_use_the_aggregate_relocation_guide.html 
 keywords: deciding, aggregate, relocation, content, storage, controllers, administrators, ontap, ha, high, availability 
-summary: 'Decida se deve usar o ARL para atualizar controladores que executam o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Decida se deseja usar o ARL para atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace` comandos.' 
 ---
 = Decida se deve usar este procedimento de realocação agregada
 :hardbreaks:
@@ -14,12 +14,13 @@ summary: 'Decida se deve usar o ARL para atualizar controladores que executam o 
 
 
 [role="lead"]
-Existem diversos métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento de ARL descreve como atualizar um par de HA de controladores em sistemas de armazenamento AFF e FAS introduzidos no ONTAP 9.15.1 ou posterior com novos controladores, mantendo os discos existentes e os dados armazenados nos discos. Este é um procedimento complexo que deve ser utilizado apenas por administradores experientes de ONTAP.
+Existem diversos métodos de realocação agregada (ARL) para atualizar o hardware do controlador. Este procedimento de ARL descreve como atualizar um par de HA de controladores em sistemas de armazenamento AFF e FAS para controladores introduzidos no ONTAP 9.15.1 ou posterior, mantendo os discos existentes e os dados armazenados nos discos. Este é um procedimento complexo que deve ser utilizado apenas por administradores experientes de ONTAP.
 
 Para ajudar você a decidir se este procedimento ARL é adequado para a atualização de hardware do seu controlador, você deve revisar todas as seguintes circunstâncias para atualizações suportadas e não suportadas.
 
 
 
+[[supported-upgrades-for-this-arl-procedure]]
 == Atualizações suportadas para este procedimento ARL
 
 Você pode usar este procedimento ARL para atualizar um par de nós nas seguintes circunstâncias:
@@ -35,6 +36,7 @@ NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volu
 
 
 
+[[upgrades-not-supported-for-this-arl-procedure]]
 == Atualizações não suportadas para este procedimento ARL
 
 Você não pode usar este procedimento ARL para atualizar um par de nós nas seguintes circunstâncias:
@@ -57,13 +59,15 @@ Você não pode usar este procedimento ARL para atualizar um par de nós nas seg
 | AFF C800 | AFF C80 
 |===
 +
-Para realizar a atualização listada na tabela acima, link:other_references.html["Referências"]consulte para vincular a comandos _use "System controller replace" para atualizar modelos de controladora no mesmo chassi_.
+Para realizar uma atualização listada na tabela acima, consulte link:other_references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller models in the same chassis_.
 
 * Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
 
 
 
 
+[[supported-system-upgrade-combinations]]
+[[sys_commands_9151_supported_systems]]
 == Combinações de atualização de sistema suportadas
 
 A tabela a seguir mostra as combinações de atualização de controlador suportadas usando ARL para sistemas AFF e FAS introduzidas no ONTAP 9.15.1 ou posterior. Se a sua combinação de atualização de controlador não estiver listada, entre em contato com o suporte técnico.
@@ -108,6 +112,7 @@ A tabela a seguir mostra as combinações de atualização de controlador suport
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].

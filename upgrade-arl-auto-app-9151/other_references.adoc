@@ -18,6 +18,7 @@ Ao executar os procedimentos neste conteúdo, você pode precisar consultar o co
 
 
 
+[[reference-content]]
 == Conteúdo de referência
 
 O conteúdo específico para esta atualização está listado na tabela abaixo.
@@ -73,6 +74,7 @@ O conteúdo específico para esta atualização está listado na tabela abaixo.
 |===
 
 
+[[reference-sites]]
 == Locais de referência
 
 O link:https://mysupport.netapp.com["Site de suporte da NetApp"^]também contém documentação sobre placas de interface de rede (NICs) e outro hardware que você possa usar com o sistema. Também contém o link:https://hwu.netapp.com["Hardware Universe"^], que fornece informações sobre o hardware suportado pelo novo sistema.

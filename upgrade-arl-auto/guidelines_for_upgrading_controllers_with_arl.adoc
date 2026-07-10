@@ -18,6 +18,7 @@ Para entender se você pode usar o ARL (Aggregate Relocation) para atualizar um 
 
 
 
+[[supported-upgrades-for-arl]]
 == Atualizações suportadas para ARL
 
 Quando você atualiza um par de nós usando este procedimento ARL para o ONTAP 9.5 para o ONTAP 9.7, você deve verificar se o ARL pode ser executado nos controladores original e de substituição.
@@ -38,12 +39,14 @@ A atualização da controladora usando ARL é compatível com sistemas configura
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters sem switch de dois nós
 
 Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Atualizações não suportadas para ARL
 
 Você não pode executar as seguintes atualizações:
@@ -60,12 +63,14 @@ Se você quiser atualizar controladores de nível de entrada com unidades intern
 
 
 
+[[metrocluster-fc-configuration]]
 == Configuração FC do MetroCluster
 
 Em uma configuração MetroCluster FC, você precisa substituir os nós do local de failover/recuperação de desastre o mais rápido possível. A incompatibilidade entre modelos de controladores em uma configuração do MetroCluster não é suportada porque a incompatibilidade entre modelos de controladores pode fazer com que o espelhamento de recuperação de desastres fique offline. Use o  `-skip-metrocluster-check true` comando para ignorar as verificações do MetroCluster quando você estiver substituindo nós no segundo site.
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/overview_of_the_arl_upgrade.html 
 keywords: overview, arl, upgrade, owner, controller, hardware 
-summary: 'Entenda como funciona o procedimento para atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Entenda como funciona o procedimento de atualização de controladores introduzido no ONTAP 9.15.1 ou posterior usando os comandos  `system controller replace`.' 
 ---
 = Saiba mais sobre a sequência de atualização do ARL
 :hardbreaks:
@@ -18,12 +18,14 @@ Antes de atualizar os nós usando ARL, você deve entender como o procedimento f
 
 
 
+[[upgrade-the-node-pair]]
 == Atualize o par de nós
 
 Para atualizar o par de nós, você precisa preparar os nós originais e, em seguida, executar uma série de etapas nos nós original e novo. Em seguida, você pode desativar os nós originais.
 
 
 
+[[arl-upgrade-sequence-overview]]
 == Visão geral da sequência de atualização ARL
 
 Durante o procedimento, você atualiza o hardware da controladora original com o hardware da controladora de substituição, uma controladora de cada vez, aproveitando a configuração do par de HA para realocar a propriedade de agregados que não sejam raiz. Todos os agregados não-raiz devem passar por duas relocalizações para alcançar seu destino final, que é o nó atualizado correto.

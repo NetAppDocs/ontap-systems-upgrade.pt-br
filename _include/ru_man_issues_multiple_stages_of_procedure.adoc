@@ -6,6 +6,8 @@ Alguns problemas podem ocorrer durante diferentes fases do procedimento.
 
 
 
+[[unexpected-storage-failover-show-command-output]]
+[[storage-failover-command]]
 == Saída de comando "storage failover show" inesperada
 
 Durante o procedimento, se o nó que hospeda todos os dados agrega panics ou for reiniciado acidentalmente, você poderá ver saída inesperada para o `storage failover show` comando antes e depois do ciclo de reinicialização, pânico ou energia.

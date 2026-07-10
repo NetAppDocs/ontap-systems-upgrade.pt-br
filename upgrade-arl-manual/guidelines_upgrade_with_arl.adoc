@@ -18,6 +18,7 @@ Para entender se você pode usar o ARL (Aggregate Relocation) para atualizar um 
 
 
 
+[[supported-upgrades-for-arl]]
 == Atualizações suportadas para ARL
 
 Você pode atualizar um par de nós usando ARL nas seguintes circunstâncias:
@@ -52,6 +53,7 @@ NOTE: Se o novo sistema tiver menos slots do que o sistema original, ou se tiver
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Atualizações não suportadas para ARL
 
 Você não pode executar as seguintes atualizações:
@@ -76,6 +78,7 @@ NOTE: Se você quiser atualizar o ONTAP em nós em um cluster, link:other_refere
 
 
 
+[[assumptions-and-terminology]]
 == Suposições e terminologia
 
 Este documento é escrito com as seguintes premissas:
@@ -105,6 +108,7 @@ LOADER>
 ----
 
 
+[[licensing-in-ontap-9-7-or-earlier]]
 == Licenciamento no ONTAP 9.7 ou anterior
 
 Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.
@@ -117,6 +121,7 @@ Para obter informações detalhadas sobre o licenciamento, link:other_references
 
 
 
+[[storage-encryption]]
 == Criptografia de storage
 
 Os nós originais ou os novos nós podem estar habilitados para criptografia de storage. Nesse caso, você deve seguir etapas adicionais neste procedimento para verificar se a criptografia de armazenamento está configurada corretamente.
@@ -125,12 +130,14 @@ Se você quiser usar o Storage Encryption, todas as unidades de disco associadas
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters sem switch de dois nós
 
 Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.

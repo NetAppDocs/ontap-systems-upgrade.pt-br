@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/manage-authentication-using-kmip-servers.html 
 keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
-summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves de autenticação e silencie as relações SnapMirror ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` o comando.' 
+summary: 'Configure e gerencie a criptografia de armazenamento, gerencie as chaves de autenticação e suspenda os relacionamentos SnapMirror ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando o comando  `system controller replace`.' 
 ---
 = Gerenciar a autenticação usando servidores KMIP
 :hardbreaks:

@@ -4,6 +4,7 @@
 
 
 
+[[configure-fc-ports-on-node4]]
 == Configurar portas FC no node4
 
 Se o node4 tiver portas FC, integradas ou em um adaptador FC, você precisará definir configurações de porta no nó antes de colocá-lo em serviço, pois as portas não estão pré-configuradas. Se as portas não estiverem configuradas, poderá ocorrer uma interrupção no serviço.

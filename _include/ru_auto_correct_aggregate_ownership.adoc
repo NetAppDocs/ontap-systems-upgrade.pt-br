@@ -4,6 +4,7 @@
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
@@ -11,12 +12,16 @@ Se a Verificação de status agregado falhar, você deverá devolver os agregado
 .Passos
 . Devolva os agregados atualmente pertencentes ao nó do parceiro para o nó do proprietário da casa:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Verifique se nem o node1 nem o node2 ainda possuem agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 O exemplo a seguir mostra a saída do comando quando um nó é o proprietário atual e proprietário de agregados:
 
@@ -34,6 +39,9 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicie o processo de substituição do controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
-
-`system controller replace start -nodes _node_names_`

@@ -18,6 +18,7 @@ O processo de substituição do controlador começa com uma série de pré-verif
 
 
 
+[[step-1-prepare-the-nodes]]
 == Etapa 1: preparar os nós
 
 Inicie o processo de substituição do controlador e execute as verificações prévias. Se necessário, determine o tipo de unidades de criptografia automática em uso.
@@ -25,8 +26,10 @@ Inicie o processo de substituição do controlador e execute as verificações p
 .Passos
 . Liste a versão do firmware do processador de serviço (SP) ou do controlador de gerenciamento de placa base (BMC) em execução no controlador antigo:
 +
-`service-processor show`
-
+[source, cli]
+----
+service-processor show
+----
 +
 Verifique se você tem uma versão de firmware SP ou BMC suportada:
 
@@ -55,11 +58,15 @@ Verifique se você tem uma versão de firmware SP ou BMC suportada:
 |===
 . Inicie o processo de substituição do controlador inserindo o seguinte comando no modo de privilégio avançado da linha de comando ONTAP:
 +
-`set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
 +
-`system controller replace start -nodes _node_names_`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
 Você verá uma saída semelhante ao exemplo a seguir. A saída exibe a versão do ONTAP em execução no seu cluster:
 
@@ -123,7 +130,7 @@ Durante a fase de pré-verificações, o sistema executa a seguinte lista de ver
 | Estado de LIF do cluster | Verifica se as LIFs de cluster estão prontas para ambos os nós. Se as LIFs de cluster estiverem inativas, a tarefa falhará. 
 
 
-| Verificação do estado ASUP | Se as notificações do AutoSupport não estiverem configuradas, a tarefa falhará. Você deve ativar o AutoSupport antes de iniciar o procedimento de substituição do controlador. 
+| Verificação de status do AutoSupport | Se as notificações do AutoSupport não estiverem configuradas, a tarefa falhará. Você deve ativar o AutoSupport antes de iniciar o procedimento de substituição do controlador. 
 
 
 | Verificação de utilização da CPU | Verifica se a utilização da CPU é superior a 50% para qualquer um dos nós que estão sendo substituídos. Se o uso da CPU for superior a 50% por um período considerável de tempo, a tarefa falhará. 
@@ -140,33 +147,118 @@ Durante a fase de pré-verificações, o sistema executa a seguinte lista de ver
 Execute os comandos da porta serial conetada a cada nó, execute e salve a saída dos comandos individualmente:
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node _local_ -role cluster,intercluster,node-mgmt,cluster-mgmt,data`
-** `network port show -node _local_ -type physical`
-** `service-processor show -node _local_ -instance`
-** `network fcp adapter show -node _local_`
-** `network port ifgrp show -node _local_`
-** `system node show -instance -node _local_`
-** `run -node _local_ sysconfig`
-** `run -node local sysconfig -ac`
-** `run -node local aggr status -r`
-** `vol show -fields type`
-** `run local aggr options _data_aggregate_name_`
-** `vol show -fields type , space-guarantee`
-** `storage aggregate show -node _local_`
-** `volume show -node _local_`
-** `storage array config show -switch _switch_name_`
-** `system license show -owner _local_`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node _local_`
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+run -node local sysconfig -ac
+----
++
+[source, cli]
+----
+run -node local aggr status -r
+----
++
+[source, cli]
+----
+vol show -fields type
+----
++
+[source, cli]
+----
+run local aggr options <data_aggregate_name>
+----
++
+[source, cli]
+----
+vol show -fields type , space-guarantee
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+storage array config show -switch <switch_name>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Se a criptografia de volume NetApp (NVE) ou a criptografia agregada NetApp (NAE) usando o Gerenciador de chaves integrado estiver em uso, mantenha a senha do gerenciador de chaves pronta para concluir a ressincronização do gerenciador de chaves mais tarde no procedimento.
-
-
 
 . Se o seu sistema utilizar unidades de encriptação automática, consulte o artigo da base de dados de Conhecimento https://kb.netapp.com/onprem/ontap/Hardware/How_to_tell_if_a_drive_is_FIPS_certified["Como saber se uma unidade tem certificação FIPS"^] para determinar o tipo de unidades de encriptação automática que estão a ser utilizadas no par de HA que está a atualizar. O software ONTAP é compatível com dois tipos de unidades com autocriptografia:
 +
@@ -189,6 +281,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
@@ -196,12 +289,16 @@ Se a Verificação de status agregado falhar, você deverá devolver os agregado
 .Passos
 . Devolva os agregados atualmente pertencentes ao nó do parceiro para o nó do proprietário da casa:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Verifique se nem o node1 nem o node2 ainda possuem agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 O exemplo a seguir mostra a saída do comando quando um nó é o proprietário atual e proprietário de agregados:
 
@@ -219,9 +316,12 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicie o processo de substituição do controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
-
-`system controller replace start -nodes _node_names_`
 
 .O que se segue?
 Após preparar os nós, link:complete-preparation-for-upgrade.html["Conclua a preparação para a atualização"].

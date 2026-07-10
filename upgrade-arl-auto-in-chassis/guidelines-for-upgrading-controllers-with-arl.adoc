@@ -18,6 +18,7 @@ Para entender se você pode usar o ARL (Aggregate Relocation), manter o chassi e
 
 
 
+[[supported-upgrades-for-arl]]
 == Atualizações suportadas para ARL
 
 As atualizações do controlador são suportadas para determinadas configurações de sistema. Consulte a link:decide-to-use-the-aggregate-relocation-guide.html#supported-systems["combinações de atualização de sistema suportadas"] lista de sistemas suportados e a versão mínima do ONTAP.
@@ -28,12 +29,14 @@ A atualização do controlador usando ARL é suportada em sistemas configurados 
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters sem switch de dois nós
 
 Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
 
 
 
+[[switch-attached-clusters]]
 == Alternar clusters conetados
 
 Se você estiver atualizando nós em um cluster que está conetado a um switch de cluster, verifique se a versão de marca, modelo, firmware, RCF e ONTAP em execução no switch será a mesma que a versão em execução no controlador de substituição após a atualização. Se necessário, você deve executar a atualização do switch antes de atualizar os controladores usando o ARL.
@@ -42,6 +45,7 @@ Para obter mais informações, link:cable-node1-for-shared-cluster-HA-storage.ht
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Você pode encontrar uma falha ao atualizar o par de nós. O nó pode falhar, os agregados podem não ser relocados ou LIFs podem não migrar. A causa da falha e sua solução dependem de quando a falha ocorreu durante o procedimento de atualização.

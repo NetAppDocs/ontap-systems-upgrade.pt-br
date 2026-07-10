@@ -4,6 +4,7 @@
 
 
 
+[[learn-about-ontap-licensing]]
 == Saiba mais sobre o licenciamento ONTAP
 
 Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.

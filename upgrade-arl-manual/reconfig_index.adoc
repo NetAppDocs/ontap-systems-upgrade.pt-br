@@ -27,7 +27,7 @@ Você deve executar esta tarefa se o layout do switch FC existente tiver sido co
 Esse procedimento não causa interrupções e leva aproximadamente quatro horas para ser concluído (excluindo rack e pilha) quando os discos são zerados.
 
 .Passos
-. link:send_custom_asup_message_prior_reconfig_switches.html["Envie uma mensagem AutoSupport personalizada antes de reconfigurar os switches"]
+. link:send_custom_autosupport_message_prior_reconfig_switches.html["Envie uma mensagem AutoSupport personalizada antes de reconfigurar os switches"]
 . link:verify_health_mcc_config.html["Verifique a integridade da configuração do MetroCluster"]
 . link:check_mcc_config_errors.html["Verifique se há erros de configuração do MetroCluster"]
 . link:persist_disable_switches.html["Desative persistentemente os interrutores"]

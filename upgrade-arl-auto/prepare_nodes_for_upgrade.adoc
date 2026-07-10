@@ -19,13 +19,20 @@ O processo de substituição do controlador começa com uma série de pré-verif
 .Passos
 . Inicie o processo de substituição do controlador inserindo o seguinte comando na linha de comando ONTAP:
 +
-`system controller replace start -nodes _node_names_`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
+[NOTE]
+====
+Você só pode executar este comando no nível de privilégio avançado:
 
-NOTE: Você só pode executar este comando no nível de privilégio avançado:
-`set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
+====
 +
 Você vê a seguinte saída:
 
@@ -91,7 +98,7 @@ O sistema executa as seguintes pré-verificações; Registre a saída de cada pr
 | Estado de LIF do cluster | Verifica se as LIFs de cluster estão prontas para ambos os nós. Se as LIFs de cluster estiverem inativas, a tarefa falhará. 
 
 
-| Verificação do estado ASUP | Se as notificações ASUP não estiverem configuradas, a tarefa falhará. Você deve ativar o ASUP antes de iniciar o procedimento de substituição do controlador. 
+| Verificação de status do AutoSupport | Se as notificações do AutoSupport não estiverem configuradas, a tarefa falhará. Você deve ativar o AutoSupport antes de iniciar o procedimento de substituição do controlador. 
 
 
 | Verificação de utilização da CPU | Verifica se a utilização da CPU é superior a 50% para qualquer um dos nós que estão sendo substituídos. Se o uso da CPU for superior a 50% por um período considerável de tempo, a tarefa falhará. 
@@ -108,23 +115,80 @@ O sistema executa as seguintes pré-verificações; Registre a saída de cada pr
 A partir da porta serial conetada a cada nó, execute e salve a saída dos seguintes comandos individualmente:
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node _local_ -role cluster,intercluster,node-mgmt,clustermgmt, data`
-** `network port show -node _local_ -type physical`
-** `service-processor show -node _local_ -instance`
-** `network fcp adapter show -node _local_`
-** `network port ifgrp show -node _local_`
-** `network port vlan show`
-** `system node show -instance -node _local_`
-** `run -node _local_ sysconfig`
-** `storage aggregate show -node _local_`
-** `volume show -node _local_`
-** `network interface failover-groups show`
-** `storage array config show -switch _switch_name_`
-** `system license show -owner _local_`
-** `storage encryption disk show`
-
-
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,clustermgmt, data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+network port vlan show
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+network interface failover-groups show
+----
++
+[source, cli]
+----
+storage array config show -switch <switch_name>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
 +
 
 NOTE: Se a criptografia de volume NetApp (NVE) ou a criptografia agregada NetApp (NAE) usando o Gerenciador de chaves integrado estiver em uso, mantenha a senha do gerenciador de chaves pronta para concluir a ressincronização do gerenciador de chaves mais tarde no procedimento.
@@ -150,6 +214,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
@@ -157,12 +222,16 @@ Se a Verificação de status agregado falhar, você deverá devolver os agregado
 .Passos
 . Devolva os agregados atualmente pertencentes ao nó do parceiro para o nó do proprietário da casa:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Verifique se nem o node1 nem o node2 ainda possuem agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 O exemplo a seguir mostra a saída do comando quando um nó é o proprietário atual e proprietário de agregados:
 
@@ -180,12 +249,16 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicie o processo de substituição do controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
 
-`system controller replace start -nodes _node_names_`
 
 
-
+[[learn-about-ontap-licensing]]
 == Saiba mais sobre o licenciamento ONTAP
 
 Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem um ou mais recursos. Cada nó no cluster deve ter sua própria chave para cada recurso a ser usado no cluster.

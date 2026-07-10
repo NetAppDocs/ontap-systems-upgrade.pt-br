@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/retire_node1.html 
 keywords: retiring, node 
-summary: 'Desative o par de HA com node2 e encerre o node1 ao atualizar controladores que executam o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Desative o par de HA com o node2 e desligue o node1 ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace` comandos.' 
 ---
 = Aposentar-se node1
 :hardbreaks:

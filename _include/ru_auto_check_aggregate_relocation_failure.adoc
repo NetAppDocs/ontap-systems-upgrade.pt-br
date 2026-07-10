@@ -4,6 +4,7 @@
 
 
 
+[[check-for-aggregate-relocation-failure]]
 == Verifique se há falha de realocação de agregados
 
 Durante o procedimento, o ARL pode falhar no Estágio 2, Estágio 3 ou Estágio 5.

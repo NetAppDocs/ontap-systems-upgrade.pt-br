@@ -40,6 +40,7 @@ Consulte o link:other_references.html["Referências"]link para o _Centro de Docu
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].

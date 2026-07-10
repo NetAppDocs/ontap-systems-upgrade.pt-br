@@ -15,6 +15,7 @@ Dependendo do conteúdo do cluster e do ambiente de cluster, você deve mover, e
 
 
 
+[[considerations-for-moving-san-lifs]]
 == Considerações para mover SAN LIFs
 
 Você só precisa mover os LIFs SAN se estiver alterando o conteúdo do cluster, por exemplo, adicionando nós ao cluster ou excluindo nós do cluster. Ao mover um LIF, não é necessário recalibrar sua malha FC nem criar novas sessões iSCSI entre os hosts conetados do cluster e a nova interface de destino.
@@ -33,6 +34,7 @@ Para obter mais informações, consulte o https://docs.netapp.com/us-en/ontap/sa
 
 
 
+[[delete-san-lifs-no-longer-required]]
 == Excluir SAN LIFs não é mais necessário
 
 Se o cluster estiver em um ambiente SAN, você deve excluir quaisquer LIFs SAN que não sejam mais necessárias dos nós originais antes de poder remover os nós originais do cluster.
@@ -89,6 +91,7 @@ js11      ps0          mixed    LIF1,                   igroup1
 
 
 
+[[create-new-san-lifs-or-re-create-deleted-san-lifs]]
 == Crie novos LIFs SAN ou crie novamente LIFs SAN excluídos
 
 Dependendo dos requisitos do ambiente do cluster, você pode decidir criar novas LIFs SAN ou recriar LIFs SAN que você excluiu anteriormente neste procedimento. Você pode criar ou recriar LIFs de SAN usando o procedimento na documentação _Gerenciamento de cluster usando o https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["criação de interfaces de rede"^] Gerenciador de sistema do OnCommand_.

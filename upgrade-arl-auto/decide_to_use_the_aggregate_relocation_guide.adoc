@@ -37,6 +37,8 @@ link:../upgrade-arl-auto-in-chassis/decide-to-use-the-aggregate-relocation-guide
 ====
 
 
+[[supported-system-upgrade-combinations]]
+[[sys_commands_95_97_supported_systems]]
 == Combinações de atualização de sistema suportadas
 
 As tabelas a seguir mostram a matriz de modelos suportada para a atualização do controlador usando este procedimento ARL.
@@ -77,6 +79,7 @@ NOTE: Se a combinação do modelo de atualização da controladora não estiver 
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].

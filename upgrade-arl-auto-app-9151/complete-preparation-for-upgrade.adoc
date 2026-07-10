@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/complete-preparation-for-upgrade.html 
 keywords: ip, address, external, key, management, server, storage, encryption, upgrading, authentication 
-summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves de autenticação e silencie as relações SnapMirror ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` o comando.' 
+summary: 'Configure e gerencie a criptografia de armazenamento, gerencie as chaves de autenticação e suspenda os relacionamentos SnapMirror ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando o comando  `system controller replace`.' 
 ---
 = Conclua a preparação para a atualização
 :hardbreaks:
@@ -18,6 +18,7 @@ Saiba mais sobre licenciamento ONTAP e gerenciamento de criptografia de armazena
 
 
 
+[[learn-about-ontap-licensing]]
 == Saiba mais sobre o licenciamento ONTAP
 
 Para obter informações detalhadas sobre o licenciamento do ONTAP, https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Gerenciamento de licenças"^] consulte .
@@ -27,6 +28,8 @@ NOTE: O uso de recursos não licenciados no controlador pode colocá-lo fora de 
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
+[[manage_storage_encryption_using_okm]]
 == Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
 
 Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
@@ -55,6 +58,7 @@ Quando solicitado, insira a senha OKM de todo o cluster que você registrou na e
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Opcionalmente, suspenda os SnapMirror relacionamentos
 
 Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.

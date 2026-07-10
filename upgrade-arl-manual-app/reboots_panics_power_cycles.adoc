@@ -18,12 +18,14 @@ O sistema pode falhar – reiniciar, entrar em pânico ou passar por um ciclo de
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-2]]
 == Reinicializa, entra em pânico ou ciclos de energia durante a fase 2
 
 Falhas podem ocorrer antes, durante ou imediatamente após a Etapa 2, durante a qual você realocar agregados de node1 para node2, mover LIFs de dados e LIFs SAN de propriedade de node1 para node2, Registrar informações de node1 e desativar node1.
 
 
 
+[[node1-or-node2-crashes-before-stage-2-with-ha-still-enabled]]
 === node1 ou node2 falha antes da fase 2 com HA ainda ativada
 
 Se o node1 ou o node2 falhar antes da fase 2, ainda não foram transferidos agregados e a configuração de HA ainda está ativada.
@@ -38,6 +40,7 @@ A aquisição e a giveback podem prosseguir normalmente.
 
 
 
+[[node1-crashes-during-or-just-after-stage-2-with-ha-still-enabled]]
 === node1 falha durante ou logo após a fase 2 com HA ainda ativada
 
 Alguns ou todos os agregados foram realocados do node1 para o node2, e a HA ainda está ativada. O node2 assume o volume raiz do node1 e quaisquer agregados não raiz que não foram realocados.
@@ -52,6 +55,7 @@ A propriedade dos agregados que foram realocados parece ser a mesma que a propri
 
 
 
+[[node1-crashes-after-stage-2-while-ha-is-disabled]]
 === O node1 falha após a fase 2 enquanto o HA está desativado
 
 O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
@@ -66,6 +70,7 @@ Você pode ver algumas alterações na saída `storage failover show` do comando
 
 
 
+[[node2-fails-during-or-after-stage-2-with-ha-still-enabled]]
 === O Node2 falha durante ou após a Etapa 2 com HA ainda ativada
 
 A node1 mudou parte ou todos os seus agregados para node2. O HA está ativado.
@@ -80,6 +85,7 @@ O nó 1 assume o controle de todos os agregados do nó 2, bem como de quaisquer 
 
 
 
+[[node2-crashes-after-stage-2-and-after-ha-is-disabled]]
 === Node2 falha após a fase 2 e após HA é desativado
 
 node1 não assume o controle.
@@ -94,12 +100,14 @@ Ocorre uma interrupção de cliente para todos os agregados enquanto o node2 est
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-3]]
 == Reinicializa, entra em pânico ou ciclos de energia durante a fase 3
 
 As falhas podem ocorrer durante ou imediatamente após a fase 3, durante a qual você instala e inicializa node3, mapeia portas de node1 para node3, move LIFs de dados e SAN LIFs pertencentes a node1 e node2 para node3 e realocar todos os agregados de node2 para node3.
 
 
 
+[[node2-crash-during-stage-3-with-ha-disabled-and-before-relocating-any-aggregates]]
 === Node2 falha durante a fase 3 com HA desativada e antes de relocalizar quaisquer agregados
 
 O Node3 não assume o controle após uma falha do Node2, pois o HA já está desativado.
@@ -114,6 +122,7 @@ Ocorre uma interrupção de cliente para todos os agregados enquanto o node2 est
 
 
 
+[[node2-crashes-during-stage-3-after-relocating-some-or-all-aggregates]]
 === Node2 falha durante a fase 3 após a realocação de alguns ou todos os agregados
 
 O nó 2 realocou alguns ou todos os seus agregados para o nó 3, que fornece dados dos agregados que foram realocados. HA está desativado.
@@ -129,6 +138,7 @@ Há uma interrupção do cliente para agregados que não foram realocados.
 
 
 
+[[node3-crashes-during-stage-3-and-before-node2-has-relocated-any-aggregates]]
 === Node3 travamentos durante a fase 3 e antes de node2 realocaram quaisquer agregados
 
 O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
@@ -140,6 +150,7 @@ O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agr
 
 
 
+[[node3-crashes-during-stage-3-during-aggregate-relocation]]
 === Node3 falha durante a fase 3 durante a realocação de agregados
 
 Se o node3 falhar enquanto o node2 estiver realocando agregados para o node3, o node2 aborta a realocação de quaisquer agregados restantes.
@@ -155,6 +166,7 @@ O Node2 continua a servir os agregados restantes, mas os agregados que já foram
 
 
 
+[[node3-fails-to-boot-after-crashing-in-stage-3]]
 === Node3 falha ao inicializar depois de falhar no Estágio 3
 
 Devido a uma falha catastrófica, o node3 não pode ser inicializado após uma falha durante a fase 3.
@@ -165,6 +177,7 @@ Devido a uma falha catastrófica, o node3 não pode ser inicializado após uma f
 
 
 
+[[node2-crashes-after-stage-3-but-before-stage-5]]
 === Node2 falha após a fase 3, mas antes da fase 5
 
 O Node3 continua fornecendo dados para todos os agregados. O par de HA está desativado.
@@ -176,6 +189,7 @@ O Node3 continua fornecendo dados para todos os agregados. O par de HA está des
 
 
 
+[[node3-crashes-after-stage-3-but-before-stage-5]]
 === Node3 falha após a fase 3, mas antes da fase 5
 
 Node3 falha após a fase 3, mas antes da fase 5. O par de HA está desativado.
@@ -190,12 +204,14 @@ Há uma interrupção do cliente para todos os agregados.
 
 
 
+[[reboots-panics-or-power-cycles-during-stage-5]]
 == Reinicializa, entra em pânico ou ciclos de energia durante a fase 5
 
 Falhas podem ocorrer durante a fase 5, a etapa em que você instala e inicializa node4, mapeia portas de node2 para node4, move LIFs de dados e SAN LIFs pertencentes a node2 de node3 para node4 e reposiciona todos os agregados do node2 de node3 para node4.
 
 
 
+[[node3-crashes-during-stage-5]]
 === Node3 falha durante a fase 5
 
 A Node3 mudou alguns ou todos os agregados da node2 para node4. O Node4 não assume o controle, mas continua a servir agregados não-raiz que o node3 já realocou. O par de HA está desativado.
@@ -211,6 +227,7 @@ Há uma interrupção para o resto dos agregados até que node3 inicialize novam
 
 
 
+[[node4-crashes-during-stage-5]]
 === Node4 falha durante a fase 5
 
 A Node3 mudou alguns ou todos os agregados da node2 para node4. O Node3 não assume, mas continua a servir agregados não-raiz que o node3 possui, bem como aqueles que não foram realocados. HA está desativada.

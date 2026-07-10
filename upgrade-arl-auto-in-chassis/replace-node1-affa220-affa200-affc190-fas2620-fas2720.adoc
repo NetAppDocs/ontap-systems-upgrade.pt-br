@@ -26,6 +26,7 @@ Se você ainda não está aterrado, aterre-se corretamente.
 
 
 
+[[step-1-remove-the-aff-a220-aff-a200-aff-c190-fas2620-or-fas2720-controller-module]]
 == Etapa 1: remova o módulo controlador AFF A220, AFF A200, AFF C190, FAS2620 ou FAS2720
 
 Para acessar os componentes dentro do controlador node1, remova o módulo do controlador do sistema e depois remova a tampa do módulo do controlador.
@@ -48,6 +49,7 @@ image:drw_2240_x_opening_cam_latch.png["Abrir o manípulo do excêntrico"]
 
 
 
+[[step-2-install-the-asa-a150-aff-a150-or-fas2820-controller-module]]
 == Etapa 2: instale o módulo controlador ASA A150, AFF A150 ou FAS2820
 
 Instale, faça o cabo e conete o módulo do controlador ASA A150, AFF A150 ou FAS2820 em node1.

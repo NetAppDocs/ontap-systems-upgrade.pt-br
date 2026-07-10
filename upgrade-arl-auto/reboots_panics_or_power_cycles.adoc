@@ -20,10 +20,12 @@ A solução para esses problemas depende de quando eles ocorrem.
 
 
 
+[[reboots-panics-or-power-cycles-during-the-pre-check-phase]]
 == Reinicializa, entra em pânico ou ciclos de alimentação durante a fase de pré-verificação
 
 
 
+[[node1-or-node2-crashes-before-the-pre-check-phase-with-ha-pair-still-enabled]]
 === node1 ou node2 falha antes da fase de pré-verificação com par de HA ainda ativado
 
 Se o node1 ou o node2 falhar antes da fase de pré-verificação, ainda não foram transferidos agregados e a configuração do par de HA ainda está ativada.
@@ -38,10 +40,12 @@ A aquisição e a giveback podem prosseguir normalmente.
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-release-phase]]
 == Reinicializa, pânicos ou ciclos de energia durante a primeira fase de liberação de recursos
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === node1 falha durante a primeira fase de liberação de recursos com par de HA ainda ativado
 
 Alguns ou todos os agregados foram relocados de node1 para node2, e o par de HA ainda está habilitado. O Node2 assume o volume raiz do node1 e quaisquer agregados não-raiz que não foram realocados.
@@ -59,6 +63,7 @@ Quando node1 entra no `waiting for giveback` estado, node2 devolve todos os node
 
 
 
+[[node1-crashes-during-the-first-resource-release-phase-while-ha-pair-is-disabled]]
 === O node1 trava durante a primeira fase de liberação de recursos enquanto o par HA está desativado
 
 O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
@@ -70,6 +75,7 @@ O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agr
 
 
 
+[[node2-fails-during-the-first-resource-release-phase-with-ha-pair-still-enabled]]
 === O Node2 falha durante a primeira fase de liberação de recursos com par de HA ainda ativado
 
 A node1 mudou parte ou todos os seus agregados para node2. O par de HA está ativado.
@@ -84,6 +90,7 @@ O node1 assume todos os agregados da node2, bem como qualquer um dos seus própr
 
 
 
+[[node2-crashes-during-the-first-resource-release-phase-and-after-ha-pair-is-disabled]]
 === O Node2 trava durante a primeira fase de liberação de recursos e após o par HA ser desativado
 
 node1 não assume o controle.
@@ -98,10 +105,12 @@ Uma interrupção de cliente ocorre para todos os agregados enquanto o node2 est
 
 
 
+[[reboots-panics-or-power-cycles-during-the-first-verification-phase]]
 == Reinicializa, pânicos ou ciclos de energia durante a primeira fase de verificação
 
 
 
+[[node2-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === Node2 falha durante a primeira fase de verificação com o par de HA desativado
 
 O Node3 não assume o controlo após uma falha de node2, uma vez que o par HA já está desativado.
@@ -116,6 +125,7 @@ Uma interrupção de cliente ocorre para todos os agregados enquanto o node2 est
 
 
 
+[[node3-crashes-during-the-first-verification-phase-with-ha-pair-disabled]]
 === Node3 falha durante a primeira fase de verificação com o par de HA desativado
 
 O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agregados que não são raiz.
@@ -127,10 +137,12 @@ O Node2 não assume o controle, mas ainda está fornecendo dados de todos os agr
 
 
 
+[[reboots-panics-or-power-cycles-during-first-resource-regain-phase]]
 == Reinicializa, entra em pânico ou ciclos de energia durante a primeira fase de recuperação de recursos
 
 
 
+[[node2-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === Node2 falha durante a primeira fase de recuperação de recursos durante a realocação agregada
 
 A Node2 realocou alguns ou todos os seus agregados de node1 para node3. O Node3 serve dados de agregados que foram realocados. O par de HA está desativado e, portanto, não há aquisição.
@@ -145,6 +157,7 @@ Há uma interrupção do cliente para agregados que não foram realocados. Ao in
 
 
 
+[[node3-crashes-during-the-first-resource-regain-phase-during-aggregate-relocation]]
 === Node3 falha durante a primeira fase de recuperação de recursos durante a realocação agregada
 
 Se o node3 falhar enquanto o node2 estiver realocando agregados para node3, a tarefa continuará após o node3 ser inicializado.
@@ -159,10 +172,12 @@ O Node2 continua a servir os agregados restantes, mas os agregados que já foram
 
 
 
+[[reboots-panics-or-power-cycles-during-post-check-phase]]
 == Reinicializa, pânicos ou ciclos de energia durante a fase pós-verificação
 
 
 
+[[node2-or-node3-crashes-during-the-post-check-phase]]
 === Node2 ou node3 falha durante a fase pós-verificação
 
 O par de HA está desativado, portanto, não há aquisição. Há uma interrupção de cliente para agregados pertencentes ao nó que reinicializou.
@@ -174,10 +189,12 @@ O par de HA está desativado, portanto, não há aquisição. Há uma interrupç
 
 
 
+[[reboots-panics-or-power-cycles-during-second-resource-release-phase]]
 == Reinicializa, entra em pânico ou ciclos de energia durante a segunda fase de liberação de recursos
 
 
 
+[[node3-crashes-during-the-second-resource-release-phase]]
 === Node3 falha durante a segunda fase de liberação de recursos
 
 Se o node3 falhar enquanto o node2 estiver realocando agregados, a tarefa continuará após a inicialização do node3.
@@ -192,6 +209,7 @@ O Node2 continua a servir os agregados restantes, mas os agregados que já foram
 
 
 
+[[node2-crashes-during-the-second-resource-release-phase]]
 === Node2 falha durante a segunda fase de liberação de recursos
 
 Se o node2 falhar durante a realocação agregada, o node2 não será retomado.
@@ -206,10 +224,12 @@ O Node3 continua a servir os agregados que foram realocados, mas os agregados pe
 
 
 
+[[reboots-panics-or-power-cycles-during-the-second-verification-phase]]
 == Reinicializa, pânicos ou ciclos de energia durante a segunda fase de verificação
 
 
 
+[[node3-crashes-during-the-second-verification-phase]]
 === Node3 falha durante a segunda fase de verificação
 
 Se o node3 falhar durante esta fase, a aquisição não acontece, uma vez que o HA já está desativado.
@@ -227,6 +247,7 @@ Uma interrupção de cliente ocorre para todos os agregados enquanto o node3 est
 
 
 
+[[node4-crashes-during-the-second-verification-phase]]
 === Node4 falha durante a segunda fase de verificação
 
 Se o node4 falhar durante esta fase, a aquisição não acontece. O Node3 fornece dados dos agregados.

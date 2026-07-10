@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/decommission_old_system.html 
 keywords: decommission, old system, upgrade, databases, netapp, support, site, serial, number, cluster 
-summary: 'Deixe o NetApp saber que o sistema antigo não está mais em operação depois de atualizar os controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Informe à NetApp que o sistema antigo não está mais em operação após a atualização para os controladores introduzidos no ONTAP 9.15.1 ou posterior, utilizando os comandos  `system controller replace`.' 
 ---
 = Desativar o sistema antigo
 :hardbreaks:

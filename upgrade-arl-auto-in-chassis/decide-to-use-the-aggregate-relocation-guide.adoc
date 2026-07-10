@@ -20,6 +20,7 @@ Para ajudar você a decidir se este procedimento ARL é adequado para a atualiza
 
 
 
+[[supported-for-this-arl-upgrade]]
 == Suportado para esta atualização ARL
 
 Você pode usar este procedimento ARL nas seguintes circunstâncias:
@@ -43,6 +44,7 @@ NOTE: Você pode usar criptografia de storage NetApp (NSE), criptografia de volu
 
 
 
+[[not-supported-for-this-arl-upgrade]]
 == Não suportado para esta atualização ARL
 
 Você não pode usar este procedimento ARL nas seguintes circunstâncias:
@@ -56,6 +58,8 @@ Para atualizar uma configuração de IP do MetroCluster, consulte link:other-ref
 
 
 
+[[supported-system-upgrade-combinations]]
+[[supported-systems]]
 == Combinações de atualização de sistema suportadas
 
 A tabela a seguir mostra a matriz de sistemas suportados para realizar uma atualização do controlador, convertendo o sistema existente para o sistema de substituição, mantendo o chassi existente, os discos existentes e os dados armazenados neles.
@@ -63,6 +67,7 @@ A tabela a seguir mostra a matriz de sistemas suportados para realizar uma atual
 
 CAUTION: Este procedimento aplica-se estritamente às seguintes configurações de atualização. Não utilize este procedimento para realizar uma atualização entre quaisquer outras combinações de sistemas. Para todos os outros modelos de controlador, consulte link:other-references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller hardware running ONTAP 9.8 or later_ e _Using aggregate relocation to manually upgrade controller hardware running ONTAP 9.8 or later_.
 
+[[supported-systems-in-chassis]]
 [cols="20,20,40"]
 |===
 | Sistema existente | Sistema de substituição | Versões de ONTAP compatíveis 
@@ -149,6 +154,7 @@ As versões mínimas do ONTAP na tabela anterior são obrigatórias. Essas vers�
 
 
 
+[[choose-a-different-hardware-upgrade-procedure]]
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-in-chassis/relocate-failed-or-vetoed-aggr-node1.html 
 keywords: relocating, failed, vetoed, aggregates, relocation, operation 
-summary: 'Realoque manualmente agregados com falha ou vetados para o nó 1 ao atualizar controladores executando ONTAP 9.15.1 ou posterior usando `system controller replace` comandos.' 
+summary: Realocar manualmente os agregados com falha ou vetados para o node1 ao usar o ARL para atualizar modelos de controlador no mesmo chassi. 
 ---
 = Realocar agregados com falha ou vetados para o nó 1
 :hardbreaks:

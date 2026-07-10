@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/prepare_nodes_for_upgrade.html 
 keywords: preparing, nodes, upgrade 
-summary: 'Prepare os nós e execute uma série de pré-verificações ao atualizar controladores que executam o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Prepare os nós e execute uma série de verificações prévias ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace` comandos.' 
 ---
 = Prepare os nós para atualização
 :hardbreaks:
@@ -18,19 +18,28 @@ O processo de substituição do controlador começa com uma série de verificaç
 
 
 
-== Etapa 1: preparar os nós
+[[step-1-prepare-node1-and-node2]]
+== Etapa 1: prepare o nó 1 e o nó 2
 
-Inicie o processo de substituição do controlador e execute as verificações prévias. Se necessário, determine o tipo de unidades de criptografia automática em uso.
+Inicie o processo de substituição do controlador e execute verificações prévias no node1 e no node2. Se necessário, determine o tipo de unidades de autocriptografia em uso.
 
 .Passos
 . Inicie o processo de substituição do controlador inserindo o seguinte comando na linha de comando ONTAP:
 +
-`system controller replace start -nodes <node_names>`
-
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 +
+[NOTE]
+====
+Você só pode executar o `system controller replace start` comando no nível de privilégio avançado:
 
-NOTE: Você só pode executar o comando de inicialização do controlador do sistema no nível de privilégio avançado: `set -privilege advanced`
-
+[source, cli]
+----
+set -privilege advanced
+----
+====
 +
 Você verá uma saída semelhante ao exemplo a seguir. A saída exibe a versão do ONTAP em execução no seu cluster:
 
@@ -92,7 +101,7 @@ O sistema executa as seguintes pré-verificações; Registre a saída de cada pr
 | Estado de LIF do cluster | Verifica se as LIFs de cluster estão prontas para ambos os nós. Se as LIFs de cluster estiverem inativas, a tarefa falhará. 
 
 
-| Verificação do estado ASUP | Se as notificações ASUP não estiverem configuradas, a tarefa falhará. Você deve ativar o ASUP antes de iniciar o procedimento de substituição do controlador. 
+| Verificação de status do AutoSupport | Se as notificações do AutoSupport não estiverem configuradas, a tarefa falhará. Você deve ativar o AutoSupport antes de iniciar o procedimento de substituição do controlador. 
 
 
 | Verificação de utilização da CPU | Verifica se a utilização da CPU é superior a 50% para qualquer um dos nós que estão sendo substituídos. Se o uso da CPU for superior a 50% por um período considerável de tempo, a tarefa falhará. 
@@ -123,25 +132,90 @@ Para obter mais informações, consulte o artigo da base de dados de Conheciment
 A partir da porta serial conetada a cada nó, execute e salve a saída dos seguintes comandos individualmente:
 
 +
-** `vserver services name-service dns show`
-** `network interface show -curr-node <local> -role <cluster,intercluster,node-mgmt,cluster-mgmt,data>`
-** `network port show -node <local> -type physical`
-** `service-processor show -node <local> -instance`
-** `network fcp adapter show -node <local>`
-** `network port ifgrp show -node <local>`
-** `system node show -instance -node <local>`
-** `run -node <local> sysconfig`
-** `storage aggregate show -r`
-** `storage aggregate show -node <local>`
-** `volume show -node <local>`
-** `system license show -owner <local>`
-** `storage encryption disk show`
-** `security key-manager onboard show-backup`
-** `security key-manager external show`
-** `security key-manager external show-status`
-** `network port reachability show -detail -node <local>`
-
-
+[source, cli]
+----
+vserver services name-service dns show
+----
++
+[source, cli]
+----
+network interface show -curr-node <local> -role cluster,intercluster,node-mgmt,cluster-mgmt,data
+----
++
+[source, cli]
+----
+network port show -node <local> -type physical
+----
++
+[source, cli]
+----
+service-processor show -node <local> -instance
+----
++
+[source, cli]
+----
+network fcp adapter show -node <local>
+----
++
+[source, cli]
+----
+network port ifgrp show -node <local>
+----
++
+[source, cli]
+----
+system node show -instance -node <local>
+----
++
+[source, cli]
+----
+run -node <local> sysconfig
+----
++
+[source, cli]
+----
+storage aggregate show -r
+----
++
+[source, cli]
+----
+storage aggregate show -node <local>
+----
++
+[source, cli]
+----
+volume show -node <local>
+----
++
+[source, cli]
+----
+system license show -owner <local>
+----
++
+[source, cli]
+----
+storage encryption disk show
+----
++
+[source, cli]
+----
+security key-manager onboard show-backup
+----
++
+[source, cli]
+----
+security key-manager external show
+----
++
+[source, cli]
+----
+security key-manager external show-status
+----
++
+[source, cli]
+----
+network port reachability show -detail -node <local>
+----
 +
 
 NOTE: Se a criptografia de volume NetApp (NVE) ou NetApp Aggregate Encryption (NAE) usando o Gerenciador de chaves integrado (OKM) estiver em uso, mantenha a senha do gerenciador de chaves pronta para concluir a ressincronização do gerenciador de chaves posteriormente no procedimento.
@@ -160,6 +234,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/support-storage-encryptio
 
 
 
+[[step-2-correct-aggregate-ownership-if-an-arl-precheck-fails]]
 == Etapa 2: Corrija a propriedade agregada se uma verificação prévia do ARL falhar
 
 Se a Verificação de status agregado falhar, você deverá devolver os agregados pertencentes ao nó do parceiro ao nó do proprietário principal e iniciar o processo de pré-verificação novamente.
@@ -167,12 +242,16 @@ Se a Verificação de status agregado falhar, você deverá devolver os agregado
 .Passos
 . Devolva os agregados atualmente pertencentes ao nó do parceiro para o nó do proprietário da casa:
 +
-`storage aggregate relocation start -node _source_node_ -destination _destination-node_ -aggregate-list *`
-
+[source, cli]
+----
+storage aggregate relocation start -node <source_node> -destination <destination_node> -aggregate-list *
+----
 . Verifique se nem o node1 nem o node2 ainda possuem agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
-`storage aggregate show -nodes _node_name_ -is-home false -fields owner-name, home-name, state`
-
+[source, cli]
+----
+storage aggregate show -nodes <node_name> -is-home false -fields owner-name, home-name, state
+----
 +
 O exemplo a seguir mostra a saída do comando quando um nó é o proprietário atual e proprietário de agregados:
 
@@ -190,9 +269,61 @@ aggr4       node1      node1       online
 4 entries were displayed.
 ----
 . Reinicie o processo de substituição do controlador:
++
+[source, cli]
+----
+system controller replace start -nodes <node_names>
+----
 
 
-`system controller replace start -nodes _node_names_`
+
+
+[[step-3-prepare-node3-and-node4]]
+== Etapa 3: Prepare o node3 e o node4
+
+Verifique se a build nos nós 3 e 4 é uma imagem NODAR (sem criptografia de dados em repouso). Se a build for uma imagem NODAR, você precisa instalar uma imagem DARE (criptografia de dados em repouso).
+
+.Sobre esta tarefa
+Execute as seguintes etapas nos nós 3 e 4.
+
+.Passos
+. Inicialize o nó no menu de inicialização:
++
+[source, cli]
+----
+LOADER> boot_ontap menu
+----
+. Acesse systemshell:
++
+[source, cli]
+----
+systemshell
+----
+. [[check-build]]Verifique se a compilação é uma imagem NODAR:
++
+[source, cli]
+----
+cat /BUILD
+----
++
+Na saída do comando, verifique se  `build-type` é uma imagem NODAR, por exemplo,  `DEBUG SIM NODAR`.
+
++
+
+NOTE: Se  `build-type` não for uma imagem NODAR, a compilação será uma imagem DARE.
+
+. Se a compilação for uma imagem NODAR, instale uma imagem DARE.
++
+.. Saia do shell do sistema e do menu de inicialização:
++
+[source, cli]
+----
+halt
+----
+.. Instale uma imagem DARE. Para obter mais informações, consulte o artigo da Knowledge Base link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/Netbooting_a_FAS_and_AFF_Controller_in_ONTAP_9["Inicializando pela rede um controlador FAS e AFF no ONTAP 9"^].
+
+
+
 
 .O que se segue?
 Após preparar os nós, link:complete-preparation-for-upgrade.html["Conclua a preparação para a atualização"].

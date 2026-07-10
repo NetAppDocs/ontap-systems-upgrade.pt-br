@@ -15,6 +15,7 @@ summary: 'Configure e gerencie a criptografia de armazenamento, gerencie chaves 
 
 
 
+[[manage-storage-encryption-using-the-onboard-key-manager]]
 == Gerencie a criptografia de armazenamento usando o Gerenciador de chaves integrado
 
 Utilize o Gerenciador de Chaves Integrado (OKM) para gerenciar as chaves de criptografia. Se o OKM estiver configurado, você deve anotar a senha e o material de backup antes de iniciar a atualização.
@@ -43,6 +44,7 @@ Quando solicitado, insira a senha OKM de todo o cluster que você registrou na e
 
 
 
+[[optionally-quiesce-the-snapmirror-relationships]]
 == Opcionalmente, suspenda os SnapMirror relacionamentos
 
 Antes de continuar com o procedimento, você deve confirmar que todas as relações do SnapMirror são silenciadas. Quando um relacionamento do SnapMirror é interrompido, ele permanece quieto em reinicializações e failovers.

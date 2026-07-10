@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/verify_node4_installation.html 
 keywords: verify, node4, installation, physical ports, node2, node, LIF, MetroCluster 
-summary: 'Verifique se as portas físicas do node2 são mapeadas corretamente para o node4 e restaure a configuração de rede no node4 ao atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Verifique se as portas físicas do nó 2 estão mapeadas corretamente para o nó 4 e restaure a configuração de rede no nó 4 ao atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace` comandos.' 
 ---
 = Verifique a instalação do node4
 :hardbreaks:
@@ -29,6 +29,7 @@ Neste ponto do procedimento, a operação é pausada enquanto o node4 entra no q
 
 
 
+[[step-1-verify-that-node4-is-in-quorum]]
 == Passo 1: Verifique se o nó 4 está em quórum
 
 Verifique se o nó 4 está em quorum. Em seguida, retome a operação de substituição do controlador.
@@ -95,6 +96,8 @@ NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broa
 
 
 
+[[step-2-restore-network-configuration-on-node4]]
+[[restore_network_configuration_on_node4_9151]]
 == Etapa 2: restaure a configuração de rede no nó4
 
 Depois de confirmar que o node4 está no quórum e pode se comunicar com o node3, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node2 são vistos no node4. Além disso, verifique se todas as portas de rede node4 estão configuradas em seus domínios de broadcast corretos.

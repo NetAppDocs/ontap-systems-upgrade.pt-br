@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: upgrade-arl-auto-app-9151/guidelines_for_upgrading_controllers_with_arl.html 
 keywords: guidelines, upgrading, controllers, ARL 
-summary: 'Entenda se você pode atualizar controladores executando o ONTAP 9.15,1 ou posterior usando `system controller replace` comandos.' 
+summary: 'Entenda se você pode atualizar para controladores introduzidos no ONTAP 9.15.1 ou posterior usando  `system controller replace`comandos.' 
 ---
 = Diretrizes para atualização de controladores com ARL
 :hardbreaks:
@@ -14,10 +14,11 @@ summary: 'Entenda se você pode atualizar controladores executando o ONTAP 9.15,
 
 
 [role="lead"]
-Para entender se você pode usar o ARL para atualizar um par de controladores executando o ONTAP 9.15,1 ou posterior depende da plataforma e da configuração dos controladores original e de substituição.
+Para entender se você pode usar o ARL para atualizar para um par de controladores introduzidos no ONTAP 9.15.1 ou posterior, isso depende da plataforma e da configuração tanto dos controladores originais quanto dos controladores de substituição.
 
 
 
+[[supported-upgrades-for-arl]]
 == Atualizações suportadas para ARL
 
 Antes de atualizar um par de nós usando este procedimento ARL, revise os seguintes requisitos para garantir que sua configuração seja compatível:
@@ -41,12 +42,14 @@ A atualização do controlador usando ARL é suportada em sistemas configurados 
 
 
 
+[[two-node-switchless-clusters]]
 == Clusters sem switch de dois nós
 
 Se você estiver atualizando nós em um cluster sem switch de dois nós, poderá deixar os nós no cluster sem switch durante a atualização. Você não precisa convertê-los em um cluster comutado.
 
 
 
+[[upgrades-not-supported-for-arl]]
 == Atualizações não suportadas para ARL
 
 Não é possível atualizar os controladores de substituição que não sejam compatíveis com as gavetas de disco conectadas às controladoras originais.
@@ -57,6 +60,7 @@ Se você quiser atualizar controladores de nível de entrada com unidades intern
 
 
 
+[[troubleshoot]]
 == Solucionar problemas
 
 Se ocorrer algum problema durante a atualização dos controladores, consultelink:aggregate_relocation_failures.html["Solucionar problemas"] Para obter mais informações e possíveis soluções.

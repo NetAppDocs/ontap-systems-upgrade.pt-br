@@ -4,6 +4,8 @@
 
 
 
+[[check-and-configure-utauta2-ports-on-node3]]
+[[uta-ports-node3]]
 == Verifique e configure as portas UTA/UTA2 no node3
 
 Se o node3 tiver portas UTA/UTA2 integradas ou uma placa UTA/UTA2, você deve verificar a configuração das portas e, possivelmente, reconfigurá-las, dependendo de como você deseja usar o sistema atualizado.

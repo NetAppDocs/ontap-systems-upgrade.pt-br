@@ -18,6 +18,7 @@ A realocação agregada (ARL) pode falhar em diferentes pontos durante a atualiz
 
 
 
+[[check-for-aggregate-relocation-failure]]
 == Verifique se há falha de realocação de agregados
 
 Durante o procedimento, o ARL pode falhar no Estágio 2, Estágio 3 ou Estágio 5.
@@ -44,6 +45,7 @@ Para obter informações detalhadas sobre as  `storage aggregate relocation star
 
 
 
+[[aggregates-originally-on-node1-are-owned-by-node4-after-completion-of-the-upgrade]]
 == Agregados originalmente em node1 são propriedade de node4 após a conclusão da atualização
 
 No final do procedimento de atualização, node3 deve ser o novo nó inicial de agregados que originalmente tinha node1 como nó inicial. Você pode realocá-los após a atualização.

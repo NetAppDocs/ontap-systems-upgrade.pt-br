@@ -22,6 +22,7 @@ Se você não precisar mover volumes SAN iSCSI ao atualizar movendo volumes, ign
 
 
 
+[[step-1-set-up-new-iscsi-connections]]
 == Etapa 1: Configurar novas conexões iSCSI
 
 Para mover as conexões iSCSI, configure novas conexões iSCSI para os novos nós.
@@ -185,6 +186,7 @@ size=2.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 ----
 
 
+[[step-2-add-the-new-nodes-as-reporting-nodes]]
 == Etapa 2: Adicione os novos nós como nós de relatório
 
 Depois de configurar as conexões com os novos nós, você adiciona os novos nós como os nós de relatório.
@@ -374,6 +376,7 @@ up        secondary  sdah    host5        iscsi_lf__n3_p1_
 
 
 
+[[step-3-remove-reporting-nodes-and-rescan-paths]]
 == Etapa 3: Remover nós de relatório e redigitalizar caminhos
 
 Você deve remover os nós de relatório e verificar novamente os caminhos.
