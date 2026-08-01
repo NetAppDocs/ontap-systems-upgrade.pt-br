@@ -50,3 +50,6 @@ Após os volumes serem movidos para os novos nós, você remove os nós originai
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Oito"]link:upgrade-complete-move-volumes.html["Conclua a atualização"]
 [role="quick-margin-para"]
 Para concluir o procedimento de atualização movendo volumes, configure o processador de serviço (SP), instale novas licenças e configure o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.
+
+.O que se segue?
+Após aprender sobre a atualização através da movimentação de volumes, link:upgrade-prepare-when-moving-volumes.html["prepare-se para a atualização"].

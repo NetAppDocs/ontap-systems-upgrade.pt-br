@@ -37,3 +37,6 @@ Cada compartimento de unidade, incluindo o chassi, precisa de uma ID exclusiva.
 . Ligue a energia do compartimento de unidades convertido e de quaisquer outros compartimentos de unidades conectados aos novos nós.
 . Ligue a energia para os novos nós e, em seguida, interrompa o processo de inicialização em cada nó pressionando Ctrl-C para acessar o prompt do ambiente de inicialização.
 
+
+.O que se segue?
+Após converter um nó original em uma gaveta de unidades, link:upgrade-attach-shelves-reassign-disks.html["Conecte as prateleiras de armazenamento e reatribua a propriedade dos discos"].

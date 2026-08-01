@@ -20,4 +20,4 @@ Durante o procedimento, você atualiza o hardware da controladora original com o
 
 Cada agregado tem um proprietário de casa e proprietário atual. O proprietário da casa é o proprietário real do agregado, e o proprietário atual é o proprietário temporário.
 
-A tabela a seguir descreve as tarefas de alto nível executadas durante cada etapa e o estado de propriedade agregada no final da etapa. Etapas detalhadas são fornecidas posteriormente no procedimento:
+Saiba mais sobre as tarefas de alto nível que você executa em cada etapa e o estado da propriedade do agregado ao final de cada etapa. As etapas detalhadas serão fornecidas posteriormente neste procedimento.

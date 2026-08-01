@@ -4,4 +4,4 @@
 
 Você deve verificar as operações de switchover, recuperação e switchback da configuração do MetroCluster.
 
-link:other_references.html["Referências"]Consulte o link para o conteúdo _Gerenciamento de MetroCluster e recuperação de desastres_ e use os procedimentos mencionados para comutação negociada, cura e switchback.
+Consulte link:other-references.html["Referências"] para acessar o conteúdo _MetroCluster Management and Disaster Recovery_ e utilize os procedimentos mencionados para switchover negociado, healing e switchback.

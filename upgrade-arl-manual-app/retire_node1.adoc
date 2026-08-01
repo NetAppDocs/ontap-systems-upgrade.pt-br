@@ -128,7 +128,7 @@ Se o cluster HA não tiver sido desativado, repita <<man_retire_1_step2,Passo 2>
 `cluster show`
 
 +
-Como existe a possibilidade de um empate em um cluster que tem um número par de nós, um nó tem um peso de votação fracionário extra chamado epsilon. link:other_references.html["Referências"]Consulte para obter mais informações sobre o link _System Administration Reference_.
+Como existe a possibilidade de empate em um cluster com um número par de nós, um nó possui um peso de voto fracionário extra chamado epsilon. Consulte link:other-references.html["Referências"] para obter mais informações no _System Administration Reference_.
 
 +
 [NOTE]

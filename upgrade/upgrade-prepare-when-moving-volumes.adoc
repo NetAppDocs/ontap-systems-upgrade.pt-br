@@ -51,4 +51,4 @@ https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migração para um
 
 
 .O que se segue?
-link:upgrade-install-and-join-new-nodes-move-vols.html["Instale os novos nós e junte-os ao cluster"]
+Após a preparação para a atualização, link:upgrade-install-and-join-new-nodes-move-vols.html["Instale os novos nós e adicione-os ao cluster"].

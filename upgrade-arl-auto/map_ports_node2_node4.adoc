@@ -17,7 +17,7 @@ summary: 'Verifique se as portas físicas no node2 são mapeadas corretamente pa
 Você deve verificar se as portas físicas no nó2 estão mapeadas corretamente para as portas físicas no nó4. Isso permite que o nó4 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Sobre esta tarefa
-Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
+Consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_ e obter informações sobre as portas nos novos nós. Você usará essas informações posteriormente nesta seção.
 
 A configuração de software do node4 deve corresponder à conetividade física do node4 e a conetividade IP deve ser restaurada antes de continuar com a atualização.
 
@@ -203,7 +203,7 @@ O comando a seguir define a política de failover para `broadcast-domain-wide` e
 `network interface modify -vserver node4 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Consulte link:other_references.html["Referências"] para acessar _Network Management_ ou o _ONTAP 9 Command reference_ e veja _Configuring failover settings on a LIF_ para mais informações.
+Consulte link:other-references.html["Referências"] para acessar _Network Management_ ou o _ONTAP 9 Command reference_ e veja _Configuring failover settings on a LIF_ para mais informações.
 
 . Verifique as alterações em node4:
 +

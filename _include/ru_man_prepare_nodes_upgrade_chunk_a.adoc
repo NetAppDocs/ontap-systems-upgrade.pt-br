@@ -7,7 +7,7 @@ Antes de substituir os nós originais, confirme se eles estão em um par de HA, 
 .Passos
 . Confirme se cada um dos nós originais tem recursos suficientes para suportar adequadamente a carga de trabalho de ambos os nós durante o modo de aquisição.
 +
-link:other_references.html["Referências"]Consulte o link para _Gerenciamento de par HA_ e siga a seção _melhores práticas para pares HA_. Nenhum dos nós originais deve ser executado com mais de 50% de utilização; se um nó estiver executando com menos de 50% de utilização, ele poderá lidar com as cargas de ambos os nós durante a atualização da controladora.
+Consulte link:other-references.html["Referências"] para obter o link para _Gerenciamento de pares HA_ e siga a seção _Melhores práticas para pares HA_. Nenhum dos nós originais deve estar operando com mais de 50% de utilização; se um nó estiver operando com menos de 50% de utilização, ele pode suportar as cargas de ambos os nós durante a atualização do controlador.
 
 . Conclua as subetapas a seguir para criar uma linha de base de desempenho para os nós originais:
 +
@@ -17,23 +17,23 @@ link:other_references.html["Referências"]Consulte o link para _Gerenciamento de
 ====
 A conta de utilizador de diagnóstico destina-se apenas a fins de diagnóstico de baixo nível e deve ser utilizada apenas com orientação do suporte técnico.
 
-Para obter informações sobre como desbloquear as contas de usuário, link:other_references.html["Referências"]consulte o link para a _Referência de administração do sistema_.
+Para obter informações sobre como desbloquear as contas de usuário, consulte link:other-references.html["Referências"] para acessar a _Referência de Administração do Sistema_.
 
 ====
-.. Consulte o link:other_references.html["Referências"]link para o _Site de suporte NetApp_ e faça o download do Coletor de desempenho e estatísticas (Perfstat Converged).
+.. Consulte link:other-references.html["Referências"] para acessar o site de suporte da NetApp e fazer o download do Performance and Statistics Collector (Perfstat Converged).
 +
 A ferramenta Convergente Perfstat permite estabelecer uma linha de base de desempenho para comparação após a atualização.
 
 .. Crie uma linha de base de desempenho, seguindo as instruções no site de suporte da NetApp.
 
 
-. link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e abra um caso de suporte no site de suporte da NetApp.
+. Consulte link:other-references.html["Referências"] para acessar o site de suporte da NetApp e abrir um chamado de suporte no NetApp Support Site.
 +
 Você pode usar o caso para relatar quaisquer problemas que possam surgir durante a atualização.
 
 . Verifique se as baterias NVMEM ou NVRAM de node3 e node4 estão carregadas e carregue-as se não estiverem.
 +
-Você deve verificar fisicamente node3 e node4 para ver se as baterias NVMEM ou NVRAM estão carregadas. Para obter informações sobre os LEDs para o modelo de node3 e node4, consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_.
+Você deve verificar fisicamente os node3 e node4 para ver se as baterias NVMEM ou NVRAM estão carregadas. Para obter informações sobre os LEDs do modelo de node3 e node4, consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_.
 
 +
 
@@ -41,7 +41,7 @@ WARNING: Não tente limpar o conteúdo da NVRAM .  Se for necessário limpar o c
 
 . Verifique a versão do ONTAP em node3 e node4.
 +
-Os novos nós devem ter a mesma versão do ONTAP 9.x instalada neles que está instalada nos nós originais. Se os novos nós tiverem uma versão diferente do ONTAP instalada, você deverá inicializar os novos controladores depois de instalá-los. Para obter instruções sobre como atualizar o ONTAP, consulte link:other_references.html["Referências"]o link para _Atualizar ONTAP_.
+Os novos nós devem ter a mesma versão do ONTAP 9.x instalada que está instalada nos nós originais. Se os novos nós tiverem uma versão diferente do ONTAP instalada, você deve inicializar os novos controladores via rede após instalá-los. Para obter instruções sobre como atualizar o ONTAP, consulte link:other-references.html["Referências"] para acessar _Upgrade ONTAP_.
 
 +
 As informações sobre a versão do ONTAP em node3 e node4 devem ser incluídas nas caixas de envio. A versão do ONTAP é exibida quando o nó é inicializado ou você pode inicializar o nó no modo de manutenção e executar o comando:
@@ -150,7 +150,7 @@ node1          node2          true     Connected to node2, Partial giveback
 node2          node1          true     Connected to node1
 ....
 +
-Se qualquer nó estiver em parcial giveback, use o `storage failover giveback` comando para executar o giveback e use o `storage failover show-giveback` comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, link:other_references.html["Referências"]consulte o link para _HA PAIR Management_.
+Se algum dos nós estiver em giveback parcial, use o  `storage failover giveback` comando para realizar o giveback e, em seguida, use o  `storage failover show-giveback` comando para garantir que nenhum agregado ainda precise ser devolvido. Para obter informações detalhadas sobre os comandos, consulte link:other-references.html["Referências"] para acessar _HA pair management_.
 
 . [[man_prepare_nodes_step9]]Confirme que nem o node1 nem o node2 possuem os agregados para os quais é o proprietário atual (mas não o proprietário da casa):
 +
@@ -239,7 +239,7 @@ node1    None                None
 node2    None                None
 ....
 +
-Se algum disco estiver faltando, link:other_references.html["Referências"]consulte o link para _Gerenciamento de disco e agregado com a CLI_, _Gerenciamento de armazenamento lógico com a CLI_ e _Gerenciamento de par HA_ para configurar o armazenamento para o par de HA.
+Se algum disco estiver ausente, consulte link:other-references.html["Referências"] para acessar _Disk and aggregate management with the CLI_, _Logical storage management with the CLI_ e _HA pair management_ para configurar o armazenamento para o par de HA.
 
 . Confirme se node1 e node2 estão saudáveis e qualificados para participar do cluster:
 +
@@ -315,14 +315,14 @@ vs0
 `network interface revert -vserver * -lif *`
 
 +
-Para obter informações detalhadas sobre o  `network interface revert` comando, consulte link:other_references.html["Referências"] para acessar a _ONTAP 9 Command reference_.
+Para obter informações detalhadas sobre o  `network interface revert` comando, consulte link:other-references.html["Referências"] para acessar a _ONTAP 9 Command reference_.
 
 . Verifique se o node1 ou o node2 possui quaisquer discos com falha:
 +
 `storage disk show -nodelist _node1,node2_ -broken`
 
 +
-Se algum dos discos tiver falhado, remova-os seguindo as instruções no _Disk e no gerenciamento de agregados com a CLI_. (Consulte a link:other_references.html["Referências"]ligação ao _Disk e ao gerenciamento de agregados com a CLI_.)
+Se algum dos discos apresentar falha, remova-o seguindo as instruções em _Gerenciamento de discos e agregados com a CLI_. (Consulte link:other-references.html["Referências"] para o link para _Gerenciamento de discos e agregados com a CLI_.)
 
 . Colete informações sobre node1 e node2, completando as seguintes subetapas e gravando a saída de cada comando:
 

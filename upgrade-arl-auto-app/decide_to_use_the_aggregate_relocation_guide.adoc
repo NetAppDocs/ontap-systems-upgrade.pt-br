@@ -23,7 +23,7 @@ Para ajudar você a decidir se este procedimento ARL é adequado para a atualiza
 * Tem experiência na administração de ONTAP e está confortável com os riscos de trabalhar no modo de privilégio de diagnóstico.
 * Se você estiver atualizando uma configuração do MetroCluster, ela será uma configuração de FC de quatro nós ou superior e todos os nós executarão o ONTAP 9,8 ou posterior.
 +
-Para atualizar configurações IP do MetroCluster, consulte link:other_references.html["Referências"]o link para _Atualização e expansão do MetroCluster_.
+Para atualizar as configurações de IP do MetroCluster, consulte link:other-references.html["Referências"] para acessar _MetroCluster Upgrade and Expansion_.
 
 
 
@@ -138,11 +138,11 @@ Para as combinações de atualização mostradas na tabela anterior:
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
-* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+* Se preferir um método diferente para atualizar o hardware do controlador e estiver disposto a mover volumes, consulte link:other-references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
 
 
 .Informações relacionadas
-Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
+Consulte link:other-references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
 
 .O que se segue?
 Após decidir se deve usar este procedimento ARL, aprenda sobre o link:required_tools_and_documentation.html["Ferramentas e documentação necessárias"].

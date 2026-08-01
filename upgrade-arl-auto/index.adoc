@@ -29,5 +29,5 @@ Os termos "node1", "node2", "node3" e "node4" são usados apenas para distinguir
 * Use este procedimento para atualizar o hardware da controladora em clusters com mais de dois nós. No entanto, é necessário executar o procedimento separadamente para cada par de HA no cluster.
 * Este procedimento se aplica aos sistemas FAS e AFF .
 * A partir do ONTAP 9.6, este procedimento aplica-se a sistemas que executam a configuração MetroCluster de 4 nós ou superior. Como os locais de configuração do MetroCluster podem estar em dois locais fisicamente diferentes, a atualização automatizada da controladora deve ser realizada individualmente em cada local do MetroCluster para um par de HA.
-* Se você estiver atualizando de um sistema AFF A320, poderá usar as movimentações de volume para atualizar o hardware do controlador ou entrar em Contato com o suporte técnico. Se você estiver disposto a fazer movimentos de volume, link:other_references.html["Referências"]consulte a ligação a _Upgrade movendo volumes ou armazenamento_.
+* Se você estiver atualizando de um sistema AFF A320, poderá usar a movimentação de volumes para atualizar o hardware do controlador ou entrar em contato com o suporte técnico. Se você estiver disposto a fazer a movimentação de volumes, consulte link:other-references.html["Referências"] para acessar _Atualizar movendo volumes ou armazenamento_.
 

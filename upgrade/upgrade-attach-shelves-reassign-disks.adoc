@@ -14,13 +14,19 @@ summary: Você deve reatribuir os discos que pertenciam a node1 e node2 a node3 
 Você deve reatribuir os discos que pertenciam a node1 e node2 a node3 e node4, respetivamente.
 
 .Sobre esta tarefa
-Execute as etapas nesta seção em node3 e node4, completando cada etapa em node3 e depois em node4 antes de passar para a próxima etapa.
+Você executa as etapas desta seção no node3 e no node4. Conclua cada etapa no node3 e depois no node4 antes de passar para a próxima etapa.
 
+[[reassign-spare-disks-step1]]
 .Passos
-. Conete os cabos da prateleira de armazenamento das prateleiras que estavam anteriormente conetadas a node1/node2 a node3/node4.
+. Conecte os cabos das prateleiras de armazenamento que estavam previamente conectadas:
++
+** Conecte os cabos do nó 1 ao nó 3
+** Conecte os cabos do nó 2 ao nó 4.
 +
 
-CAUTION: Não é possível conectar novas gavetas ao node3/node4 durante esse procedimento de atualização. Você pode conectar novas gavetas ao sistema sem interrupções após concluir a atualização da controladora.
+CAUTION: Não conecte novas shelves ao node3 ou node4 durante este procedimento de atualização. Você pode conectar novas shelves ao sistema sem interrupções após concluir a atualização do controlador.
+
+
 
 . Verifique a fonte de alimentação e a conectividade física das gavetas.
 . A partir do prompt do node3 Loader, inicialize para o modo de manutenção:
@@ -39,26 +45,38 @@ Local System ID: 101268854
 ...
 ----
 +
-Registe a ID do sistema de node3 para utilização no passo 4 abaixo.
+Anote o ID do sistema do node3 para uso em <<reassign-disks-and-aggregates,Passo 5>>.
 
-. Reatribua os discos sobressalentes do node1, os discos pertencentes ao agregado raiz e quaisquer agregados de dados:
+
+
+[[reassign-disks-and-aggregates]]
+. Reatribua os discos e os agregados de dados:
 +
-`disk reassign -s _node1_sysid_ -d _node3_sysid_ -p _node2_sysID_`
-
-+
---
-** O parâmetro `_node1_sysid_` é o valor que você registrou em _fechando os nós originais_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Passo 5"].
-** Especifique o parâmetro `_-p partner_sysID_` somente quando os discos compartilhados estiverem presentes.
-
-
-[NOTE]
+[role="tabbed-block"]
 ====
-Ao reatribuir discos sobressalentes do node2, discos pertencentes ao agregado raiz e quaisquer agregados de dados, o comando é:
-
-`disk reassign -s node2_sysid -d node4_sysid -p node3_sysID`
-
-====
+.Reatribuir ao node3
 --
+Reatribua os discos sobressalentes do node1, os discos pertencentes ao agregado de raiz e quaisquer agregados de dados ao node3:
+
+`disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
+
+** O parâmetro  `node1_sysid` é o valor que você registrou em _Desligando os nós originais_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Passo 5"].
+** Especifique o parâmetro  `-p <node2_sysid>` somente quando houver discos compartilhados.
+
+
+--
+.Reatribuir ao node4
+--
+Reatribua os discos sobressalentes do node2, os discos pertencentes ao agregado de raiz e quaisquer agregados de dados ao node4:
+
+`disk reassign -s <node2_sysid> -d <node4_sysid> -p <node3_sysid>`
+
+** O parâmetro  `node2_sysid` é o valor que você registrou em _Desligando os nós originais_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Passo 5"].
+** Especifique o parâmetro  `-p <node3_sysid>` somente quando houver discos compartilhados.
+
+
+--
+====
 +
 O sistema exibe uma mensagem semelhante à seguinte:
 
@@ -100,8 +118,12 @@ Você deve ver saída semelhante ao seguinte:
           aggr0 online          raid_dp, aggr         root
                                 64-bit
 ----
-. Sair do modo de manutenção:
+. [[reassign-spare-disks-step9]]Saia do modo de manutenção:
 +
 `halt`
 
+. Repita <<reassign-spare-disks-step1,Passo 1>> para <<reassign-spare-disks-step9,Passo 9>> no nó 4.
 
+
+.O que se segue?
+Após conectar as gavetas de armazenamento e reatribuir a propriedade dos discos, link:upgrade-restore-root-volume-config.html["restaurar a configuração do volume raiz"].

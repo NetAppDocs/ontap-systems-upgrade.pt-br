@@ -26,3 +26,6 @@ Não conecte compartimentos de disco dos nós originais aos novos nós neste pon
 Isso inclui cabos Fibre Channel e Ethernet que não são usados para anexar gavetas de storage.
 
 
+
+.O que se segue?
+Após instalar os novos nós, link:upgrade-set-up-new-nodes.html["configure os novos nós"].

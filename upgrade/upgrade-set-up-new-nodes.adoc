@@ -124,3 +124,6 @@ O `ha-config modify controller ha` comando configura `ha` para a configuração 
 O sistema pára no prompt DO Loader
 
 
+
+.O que se segue?
+Após configurar os novos nós, opcionalmente, link:upgrade-move-internal-drives.html["mover unidades internas do nó original"] ou link:upgrade-convert-node-to-shelf.html["Converta o nó original em uma gaveta de unidades"]. Então, link:upgrade-attach-shelves-reassign-disks.html["Conecte as prateleiras de armazenamento e reatribua a propriedade dos discos"].

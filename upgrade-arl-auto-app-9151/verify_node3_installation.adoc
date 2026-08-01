@@ -17,7 +17,7 @@ summary: 'Verifique se as portas físicas do node1 estão mapeadas corretamente 
 Você deve verificar se as portas físicas do node1 estão mapeadas corretamente para as portas físicas do node3. Isso permite que o node3 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Sobre esta tarefa
-Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
+Consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_ e obter informações sobre as portas nos novos nós. Você usará essas informações posteriormente nesta seção.
 
 O layout físico das portas pode variar, dependendo do modelo dos nós. Quando o novo nó é inicializado, ONTAP tenta determinar quais portas devem hospedar as LIFs do cluster para que ele entre automaticamente em quorum.
 
@@ -96,7 +96,7 @@ NOTE: Neste procedimento, a seção _recriando VLANs, ifgrps e domínios de broa
 
 Depois de confirmar que o node3 está no quórum e pode se comunicar com o node2, verifique se as VLANs, os grupos de interface e os domínios de broadcast do node1 são vistos no node3. Além disso, verifique se todas as portas de rede node3 estão configuradas em seus domínios de broadcast corretos.
 
-Para obter mais informações sobre como criar e recriar VLANs, grupos de interfaces e domínios de broadcast, consulte a link:other_references.html["Referências"]ligação a _Network Management_.
+Para obter mais informações sobre como criar e recriar VLANs, grupos de interfaces e domínios de broadcast, consulte link:other-references.html["Referências"] para acessar _Network Management_.
 
 .Passos
 . Liste todas as portas físicas que estão no node1 atualizado (referido como node3):

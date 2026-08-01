@@ -31,7 +31,7 @@ NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo ch
 Conecte as seguintes conexões usando as _Instruções de instalação e configuração_ para a plataforma node3, o documento de prateleira de disco apropriado e a documentação de _Gerenciamento de pares de HA_.
 
 +
-Consultelink:other_references.html["Referências"] para vincular ao _gerenciamento de pares HA_.
+Consulte link:other-references.html["Referências"] para o link para _Gerenciamento de pares HA_.
 
 +
 ** Console (porta de gerenciamento remoto)

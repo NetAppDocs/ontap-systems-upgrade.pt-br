@@ -56,3 +56,6 @@ A sequência de arranque prossegue normalmente.
 
 
 Se a atualização da controladora falhar e relatar uma `rlib_port_ipspace_assign` mensagem de erro, você deverá reverter a atualização e excluir as LIFs nas portas de rede do sistema original que estão sendo usadas como portas HA no sistema de substituição. Para obter mais informações, link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/PANIC_%3A_rlib_port_ipspace_assign%3A_port_e0a_could_not_be_moved_to_HA_ipspace["Este artigo da KB"^]consulte .
+
+.O que se segue?
+Após restaurar a configuração do volume raiz, link:upgrade-complete.html["concluir o fluxo de trabalho de atualização de armazenamento"].

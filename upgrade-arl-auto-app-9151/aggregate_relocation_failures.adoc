@@ -39,7 +39,7 @@ O `storage aggregate relocation show` comando mostra quais agregados foram realo
 
 
 +
-Para obter informações detalhadas sobre as  `storage aggregate relocation start`, `override-vetoes` e  `override-destination-checks` opções, consulte link:other_references.html["Referências"] para o link para a _ONTAP 9 Command reference_.
+Para obter informações detalhadas sobre as  `storage aggregate relocation start`, `override-vetoes`, e  `override-destination-checks` opções, consulte link:other-references.html["Referências"] para o link para a _ONTAP 9 Command reference_.
 
 
 

@@ -40,7 +40,7 @@ NOTE: Se você estiver atualizando para um sistema com ambos os nós no mesmo ch
 
 . [[step3]]Cabo node3, movendo as conexões de node1 para node3.
 +
-As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para link:other_references.html["Referências"]o link para eles.
+As referências a seguir ajudam você a fazer conexões de cabos adequadas. Acesse link:other-references.html["Referências"] para consultá-las.
 
 +
 ** _Instruções de instalação e configuração_ para a plataforma node3

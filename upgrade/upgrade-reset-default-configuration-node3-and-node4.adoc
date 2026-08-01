@@ -54,3 +54,6 @@ O sistema inicia o `wipeconfig` procedimento e reinicializa. Quando o procedimen
 
 . No menu de inicialização, digite 8 para reinicializar o nó e pressione Ctrl-C durante AUTOBOOT para interromper o nó no prompt LOADER.
 
+
+.O que se segue?
+Após redefinir a configuração padrão nos novos nós, link:upgrade-install-new-nodes.html["instalar os novos nós"].

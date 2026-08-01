@@ -125,3 +125,6 @@ Use "storage failover modify -node <nodename> -onreboot false" to turn it OFF.
 . Identifique e remova todos os cabos do node1 e do node2.
 . Retire o chassis que contém node1 e node2.
 
+
+.O que se segue?
+Após desligar os nós originais, link:upgrade-remove-disk-ownership-new-nodes.html["remover a propriedade dos discos conectados aos novos nós"].

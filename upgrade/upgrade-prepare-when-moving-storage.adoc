@@ -170,3 +170,6 @@ NOTE: Você não precisa extrair o conteúdo do `<ontap_version>_image.tgz` arqu
 
 
 Você usará as informações no diretório para link:upgrade-set-up-new-nodes.html["configure os novos nós"].
+
+.O que se segue?
+Após a preparação para a atualização, link:upgrade-shutdown-remove-original-nodes.html["desligue os nós originais"].

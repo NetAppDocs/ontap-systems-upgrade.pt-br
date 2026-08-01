@@ -34,7 +34,7 @@ Este procedimento de atualização aplica-se principalmente a cenários de atual
 * Este procedimento se aplica aos sistemas FAS e AFF .
 * Este procedimento aplica-se a sistemas que executam a configuração NetApp MetroCluster de 4 nós ou superior. Como os locais de configuração do MetroCluster podem estar em dois locais fisicamente diferentes, a atualização automatizada da controladora deve ser realizada individualmente em cada local do MetroCluster para um par de HA.
 * Para sistemas que não são MetroCluster, como clusters de HA, a atualização ARL é o único procedimento com suporte.
-* Se você estiver atualizando de um sistema AFF A320, poderá usar as movimentações de volume para atualizar o hardware do controlador ou entrar em Contato com o suporte técnico. Consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+* Se você estiver atualizando de um sistema AFF A320, poderá usar a movimentação de volumes para atualizar o hardware do controlador ou entrar em contato com o suporte técnico. Consulte link:other-references.html["Referências"] para acessar _Upgrade movendo volumes ou armazenamento_.
 
 
 .Automatize o processo de atualização do controlador

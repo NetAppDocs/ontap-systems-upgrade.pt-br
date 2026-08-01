@@ -17,7 +17,7 @@ summary: 'Verifique se as portas físicas no node1 são mapeadas corretamente pa
 Você deve verificar se as portas físicas no nó1 estão mapeadas corretamente para as portas físicas no nó3. Isso permite que o nó3 se comunique com outros nós no cluster e com a rede após a atualização.
 
 .Sobre esta tarefa
-Consulte a link:other_references.html["Referências"]ligação ao _Hardware Universe_ para captar informações sobre as portas nos novos nós. Você usará as informações mais adiante nesta seção.
+Consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_ e obter informações sobre as portas nos novos nós. Você usará essas informações posteriormente nesta seção.
 
 As configurações de porta podem variar dependendo do modelo dos nós. Você deve tornar a configuração de porta e LIF no nó original compatível com o uso e a configuração planejados para o novo nó. Isso ocorre porque o novo nó reproduz a mesma configuração ao inicializar, o que significa que, ao inicializar o node3, ONTAP tenta hospedar LIFs nas mesmas portas que eram usadas no node1.
 
@@ -215,7 +215,7 @@ O comando a seguir define a política de failover para `broadcast-domain-wide` e
 `network interface modify -vserver node3 -lif data1 failover-policy broadcast-domainwide -failover-group fg1`
 
 +
-Consulte link:other_references.html["Referências"] para acessar _Gerenciamento de Rede_ ou o _ONTAP 9 Command reference_ para mais informações.
+Consulte link:other-references.html["Referências"] para acessar _Gerenciamento de Rede_ ou o _ONTAP 9 Command reference_ para mais informações.
 
 . Verifique as alterações em node3:
 +

@@ -18,7 +18,7 @@ Depois de colocar fisicamente o rack node3 e node4 posteriormente no procediment
 
 .Antes de começar
 * Verifique se você pode acessar um servidor HTTP com o sistema.
-* link:other_references.html["Referências"]Consulte o link para o site de suporte _NetApp_ e baixe os arquivos de sistema necessários para sua plataforma e a versão correta do ONTAP.
+* Consulte link:other-references.html["Referências"] para acessar o site de suporte da NetApp e baixar os arquivos de sistema necessários para sua plataforma e a versão correta do ONTAP.
 
 
 .Sobre esta tarefa

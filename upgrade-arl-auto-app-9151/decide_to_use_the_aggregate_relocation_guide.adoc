@@ -59,9 +59,9 @@ Você não pode usar este procedimento ARL para atualizar um par de nós nas seg
 | AFF C800 | AFF C80 
 |===
 +
-Para realizar uma atualização listada na tabela acima, consulte link:other_references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller models in the same chassis_.
+Para realizar uma atualização listada na tabela acima, consulte link:other-references.html["Referências"] para acessar _Use "system controller replace" commands to upgrade controller models in the same chassis_.
 
-* Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração do MetroCluster, link:other_references.html["Referências"] consulte para vincular à documentação de atualização e expansão _MetroCluster_.
+* Você está atualizando uma configuração MetroCluster FC ou IP. Para atualizar uma configuração MetroCluster, consulte link:other-references.html["Referências"] a documentação de atualização e expansão do MetroCluster.
 
 
 
@@ -116,11 +116,11 @@ A tabela a seguir mostra as combinações de atualização de controlador suport
 == Escolha um procedimento de atualização de hardware diferente
 
 * link:../upgrade-arl/index.html["Revise os métodos ARL alternativos disponíveis para atualizar o hardware do controlador"].
-* Se você preferir um método diferente de atualizar o hardware do controlador e estiver disposto a fazer movimentos de volume, consulte link:other_references.html["Referências"]o link para _Upgrade movendo volumes ou armazenamento_.
+* Se preferir um método diferente para atualizar o hardware do controlador e estiver disposto a mover volumes, consulte link:other-references.html["Referências"] para obter o link para _Atualizar movendo volumes ou armazenamento_.
 
 
 .Informações relacionadas
-Consulte link:other_references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
+Consulte link:other-references.html["Referências"] para acessar a _Documentação do ONTAP 9_.
 
 .O que se segue?
 Após decidir utilizar este procedimento ARL, link:required_tools_and_documentation.html["Saiba mais sobre as ferramentas e a documentação necessárias"].

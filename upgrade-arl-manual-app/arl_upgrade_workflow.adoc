@@ -36,72 +36,31 @@ A ilustração a seguir mostra as etapas do procedimento. As setas grossos e cin
 
 image:arl_upgrade_manual_image1.PNG["Ilustração que mostra as etapas do procedimento ARL"]
 
-A tabela a seguir descreve as tarefas de alto nível para cada etapa e o estado da propriedade do agregado ao final da etapa. Os passos detalhados são apresentados posteriormente no procedimento:
+Saiba mais sobre as tarefas de alto nível que você executa em cada etapa e o estado da propriedade do agregado ao final da etapa. As etapas detalhadas serão fornecidas posteriormente no procedimento.
 
-[cols="35,65"]
-|===
-| Fase | Passos 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:determine_aggregates_on_internal_drives.html["Etapa 1: Prepare-se para a atualização"]
+[role="quick-margin-para"]
+Durante a fase 1, se necessário, você confirma que as unidades de disco internas não contêm agregados de raiz ou agregados de dados, prepara os nós para a atualização e executa uma série de pré-verificações. Se necessário, você pode usar discos para criptografia de armazenamento e se preparar para netboot dos novos controladores.
 
-
-| link:determine_aggregates_on_internal_drives.html["Etapa 1: Prepare-se para a atualização"]  a| 
-Durante a Etapa 1, se necessário, você confirma que as unidades de disco internas não contêm agregados raiz ou agregados de dados, prepara os nós para a atualização e executa as verificações prévias. Se necessário, você rechaveia os discos para Storage Encryption e se prepara para inicializar os novos controladores via netboot.
-
-Propriedade agregada no final da fase 1:
-
-* node1 é o proprietário da casa e atual proprietário dos agregados node1.
-* Node2 é o proprietário da casa e atual proprietário dos agregados node2.
-
-
-
-
-| link:relocate_non_root_aggr_node1_node2.html["Fase 2: Aposentar-se node1"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:relocate_non_root_aggr_node1_node2.html["Fase 2: Aposentar-se node1"]
+[role="quick-margin-para"]
 Durante a fase 2, você realocar agregados não-raiz de node1 para node2 e move LIFs de dados não-SAN de propriedade de node1 para node2, incluindo agregados com falha ou vetado. Você também Registra as informações node1 necessárias para uso mais tarde no procedimento e aposenta node1.
 
-Propriedade agregada no final da fase 2:
-
-* node1 é o proprietário da casa de node1 agregados.
-* Node2 é o atual proprietário de node1 agregados.
-* Node2 é o proprietário da casa e atual proprietário de node2 agregados.
-
-
-
-
-| link:install_boot_node3.html["Etapa 3: Instalar e inicializar node3"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:install_boot_node3.html["Etapa 3: Instalar e inicializar node3"]
+[role="quick-margin-para"]
 Durante a Etapa 3, você instala e inicializa o nó3 e mapeia as portas de cluster e de gerenciamento de nós do nó1 para o nó3. Se você estiver usando NetApp Volume Encryption (NVE), restaure a configuração do gerenciador de chaves. Em seguida, mova as LIFs de dados e as LIFs SAN pertencentes ao nó1 do nó2 para o nó3, realoque todos os agregados do nó2 para o nó3 e mova as LIFs de dados e as LIFs SAN pertencentes ao nó2 para o nó3.
 
-Propriedade agregada no final da fase 3:
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"]link:record_node2_information.html["Fase 4: Aposentar-se node2"]
+[role="quick-margin-para"]
+Durante a fase 4, registe as informações node2 necessárias para utilização posterior no procedimento e, em seguida, retire node2.
 
-* Node2 é o proprietário da casa de node2 agregados, mas não o proprietário atual.
-* Node3 é o proprietário da casa e atual proprietário de agregados originalmente pertencentes a node1.
-* Node2 é o proprietário da casa e atual proprietário de agregados pertencentes a node2, mas não o proprietário da casa.
-
-
-
-
-| link:record_node2_information.html["Fase 4: Aposentar-se node2"]  a| 
-Durante a fase 4, registe as informações node2 necessárias para utilização posterior no procedimento e, em seguida, retire node2. Nenhuma alteração ocorre na propriedade agregada.
-
-
-
-| link:install_boot_node4.html["Etapa 5: Instalar e inicializar node4"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:install_boot_node4.html["Etapa 5: Instalar e inicializar node4"]
+[role="quick-margin-para"]
 Durante a Etapa 5, você instala e inicializa o nó 4 e mapeia as portas de cluster e de gerenciamento de nós do nó 2 para o nó 4. Se você estiver usando NetApp Volume Encryption (NVE), você restaura a configuração do gerenciador de chaves. Em seguida, você move as LIFs de dados e as LIFs SAN pertencentes ao nó 2 do nó 3 para o nó 4, realoca os agregados do nó 2 do nó 3 para o nó 4 e move as LIFs de dados e as LIFs SAN pertencentes ao nó 2 para o nó 3.
 
-Propriedade agregada no final da fase 5:
-
-* Node3 é o proprietário da casa e atual proprietário dos agregados que originalmente pertenciam a node1.
-* Node4 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node2.
-
-
-
-
-| link:manage_authentication_kmip.html["Etapa 6: Concluir a atualização"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:manage_authentication_kmip.html["Etapa 6: Concluir a atualização"]
+[role="quick-margin-para"]
 Durante a fase 6, você confirma que os novos nós estão configurados corretamente e configuram criptografia de armazenamento ou criptografia de volume NetApp se os novos nós estiverem habilitados para criptografia. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
 
-
-NOTE: As atualizações de recuperação de desastres da máquina virtual de armazenamento (SVM) não são interrompidas conforme os cronogramas definidos.
-
-Nenhuma alteração ocorre na propriedade agregada.
-
-|===
 .O que se segue?
 Após revisar o fluxo de trabalho de atualização do ARL, link:guidelines_upgrade_with_arl.html["Revise as diretrizes para atualização de controladores com ARL"].

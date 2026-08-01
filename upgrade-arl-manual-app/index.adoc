@@ -55,8 +55,8 @@ NOTE: Neste documento, os nós originais são chamados de _node1_ e _node2_, e o
 
 * Além de configurações que não sejam da MetroCluster, esse procedimento se aplica a configurações de quatro nós e oito nós do Fabric MetroCluster executando o ONTAP 9.8 e posterior.
 +
-** Para configurações do MetroCluster executando o ONTAP 9.7 e anteriores, vá para link:other_references.html["Referências"]link para _usando realocação de agregados para atualizar manualmente o hardware do controlador executando o ONTAP 9.7 ou anterior_.
-** Para configurações IP do MetroCluster e opções de atualização adicionais para configurações do Fabric MetroCluster, acesse o link:other_references.html["Referências"]link para o conteúdo _Atualização e expansão_ do MetroCluster.
+** Para configurações MetroCluster que executam ONTAP 9.7 e versões anteriores, acesse link:other-references.html["Referências"] para acessar _Usando a realocação de agregados para atualizar manualmente o hardware do controlador que executa ONTAP 9.7 ou versões anteriores_.
+** Para configurações de IP do MetroCluster e opções adicionais de upgrade para configurações de Fabric MetroCluster, acesse link:other-references.html["Referências"] o conteúdo _MetroCluster Upgrade and Expansion_.
 
 
 

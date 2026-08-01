@@ -17,7 +17,7 @@ summary: Instale os arquivos RCF para reconfigurar os switches Cisco e Brocade d
 Você deve aplicar os arquivos de configuração de referência (RCFs) apropriados para reconfigurar seus switches para acomodar os novos nós. Depois de aplicar os RCFs, você pode reajustar os switches.
 
 .Antes de começar
-O uso da porta do switch FC deve corresponder ao uso descrito no conteúdo _Instalação e Configuração do MetroCluster anexado à estrutura_ para que os RCFs possam ser usados. Vá para link:other_references.html["Referências"]o link para o conteúdo _Fabric-Attached MetroCluster Installation and Configuration_.
+O uso da porta do switch FC deve corresponder ao uso descrito no conteúdo _Fabric-attached MetroCluster Installation and Configuration_ para que os RCFs possam ser utilizados. Vá para link:other-references.html["Referências"] para acessar o conteúdo _Fabric-attached MetroCluster Installation and Configuration_.
 
 .Passos
 . Vá para a https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["Downloads do MetroCluster RCF"^] página e selecione os RCFs para a configuração do switch.

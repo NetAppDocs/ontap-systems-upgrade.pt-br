@@ -170,7 +170,7 @@ node1         node1         in-quorum     true          operational
 2 entries were displayed.
 ....
 +
-Os nós em um cluster estão no quórum quando uma maioria simples dos nós está saudável e pode se comunicar uns com os outros. Para obter mais informações, consulte o link:other_references.html["Referências"]link para a _Referência de Administração do sistema_.
+Os nós em um cluster estão em quorum quando a maioria simples dos nós está íntegra e consegue se comunicar entre si. Para mais informações, consulte link:other-references.html["Referências"] para acessar o _System Administration Reference_.
 
 . Voltar ao nível de privilégio administrativo:
 +
@@ -260,7 +260,7 @@ O sistema exibe informações detalhadas sobre o SP em ambos os nós.
 . Confirme se a rede SP está configurada.
 . Registre o endereço IP e outras informações sobre o SP.
 +
-Você pode querer reutilizar os parâmetros de rede dos dispositivos de gerenciamento remoto, neste caso os SPs, do sistema original para os SPs nos novos nós. Para obter informações detalhadas sobre o SP, consulte link:other_references.html["Referências"] o _System Administration Reference_ e o _ONTAP 9 Command reference_.
+Você pode querer reutilizar os parâmetros de rede dos dispositivos de gerenciamento remoto, neste caso os SPs, do sistema original para os SPs nos novos nós. Para obter informações detalhadas sobre o SP, consulte link:other-references.html["Referências"] o _System Administration Reference_ e o _ONTAP 9 Command reference_.
 
 +
 .. [[man_prepare_nodes_step29]]Se você quiser que os novos nós tenham a mesma funcionalidade licenciada que os nós originais, insira o seguinte comando para ver as licenças do cluster no sistema original:
@@ -286,7 +286,7 @@ FlexClone         site    FlexClone License     -
 SnapVault         site    SnapVault License     -
 6 entries were displayed.
 ....
-.. Obtenha novas chaves de licença para os novos nós no site de suporte _NetApp_. Consulte o link:other_references.html["Referências"]link para _Site de suporte da NetApp_.
+.. Obtenha novas chaves de licença para os novos nós no site de suporte da NetApp. Consulte link:other-references.html["Referências"] para acessar o site de suporte da NetApp.
 +
 Se o site não tiver as chaves de licença necessárias, entre em Contato com o representante de vendas da NetApp.
 
@@ -321,7 +321,7 @@ Vá para <<man_prepare_nodes_step34,Passo 34>>.
 
 
 | Não tem AutoSupport ativado...  a| 
-Ative o AutoSupport seguindo as instruções em _Referência de administração do sistema_. (Consulte a link:other_references.html["Referências"]ligação à _Referência da Administração do sistema_.)
+Habilite AutoSupport seguindo as instruções no _System Administration Reference_. (Consulte link:other-references.html["Referências"] para o _System Administration Reference_.)
 
 *Nota:* o AutoSupport é ativado por padrão quando você configura o sistema de armazenamento pela primeira vez. Embora você possa desativar o AutoSupport a qualquer momento, você deve deixá-lo habilitado. Ativar o AutoSupport pode ajudar a identificar problemas e soluções de forma significativa em caso de problema no sistema de storage.
 
@@ -331,7 +331,7 @@ Ative o AutoSupport seguindo as instruções em _Referência de administração 
 `system node autosupport show -node node_name -instance`
 
 +
-Para obter informações detalhadas sobre AutoSupport, consulte link:other_references.html["Referências"] para acessar o _System Administration Reference_ e o _ONTAP 9 Command reference_.
+Para obter informações detalhadas sobre AutoSupport, consulte link:other-references.html["Referências"] para acessar o _System Administration Reference_ e o _ONTAP 9 Command reference_.
 
 .. [[man_prepare_nodes_step35,Etapa 35]] Envie uma mensagem AutoSupport para o NetApp para node1 digitando o seguinte comando:
 +

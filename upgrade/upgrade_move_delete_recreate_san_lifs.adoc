@@ -97,4 +97,4 @@ js11      ps0          mixed    LIF1,                   igroup1
 Dependendo dos requisitos do ambiente do cluster, você pode decidir criar novas LIFs SAN ou recriar LIFs SAN que você excluiu anteriormente neste procedimento. Você pode criar ou recriar LIFs de SAN usando o procedimento na documentação _Gerenciamento de cluster usando o https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_creating_network_interfaces.html["criação de interfaces de rede"^] Gerenciador de sistema do OnCommand_.
 
 .O que se segue?
-link:upgrade-remove-original-nodes.html["Remova os nós originais do cluster."]
+Após mover, excluir ou criar LIFs SAN, link:upgrade-remove-original-nodes.html["remova os nós originais do cluster"].

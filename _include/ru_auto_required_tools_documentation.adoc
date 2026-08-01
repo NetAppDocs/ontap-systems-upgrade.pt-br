@@ -10,4 +10,4 @@ Você precisa das seguintes ferramentas para executar a atualização:
 * Chave de fendas Phillips nº 2
 
 
-Aceda à link:other_references.html["Referências"] secção para aceder à lista de documentos de referência e sites de referência necessários para esta atualização
+Vá para a seção link:other-references.html["Referências"] para acessar a lista de documentos e sites de referência necessários para esta atualização

@@ -51,3 +51,6 @@ Tem de fechar a pega lentamente de forma a que fique corretamente alinhada com a
 
 . Repita <<move_int_drive_2,Passo 2>> até <<move_int_drive_5,Passo 5>> para todas as unidades que você está movendo para o novo sistema.
 
+
+.O que se segue?
+Após mover as unidades internas do nó original, link:upgrade-attach-shelves-reassign-disks.html["Conecte as prateleiras de armazenamento e reatribua a propriedade dos discos"].

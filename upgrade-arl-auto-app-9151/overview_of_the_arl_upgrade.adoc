@@ -32,72 +32,31 @@ Durante o procedimento, você atualiza o hardware da controladora original com o
 
 Cada agregado tem um proprietário de casa e proprietário atual. O proprietário da casa é o proprietário real do agregado, e o proprietário atual é o proprietário temporário.
 
-A tabela a seguir descreve as tarefas de alto nível executadas durante cada etapa e o estado de propriedade agregada no final da etapa. Etapas detalhadas são fornecidas posteriormente no procedimento:
+Saiba mais sobre as tarefas de alto nível que você executa em cada etapa e o estado da propriedade do agregado ao final de cada etapa. As etapas detalhadas serão fornecidas posteriormente neste procedimento.
 
-[cols="35,65"]
-|===
-| Fase | Descrição 
-
-
-| link:prepare_nodes_for_upgrade.html["Fase 1. Prepare-se para a atualização"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]link:prepare_nodes_for_upgrade.html["Fase 1. Prepare-se para a atualização"]
+[role="quick-margin-para"]
 Durante a fase 1, você executa pré-verificações e, se necessário, corrige a propriedade agregada. Você deve Registrar certas informações se estiver gerenciando a criptografia de armazenamento usando o OKM e você pode optar por silenciar as relações do SnapMirror.
 
-Propriedade agregada no final da fase 1:
-
-* node1 é o proprietário da casa e atual proprietário dos agregados node1.
-* Node2 é o proprietário da casa e atual proprietário dos agregados node2.
-
-
-
-
-| link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Fase 2. Transferir e retirar node1"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]link:relocate_non_root_aggr_nas_data_lifs_node1_node2.html["Fase 2. Transferir e retirar node1"]
+[role="quick-margin-para"]
 Durante a fase 2, você realocar node1 agregados não-raiz e LIFs de dados nas para node2. Esse processo é amplamente automatizado; a operação é interrompida para permitir que você verifique seu status. Tem de retomar manualmente a operação. Se necessário, você realocar agregados com falha ou vetado. Você grava informações node1 para uso mais tarde no procedimento antes de se aposentar node1. Você também pode se preparar para netboot node3 e node4 posteriormente no procedimento.
 
-Propriedade agregada no final da fase 2:
-
-* Node2 é o atual proprietário de node1 agregados.
-* Node2 é o proprietário da casa e atual proprietário de node2 agregados.
-
-
-
-
-| link:install_boot_node3.html["Fase 3. Instale e inicialize node3"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]link:install_boot_node3.html["Fase 3. Instale e inicialize node3"]
+[role="quick-margin-para"]
 Durante o Estágio 3, você instala e inicia o node3, verifique se as portas de gerenciamento de clusters e nós do node1 estão online no node3 e verifique a instalação do node3. Se estiver a utilizar o NetApp volume Encryption (NVE), irá restaurar a configuração do gestor de chaves. Você também realocar os LIFs de dados nas node1 e agregados não-raiz de node2 para node3 e verificar se os LIFs SAN existem no node3.
 
-Propriedade agregada no final da fase 3:
-
-* Node3 é o proprietário da casa e atual proprietário de node1 agregados.
-* Node2 é o proprietário da casa e atual proprietário de node2 agregados.
-
-
-
-
-| link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Fase 4. Transferir e retirar node2"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatro"]link:relocate_non_root_aggr_nas_lifs_from_node2_to_node3.html["Fase 4. Transferir e retirar node2"]
+[role="quick-margin-para"]
 Durante a fase 4, você realocar agregados não-raiz e LIFs de dados nas de node2 para node3. Você também grava informações node2 para uso mais tarde no procedimento antes de se aposentar node2.
 
-Propriedade agregada no final da fase 4:
-
-* Node3 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node1.
-* Node2 é o proprietário da casa de node2 agregados.
-* Node3 é o atual proprietário de node2 agregados.
-
-
-
-
-| link:install_boot_node4.html["Fase 5. Instale e inicialize node4"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:install_boot_node4.html["Fase 5. Instale e inicialize node4"]
+[role="quick-margin-para"]
 Durante o Estágio 5, você instala e inicia o node4, verifique se as portas de gerenciamento de clusters e nós do node2 estão online no node4 e verifique a instalação do node4. Se estiver usando o NVE, você restaurará a configuração do gerenciador de chaves. Você também relocaliza node2 LIFs de dados nas e agregados não-raiz de node3 para node4 e verifica se os LIFs SAN existem no node4.
 
-Propriedade agregada no final da fase 5:
-
-* Node3 é o proprietário da casa e atual proprietário dos agregados que originalmente pertenciam a node1.
-* Node4 é o proprietário da casa e atual proprietário de agregados que originalmente pertenciam a node2.
-
-
-
-
-| link:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"]  a| 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"]link:manage-authentication-using-kmip-servers.html["Fase 6. Conclua a atualização"]
+[role="quick-margin-para"]
 Durante a fase 6, você confirma que os novos nós estão configurados corretamente e, se os novos nós estiverem habilitados para criptografia, configura e configura a criptografia de storage ou NVE. Você também deve desativar os nós antigos e retomar as operações do SnapMirror.
 
-|===
 .O que se segue?
 Após tomar conhecimento da sequência de atualização do ARL, link:prepare_nodes_for_upgrade.html["prepare os nós para atualização"].

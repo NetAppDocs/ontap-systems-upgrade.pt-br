@@ -48,7 +48,7 @@ Se o node4 estiver em um chassi separado do node3, você pode colocar o node4 no
 . Instale o node4 no rack, seguindo as instruções em _instruções de instalação e configuração_ para o modelo do nó.
 . [[man_install4_Step4]]Cabo node4, movendo as conexões de node2 para node4.
 +
-As referências a seguir ajudam você a fazer conexões de cabos adequadas. Vá para link:other_references.html["Referências"]o link para eles.
+As referências a seguir ajudam você a fazer conexões de cabos adequadas. Acesse link:other-references.html["Referências"] para consultá-las.
 
 +
 ** _Instruções de instalação e configuração_ para a plataforma node4

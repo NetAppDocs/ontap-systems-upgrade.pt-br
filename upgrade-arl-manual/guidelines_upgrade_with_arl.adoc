@@ -41,15 +41,15 @@ NOTE: Antes de executar uma atualização do sistema AFF, você deve atualizar o
 * A atualização do controlador usando ARL é suportada em sistemas configurados com volumes SnapLock Enterprise e SnapLock Compliance.
 
 
-Você deve verificar se o ARL pode ser executado nos controladores original e de substituição. Você deve verificar o tamanho de todos os agregados definidos e o número de discos suportados pelo sistema original. Em seguida, compare-os com o tamanho agregado e o número de discos suportados pelo novo sistema. Para aceder a estas informações, link:other_references.html["Referências"]consulte para ligar ao _Hardware Universe_. O tamanho agregado e o número de discos suportados pelo novo sistema devem ser iguais ou superiores ao tamanho agregado e ao número de discos suportados pelo sistema original.
+Você deve verificar se o ARL pode ser executado nos controladores original e de substituição. Você deve verificar o tamanho de todos os agregados definidos e o número de discos suportados pelo sistema original. Em seguida, compare-os com o tamanho de agregado e o número de discos suportados pelo novo sistema. Para acessar essas informações, consulte link:other-references.html["Referências"] para o link do _Hardware Universe_. O tamanho de agregado e o número de discos suportados pelo novo sistema devem ser iguais ou maiores que o tamanho de agregado e o número de discos suportados pelo sistema original.
 
-Você deve validar nas regras de mistura de cluster se novos nós podem se tornar parte do cluster com os nós existentes quando o controlador original é substituído. Para obter mais informações sobre as regras de mistura de cluster, consulte o link:other_references.html["Referências"]link para o _Hardware Universe_.
+Você deve validar nas regras de mistura de clusters se novos nós podem se integrar ao cluster com os nós existentes quando o controlador original for substituído. Para obter mais informações sobre regras de mistura de clusters, consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_.
 
 
 NOTE: Ambos os sistemas são de alta disponibilidade (HA) ou não HA. Ambos os nós precisam ter a personalidade ativada ou desativada. Você não pode combinar um nó com a personalidade otimizada All Flash ativada com um nó que não tenha a personalidade habilitada no mesmo par de HA. Se as personalidades forem diferentes, entre em Contato com o suporte técnico.
 
 
-NOTE: Se o novo sistema tiver menos slots do que o sistema original, ou se tiver menos ou portas diferentes, talvez seja necessário adicionar um adaptador ao novo sistema. link:other_references.html["Referências"]Consulte o link para o _Hardware Universe_ no site de suporte da NetApp para obter detalhes sobre plataformas específicas.
+NOTE: Se o novo sistema tiver menos slots que o sistema original, ou se tiver menos portas ou portas diferentes, talvez seja necessário adicionar um adaptador ao novo sistema. Consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_ no site de suporte da NetApp para obter detalhes sobre plataformas específicas.
 
 
 
@@ -60,19 +60,19 @@ Você não pode executar as seguintes atualizações:
 
 * Para ou de controladores que não podem executar uma versão do ONTAP do ONTAP 9.0 para o ONTAP 9.7.
 +
-Para obter informações sobre atualizações do controlador para sistemas que executam o Data ONTAP operando no modo 7, link:other_references.html["Referências"]consulte o link para o site de suporte _NetApp_.
+Para obter informações sobre atualizações de controladores para sistemas que executam Data ONTAP operando em 7-Mode, consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_.
 
 * Para substituir as controladoras que não são compatíveis com as gavetas de disco conectadas às controladoras originais.
 +
-Para obter informações de suporte a disco, link:other_references.html["Referências"]consulte a ligação ao _Hardware Universe_.
+Para informações sobre suporte a discos, consulte link:other-references.html["Referências"] para acessar o _Hardware Universe_.
 
 * Desde controladoras com agregados de raiz ou agregados de dados em unidades internas.
 +
-Se você quiser atualizar controladores com agregados de raiz ou agregados de dados em unidades de disco internas, consulte link:other_references.html["Referências"]o link para _Atualizar movendo volumes ou armazenamento_ e vá para o procedimento _Atualizar um par de nós executando Data ONTAP em cluster movendo volumes_.
+Se você deseja atualizar controladores com agregados raiz ou agregados de dados em unidades de disco internas, consulte link:other-references.html["Referências"] para acessar _Atualizar movendo volumes ou armazenamento_ e vá para o procedimento _Atualizando um par de nós executando Clustered Data ONTAP movendo volumes_.
 
 +
 
-NOTE: Se você quiser atualizar o ONTAP em nós em um cluster, link:other_references.html["Referências"]consulte o link para _Atualizar ONTAP_.
+NOTE: Se você deseja atualizar ONTAP em nós de um cluster, consulte link:other-references.html["Referências"] para acessar _Upgrade ONTAP_.
 
 
 
@@ -115,9 +115,9 @@ Alguns recursos exigem licenças, que são emitidas como _pacotes_ que incluem u
 
 Se você não tiver novas chaves de licença, os recursos atualmente licenciados no cluster estarão disponíveis para o novo controlador e continuarão a funcionar. No entanto, o uso de recursos não licenciados no controlador pode colocá-lo fora de conformidade com o contrato de licença, portanto, você deve instalar a nova chave de licença ou chaves para o novo controlador após a conclusão da atualização.
 
-Todas as chaves de licença têm 28 carateres alfabéticos em letras maiúsculas. Consulte o link:other_references.html["Referências"]link para o _Site de suporte NetApp_, onde você pode obter novas chaves de licença de 28 carateres para o ONTAP 9.7. Ou anteriores. As chaves estão disponíveis na seção _meu suporte_ em _licenças de software_. Se o site não tiver as chaves de licença necessárias, entre em Contato com o representante de vendas da NetApp.
+Todas as chaves de licença têm 28 caracteres alfabéticos maiúsculos. Consulte link:other-references.html["Referências"] para acessar o _NetApp Support Site_, onde você pode obter novas chaves de licença de 28 caracteres para ONTAP 9.7 ou versões anteriores. As chaves estão disponíveis na seção _My Support_ em _Software licenses_. Se o site não tiver as chaves de licença que você precisa, entre em contato com seu representante de vendas da NetApp.
 
-Para obter informações detalhadas sobre o licenciamento, link:other_references.html["Referências"]acesse o link para a _Referência de Administração do sistema_.
+Para obter informações detalhadas sobre licenciamento, acesse link:other-references.html["Referências"] para acessar a _Referência de Administração do Sistema_.
 
 
 

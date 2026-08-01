@@ -127,7 +127,7 @@ Com base na saída na <<man_aggr_step4,Passo 4>> e na Etapa 6, o aggr2 usa três
 Continue com este procedimento.
 
 
-NOTE: Antes de continuar, você deve colocar os agregados off-line e, em seguida, destruir os agregados nas unidades de disco internas. link:other_references.html["Referências"]Consulte o link para o _Disk e gerenciamento de agregados com o conteúdo CLI_ para obter informações sobre o gerenciamento de agregados.
+NOTE: Antes de prosseguir, você deve colocar os agregados offline e, em seguida, destruí-los nos discos internos. Consulte link:other-references.html["Referências"] para acessar o conteúdo "Gerenciamento de disco e agregados com a CLI" e obter informações sobre como gerenciar agregados.
 
 
 
@@ -135,13 +135,13 @@ NOTE: Antes de continuar, você deve colocar os agregados off-line e, em seguida
 Continue com este procedimento.
 
 
-NOTE: Antes de continuar, você deve mover os volumes para um compartimento de disco externo, colocar os agregados off-line e, em seguida, destruir os agregados nas unidades de disco internas. link:other_references.html["Referências"]Consulte o link para o _Disk e gerenciamento de agregados com o conteúdo CLI_ para obter informações sobre a movimentação de volumes.
+NOTE: Antes de prosseguir, você deve mover os volumes para um gabinete de discos externo, colocar os agregados offline e, em seguida, destruir os agregados nos discos internos. Consulte link:other-references.html["Referências"] para obter o link para o conteúdo "Gerenciamento de discos e agregados com a CLI" e informações sobre como mover volumes.
 
 
 
-| Conter volumes raiz nas unidades internas | Não prossiga com este procedimento. Você pode atualizar os controladores consultando link:other_references.html["Referências"]o link para o site de suporte _NetApp_ e usando o procedimento _Atualizando o hardware do controlador em um par de nós executando Data ONTAP em cluster movendo volumes_. 
+| Conter volumes raiz nas unidades internas | Não prossiga com este procedimento. Você pode atualizar os controladores consultando link:other-references.html["Referências"] para acessar o _site de suporte da NetApp_ e usando o procedimento _Upgrading the controller hardware on a pair of nodes running clustered Data ONTAP by moving volumes_. 
 
 
-| Conter volumes não-raiz nas unidades internas e não é possível mover os volumes para armazenamento externo | Não prossiga com este procedimento. Você pode atualizar os controladores usando o procedimento _Atualizando o hardware do controlador em um par de nós executando o cluster Data ONTAP movendo volumes_. link:other_references.html["Referências"]Consulte o link para o _Site de suporte da NetApp_, onde você pode acessar este procedimento. 
+| Conter volumes não-raiz nas unidades internas e não é possível mover os volumes para armazenamento externo | Não prossiga com este procedimento. Você pode atualizar os controladores usando o procedimento _Atualizando o hardware do controlador em um par de nós executando Clustered Data ONTAP movendo volumes_. Consulte link:other-references.html["Referências"] para acessar o _site de suporte da NetApp_, onde você pode encontrar este procedimento. 
 |===
 

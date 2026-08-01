@@ -22,7 +22,7 @@ Esta tarefa deve ser executada em cada local do MetroCluster.
 .Passo
 Use o conteúdo _Instalação e Configuração do MetroCluster anexado à estrutura_ para determinar o layout de cabeamento para o tipo de switch, usando o uso da porta para uma configuração do MetroCluster de oito nós. O uso da porta do switch FC deve corresponder ao uso descrito no conteúdo para que os arquivos de configuração de referência (RCFs) possam ser usados.
 
-Vá para link:other_references.html["Referências"]o link para o conteúdo _Fabric-Attached MetroCluster Installation and Configuration_.
+Acesse link:other-references.html["Referências"] para acessar o conteúdo _Fabric-attached MetroCluster Installation and Configuration_.
 
 
 NOTE: Se o seu ambiente não puder ser cabeado de uma forma que os RCFs possam ser usados, entre em Contato com o suporte técnico. Não use este procedimento se o cabeamento não puder usar RCFs.

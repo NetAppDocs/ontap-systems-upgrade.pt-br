@@ -498,4 +498,4 @@ multipath -ll -d
 
 
 .O que se segue?
-link:upgrade-create-aggregate-move-volumes.html["Crie um agregado e mova volumes para os novos nós"]
+Após migrar os hosts Linux iSCSI para os novos nós, link:upgrade-create-aggregate-move-volumes.html["Crie um agregado e mova os volumes para os novos nós"].
