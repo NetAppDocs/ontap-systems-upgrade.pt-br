@@ -1643,7 +1643,6 @@
   <block id="f08f2281e0941651d12c9d63e01b3a7e" category="paragraph">O AutoSupport não está ativado</block>
   <block id="8ba4d456a3db9d62662e21be8c9d6a65" category="paragraph">Ligue para o suporte da NetApp para registar o número de série.</block>
   <block id="073b364a34edc88074c1df13d44748dc" category="list-text">Se a giveback automática foi desativada, reative-a:<block ref="6f0c6616b99fea33a3020e0e0dcbe3c6" prefix=" " category="inline-code"></block></block>
-  <block id="c9b87fd8826330d02eb0f7e03c49023c" category="summary">Para concluir o procedimento de atualização movendo volumes, você precisa configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.</block>
   <block id="758ed2ce94a0d48e369a05e9792df5bf" category="paragraph">Para concluir o procedimento de atualização movendo volumes, você deve configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou NCA.</block>
   <block id="8f581810d42d6aab9a995890e97f0a55" category="list-text">Configure o SP nos novos nós conforme necessário:</block>
   <block id="ac1f1418c4fb176ba9565108305de59a" category="paragraph"><block ref="1cf42f14a21549a232025877a9c40349" prefix="" category="inline-code"></block></block>
@@ -1802,7 +1801,6 @@
   <block id="3b5280aac62d339d908a3019ce691faa" category="paragraph"><block ref="729e694739bfdbdf0848ffb9ad4a0f45" prefix="" category="inline-code"></block></block>
   <block id="49804bf53ebb394c1046383af76de316" category="list-text">Exclua os LIFs nos nós originais:</block>
   <block id="6e2a280fc54f306b51d2674e9eea36fc" category="paragraph"><block ref="4b1155a2bc6419909cbc98b7c8a194c3" prefix="" category="inline-code"></block></block>
-  <block id="2f22c527d871517945ac34102d2f6931" category="summary">Para concluir o procedimento de atualização movendo o storage, você precisa excluir quaisquer portas e LIFs não utilizados dos novos nós, reativar o failover de storage ou alta disponibilidade, configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou CNA.</block>
   <block id="5112ce36807c8e031c9ab063bc28ce71" category="doc">Execute as etapas finais de atualização no ONTAP 9.7 ou anterior</block>
   <block id="de87a7c00dcfcf1112ca50efd583f924" category="paragraph">Para concluir o procedimento de atualização movendo o storage, você deve excluir quaisquer portas e LIFs não utilizados dos novos nós, reativar o failover de storage ou alta disponibilidade, configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou CNA.</block>
   <block id="cef52224881fd5dedd26a040c1359ee9" category="inline-link-macro">Execute as etapas finais de atualização no ONTAP 9.8 ou posterior</block>
@@ -1825,7 +1823,6 @@
   <block id="ef613ca6be844d20a9465aad12778acf" category="list-text">Se os novos nós tiverem portas FC (integradas ou em adaptadores FC), portas CNA integradas ou uma placa CNA, configure as portas FC ou CNA inserindo o seguinte comando no prompt do sistema de storage:</block>
   <block id="b64b23511c1735fad8c07cd83da6444e" category="list-text">Na página sistemas instalados, digite o número de série do sistema antigo no formulário e clique em *Go!*</block>
   <block id="a6544f7c3c36002518f645319241e489" category="paragraph">Concluiu o procedimento de atualização.</block>
-  <block id="4d3a4f006fa6b11c769a39a41cac5793" category="summary">Para concluir o procedimento de atualização movendo o storage, você deve excluir quaisquer portas e LIFs não utilizados dos novos nós, reativar o failover de storage ou alta disponibilidade, configurar o processador de serviço (SP), instalar novas licenças e configurar o AutoSupport. Também pode ser necessário configurar a criptografia de armazenamento ou volume e configurar as portas FC ou CNA.</block>
   <block id="0bde8f7cae6f7006cf8059b9d923c0a4" category="inline-link-macro">Executando etapas finais de atualização no ONTAP 9.7 ou anterior</block>
   <block id="d0820066ba6f14dca2420f2960ea8c42" category="paragraph">Estas etapas se aplicam a sistemas que executam o ONTAP 9.8 ou posterior. Se você estiver executando o ONTAP 9.7 ou anterior, use o procedimento no <block ref="05d6674d1c6e0d48e8203d8e927e45b4" category="inline-link-macro-rx"></block>.</block>
   <block id="5e79c247ab4077723eed9dcb39fcfe47" category="list-text">Se o seu sistema estiver executando o ONTAP 9.7 ou anterior, *STOP*. Tem de utilizar o procedimento em <block ref="05d6674d1c6e0d48e8203d8e927e45b4" category="inline-link-macro-rx"></block>.</block>
@@ -2703,7 +2700,6 @@
   <block id="7588408bbfed0416d38b98777ec4d4bc" category="summary">Retome as transferências e relacionamentos do SnapMirror ao atualizar controladores executando o ONTAP 9.5 para 9,7 usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="3ab0e6df482466ba6428f0535b2e2564" category="summary">Desative o par de HA com node2 e encerre o node1 ao atualizar as controladoras executando o ONTAP 9.5 para 9,7 usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="42b71ea88832319c6f3f7818996dd5aa" category="summary">Encerre o node2 e remova-o do rack ou chassi ao atualizar as controladoras executando o ONTAP 9.5 para o 9,7 usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
-  <block id="7625a2790853e03d706fd2e8a29fb7ba" category="summary">Configure node4 portas FC integradas, portas UTA/UTA2 ou a placa UTA/UTA2 ao atualizar as controladoras executando o ONTAP 9.5 para 9,7 usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="59df83a3d8dd25ad19619fe75cc32a49" category="list-text">[[step8]]Faça uma das seguintes ações:</block>
   <block id="2052b0cdd036221aef35041d554abfe3" category="example-title">Expanda o exemplo de saída do console</block>
   <block id="e2de59a5a77b66213e7d85b56f1eb224" category="list-text">No prompt Loader, entre no modo de manutenção:</block>
@@ -3126,7 +3122,6 @@
   <block id="f41084761f1192d11c824e139538a13d" category="summary">Se necessário, configure a criptografia de armazenamento, instale certificados SSL e configure servidores de gerenciamento de chaves ao usar o ARL para atualizar modelos de controladora no mesmo chassi.</block>
   <block id="0c28f03f85d0a7cc4b82f95fce4d86da" category="inline-link-macro">Verifique o hardware de atualização</block>
   <block id="20c4be209ec6c65b4221fa6f09f2df42" category="inline-link-macro">Gerenciar criptografia de armazenamento usando o Gerenciador de chaves integrado</block>
-  <block id="82896d30ec8a78dd386c091a8c2121e6" category="inline-link-macro">Substitua os node1 módulos do sistema</block>
   <block id="af9d3f15b5098b02572b4a5b4c346c3d" category="inline-link-macro">Verifique a instalação do node1</block>
   <block id="ab8666705fb8255d0f27c0919160c1e4" category="inline-link-macro">Verifique a instalação do node2</block>
   <block id="60990f5a7d4c2de72ffce9a721cd665f" category="summary">Verifique a instalação do node1 com os módulos de substituição ao usar o ARL para atualizar modelos de controladora no mesmo chassi.</block>
@@ -3285,7 +3280,6 @@
   <block id="37b10337aa44c11a05aa4efa324640ba" category="summary">Retome as transferências e relacionamentos do SnapMirror ao atualizar controladores executando o ONTAP 9.8 ou posterior usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="48ec3f88b1540532a71a1bff492cf63b" category="summary">Desative o par de HA com node2 e encerre o node1 ao atualizar controladores executando o ONTAP 9.8 ou posterior usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="e13e6c141a78d2d49110f9de675a4ce7" category="summary">Encerre o node2 e remova-o do rack ou chassi ao atualizar as controladoras executando o ONTAP 9.8 ou posterior usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
-  <block id="bc8355e3ba73925a2f4cf661fa66be6a" category="summary">Configure node4 portas FC integradas, portas UTA/UTA2 ou a placa UTA/UTA2 ao atualizar as controladoras executando o ONTAP 9.8 ou posterior usando<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> comandos.</block>
   <block id="f91809c39c7c5ad59f2475c5ee644448" category="admonition">No exemplo de saída do console acima, o ONTAP solicitará o nome do nó do parceiro se o sistema usar discos de particionamento avançado de disco (ADP).</block>
   <block id="b8499c64cd399582a56bd38ef2f0b689" category="paragraph">Quando os nós de cluster que você está substituindo usam criptografia de volume raiz, o ONTAP não consegue ler as informações de volume dos discos. Restaure as chaves para o volume raiz.</block>
   <block id="4671cfb012ae240f7ddc8f7aaa369dbf" category="admonition">Isto aplica-se apenas quando o volume raiz está a utilizar a encriptação de volume NetApp.</block>
@@ -3707,7 +3701,6 @@
   <block id="538f577c4284d097aef57681a2acf728" category="paragraph"><block ref="a0502e9e767995ecf84f499d84740634" prefix="" category="inline-code"></block></block>
   <block id="047c004f2f53364ce170133f533be47f" category="list-text">Repita estas etapas no site do parceiro.</block>
   <block id="b14e77f6abcd7876eb048771f706c19b" category="summary">Configure node3 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2 durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.7 ou anterior.</block>
-  <block id="8dc470d3ebc8fcb9ed95d55471e7303a" category="summary">Configure node4 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2 durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.7 ou anterior.</block>
   <block id="5db9a87cb6b738b68a031aa17ff2133b" category="summary">Se necessário, configure o novo módulo de controladora para NVE ou NAE durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior.</block>
   <block id="025ad35a81df65ec523de8553d173a8c" category="paragraph">Se a controladora substituída ou o parceiro de alta disponibilidade (HA) da nova controladora usar o NetApp volume Encryption (NVE) ou o NetApp Aggregate Encryption (NAE), você deverá configurar o novo módulo de controladora para NVE ou NAE.</block>
   <block id="9fe5e1c0bb75be0e3f5f145103e72caa" category="cell">ONTAP 9 .5 ou anterior</block>
@@ -3854,7 +3847,6 @@
   <block id="42ee6b32597aab87a0d5dd8e08490bfd" category="summary">Desative o par de HA com node2 e encerre o node1 corretamente durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior.</block>
   <block id="391e08617f92cd9108184ce8327560e2" category="summary">Encerre o node2 corretamente e remova-o do rack ou chassi durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.8 ou posterior.</block>
   <block id="555d9e461a574dac83e9908b06022e17" category="summary">Configure node3 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2 durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.8 ou posterior.</block>
-  <block id="92f11749596b34888281bb0c579c2d25" category="summary">Configure node4 portas FC integradas, portas UTA/UTA2 ou placa UTA/UTA2 durante uma atualização manual do ARL nas controladoras executando o ONTAP 9.8 ou posterior.</block>
   <block id="c5dc6358f70b9b01e402df306b4756e6" category="summary">Se necessário, configure o novo módulo de controladora para NVE ou NAE durante uma atualização manual do ARL em controladores que executam o ONTAP 9.8 ou posterior.</block>
   <block id="f0a0eea61e7c18706f2be0d0b664df19" category="doc">Configure o volume NetApp ou a criptografia Aggregte no novo módulo do controlador</block>
   <block id="e147253c0010bdd5968cb9b4b9ddf7dc" category="cell">Gerenciador de chaves externo</block>
@@ -5479,7 +5471,6 @@
   <block id="d14ed5362debdfbe14cf14c4dcedb45e" category="list-text">Conecte os cabos do nó 2 ao nó 4.</block>
   <block id="8ada17b153e1b3f1e2dd2eacad90b1e5" category="admonition">Não conecte novas shelves ao node3 ou node4 durante este procedimento de atualização. Você pode conectar novas shelves ao sistema sem interrupções após concluir a atualização do controlador.</block>
   <block id="091cb162e71110eda2cc11ee235e5a9c" category="paragraph">Anote o ID do sistema do node3 para uso em <block ref="3cda7ea9d16e86f3996fa25936d101de" category="inline-xref-macro-rx"></block>.</block>
-  <block id="c27d8f687453de71fe99b9638caaee93" category="list-text">Reatribua os discos e os agregados de dados:</block>
   <block id="576404acc1d2c468d9604cd99464b3e9" category="open-title">Reatribuir ao node3</block>
   <block id="19c7bb430e4d1bead9d5461984527c74" category="paragraph">Reatribua os discos sobressalentes do node1, os discos pertencentes ao agregado de raiz e quaisquer agregados de dados ao node3:</block>
   <block id="9e1eb9f52027541a9bd23e4f05a40757" category="paragraph"><block ref="3e85ddaa3eb6367e1aff5787943cd287" prefix="" category="inline-code"></block></block>
@@ -5588,4 +5579,12 @@
   <block id="7a5a00d513b1d27412425615c75af559" category="list-text">Para configurações MetroCluster que executam ONTAP 9.7 e versões anteriores, acesse <block ref="9cc9f7a6e6a82728cff1f7183d2d4d15" category="inline-link-macro-rx"></block> para acessar _Usando a realocação de agregados para atualizar manualmente o hardware do controlador que executa ONTAP 9.7 ou versões anteriores_.</block>
   <block id="2b661462fc016dd9ae9c124f189c3cb4" category="list-text">Para configurações de IP do MetroCluster e opções adicionais de upgrade para configurações de Fabric MetroCluster, acesse <block ref="9cc9f7a6e6a82728cff1f7183d2d4d15" category="inline-link-macro-rx"></block> o conteúdo _MetroCluster Upgrade and Expansion_.</block>
   <block id="217f0692dd6e3dd9e6ae89ae211d2e5e" category="sidebar">Etapa 5. Instale os módulos do sistema de substituição do node2</block>
+  <block id="05de9e82bcc80e2e8396f0e503d037fd" category="list-text">[[reassign-disks-and-aggregates]]Reatribua os discos e os agregados de dados:</block>
+  <block id="dcb35290a699d5cd152b36befe0de1e2" category="summary">Para concluir o procedimento de atualização por meio da movimentação de volumes, você precisa configurar o Processador de Serviço (SP), instalar novas licenças e configurar o AutoSupport. Você também pode precisar configurar a criptografia de armazenamento ou de volume e configurar as portas FC ou NCA.</block>
+  <block id="c4d0156d9500edcd23bba4f179a52fa7" category="summary">Para concluir o procedimento de atualização por meio da migração do armazenamento, você precisa excluir todas as portas e LIFs não utilizadas dos novos nós, reativar o failover de armazenamento ou a alta disponibilidade, configurar o Service Processor (SP), instalar novas licenças e configurar o AutoSupport. Você também pode precisar configurar a criptografia de armazenamento ou de volume e configurar as portas FC ou CNA.</block>
+  <block id="aba8d067afe2b03d0a12cd1327ec564a" category="summary">Configure as portas FC integradas do node4, as portas UTA e UTA2, ou a placa UTA e UTA2 ao atualizar controladores executando o ONTAP 9.5 para 9.7 usando comandos system controller replace.</block>
+  <block id="6d20cbcee6958032c968a7b309bba444" category="summary">Configure as portas FC integradas do nó 4, as portas UTA e UTA2, ou a placa UTA e UTA2 ao atualizar controladores que executam o ONTAP 9.8 ou posterior usando comandos system controller replace.</block>
+  <block id="298812a1d89c69933bb37fd82a6a5814" category="summary">Configure as portas FC integradas do nó 4, as portas UTA e UTA2 ou a placa UTA e UTA2 durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior.</block>
+  <block id="db5d818f482843c95ffb191e7d48c35e" category="summary">Configurar as portas FC integradas do node4, as portas UTA e UTA2 ou a placa UTA e UTA2 durante uma atualização manual do ARL em controladoras que executam o ONTAP 9.8 ou posterior.</block>
+  <block id="1d1d3bd3fe7acd738c89cf279d744e1b" category="sidebar">Substitua os módulos do sistema node1</block>
 </blocks>

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: upgrade-arl-auto/set_fc_or_uta_uta2_config_node4.html 
-keywords: fc configuration, uta configuration, UTA2 configuration, configure FC ports, UTA/UTA2 card, node4, target, adapter, ports 
-summary: 'Configure node4 portas FC integradas, portas UTA/UTA2 ou a placa UTA/UTA2 ao atualizar as controladoras executando o ONTAP 9.5 para 9,7 usando `system controller replace` comandos.' 
+keywords: fc configuration, uta configuration, UTA2 configuration, configure FC ports, UTA, UTA2 card, node4, target, adapter, ports 
+summary: Configure as portas FC integradas do node4, as portas UTA e UTA2, ou a placa UTA e UTA2 ao atualizar controladores executando o ONTAP 9.5 para 9.7 usando comandos system controller replace. 
 ---
 = Defina a configuração FC ou UTA/UTA2 em node4
 :hardbreaks:
