@@ -3166,7 +3166,6 @@
   <block id="c34ebe5a54f4ac62ebd2695c126240e9" category="paragraph"><block ref="8947d9f65c60c1c5735ca3712d35f61f" prefix="" category="inline-code"></block></block>
   <block id="0999b94892b1b34eb0ef08c34b267bc1" category="summary">Verifique a instalação do node2 com módulos de substituição ao usar o ARL para atualizar modelos de controladora no mesmo chassi.</block>
   <block id="0774c7bfeafd6a8db85f6f40e93164c5" category="paragraph">Você deve verificar a instalação do node2 com os módulos de sistema de substituição. Como não há alteração nas portas físicas, não é necessário mapear as portas físicas do antigo node2 para o node2 de substituição.</block>
-  <block id="656030f2bc1d7ad32243a38c007d0770" category="paragraph">Depois de inicializar o node1 com o módulo de sistema de substituição, você verifica se ele está instalado corretamente. Você deve esperar que o node2 entre no quórum e, em seguida, retomar a operação de substituição do controlador.</block>
   <block id="ba7d8f5ebb18592d91d949241848dfe6" category="paragraph">Neste ponto do procedimento, a operação pára enquanto node2 se junta ao quórum.</block>
   <block id="c32050bd0152940e859c61963c8eac2b" category="list-text">Verifique se o quórum de node2 aderiu:</block>
   <block id="90a80dbcfe2d9dc6015a2d205a26af80" category="paragraph"><block ref="71b3ea32993a680a4ac70f53f00ed23d" prefix="" category="inline-code"></block></block>
@@ -5587,4 +5586,5 @@
   <block id="298812a1d89c69933bb37fd82a6a5814" category="summary">Configure as portas FC integradas do nó 4, as portas UTA e UTA2 ou a placa UTA e UTA2 durante uma atualização manual do ARL em controladores que executam o ONTAP 9.7 ou anterior.</block>
   <block id="db5d818f482843c95ffb191e7d48c35e" category="summary">Configurar as portas FC integradas do node4, as portas UTA e UTA2 ou a placa UTA e UTA2 durante uma atualização manual do ARL em controladoras que executam o ONTAP 9.8 ou posterior.</block>
   <block id="1d1d3bd3fe7acd738c89cf279d744e1b" category="sidebar">Substitua os módulos do sistema node1</block>
+  <block id="61a8342f8a44813141884475de4e2a3c" category="paragraph">Após inicializar o node2 com o módulo de sistema de substituição, você verifica se ele foi instalado corretamente. Você deve aguardar até que o node2 entre no quorum e então retomar a operação de substituição do controlador.</block>
 </blocks>

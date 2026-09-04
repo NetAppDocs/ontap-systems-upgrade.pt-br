@@ -17,7 +17,7 @@ summary: Verifique a instalação do node2 com módulos de substituição ao usa
 Você deve verificar a instalação do node2 com os módulos de sistema de substituição. Como não há alteração nas portas físicas, não é necessário mapear as portas físicas do antigo node2 para o node2 de substituição.
 
 .Sobre esta tarefa
-Depois de inicializar o node1 com o módulo de sistema de substituição, você verifica se ele está instalado corretamente. Você deve esperar que o node2 entre no quórum e, em seguida, retomar a operação de substituição do controlador.
+Após inicializar o node2 com o módulo de sistema de substituição, você verifica se ele foi instalado corretamente. Você deve aguardar até que o node2 entre no quorum e então retomar a operação de substituição do controlador.
 
 Neste ponto do procedimento, a operação pára enquanto node2 se junta ao quórum.
 
