@@ -161,7 +161,7 @@ Se nem o nó 1 nem o nó 2 possuírem agregados dos quais sejam os proprietário
 
 +
 ....
-cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,homename,state
+cluster::> storage aggregate show -node node2 -is-home false -fields owner-name,home-name,state
 There are no entries matching your query.
 ....
 +
