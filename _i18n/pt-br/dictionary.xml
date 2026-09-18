@@ -4676,7 +4676,6 @@
   <block id="7c83d808889f08051a5ca591ce7c8e27" category="list-text">[[relocate-step1]]Realoque os agregados não raiz concluindo as seguintes subetapas:</block>
   <block id="fc0d545a8e3aca29e30f066934728447" category="list-text">Verifique se o ID do sistema parceiro está configurado corretamente no nó 3:</block>
   <block id="dfcbf33b107ee8cbdb248e3973591ecd" category="list-text">[[relocate-step5]]Relocar os agregados não raiz:</block>
-  <block id="ed787946b7250668aadee490b38bc4a4" category="section-title">Qual procedimento de atualização devo usar?</block>
   <block id="dd04b613766be00015be37c27c9287a8" category="paragraph">Para selecionar o procedimento de atualização adequado, revise todas as perguntas listadas na tabela abaixo.</block>
   <block id="40c8ff48fe09ea0079684fdd1a250ec0" category="cell">Pergunte a si mesmo…</block>
   <block id="3b67351e5cad04409e6a96d3746ac449" category="cell">Se a sua resposta for sim, você pode fazer isso…</block>
@@ -4705,7 +4704,6 @@
   <block id="4c57db980fd04065c39ac4dffcef854a" category="section-title">Exemplo: atualização de FAS9500 para FAS90</block>
   <block id="a97ea56b0e00b2379736ae60869ff66a" category="cell">Pergunta</block>
   <block id="67ca848a550c561e54a81891f0d6d223" category="cell">Exemplo de resposta</block>
-  <block id="be3ad2de4d2b8e3ba0b5c1aa4b8cb05b" category="cell">Não. Tanto o FAS9500 quanto o FAS90 executam o ONTAP 9.15.1.</block>
   <block id="d3334963d764fa4e8de5f77317d6ec86" category="cell">Desejo realizar uma atualização disruptiva?</block>
   <block id="5eeadbc38fb7c86d39e9b4b88587473b" category="cell">Não. Quero manter meu ambiente de produção online durante a atualização.</block>
   <block id="980384b8326ad5f69899ae62e2ab1ecb" category="cell">Sim. Dependendo se meu sistema é modular ou integrado, posso atualizá-lo movendo volumes ou usando a realocação agregada (ARL).</block>
@@ -5587,4 +5585,14 @@
   <block id="db5d818f482843c95ffb191e7d48c35e" category="summary">Configurar as portas FC integradas do node4, as portas UTA e UTA2 ou a placa UTA e UTA2 durante uma atualização manual do ARL em controladoras que executam o ONTAP 9.8 ou posterior.</block>
   <block id="1d1d3bd3fe7acd738c89cf279d744e1b" category="sidebar">Substitua os módulos do sistema node1</block>
   <block id="61a8342f8a44813141884475de4e2a3c" category="paragraph">Após inicializar o node2 com o módulo de sistema de substituição, você verifica se ele foi instalado corretamente. Você deve aguardar até que o node2 entre no quorum e então retomar a operação de substituição do controlador.</block>
+  <block id="3be649079389687b52aca5285e2b20a4" category="section-title">Passo 1: selecione o procedimento de atualização correto</block>
+  <block id="77020be1e60162ee3900759f339c0767" category="section-title">Etapa 2: prepare-se para a atualização</block>
+  <block id="a28e21a67dff4d848427cfa15fde856f" category="paragraph">Antes de iniciar o seu procedimento de atualização, revise todas as perguntas listadas na tabela abaixo.</block>
+  <block id="5e3622ee3829e87e1095b6d7f01beaf1" category="cell">Se a sua resposta for sim, você precisa fazer isso…</block>
+  <block id="2376e2a677900d01e271835b28de0a94" category="cell">Existe alguma configuração FC SAN no cluster do meu sistema original?</block>
+  <block id="89dcc1d78edaf637785c6ecfca413588" category="inline-link-macro">Aprenda sobre zoneamento FC e FCoE com sistemas ONTAP</block>
+  <block id="d9be8a4f16ec08dcf1f5e6d2439c4637" category="inline-link-macro">Configurações de zoneamento FC e FCoE recomendadas para os sistemas ONTAP</block>
+  <block id="f835dc79760f269bbfd81a777b78620d" category="cell">Valide a configuração de zoneamento SAN para todos os nós nos sistemas original e de substituição. Consulte <block ref="b0267be2c10e97b47f1f9bcbc029b474" category="inline-link-macro-rx"></block> e <block ref="0b12576218c74a7268436563b74ec582" category="inline-link-macro-rx"></block>.</block>
+  <block id="7fb0d242758a1608211c466843e7f7e8" category="cell">Não. Tanto o FAS9500 quanto o FAS90 executam o ONTAP 9.17.1.</block>
+  <block id="e051a964e918207a93d794544866c861" category="cell">Sim. Validei a configuração de zoneamento SAN em todos os nós, tanto no sistema original quanto no de substituição.</block>
 </blocks>
