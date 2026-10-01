@@ -58,7 +58,7 @@ Reatribua os discos sobressalentes do node1, os discos pertencentes ao agregado 
 `disk reassign -s <node1_sysid> -d <node3_sysid> -p <node4_sysid>`
 
 ** O parâmetro  `node1_sysid` é o valor que você registrou em _Desligando os nós originais_, link:upgrade-shutdown-remove-original-nodes.html#shutdown_node_step5["Passo 5"].
-** Especifique o parâmetro  `-p <node2_sysid>` somente quando houver discos compartilhados.
+** Especifique o parâmetro  `-p <node4_sysid>` somente quando houver discos compartilhados.
 
 
 --
