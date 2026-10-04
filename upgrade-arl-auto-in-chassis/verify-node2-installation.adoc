@@ -46,21 +46,21 @@ A saída `health` do campo deve ser `true`.
 --
 Se o node2 não ingressar no quorum automaticamente:
 
-.. Verifique o IPspace das portas e1a e e1b:
+.. link:https://docs.netapp.com/us-en/ontap-systems/index.html["Verifique as portas de cluster do node2"^], em seguida, verifique o IPspace das portas de cluster do node2:
 +
 `network port show`
 
-.. Se o IPspace não for "Cluster", altere o IPspace para "Cluster" em e1a e e1b:
+.. Se o IPspace não for "Cluster", altere o IPspace para "Cluster" nas portas de cluster do node2:
 +
 `network port modify -node <node_name> -port <port> -ipspace Cluster`
 
-.. Verifique se o IPspace das portas e1a e e1b é "Cluster":
+.. Verifique se o IPspace das portas de cluster do node2 é "Cluster":
 +
 `network port show`
 
-.. Migrar LIFs do cluster node2 para e1a e e1b:
+.. Migre as LIFs de cluster do node2 para as portas de cluster do node2:
 +
-`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name`
+`network interface migrate -vserver Cluster -lif <cluster_lif1> -destination-node <node2_name> -destination-port <port_name>`
 
 
 
@@ -107,7 +107,7 @@ Se e2a estiver presente e for uma porta de rede de 100 GbE, esta será a segunda
 
 .. Verifique se apenas as portas de cluster e4a, e2a ou e4a, e4b estão no domínio de transmissão "Cluster"
 +
-`broadcast domain show`
+`network port broadcast-domain show`
 
 .. Remova as conexões de cabo entre e1a node1 e e1a node2, e e1b node1 e e1b node2 para garantir que somente conexões cluster-HA válidas sejam usadas e que não haja conectividade redundante.
 

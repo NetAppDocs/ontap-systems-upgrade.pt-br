@@ -26,28 +26,42 @@ Se o sistema existente tiver uma porta de gerenciamento (e0M) e uma porta BMC, a
 
 
 [[connect-to-a-two-node-switchless-cluster]]
+[[two-node-switch-ports]]
 == Conecte-se a um cluster sem switch de dois nós
 
 As tabelas a seguir mostram o uso da porta do switch para configurações de cluster sem switch de dois nós.
 
+[cols="2,2,2,2a"]
 |===
-| Tipo de porta | AFF A800, AFF C800 | AFF A90 | AFF A70, AFF C80 
+| Tipo de porta | AFF A800, AFF C800 | O AFF A90, o AFF A70 | AFF C80 
 
 
-| Cluster | e0a | e1a | e1a 
+| Cluster | e0a | e1a  a| 
+e1a
 
 
-| Cluster | e1a | e7a (use e1b se não houver e7a) | e1b 
+
+| Cluster | e1a | e7a (use e1b se não houver e7a)  a| 
+e1b
 
 
-| HA | e0b | Não conecte | Não conecte 
+
+| HA | e0b | Não conecte  a| 
+Não conecte
 
 
-| HA | e1b | Não conecte | Não conecte 
+
+| HA | e1b | Não conecte  a| 
+Não conecte
 
 
-| Portas de armazenamento SAS (se presentes e usadas) | Qualquer porta disponível | Qualquer porta disponível | Qualquer porta disponível 
+
+| Portas de armazenamento SAS (se presentes e usadas) | Qualquer porta disponível | Qualquer porta disponível  a| 
+Qualquer porta disponível
 
 
-| Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet | Consulte mapeamento de conetividade de armazenamento Ethernet 
+
+| Portas de storage Ethernet para NS224 gavetas | Qualquer porta disponível | Consulte mapeamento de conetividade de armazenamento Ethernet  a| 
+Consulte mapeamento de conetividade de armazenamento Ethernet
+
 |===
